@@ -36,6 +36,15 @@ jobs:
         run: python -m pip install -r requirements.txt
       - name: Aggiorna fonti ufficiali
         run: python -m backend.scheduled
+      - name: Conserva log diagnostici
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: update-logs-${{ github.run_id }}-${{ github.run_attempt }}
+          path: .cache/logs/updates.jsonl*
+          include-hidden-files: true
+          retention-days: 7
+          if-no-files-found: warn
       - name: Salva stato degli eventi e cache
         uses: actions/cache/save@v4
         with:
