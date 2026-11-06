@@ -1,4 +1,5 @@
 """Official World Cup standings, not the rolling World Cup Start List."""
+from .diagnostics import logged_update, record
 from urllib.parse import parse_qs, urlparse
 from .common import SITE, CACHE, fetch_text, read_json, write_json, stamp
 from .htmltree import Node, parse_html
@@ -46,6 +47,7 @@ def parse_standings(html, season, gender, identities):
         raise ValueError("Standings rows could not be decoded")
     return tables
 
+@logged_update("alpine_standings")
 def update(season):
     previous = read_json(CACHE / "alpine-standings.json", read_json(SITE / "data/alpine-standings.json", {}))
     if previous.get("season") != season:
@@ -63,6 +65,7 @@ def update(season):
             tables = parse_standings(fetch_text(url), season, gender, identities)
             groups[gender] = {"status": "ok", "updatedAt": stamp(), "sourceUrl": url, "tables": tables}
         except Exception as exc:
+            record("validation", outcome="error", source="FIS", endpoint=url, errorType=type(exc).__name__, error=str(exc))
             print(f"FIS standings {gender}: {exc}", flush=True)
             groups[gender] = {**previous.get("groups", {}).get(gender, {}), "status": "stale", "sourceUrl": url, "lastAttemptAt": stamp()}
     result = {"season": season, "source": "FIS", "checkedAt": stamp(), "groups": groups}

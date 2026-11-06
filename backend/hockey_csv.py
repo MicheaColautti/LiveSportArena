@@ -3,6 +3,7 @@
 Kept separate from the lightweight website refresh. Historical seasons are
 useful for training; the public website only displays the current season.
 """
+from .diagnostics import logged_update, sihf_call
 import argparse
 import json
 import time
@@ -15,7 +16,7 @@ from sportsdataverse.hockey.sihf import sihf_results, sihf_game_team_stats, sihf
 
 def fetch_df(func, **kwargs):
     """Usa pandas come formato di ritorno (libreria nativamente anche Polars)."""
-    result = func(return_as_pandas=True, **kwargs)
+    result = sihf_call(func, return_as_pandas=True, **kwargs)
     return pd.DataFrame(result)
 
 
@@ -190,6 +191,7 @@ def make_features(matches, game_stats=None):
     return pd.DataFrame(rows)
 
 
+@logged_update("hockey_csv")
 def main():
     p = argparse.ArgumentParser(description="Aggiorna dati reali National League SIHF in CSV")
     p.add_argument("--start-season", type=int, default=2022)

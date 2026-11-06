@@ -1,9 +1,11 @@
 """Static, subscribable National League calendars, refreshed with SIHF data."""
+from .diagnostics import logged_update
 from datetime import datetime, timezone
 from .common import SITE, read_json, write_json, stamp
 from .alpine import escape, folded
 
 
+@logged_update("hockey_calendar")
 def update(data):
     if not data.get('games'):
         return

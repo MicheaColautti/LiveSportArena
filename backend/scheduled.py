@@ -1,10 +1,12 @@
 """One bounded update per Actions run, with persisted data between deployments."""
+from .diagnostics import logged_update, record
 import shutil
 from datetime import datetime, timezone
 from .common import SITE, CACHE, read_json, write_json, stamp
 from . import hockey_live, hockey, hockey_statistics, hockey_calendar, predictions, alpine, alpine_standings
 
 
+@logged_update("scheduled")
 def main():
     archive = CACHE / 'published'
     for name in ('data', 'calendars'):
@@ -35,7 +37,10 @@ def main():
             live.update(baseUpdatedAt=snapshot['updatedAt'], standings=snapshot['standings'],
                         liveStandings=snapshot['liveStandings'])
             write_json(SITE/'data/hockey-live.json', live)
+        else:
+            record('update', operation='hockey_statistics', outcome='skipped', reason='no-new-finished-games-or-not-due')
     except Exception as exc:
+        record('fallback', outcome='error', errorType=type(exc).__name__, error=str(exc))
         print(f'::warning::Hockey update unavailable: {exc}', flush=True)
         live = read_json(SITE/'data/hockey-live.json', {})
         live.update(status='stale', checkedAt=stamp())
@@ -46,6 +51,7 @@ def main():
             alpine_standings.update(season)
             state['alpine'] = stamp()
         except Exception as exc:
+            record('fallback', outcome='error', errorType=type(exc).__name__, error=str(exc))
             source = getattr(exc, 'url', '')
             print(f'::warning::Alpine update unavailable: {exc}' + (f' ({source})' if source else ''), flush=True)
             # Keep the last verified calendar and record the failed source check.
@@ -53,6 +59,8 @@ def main():
             previous.update(status='stale', lastAttemptAt=stamp())
             write_json(SITE/'data/alpine.json', previous)
             state['alpine'] = stamp()
+    else:
+        record('update', operation='alpine', outcome='skipped', reason='not-due')
     write_json(CACHE/'schedule-state.json', state)
     for name in ('data','calendars'):
         shutil.copytree(SITE/name, archive/name, dirs_exist_ok=True)

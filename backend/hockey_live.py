@@ -1,4 +1,5 @@
 """Lightweight SIHF score polling; run beside the local static server."""
+from .diagnostics import logged_update, sihf_call
 import argparse
 import fcntl
 import signal
@@ -30,9 +31,10 @@ def interval(games):
     return 300
 
 
+@logged_update("hockey_live")
 def collect(season, scheduled=False):
     from sportsdataverse.hockey import sihf
-    raw = records(sihf.sihf_results(season=season, league_id=1, language='en',
+    raw = records(sihf_call(sihf.sihf_results, season=season, league_id=1, language='en',
                                   return_as_pandas=True))
     if any(int(m['season']) != season for m in raw):
         raise ValueError('SIHF season mismatch')
@@ -62,7 +64,7 @@ def collect(season, scheduled=False):
     baseline = read_json(SITE / 'data/hockey.json', {})
     games = [{**g, **patches.get(g['id'], {})} for g in baseline.get('games', [])]
     if scheduled:
-        standings = records(sihf.sihf_standings(season=season, league_id=1, language='en', return_as_pandas=True))
+        standings = records(sihf_call(sihf.sihf_standings, season=season, league_id=1, language='en', return_as_pandas=True))
         baseline['standings'] = standings
     delay = 300 if scheduled else interval(games)
     result = dict(season=season, status='ok', mode='github-actions' if scheduled else 'local-worker', checkedAt=checked,

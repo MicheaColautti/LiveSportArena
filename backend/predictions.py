@@ -1,3 +1,4 @@
+from .diagnostics import logged_update
 import hashlib
 import importlib
 import json
@@ -41,6 +42,7 @@ def validate_predictions(rows, fixtures):
         raise ValueError("Model must return one prediction per target fixture")
 
 
+@logged_update("predictions")
 def update(hockey):
     config = read_json(ROOT / "models/hockey/config.json", {})
     target, fixtures, ready, prior = next_matchday(hockey.get("games", []), datetime.now(ZoneInfo("Europe/Zurich")).date().isoformat())

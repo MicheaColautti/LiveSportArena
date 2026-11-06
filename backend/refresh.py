@@ -1,4 +1,5 @@
 """python -m backend.refresh --season 2027; no paid service or secrets required."""
+from .diagnostics import logged_update
 import argparse
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -6,6 +7,7 @@ from . import alpine, hockey, predictions, alpine_standings, hockey_statistics, 
 from .common import SITE, CACHE, read_json, write_json, stamp
 
 
+@logged_update("refresh")
 def main():
     now = datetime.now(ZoneInfo("Europe/Zurich"))
     parser = argparse.ArgumentParser()

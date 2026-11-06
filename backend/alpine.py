@@ -1,4 +1,5 @@
 """Official FIS calendar. Every run is a separate, stable calendar event."""
+from .diagnostics import logged_update
 import re
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
@@ -163,6 +164,7 @@ def reconcile(events, old_events):
     return sorted(events, key=lambda e: (e["date"], e["start"] or "", e["id"]))
 
 
+@logged_update("alpine")
 def update(season):
     raw = parse_ical(fetch_text(feed_url(season)))
     if len(raw) < 40:

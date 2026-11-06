@@ -1,4 +1,5 @@
 """SIHF adapter, using the same library as the user's notebook."""
+from .diagnostics import logged_update, sihf_call
 import json
 from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
@@ -84,9 +85,10 @@ def live_projection(standings, games):
     return ordered
 
 
+@logged_update("hockey")
 def update(season, detail_limit=8):
     from sportsdataverse.hockey import sihf
-    call = lambda fn, **kw: records(fn(return_as_pandas=True, language="en", **kw))
+    call = lambda fn, **kw: records(sihf_call(fn, return_as_pandas=True, language="en", **kw))
     raw = call(sihf.sihf_results, season=season, league_id=1)
     if not raw or any(int(m["season"]) != season for m in raw):
         raise ValueError("Missing or mismatched SIHF season")
