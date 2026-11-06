@@ -1,0 +1,1417 @@
+<lt>a:17:{s:10:"racersInfo";s:24210:"{"6293857": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "4",
+      "rank": 52
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "4",
+      "rank": 160
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "19.47",
+      "rank": 65
+    }
+  ]
+}, "422729": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "647",
+      "rank": 1
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "1158",
+      "rank": 2
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "0.00",
+      "rank": 1
+    }
+  ]
+}, "320453": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "-"
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "-"
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "23.83",
+      "rank": 99
+    }
+  ]
+}, "422304": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "354",
+      "rank": 7
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "917",
+      "rank": 6
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "4.99",
+      "rank": 10
+    }
+  ]
+}, "54027": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "463",
+      "rank": 4
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "463",
+      "rank": 16
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "1.46",
+      "rank": 5
+    }
+  ]
+}, "6532354": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "4",
+      "rank": 52
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "4",
+      "rank": 160
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "15.26",
+      "rank": 41
+    }
+  ]
+}, "422803": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "57",
+      "rank": 30
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "283",
+      "rank": 29
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "11.42",
+      "rank": 27
+    }
+  ]
+}, "492192": {"standings":[{"category":"WCSL","event":"GS","points":"14","rank":42},{"category":"WCSL","event":"ALL","points":"14","rank":134},{"category":"FIS","event":"GS","points":"16.38","rank":50}]}, "561244": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "191",
+      "rank": 14
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "191",
+      "rank": 46
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "8.20",
+      "rank": 15
+    }
+  ]
+}, "54628": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "38",
+      "rank": 33
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "128",
+      "rank": 62
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "17.35",
+      "rank": 53
+    }
+  ]
+}, "54320": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "368",
+      "rank": 6
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "686",
+      "rank": 11
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "2.97",
+      "rank": 6
+    }
+  ]
+}, "6531928": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "-"
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "-"
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "21.50",
+      "rank": 78
+    }
+  ]
+}, "780023": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "-"
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "-"
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "18.78",
+      "rank": 61
+    }
+  ]
+}, "502617": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "32",
+      "rank": 37
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "121",
+      "rank": 64
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "14.38",
+      "rank": 35
+    }
+  ]
+}, "990048": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "49",
+      "rank": 31
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "49",
+      "rank": 96
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "15.46",
+      "rank": 45
+    }
+  ]
+}, "422873": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "-"
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "72",
+      "rank": 87
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "15.14",
+      "rank": 38
+    }
+  ]
+}, "6191539": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "43",
+      "rank": 32
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "43",
+      "rank": 101
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "15.35",
+      "rank": 42
+    }
+  ]
+}, "422507": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "301",
+      "rank": 8
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "850",
+      "rank": 7
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "5.52",
+      "rank": 11
+    }
+  ]
+}, "54942": {"standings":[{"category":"WCSL","event":"GS","points":"-"},{"category":"WCSL","event":"ALL","points":"-"},{"category":"FIS","event":"GS","points":"29.16","rank":170}]}, "54444": {"standings":[{"category":"WCSL","event":"GS","points":"-"},{"category":"WCSL","event":"ALL","points":"281","rank":30},{"category":"FIS","event":"GS","points":"31.30","rank":208}]}, "380335": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "149",
+      "rank": 19
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "229",
+      "rank": 37
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "11.16",
+      "rank": 26
+    }
+  ]
+}, "492197": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "-"
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "-"
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "20.66",
+      "rank": 73
+    }
+  ]
+}, "511983": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "177",
+      "rank": 16
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "177",
+      "rank": 49
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "5.52",
+      "rank": 11
+    }
+  ]
+}, "422732": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "375",
+      "rank": 5
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "981",
+      "rank": 4
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "3.27",
+      "rank": 7
+    }
+  ]
+}, "54445": {
+  "racerinfo": "+500",
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "134",
+      "rank": 21
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "592",
+      "rank": 12
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "9.33",
+      "rank": 22
+    }
+  ]
+}, "54359": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "90",
+      "rank": 25
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "90",
+      "rank": 79
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "8.24",
+      "rank": 16
+    }
+  ]
+}, "502433": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "8",
+      "rank": 47
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "8",
+      "rank": 149
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "14.09",
+      "rank": 34
+    }
+  ]
+}, "6190876": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "-"
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "-"
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "22.26",
+      "rank": 83
+    }
+  ]
+}, "511852": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "90",
+      "rank": 25
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "109",
+      "rank": 72
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "10.02",
+      "rank": 23
+    }
+  ]
+}, "430783": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "-"
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "-"
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "22.24",
+      "rank": 81
+    }
+  ]
+}, "103729": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "15",
+      "rank": 41
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "15",
+      "rank": 133
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "20.98",
+      "rank": 74
+    }
+  ]
+}, "20398": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "86",
+      "rank": 27
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "86",
+      "rank": 83
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "11.77",
+      "rank": 28
+    }
+  ]
+}, "202909": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "86",
+      "rank": 27
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "86",
+      "rank": 83
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "13.78",
+      "rank": 33
+    }
+  ]
+}, "54630": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "101",
+      "rank": 23
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "179",
+      "rank": 48
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "13.33",
+      "rank": 30
+    }
+  ]
+}, "6293171": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "224",
+      "rank": 9
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "385",
+      "rank": 21
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "4.82",
+      "rank": 9
+    }
+  ]
+}, "6190875": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "5",
+      "rank": 51
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "5",
+      "rank": 157
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "19.02",
+      "rank": 63
+    }
+  ]
+}, "492542": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "7",
+      "rank": 48
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "7",
+      "rank": 150
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "16.11",
+      "rank": 48
+    }
+  ]
+}, "561489": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "-"
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "-"
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "22.77",
+      "rank": 90
+    }
+  ]
+}, "6293252": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "6",
+      "rank": 50
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "32",
+      "rank": 111
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "17.93",
+      "rank": 56
+    }
+  ]
+}, "512424": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "7",
+      "rank": 48
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "7",
+      "rank": 150
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "15.14",
+      "rank": 38
+    }
+  ]
+}, "6190628": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "212",
+      "rank": 11
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "212",
+      "rank": 41
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "7.66",
+      "rank": 13
+    }
+  ]
+}, "990116": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "32",
+      "rank": 37
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "32",
+      "rank": 111
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "17.16",
+      "rank": 51
+    }
+  ]
+}, "6533474": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "-"
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "-"
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "17.58",
+      "rank": 55
+    }
+  ]
+}, "6532584": {"standings":[{"category":"WCSL","event":"GS","points":"-"},{"category":"WCSL","event":"ALL","points":"-"},{"category":"FIS","event":"GS","points":"21.59","rank":79}]}, "54631": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "-"
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "-"
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "19.92",
+      "rank": 69
+    }
+  ]
+}, "221675": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "-"
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "-"
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "17.49",
+      "rank": 54
+    }
+  ]
+}, "60261": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "189",
+      "rank": 15
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "227",
+      "rank": 38
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "8.37",
+      "rank": 17
+    }
+  ]
+}, "6191334": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "103",
+      "rank": 22
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "180",
+      "rank": 47
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "9.08",
+      "rank": 20
+    }
+  ]
+}, "6293775": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "36",
+      "rank": 35
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "36",
+      "rank": 107
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "13.42",
+      "rank": 31
+    }
+  ]
+}, "422730": {"standings":[{"category":"WCSL","event":"GS","points":"-"},{"category":"WCSL","event":"ALL","points":"-"},{"category":"FIS","event":"GS","points":"21.65","rank":80}]}, "180919": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "-"
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "339",
+      "rank": 22
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "19.52",
+      "rank": 66
+    }
+  ]
+}, "6190793": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "36",
+      "rank": 35
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "36",
+      "rank": 107
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "14.90",
+      "rank": 36
+    }
+  ]
+}, "6532084": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "207",
+      "rank": 12
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "261",
+      "rank": 33
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "4.72",
+      "rank": 8
+    }
+  ]
+}, "54765": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "-"
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "-"
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "27.71",
+      "rank": 148
+    }
+  ]
+}, "511638": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "175",
+      "rank": 17
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "175",
+      "rank": 50
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "8.86",
+      "rank": 18
+    }
+  ]
+}, "54368": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "-"
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "-"
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "15.00",
+      "rank": 37
+    }
+  ]
+}, "512269": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "575",
+      "rank": 2
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "1816",
+      "rank": 1
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "0.00",
+      "rank": 1
+    }
+  ]
+}, "6301499": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "-"
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "-"
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "24.15",
+      "rank": 103
+    }
+  ]
+}, "6191078": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "-"
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "-"
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "19.79",
+      "rank": 67
+    }
+  ]
+}, "202883": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "155",
+      "rank": 18
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "155",
+      "rank": 56
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "13.20",
+      "rank": 29
+    }
+  ]
+}, "422899": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "16",
+      "rank": 39
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "111",
+      "rank": 71
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "11.07",
+      "rank": 25
+    }
+  ]
+}, "512678": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "-"
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "-"
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "25.79",
+      "rank": 124
+    }
+  ]
+}, "422766": {"standings":[{"category":"WCSL","event":"GS","points":"224","rank":9},{"category":"WCSL","event":"ALL","points":"279","rank":31},{"category":"FIS","event":"GS","points":"0.00","rank":1}]}, "180889": {"standings":[{"category":"WCSL","event":"GS","points":"-"},{"category":"WCSL","event":"ALL","points":"12","rank":138},{"category":"FIS","event":"GS","points":"30.14","rank":186}]}, "203114": {"standings":[{"category":"WCSL","event":"GS","points":"-"},{"category":"WCSL","event":"ALL","points":"-"},{"category":"FIS","event":"GS","points":"20.20","rank":71}]}, "54841": {"standings":[{"category":"WCSL","event":"GS","points":"-"},{"category":"WCSL","event":"ALL","points":"-"},{"category":"FIS","event":"GS","points":"47.91","rank":655}]}, "202829": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "194",
+      "rank": 13
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "194",
+      "rank": 43
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "7.83",
+      "rank": 14
+    }
+  ]
+}, "700879": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "10",
+      "rank": 45
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "10",
+      "rank": 145
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "17.98",
+      "rank": 58
+    }
+  ]
+}, "700830": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "-"
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "-"
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "25.45",
+      "rank": 119
+    }
+  ]
+}, "422954": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "16",
+      "rank": 39
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "16",
+      "rank": 130
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "17.97",
+      "rank": 57
+    }
+  ]
+}, "202597": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "79",
+      "rank": 29
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "79",
+      "rank": 85
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "10.72",
+      "rank": 24
+    }
+  ]
+}, "390044": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "11",
+      "rank": 44
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "11",
+      "rank": 143
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "21.21",
+      "rank": 75
+    }
+  ]
+}, "6293831": {
+  "racerinfo": "+500",
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "-"
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "783",
+      "rank": 9
+    },
+    {
+      "pointsinfo": ">",
+      "category": "FIS",
+      "event": "GS",
+      "points": "29.15",
+      "rank": 169
+    }
+  ]
+}, "422893": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "-"
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "10",
+      "rank": 145
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "19.39",
+      "rank": 64
+    }
+  ]
+}, "512588": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "12",
+      "rank": 43
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "12",
+      "rank": 138
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "16.19",
+      "rank": 49
+    }
+  ]
+}, "6533248": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "37",
+      "rank": 34
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "37",
+      "rank": 105
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "13.77",
+      "rank": 32
+    }
+  ]
+}, "512182": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "546",
+      "rank": 3
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "1083",
+      "rank": 3
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "1.38",
+      "rank": 4
+    }
+  ]
+}, "194935": {
+  "standings": [
+    {
+      "category": "WCSL",
+      "event": "GS",
+      "points": "101",
+      "rank": 23
+    },
+    {
+      "category": "WCSL",
+      "event": "ALL",
+      "points": "101",
+      "rank": 74
+    },
+    {
+      "category": "FIS",
+      "event": "GS",
+      "points": "8.99",
+      "rank": 19
+    }
+  ]
+}}";s:7:"runinfo";a:2:{i:0;a:2:{i:0;a:17:{i:0;s:3:"0_1";i:1;s:2:"gs";i:2;i:2026;i:3;i:10;i:4;i:25;i:5;i:10;i:6;i:0;i:7;i:2977;i:8;i:2670;i:9;i:307;i:10;s:0:"";i:11;s:0:"";i:12;s:0:"";i:13;i:38;i:14;i:36;i:15;s:0:"";i:16;s:0:"";}i:1;a:17:{i:0;s:3:"0_2";i:1;s:2:"gs";i:2;i:2026;i:3;i:10;i:4;i:25;i:5;i:13;i:6;i:0;i:7;i:2978;i:8;i:2670;i:9;i:308;i:10;s:0:"";i:11;s:0:"";i:12;s:0:"";i:13;i:38;i:14;i:36;i:15;s:0:"";i:16;s:0:"";}}s:1:"D";a:1:{i:0;a:17:{i:0;s:3:"D_1";i:1;s:2:"gs";i:2;i:2026;i:3;i:10;i:4;i:25;i:5;i:10;i:6;i:0;i:7;i:3027;i:8;i:2670;i:9;i:357;i:10;s:0:"";i:11;s:0:"";i:12;s:0:"";i:13;i:49;i:14;i:47;i:15;s:0:"";i:16;s:0:"";}}}s:4:"main";i:1;s:6:"result";a:2:{s:1:"D";a:1:{i:0;a:69:{i:0;a:4:{i:0;i:1;i:1;i:1;i:2;s:2:"CF";i:3;i:4;}i:1;a:4:{i:0;i:2;i:1;i:1;i:2;s:2:"CF";i:3;i:6;}i:2;a:4:{i:0;i:3;i:1;i:1;i:2;s:2:"CF";i:3;i:5;}i:3;a:4:{i:0;i:4;i:1;i:1;i:2;s:2:"CF";i:3;i:2;}i:4;a:4:{i:0;i:5;i:1;i:1;i:2;s:2:"CF";i:3;i:1;}i:5;a:4:{i:0;i:6;i:1;i:1;i:2;s:2:"CF";i:3;i:3;}i:6;a:4:{i:0;i:7;i:1;i:1;i:2;s:2:"CF";i:3;i:7;}i:7;a:4:{i:0;i:8;i:1;i:2;i:2;s:2:"CF";i:3;i:13;}i:8;a:4:{i:0;i:9;i:1;i:2;i:2;s:2:"CF";i:3;i:11;}i:9;a:4:{i:0;i:10;i:1;i:2;i:2;s:2:"CF";i:3;i:9;}i:10;a:4:{i:0;i:11;i:1;i:2;i:2;s:2:"CF";i:3;i:14;}i:11;a:4:{i:0;i:12;i:1;i:2;i:2;s:2:"CF";i:3;i:10;}i:12;a:4:{i:0;i:13;i:1;i:2;i:2;s:2:"CF";i:3;i:8;}i:13;a:4:{i:0;i:14;i:1;i:2;i:2;s:2:"CF";i:3;i:12;}i:14;a:4:{i:0;i:15;i:1;i:2;i:2;s:2:"CF";i:3;i:15;}i:15;a:4:{i:0;i:16;i:1;i:3;i:2;s:2:"CF";i:3;i:16;}i:16;a:4:{i:0;i:17;i:1;i:3;i:2;s:2:"CF";i:3;i:17;}i:17;a:4:{i:0;i:18;i:1;i:3;i:2;s:2:"CF";i:3;i:18;}i:18;a:4:{i:0;i:19;i:1;i:3;i:2;s:2:"CF";i:3;i:19;}i:19;a:4:{i:0;i:20;i:1;i:3;i:2;s:2:"CF";i:3;i:20;}i:20;a:4:{i:0;i:21;i:1;i:3;i:2;s:2:"CF";i:3;i:21;}i:21;a:4:{i:0;i:22;i:1;i:3;i:2;s:2:"CF";i:3;i:22;}i:22;a:4:{i:0;i:23;i:1;i:3;i:2;s:2:"CF";i:3;i:23;}i:23;a:4:{i:0;i:24;i:1;i:3;i:2;s:2:"CF";i:3;i:24;}i:24;a:4:{i:0;i:25;i:1;i:3;i:2;s:2:"CF";i:3;i:25;}i:25;a:4:{i:0;i:26;i:1;i:3;i:2;s:2:"CF";i:3;i:26;}i:26;a:4:{i:0;i:27;i:1;i:3;i:2;s:2:"CF";i:3;i:27;}i:27;a:4:{i:0;i:28;i:1;i:3;i:2;s:2:"CF";i:3;i:28;}i:28;a:4:{i:0;i:29;i:1;i:3;i:2;s:2:"CF";i:3;i:29;}i:29;a:4:{i:0;i:30;i:1;i:3;i:2;s:2:"CF";i:3;i:30;}i:30;a:4:{i:0;i:31;i:1;i:4;i:2;s:2:"CF";i:3;i:31;}i:31;a:4:{i:0;i:32;i:1;i:4;i:2;s:2:"CF";i:3;i:32;}i:32;a:4:{i:0;i:33;i:1;i:4;i:2;s:2:"CF";i:3;i:33;}i:33;a:4:{i:0;i:34;i:1;i:4;i:2;s:2:"CF";i:3;i:34;}i:34;a:4:{i:0;i:35;i:1;i:4;i:2;s:2:"CF";i:3;i:35;}i:35;a:4:{i:0;i:36;i:1;i:4;i:2;s:2:"CF";i:3;i:36;}i:36;a:4:{i:0;i:37;i:1;i:4;i:2;s:2:"CF";i:3;i:37;}i:37;a:4:{i:0;i:38;i:1;i:4;i:2;s:2:"CF";i:3;i:38;}i:38;a:4:{i:0;i:39;i:1;i:4;i:2;s:2:"CF";i:3;i:39;}i:39;a:4:{i:0;i:40;i:1;i:4;i:2;s:2:"CF";i:3;i:40;}i:40;a:4:{i:0;i:41;i:1;i:4;i:2;s:2:"CF";i:3;i:41;}i:41;a:4:{i:0;i:42;i:1;i:4;i:2;s:2:"CF";i:3;i:42;}i:42;a:4:{i:0;i:43;i:1;i:4;i:2;s:2:"CF";i:3;i:43;}i:43;a:4:{i:0;i:44;i:1;i:4;i:2;s:2:"CF";i:3;i:44;}i:44;a:4:{i:0;i:45;i:1;i:4;i:2;s:2:"CF";i:3;i:45;}i:45;a:4:{i:0;i:46;i:1;i:4;i:2;s:2:"CF";i:3;i:46;}i:46;a:4:{i:0;i:47;i:1;i:4;i:2;s:2:"CF";i:3;i:47;}i:47;a:4:{i:0;i:48;i:1;i:4;i:2;s:2:"CF";i:3;i:48;}i:48;a:4:{i:0;i:49;i:1;i:4;i:2;s:2:"CF";i:3;i:49;}i:49;a:4:{i:0;i:50;i:1;i:4;i:2;s:2:"CF";i:3;i:50;}i:50;a:4:{i:0;i:51;i:1;i:4;i:2;s:2:"CF";i:3;i:51;}i:51;a:4:{i:0;i:52;i:1;i:4;i:2;s:2:"CF";i:3;i:52;}i:52;a:4:{i:0;i:53;i:1;i:4;i:2;s:2:"CF";i:3;i:53;}i:53;a:4:{i:0;i:54;i:1;i:4;i:2;s:2:"CF";i:3;i:54;}i:54;a:4:{i:0;i:55;i:1;i:4;i:2;s:2:"CF";i:3;i:55;}i:55;a:4:{i:0;i:56;i:1;i:4;i:2;s:2:"CF";i:3;i:56;}i:56;a:4:{i:0;i:57;i:1;i:4;i:2;s:2:"CF";i:3;i:57;}i:57;a:4:{i:0;i:58;i:1;i:4;i:2;s:2:"CF";i:3;i:58;}i:58;a:4:{i:0;i:59;i:1;i:4;i:2;s:2:"CF";i:3;i:59;}i:59;a:4:{i:0;i:60;i:1;i:4;i:2;s:2:"CF";i:3;i:60;}i:60;a:4:{i:0;i:61;i:1;i:4;i:2;s:2:"CF";i:3;i:61;}i:61;a:4:{i:0;i:62;i:1;i:4;i:2;s:2:"CF";i:3;i:62;}i:62;a:4:{i:0;i:63;i:1;i:4;i:2;s:2:"CF";i:3;i:63;}i:63;a:4:{i:0;i:64;i:1;i:4;i:2;s:2:"CF";i:3;i:64;}i:64;a:4:{i:0;i:65;i:1;i:4;i:2;s:2:"CF";i:3;i:65;}i:65;a:4:{i:0;i:66;i:1;i:4;i:2;s:2:"CF";i:3;i:66;}i:66;a:4:{i:0;i:67;i:1;i:4;i:2;s:2:"CF";i:3;i:67;}i:67;a:4:{i:0;i:68;i:1;i:4;i:2;s:2:"CF";i:3;i:68;}i:68;a:4:{i:0;i:69;i:1;i:4;i:2;s:2:"CF";i:3;i:69;}}}i:0;a:2:{i:0;a:69:{i:0;a:4:{i:0;i:16530;i:1;i:41230;i:2;i:78700;i:3;i:53040;}i:1;a:4:{i:0;i:16440;i:1;i:41110;i:2;i:81000;i:3;i:52890;}i:2;N;i:3;a:4:{i:0;i:16300;i:1;i:40880;i:2;i:80200;i:3;i:52400;}i:4;a:4:{i:0;i:16280;i:1;i:40890;i:2;i:79500;i:3;i:52640;}i:5;a:4:{i:0;i:16400;i:1;i:41270;i:2;i:81300;i:3;i:52950;}i:6;a:4:{i:0;i:16280;i:1;i:41040;i:2;i:77900;i:3;i:53140;}i:7;a:4:{i:0;i:16550;i:1;i:41420;i:2;i:76500;i:3;i:53800;}i:8;a:4:{i:0;i:16390;i:1;i:41490;i:2;i:75700;i:3;i:53790;}i:9;a:4:{i:0;i:16490;i:1;i:41410;i:2;i:81800;i:3;i:53090;}i:10;a:4:{i:0;i:16460;i:1;i:41830;i:2;i:81600;i:3;i:53490;}i:11;a:4:{i:0;i:16330;i:1;i:40980;i:2;i:76600;i:3;i:53320;}i:12;a:4:{i:0;i:16530;i:1;i:42050;i:2;i:76200;i:3;i:54300;}i:13;a:4:{i:0;i:16570;i:1;i:41410;i:2;i:76500;i:3;i:53550;}i:14;a:4:{i:0;i:16670;i:1;i:41890;i:2;i:74800;i:3;i:54370;}i:15;a:4:{i:0;i:16710;i:1;i:41810;i:2;i:81300;i:3;i:53680;}i:16;a:4:{i:0;i:16700;i:1;i:41770;i:2;i:79500;i:3;i:53820;}i:17;a:4:{i:0;i:16220;i:1;i:41560;i:2;i:75900;i:3;i:54030;}i:18;a:4:{i:0;i:16580;i:1;i:41490;i:2;i:80400;i:3;i:53380;}i:19;a:4:{i:0;i:16720;i:1;i:42190;i:2;i:81000;i:3;i:53970;}i:20;a:4:{i:0;i:16490;i:1;i:41770;i:2;i:80900;i:3;i:53300;}i:21;a:4:{i:0;i:16400;i:1;i:41250;i:2;i:75400;i:3;i:53560;}i:22;a:4:{i:0;i:16500;i:1;i:41490;i:2;i:78500;i:3;i:53550;}i:23;a:4:{i:0;i:17340;i:1;i:42870;i:2;i:78200;i:3;i:54860;}i:24;a:4:{i:0;i:16520;i:1;i:41610;i:2;i:74200;i:3;i:54170;}i:25;a:4:{i:0;i:16520;i:1;i:41980;i:2;i:76600;i:3;i:54150;}i:26;a:4:{i:0;i:16480;i:1;i:41490;i:2;i:79500;i:3;i:53240;}i:27;a:4:{i:0;i:16380;i:1;i:41190;i:2;i:78000;i:3;i:53440;}i:28;a:4:{i:0;i:16300;i:1;i:41500;i:2;i:80200;i:3;i:53190;}i:29;a:4:{i:0;i:16680;i:1;i:42310;i:2;i:79100;i:3;i:54270;}i:30;a:4:{i:0;i:16700;i:1;i:42280;i:2;i:80900;i:3;i:53670;}i:31;a:4:{i:0;i:16590;i:1;i:42020;i:2;i:80300;i:3;i:53640;}i:32;a:4:{i:0;i:16750;i:1;i:42100;i:2;i:76200;i:3;i:54250;}i:33;a:4:{i:0;i:16630;i:1;i:42130;i:2;i:77000;i:3;i:54140;}i:34;a:4:{i:0;i:16710;i:1;i:42190;i:2;i:80300;i:3;i:54110;}i:35;a:4:{i:0;i:16950;i:1;i:43420;i:2;i:78900;i:3;i:55750;}i:36;a:4:{i:0;i:16770;i:1;i:42580;i:2;i:76900;i:3;i:54530;}i:37;a:4:{i:0;i:16730;i:1;i:43100;i:2;i:75000;i:3;i:55450;}i:38;a:4:{i:0;i:16500;i:1;i:42130;i:2;i:76300;i:3;i:54360;}i:39;a:4:{i:0;i:16500;i:1;i:42220;i:2;i:78600;i:3;i:53770;}i:40;a:4:{i:0;i:16840;i:1;i:42540;i:2;i:76700;i:3;i:54910;}i:41;a:4:{i:0;i:16590;i:1;i:42230;i:2;i:78800;i:3;i:54140;}i:42;a:4:{i:0;i:16830;i:1;i:42450;i:2;i:82200;i:3;i:53900;}i:43;a:4:{i:0;i:16950;i:1;i:42300;i:2;i:77400;i:3;i:54550;}i:44;a:4:{i:0;i:16740;i:1;i:42670;i:2;i:78200;i:3;i:54670;}i:45;a:4:{i:0;i:16710;i:1;i:41970;i:2;i:82200;i:3;i:53770;}i:46;a:4:{i:0;i:17000;i:1;i:43260;i:2;i:79700;i:3;i:54990;}i:47;a:4:{i:0;i:16800;i:1;i:42630;i:2;i:78900;i:3;i:54510;}i:48;a:4:{i:0;i:16640;i:1;i:42260;i:2;i:82000;i:3;i:54020;}i:49;a:4:{i:0;i:16750;i:1;i:42560;i:2;i:74800;i:3;i:55090;}i:50;a:4:{i:0;i:16830;i:1;i:44750;i:2;i:77800;i:3;i:56960;}i:51;a:4:{i:0;i:16780;i:1;i:42360;i:2;i:79900;i:3;i:54200;}i:52;a:4:{i:0;i:17060;i:1;i:43510;i:2;i:79300;i:3;i:55340;}i:53;a:1:{i:0;i:16980;}i:54;a:4:{i:0;i:16560;i:1;i:42230;i:2;i:80200;i:3;i:53870;}i:55;a:1:{i:0;i:16480;}i:56;a:4:{i:0;i:16890;i:1;i:42970;i:2;i:76300;i:3;i:55210;}i:57;a:4:{i:0;i:16810;i:1;i:42740;i:2;i:74800;i:3;i:55140;}i:58;a:4:{i:0;i:16820;i:1;i:42910;i:2;i:78200;i:3;i:54820;}i:59;a:4:{i:0;i:16680;i:1;i:43420;i:2;i:79200;i:3;i:55280;}i:60;a:4:{i:0;i:16900;i:1;i:42920;i:2;i:78500;i:3;i:54810;}i:61;a:4:{i:0;i:16940;i:1;i:43110;i:2;i:76700;i:3;i:55180;}i:62;a:4:{i:0;i:16590;i:1;i:42060;i:2;i:76900;i:3;i:54240;}i:63;a:4:{i:0;i:16990;i:1;i:43270;i:2;i:77900;i:3;i:55280;}i:64;a:4:{i:0;i:17390;i:1;i:44280;i:2;i:76800;i:3;i:56940;}i:65;a:1:{i:0;i:17110;}i:66;a:4:{i:0;i:16890;i:1;i:43970;i:2;i:78000;i:3;i:56240;}i:67;a:4:{i:0;i:17050;i:1;i:42890;i:2;i:76500;i:3;i:55460;}i:68;a:4:{i:0;i:16720;i:1;i:43300;i:2;i:77400;i:3;i:55390;}}i:1;a:30:{i:0;a:4:{i:0;i:69860;i:1;i:93820;i:2;N;i:3;i:106260;}i:1;a:4:{i:0;i:70030;i:1;i:94170;i:2;N;i:3;i:106180;}i:2;a:4:{i:0;i:69950;i:1;i:94560;i:2;i:76500;i:3;i:106850;}i:3;a:4:{i:0;i:70090;i:1;i:94770;i:2;i:77700;i:3;i:106860;}i:4;a:4:{i:0;i:69940;i:1;i:94510;i:2;i:79000;i:3;i:106290;}i:5;a:4:{i:0;i:70000;i:1;i:94370;i:2;i:78200;i:3;i:106610;}i:6;a:4:{i:0;i:70000;i:1;i:94360;i:2;i:76700;i:3;i:106310;}i:7;a:4:{i:0;i:69490;i:1;i:93570;i:2;i:77200;i:3;i:105820;}i:8;a:4:{i:0;i:69910;i:1;i:100820;i:2;i:77500;i:3;i:113020;}i:9;a:4:{i:0;i:69890;i:1;i:94000;i:2;i:80200;i:3;i:105980;}i:10;a:4:{i:0;i:69630;i:1;i:93700;i:2;i:76000;i:3;i:105580;}i:11;a:3:{i:0;i:69740;i:1;i:94330;i:2;i:74900;}i:12;a:1:{i:0;i:69680;}i:13;a:4:{i:0;i:69520;i:1;i:93970;i:2;i:75400;i:3;i:106300;}i:14;a:4:{i:0;i:69400;i:1;i:93250;i:2;i:75900;i:3;i:105540;}i:15;a:4:{i:0;i:69530;i:1;i:93760;i:2;i:78100;i:3;i:105830;}i:16;a:4:{i:0;i:69290;i:1;i:93930;i:2;i:78100;i:3;i:105800;}i:17;a:4:{i:0;i:69490;i:1;i:93730;i:2;i:79200;i:3;i:105810;}i:18;a:4:{i:0;i:69580;i:1;i:94160;i:2;i:78000;i:3;i:106380;}i:19;a:4:{i:0;i:69270;i:1;i:93700;i:2;i:73100;i:3;i:106440;}i:20;a:4:{i:0;i:69350;i:1;i:94140;i:2;i:78900;i:3;i:106120;}i:21;a:4:{i:0;i:69370;i:1;i:94030;i:2;i:76300;i:3;i:106500;}i:22;N;i:23;a:4:{i:0;i:69240;i:1;i:93860;i:2;i:74400;i:3;i:106560;}i:24;a:4:{i:0;i:69220;i:1;i:93590;i:2;i:77000;i:3;i:105670;}i:25;N;i:26;a:4:{i:0;i:68680;i:1;i:92950;i:2;i:76300;i:3;i:105210;}i:27;a:4:{i:0;i:68880;i:1;i:93730;i:2;i:78100;i:3;i:105930;}i:28;a:4:{i:0;i:68630;i:1;i:93240;i:2;i:82100;i:3;i:105200;}i:29;a:4:{i:0;i:68290;i:1;i:92630;i:2;i:77500;i:3;i:104720;}}}}s:7:"racedef";a:2:{i:0;a:2:{i:0;a:4:{i:0;a:2:{i:0;s:5:"inter";i:1;i:1;}i:1;a:2:{i:0;s:5:"inter";i:1;i:2;}i:2;a:2:{i:0;s:5:"speed";i:1;i:1;}i:3;a:2:{i:0;s:6:"finish";i:1;i:9;}}i:1;a:4:{i:0;a:2:{i:0;s:5:"inter";i:1;i:1;}i:1;a:2:{i:0;s:5:"inter";i:1;i:2;}i:2;a:2:{i:0;s:5:"speed";i:1;i:1;}i:3;a:2:{i:0;s:6:"finish";i:1;i:9;}}}s:1:"D";a:1:{i:0;a:4:{i:0;a:2:{i:0;s:9:"draworder";i:1;i:9;}i:1;a:2:{i:0;s:9:"drawgroup";i:1;i:9;}i:2;a:2:{i:0;s:10:"drawstatus";i:1;i:9;}i:3;a:2:{i:0;s:7:"drawbib";i:1;i:9;}}}}s:14:"raceinfodetail";a:9:{s:9:"speedunit";s:4:"km/h";s:10:"discipline";s:2:"GS";s:4:"name";s:18:"Men's Giant Slalom";s:6:"gender";s:1:"M";s:5:"event";s:9:"SÃ¶lden ,";s:8:"tempunit";s:1:"C";s:5:"place";s:7:"SÃ¶lden";s:8:"category";s:2:"WC";s:5:"slope";s:10:"Rettenbach";}s:6:"racers";a:78:{i:0;a:7:{i:0;i:20398;i:1;s:5:"VERDU";i:2;s:4:"Joan";i:3;s:3:"AND";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:1;a:7:{i:0;i:54027;i:1;s:12:"BRENNSTEINER";i:2;s:6:"Stefan";i:3;s:3:"AUT";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:2;a:7:{i:0;i:54320;i:1;s:7:"SCHWARZ";i:2;s:5:"Marco";i:3;s:3:"AUT";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:3;a:7:{i:0;i:54359;i:1;s:9:"FEURSTEIN";i:2;s:7:"Patrick";i:3;s:3:"AUT";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:4;a:7:{i:0;i:54368;i:1;s:8:"BORGNAES";i:2;s:9:"Christian";i:3;s:3:"DEN";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:5;a:7:{i:0;i:54444;i:1;s:7:"GSTREIN";i:2;s:5:"Fabio";i:3;s:3:"AUT";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:6;a:7:{i:0;i:54445;i:1;s:6:"HAASER";i:2;s:7:"Raphael";i:3;s:3:"AUT";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:7;a:7:{i:0;i:54628;i:1;s:9:"FEURSTEIN";i:2;s:5:"Lukas";i:3;s:3:"AUT";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:8;a:7:{i:0;i:54630;i:1;s:5:"STURM";i:2;s:6:"Joshua";i:3;s:3:"AUT";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:9;a:7:{i:0;i:54631;i:1;s:15:"ZWISCHENBRUGGER";i:2;s:4:"Noel";i:3;s:3:"AUT";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:10;a:7:{i:0;i:54765;i:1;s:6:"EISNER";i:2;s:5:"Jakob";i:3;s:3:"AUT";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:11;a:7:{i:0;i:54841;i:1;s:7:"STRAUSS";i:2;s:7:"Florian";i:3;s:3:"AUT";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:12;a:7:{i:0;i:54942;i:1;s:5:"STURM";i:2;s:5:"Asaja";i:3;s:3:"AUT";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:13;a:7:{i:0;i:60261;i:1;s:4:"MAES";i:2;s:3:"Sam";i:3;s:3:"BEL";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:14;a:7:{i:0;i:103729;i:1;s:4:"READ";i:2;s:4:"Erik";i:3;s:3:"CAN";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:15;a:7:{i:0;i:180889;i:1;s:11:"POHJOLAINEN";i:2;s:6:"Jesper";i:3;s:3:"FIN";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:16;a:7:{i:0;i:180919;i:1;s:8:"HALLBERG";i:2;s:6:"Eduard";i:3;s:3:"FIN";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:17;a:7:{i:0;i:194935;i:1;s:6:"FAVROT";i:2;s:7:"Thibaut";i:3;s:3:"FRA";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:18;a:7:{i:0;i:202597;i:1;s:6:"SCHMID";i:2;s:9:"Alexander";i:3;s:3:"GER";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:19;a:7:{i:0;i:202829;i:1;s:5:"GRATZ";i:2;s:6:"Fabian";i:3;s:3:"GER";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:20;a:7:{i:0;i:202883;i:1;s:7:"GRAMMEL";i:2;s:5:"Anton";i:3;s:3:"GER";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:21;a:7:{i:0;i:202909;i:1;s:10:"STOCKINGER";i:2;s:5:"Jonas";i:3;s:3:"GER";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:22;a:7:{i:0;i:203114;i:1;s:5:"AMMAN";i:2;s:6:"Hannes";i:3;s:3:"GER";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:23;a:7:{i:0;i:221675;i:1;s:13:"CARRICK-SMITH";i:2;s:6:"Freddy";i:3;s:3:"GBR";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:24;a:7:{i:0;i:320453;i:1;s:4:"SHIN";i:2;s:8:"Jeongwoo";i:3;s:3:"KOR";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:25;a:7:{i:0;i:380335;i:1;s:6:"ZUBCIC";i:2;s:5:"Filip";i:3;s:3:"CRO";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:26;a:7:{i:0;i:390044;i:1;s:5:"LAINE";i:2;s:6:"Tormis";i:3;s:3:"EST";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:27;a:7:{i:0;i:422304;i:1;s:13:"KRISTOFFERSEN";i:2;s:6:"Henrik";i:3;s:3:"NOR";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:28;a:7:{i:0;i:422507;i:1;s:6:"HAUGAN";i:2;s:5:"Timon";i:3;s:3:"NOR";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:29;a:7:{i:0;i:422729;i:1;s:17:"PINHEIRO BRAATHEN";i:2;s:5:"Lucas";i:3;s:3:"BRA";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:30;a:7:{i:0;i:422730;i:1;s:11:"GUNLEIKSRUD";i:2;s:12:"Halvor Hilde";i:3;s:3:"NOR";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:31;a:7:{i:0;i:422732;i:1;s:7:"MCGRATH";i:2;s:8:"Atle Lie";i:3;s:3:"NOR";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:32;a:7:{i:0;i:422766;i:1;s:11:"STEEN OLSEN";i:2;s:9:"Alexander";i:3;s:3:"NOR";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:33;a:7:{i:0;i:422803;i:1;s:7:"SOLBERG";i:2;s:12:"Eirik Hystad";i:3;s:3:"NOR";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:34;a:7:{i:0;i:422873;i:1;s:12:"GRAHL-MADSEN";i:2;s:4:"Hans";i:3;s:3:"NOR";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:35;a:7:{i:0;i:422893;i:1;s:8:"BRAEKKEN";i:2;s:7:"Theodor";i:3;s:3:"NOR";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:36;a:7:{i:0;i:422899;i:1;s:7:"SANDVIK";i:2;s:13:"Oscar Andreas";i:3;s:3:"NOR";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:37;a:7:{i:0;i:422954;i:1;s:8:"BAKKEVIG";i:2;s:6:"Rasmus";i:3;s:3:"NOR";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:38;a:7:{i:0;i:430783;i:1;s:6:"HABDAS";i:2;s:5:"Piotr";i:3;s:3:"POL";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:39;a:7:{i:0;i:492192;i:1;s:14:"ORTEGA FORNESA";i:2;s:6:"Albert";i:3;s:3:"ESP";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:40;a:7:{i:0;i:492197;i:1;s:15:"GARAY FERNANDEZ";i:2;s:7:"Aingeru";i:3;s:3:"ESP";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:41;a:7:{i:0;i:492542;i:1;s:17:"AUBERT SERRACANTA";i:2;s:5:"Aleix";i:3;s:3:"ESP";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:42;a:7:{i:0;i:502433;i:1;s:7:"HANSSON";i:2;s:7:"William";i:3;s:3:"SWE";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:43;a:7:{i:0;i:502617;i:1;s:9:"AX SWARTZ";i:2;s:6:"Fabian";i:3;s:3:"SWE";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:44;a:7:{i:0;i:511638;i:1;s:6:"TUMLER";i:2;s:6:"Thomas";i:3;s:3:"SUI";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:45;a:7:{i:0;i:511852;i:1;s:8:"CAVIEZEL";i:2;s:4:"Gino";i:3;s:3:"SUI";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:46;a:7:{i:0;i:511983;i:1;s:5:"AERNI";i:2;s:4:"Luca";i:3;s:3:"SUI";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:47;a:7:{i:0;i:512182;i:1;s:8:"MEILLARD";i:2;s:4:"Loic";i:3;s:3:"SUI";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:48;a:7:{i:0;i:512269;i:1;s:8:"ODERMATT";i:2;s:5:"Marco";i:3;s:3:"SUI";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:49;a:7:{i:0;i:512424;i:1;s:7:"JANUTIN";i:2;s:5:"Fadri";i:3;s:3:"SUI";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:50;a:7:{i:0;i:512588;i:1;s:8:"HAECHLER";i:2;s:4:"Lenz";i:3;s:3:"SUI";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:51;a:7:{i:0;i:512678;i:1;s:3:"FUX";i:2;s:8:"Giuliano";i:3;s:3:"SUI";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:52;a:7:{i:0;i:561244;i:1;s:7:"KRANJEC";i:2;s:3:"Zan";i:3;s:3:"SLO";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:53;a:7:{i:0;i:561489;i:1;s:7:"OSERBAN";i:2;s:4:"Miha";i:3;s:3:"SLO";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:54;a:7:{i:0;i:700830;i:1;s:5:"ZAMPA";i:2;s:4:"Adam";i:3;s:3:"SVK";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:55;a:7:{i:0;i:700879;i:1;s:5:"ZAMPA";i:2;s:7:"Andreas";i:3;s:3:"SVK";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:56;a:7:{i:0;i:780023;i:1;s:8:"DRUKAROV";i:2;s:6:"Andrej";i:3;s:3:"LTU";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:57;a:7:{i:0;i:990048;i:1;s:8:"BORSOTTI";i:2;s:8:"Giovanni";i:3;s:3:"ITA";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:58;a:7:{i:0;i:990116;i:1;s:14:"DE ALIPRANDINI";i:2;s:4:"Luca";i:3;s:3:"ITA";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:59;a:7:{i:0;i:6190628;i:1;s:8:"ANGUENOT";i:2;s:3:"Leo";i:3;s:3:"FRA";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:60;a:7:{i:0;i:6190793;i:1;s:6:"PARAND";i:2;s:6:"Loevan";i:3;s:3:"FRA";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:61;a:7:{i:0;i:6190875;i:1;s:5:"FAVRE";i:2;s:8:"Guerlain";i:3;s:3:"FRA";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:62;a:7:{i:0;i:6190876;i:1;s:10:"ORECCHIONI";i:2;s:5:"Diego";i:3;s:3:"FRA";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:63;a:7:{i:0;i:6191078;i:1;s:6:"LARDON";i:2;s:6:"Thomas";i:3;s:3:"FRA";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:64;a:7:{i:0;i:6191334;i:1;s:17:"ELEZI CANNAFERINA";i:2;s:5:"Alban";i:3;s:3:"FRA";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:65;a:7:{i:0;i:6191539;i:1;s:6:"VITALE";i:2;s:6:"Flavio";i:3;s:3:"FRA";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:66;a:7:{i:0;i:6293171;i:1;s:8:"VINATZER";i:2;s:4:"Alex";i:3;s:3:"ITA";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:67;a:7:{i:0;i:6293252;i:1;s:10:"KASTLUNGER";i:2;s:6:"Tobias";i:3;s:3:"ITA";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:68;a:7:{i:0;i:6293775;i:1;s:10:"DELLA VITE";i:2;s:7:"Filippo";i:3;s:3:"ITA";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:69;a:7:{i:0;i:6293831;i:1;s:8:"FRANZONI";i:2;s:8:"Giovanni";i:3;s:3:"ITA";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:70;a:7:{i:0;i:6293857;i:1;s:7:"TALACCI";i:2;s:5:"Simon";i:3;s:3:"ITA";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:71;a:7:{i:0;i:6301499;i:1;s:8:"KATAYAMA";i:2;s:5:"Ryoma";i:3;s:3:"JPN";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:72;a:7:{i:0;i:6531928;i:1;s:6:"KENNEY";i:2;s:7:"Patrick";i:3;s:3:"USA";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:73;a:7:{i:0;i:6532084;i:1;s:7:"RADAMUS";i:2;s:5:"River";i:3;s:3:"USA";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:74;a:7:{i:0;i:6532354;i:1;s:4:"GILE";i:2;s:7:"Bridger";i:3;s:3:"USA";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:75;a:7:{i:0;i:6532584;i:1;s:9:"UNDERHILL";i:2;s:8:"Bradshaw";i:3;s:3:"USA";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:76;a:7:{i:0;i:6533248;i:1;s:8:"SARCHETT";i:2;s:5:"Ryder";i:3;s:3:"USA";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}i:77;a:7:{i:0;i:6533474;i:1;s:9:"PALAMARAS";i:2;s:6:"Nickco";i:3;s:3:"GER";i:4;s:0:"";i:5;s:0:"";i:6;s:0:"";}}s:4:"live";a:2:{i:0;i:3;i:1;i:715;}s:10:"infospoint";a:2:{i:0;a:0:{}s:1:"D";a:0:{}}s:5:"runno";a:3:{i:0;i:0;i:1;i:2;i:2;i:0;}s:4:"meta";a:1:{s:6:"schema";i:2;}s:6:"chrono";a:2:{i:0;s:105:"logo/https://www.fis-ski.com/DB/v2/download/logo/live/timekeeper/ef9f9168-6721-4875-a018-6ee0915186e8.jpg";i:1;s:0:"";}s:8:"raceinfo";a:16:{i:0;s:8:"Sölden ,";i:1;s:18:"Men's Giant Slalom";i:2;s:10:"Rettenbach";i:3;s:2:"GS";i:4;s:1:"M";i:5;s:2:"WC";i:6;s:6:"Sölden";i:7;s:1:"C";i:8;s:1:"m";i:9;s:4:"km/h";i:10;s:0:"";i:11;s:0:"";i:12;s:0:"";i:13;s:0:"";i:14;s:271:"{"headerinfo":[{"info":"Rank 150 in the FIS List: KRAUSS Lukas"},{"info":"27.84 FIS Points"}],"legend":{"abbreviation":[{"title":"+500","description":"At least 500 points on WCSL-O after 15th place or after 30th place"},{"title":"> ","description":"FIS Rank over 150"}]}}";i:15;s:0:"";}s:5:"meteo";a:6:{i:0;i:5;i:1;s:2:"no";i:2;s:3:"clo";i:3;s:0:"";i:4;s:0:"";i:5;s:3:"hrd";}s:11:"statuspoint";a:4:{i:0;a:4:{i:0;i:4;i:1;i:68290;i:2;i:-340;i:3;i:1;}i:1;a:4:{i:0;i:4;i:1;i:92630;i:2;i:-610;i:3;i:1;}i:2;a:4:{i:0;i:4;i:1;i:77500;i:2;s:0:"";i:3;s:0:"";}i:3;a:4:{i:0;i:4;i:1;i:104720;i:2;i:-480;i:3;i:1;}}s:7:"message";s:33:"Race completed - Official results";s:9:"startlist";a:2:{s:1:"D";a:1:{i:0;a:1:{i:0;a:69:{i:0;a:4:{i:0;i:422729;i:1;i:422729;i:2;s:0:"";i:3;s:0:"";}i:1;a:4:{i:0;i:512269;i:1;i:512269;i:2;s:0:"";i:3;s:0:"";}i:2;a:4:{i:0;i:512182;i:1;i:512182;i:2;s:0:"";i:3;s:0:"";}i:3;a:4:{i:0;i:54027;i:1;i:54027;i:2;s:0:"";i:3;s:0:"";}i:4;a:4:{i:0;i:422732;i:1;i:422732;i:2;s:0:"";i:3;s:0:"";}i:5;a:4:{i:0;i:54320;i:1;i:54320;i:2;s:0:"";i:3;s:0:"";}i:6;a:4:{i:0;i:422304;i:1;i:422304;i:2;s:0:"";i:3;s:0:"";}i:7;a:4:{i:0;i:422507;i:1;i:422507;i:2;s:0:"";i:3;s:0:"";}i:8;a:4:{i:0;i:6293171;i:1;i:6293171;i:2;s:0:"";i:3;s:0:"";}i:9;a:4:{i:0;i:6190628;i:1;i:6190628;i:2;s:0:"";i:3;s:0:"";}i:10;a:4:{i:0;i:6532084;i:1;i:6532084;i:2;s:0:"";i:3;s:0:"";}i:11;a:4:{i:0;i:202829;i:1;i:202829;i:2;s:0:"";i:3;s:0:"";}i:12;a:4:{i:0;i:561244;i:1;i:561244;i:2;s:0:"";i:3;s:0:"";}i:13;a:4:{i:0;i:60261;i:1;i:60261;i:2;s:0:"";i:3;s:0:"";}i:14;a:4:{i:0;i:511983;i:1;i:511983;i:2;s:0:"";i:3;s:0:"";}i:15;a:4:{i:0;i:54445;i:1;i:54445;i:2;s:0:"";i:3;s:0:"";}i:16;a:4:{i:0;i:511638;i:1;i:511638;i:2;s:0:"";i:3;s:0:"";}i:17;a:4:{i:0;i:202883;i:1;i:202883;i:2;s:0:"";i:3;s:0:"";}i:18;a:4:{i:0;i:380335;i:1;i:380335;i:2;s:0:"";i:3;s:0:"";}i:19;a:4:{i:0;i:6191334;i:1;i:6191334;i:2;s:0:"";i:3;s:0:"";}i:20;a:4:{i:0;i:194935;i:1;i:194935;i:2;s:0:"";i:3;s:0:"";}i:21;a:4:{i:0;i:54630;i:1;i:54630;i:2;s:0:"";i:3;s:0:"";}i:22;a:4:{i:0;i:54359;i:1;i:54359;i:2;s:0:"";i:3;s:0:"";}i:23;a:4:{i:0;i:511852;i:1;i:511852;i:2;s:0:"";i:3;s:0:"";}i:24;a:4:{i:0;i:20398;i:1;i:20398;i:2;s:0:"";i:3;s:0:"";}i:25;a:4:{i:0;i:202909;i:1;i:202909;i:2;s:0:"";i:3;s:0:"";}i:26;a:4:{i:0;i:202597;i:1;i:202597;i:2;s:0:"";i:3;s:0:"";}i:27;a:4:{i:0;i:422803;i:1;i:422803;i:2;s:0:"";i:3;s:0:"";}i:28;a:4:{i:0;i:990048;i:1;i:990048;i:2;s:0:"";i:3;s:0:"";}i:29;a:4:{i:0;i:6191539;i:1;i:6191539;i:2;s:0:"";i:3;s:0:"";}i:30;a:4:{i:0;i:6293831;i:1;i:6293831;i:2;s:0:"";i:3;s:0:"";}i:31;a:4:{i:0;i:422899;i:1;i:422899;i:2;s:0:"";i:3;s:0:"";}i:32;a:4:{i:0;i:6293775;i:1;i:6293775;i:2;s:0:"";i:3;s:0:"";}i:33;a:4:{i:0;i:6533248;i:1;i:6533248;i:2;s:0:"";i:3;s:0:"";}i:34;a:4:{i:0;i:502433;i:1;i:502433;i:2;s:0:"";i:3;s:0:"";}i:35;a:4:{i:0;i:502617;i:1;i:502617;i:2;s:0:"";i:3;s:0:"";}i:36;a:4:{i:0;i:6190793;i:1;i:6190793;i:2;s:0:"";i:3;s:0:"";}i:37;a:4:{i:0;i:54368;i:1;i:54368;i:2;s:0:"";i:3;s:0:"";}i:38;a:4:{i:0;i:512424;i:1;i:512424;i:2;s:0:"";i:3;s:0:"";}i:39;a:4:{i:0;i:422873;i:1;i:422873;i:2;s:0:"";i:3;s:0:"";}i:40;a:4:{i:0;i:6532354;i:1;i:6532354;i:2;s:0:"";i:3;s:0:"";}i:41;a:4:{i:0;i:492542;i:1;i:492542;i:2;s:0:"";i:3;s:0:"";}i:42;a:4:{i:0;i:512588;i:1;i:512588;i:2;s:0:"";i:3;s:0:"";}i:43;a:4:{i:0;i:990116;i:1;i:990116;i:2;s:0:"";i:3;s:0:"";}i:44;a:4:{i:0;i:54628;i:1;i:54628;i:2;s:0:"";i:3;s:0:"";}i:45;a:4:{i:0;i:221675;i:1;i:221675;i:2;s:0:"";i:3;s:0:"";}i:46;a:4:{i:0;i:6533474;i:1;i:6533474;i:2;s:0:"";i:3;s:0:"";}i:47;a:4:{i:0;i:6293252;i:1;i:6293252;i:2;s:0:"";i:3;s:0:"";}i:48;a:4:{i:0;i:422954;i:1;i:422954;i:2;s:0:"";i:3;s:0:"";}i:49;a:4:{i:0;i:700879;i:1;i:700879;i:2;s:0:"";i:3;s:0:"";}i:50;a:4:{i:0;i:780023;i:1;i:780023;i:2;s:0:"";i:3;s:0:"";}i:51;a:4:{i:0;i:6190875;i:1;i:6190875;i:2;s:0:"";i:3;s:0:"";}i:52;a:4:{i:0;i:422893;i:1;i:422893;i:2;s:0:"";i:3;s:0:"";}i:53;a:4:{i:0;i:6293857;i:1;i:6293857;i:2;s:0:"";i:3;s:0:"";}i:54;a:4:{i:0;i:180919;i:1;i:180919;i:2;s:0:"";i:3;s:0:"";}i:55;a:4:{i:0;i:6191078;i:1;i:6191078;i:2;s:0:"";i:3;s:0:"";}i:56;a:4:{i:0;i:54631;i:1;i:54631;i:2;s:0:"";i:3;s:0:"";}i:57;a:4:{i:0;i:492197;i:1;i:492197;i:2;s:0:"";i:3;s:0:"";}i:58;a:4:{i:0;i:103729;i:1;i:103729;i:2;s:0:"";i:3;s:0:"";}i:59;a:4:{i:0;i:390044;i:1;i:390044;i:2;s:0:"";i:3;s:0:"";}i:60;a:4:{i:0;i:6531928;i:1;i:6531928;i:2;s:0:"";i:3;s:0:"";}i:61;a:4:{i:0;i:430783;i:1;i:430783;i:2;s:0:"";i:3;s:0:"";}i:62;a:4:{i:0;i:6190876;i:1;i:6190876;i:2;s:0:"";i:3;s:0:"";}i:63;a:4:{i:0;i:561489;i:1;i:561489;i:2;s:0:"";i:3;s:0:"";}i:64;a:4:{i:0;i:320453;i:1;i:320453;i:2;s:0:"";i:3;s:0:"";}i:65;a:4:{i:0;i:6301499;i:1;i:6301499;i:2;s:0:"";i:3;s:0:"";}i:66;a:4:{i:0;i:700830;i:1;i:700830;i:2;s:0:"";i:3;s:0:"";}i:67;a:4:{i:0;i:512678;i:1;i:512678;i:2;s:0:"";i:3;s:0:"";}i:68;a:4:{i:0;i:54765;i:1;i:54765;i:2;s:0:"";i:3;s:0:"";}}}}i:0;a:1:{i:0;a:2:{i:0;a:69:{i:0;a:4:{i:0;i:422732;i:1;i:1;i:2;s:6:"finish";i:3;s:0:"";}i:1;a:4:{i:0;i:54027;i:1;i:2;i:2;s:6:"finish";i:3;s:0:"";}i:2;a:4:{i:0;i:54320;i:1;i:3;i:2;s:3:"dnf";i:3;s:0:"";}i:3;a:4:{i:0;i:422729;i:1;i:4;i:2;s:6:"finish";i:3;s:0:"";}i:4;a:4:{i:0;i:512182;i:1;i:5;i:2;s:6:"finish";i:3;s:0:"";}i:5;a:4:{i:0;i:512269;i:1;i:6;i:2;s:6:"finish";i:3;s:0:"";}i:6;a:4:{i:0;i:422304;i:1;i:7;i:2;s:6:"finish";i:3;s:0:"";}i:7;a:4:{i:0;i:561244;i:1;i:8;i:2;s:6:"finish";i:3;s:0:"";}i:8;a:4:{i:0;i:6190628;i:1;i:9;i:2;s:6:"finish";i:3;s:0:"";}i:9;a:4:{i:0;i:202829;i:1;i:10;i:2;s:6:"finish";i:3;s:0:"";}i:10;a:4:{i:0;i:6293171;i:1;i:11;i:2;s:6:"finish";i:3;s:0:"";}i:11;a:4:{i:0;i:60261;i:1;i:12;i:2;s:6:"finish";i:3;s:0:"";}i:12;a:4:{i:0;i:422507;i:1;i:13;i:2;s:6:"finish";i:3;s:0:"";}i:13;a:4:{i:0;i:6532084;i:1;i:14;i:2;s:6:"finish";i:3;s:0:"";}i:14;a:4:{i:0;i:511983;i:1;i:15;i:2;s:6:"finish";i:3;s:0:"";}i:15;a:4:{i:0;i:54445;i:1;i:16;i:2;s:6:"finish";i:3;s:0:"";}i:16;a:4:{i:0;i:511638;i:1;i:17;i:2;s:6:"finish";i:3;s:0:"";}i:17;a:4:{i:0;i:202883;i:1;i:18;i:2;s:6:"finish";i:3;s:0:"";}i:18;a:4:{i:0;i:380335;i:1;i:19;i:2;s:6:"finish";i:3;s:0:"";}i:19;a:4:{i:0;i:6191334;i:1;i:20;i:2;s:6:"finish";i:3;s:0:"";}i:20;a:4:{i:0;i:194935;i:1;i:21;i:2;s:6:"finish";i:3;s:0:"";}i:21;a:4:{i:0;i:54630;i:1;i:22;i:2;s:6:"finish";i:3;s:0:"";}i:22;a:4:{i:0;i:54359;i:1;i:23;i:2;s:6:"finish";i:3;s:0:"";}i:23;a:4:{i:0;i:511852;i:1;i:24;i:2;s:6:"finish";i:3;s:0:"";}i:24;a:4:{i:0;i:20398;i:1;i:25;i:2;s:6:"finish";i:3;s:0:"";}i:25;a:4:{i:0;i:202909;i:1;i:26;i:2;s:6:"finish";i:3;s:0:"";}i:26;a:4:{i:0;i:202597;i:1;i:27;i:2;s:6:"finish";i:3;s:0:"";}i:27;a:4:{i:0;i:422803;i:1;i:28;i:2;s:6:"finish";i:3;s:0:"";}i:28;a:4:{i:0;i:990048;i:1;i:29;i:2;s:6:"finish";i:3;s:0:"";}i:29;a:4:{i:0;i:6191539;i:1;i:30;i:2;s:6:"finish";i:3;s:0:"";}i:30;a:4:{i:0;i:6293831;i:1;i:31;i:2;s:6:"finish";i:3;s:0:"";}i:31;a:4:{i:0;i:422899;i:1;i:32;i:2;s:6:"finish";i:3;s:0:"";}i:32;a:4:{i:0;i:6293775;i:1;i:33;i:2;s:6:"finish";i:3;s:0:"";}i:33;a:4:{i:0;i:6533248;i:1;i:34;i:2;s:6:"finish";i:3;s:0:"";}i:34;a:4:{i:0;i:502433;i:1;i:35;i:2;s:6:"finish";i:3;s:0:"";}i:35;a:4:{i:0;i:502617;i:1;i:36;i:2;s:6:"finish";i:3;s:0:"";}i:36;a:4:{i:0;i:6190793;i:1;i:37;i:2;s:6:"finish";i:3;s:0:"";}i:37;a:4:{i:0;i:54368;i:1;i:38;i:2;s:6:"finish";i:3;s:0:"";}i:38;a:4:{i:0;i:512424;i:1;i:39;i:2;s:6:"finish";i:3;s:0:"";}i:39;a:4:{i:0;i:422873;i:1;i:40;i:2;s:6:"finish";i:3;s:0:"";}i:40;a:4:{i:0;i:6532354;i:1;i:41;i:2;s:6:"finish";i:3;s:0:"";}i:41;a:4:{i:0;i:492542;i:1;i:42;i:2;s:6:"finish";i:3;s:0:"";}i:42;a:4:{i:0;i:512588;i:1;i:43;i:2;s:6:"finish";i:3;s:0:"";}i:43;a:4:{i:0;i:990116;i:1;i:44;i:2;s:6:"finish";i:3;s:0:"";}i:44;a:4:{i:0;i:54628;i:1;i:45;i:2;s:6:"finish";i:3;s:0:"";}i:45;a:4:{i:0;i:221675;i:1;i:46;i:2;s:6:"finish";i:3;s:0:"";}i:46;a:4:{i:0;i:6533474;i:1;i:47;i:2;s:6:"finish";i:3;s:0:"";}i:47;a:4:{i:0;i:6293252;i:1;i:48;i:2;s:6:"finish";i:3;s:0:"";}i:48;a:4:{i:0;i:422954;i:1;i:49;i:2;s:6:"finish";i:3;s:0:"";}i:49;a:4:{i:0;i:700879;i:1;i:50;i:2;s:6:"finish";i:3;s:0:"";}i:50;a:4:{i:0;i:780023;i:1;i:51;i:2;s:6:"finish";i:3;s:0:"";}i:51;a:4:{i:0;i:6190875;i:1;i:52;i:2;s:6:"finish";i:3;s:0:"";}i:52;a:4:{i:0;i:422893;i:1;i:53;i:2;s:6:"finish";i:3;s:0:"";}i:53;a:4:{i:0;i:6293857;i:1;i:54;i:2;s:3:"dnf";i:3;s:0:"";}i:54;a:4:{i:0;i:180919;i:1;i:55;i:2;s:6:"finish";i:3;s:0:"";}i:55;a:4:{i:0;i:6191078;i:1;i:56;i:2;s:3:"dnf";i:3;s:0:"";}i:56;a:4:{i:0;i:54631;i:1;i:57;i:2;s:6:"finish";i:3;s:0:"";}i:57;a:4:{i:0;i:492197;i:1;i:58;i:2;s:6:"finish";i:3;s:0:"";}i:58;a:4:{i:0;i:103729;i:1;i:59;i:2;s:6:"finish";i:3;s:0:"";}i:59;a:4:{i:0;i:390044;i:1;i:60;i:2;s:6:"finish";i:3;s:0:"";}i:60;a:4:{i:0;i:6531928;i:1;i:61;i:2;s:6:"finish";i:3;s:0:"";}i:61;a:4:{i:0;i:430783;i:1;i:62;i:2;s:6:"finish";i:3;s:0:"";}i:62;a:4:{i:0;i:6190876;i:1;i:63;i:2;s:6:"finish";i:3;s:0:"";}i:63;a:4:{i:0;i:561489;i:1;i:64;i:2;s:6:"finish";i:3;s:0:"";}i:64;a:4:{i:0;i:320453;i:1;i:65;i:2;s:6:"finish";i:3;s:0:"";}i:65;a:4:{i:0;i:6301499;i:1;i:66;i:2;s:3:"dnf";i:3;s:0:"";}i:66;a:4:{i:0;i:700830;i:1;i:67;i:2;s:6:"finish";i:3;s:0:"";}i:67;a:4:{i:0;i:512678;i:1;i:68;i:2;s:6:"finish";i:3;s:0:"";}i:68;a:4:{i:0;i:54765;i:1;i:69;i:2;s:6:"finish";i:3;s:0:"";}}i:1;a:30:{i:0;a:4:{i:0;i:202883;i:1;i:18;i:2;s:6:"finish";i:3;s:0:"";}i:1;a:4:{i:0;i:422954;i:1;i:49;i:2;s:6:"finish";i:3;s:0:"";}i:2;a:4:{i:0;i:6191334;i:1;i:20;i:2;s:6:"finish";i:3;s:0:"";}i:3;a:4:{i:0;i:512588;i:1;i:43;i:2;s:6:"finish";i:3;s:0:"";}i:4;a:4:{i:0;i:180919;i:1;i:55;i:2;s:6:"finish";i:3;s:0:"";}i:5;a:4:{i:0;i:511638;i:1;i:17;i:2;s:6:"finish";i:3;s:0:"";}i:6;a:4:{i:0;i:561244;i:1;i:8;i:2;s:6:"finish";i:3;s:0:"";}i:7;a:4:{i:0;i:6190628;i:1;i:9;i:2;s:6:"finish";i:3;s:0:"";}i:8;a:4:{i:0;i:422873;i:1;i:40;i:2;s:6:"finish";i:3;s:0:"";}i:9;a:4:{i:0;i:221675;i:1;i:46;i:2;s:6:"finish";i:3;s:0:"";}i:10;a:4:{i:0;i:54445;i:1;i:16;i:2;s:6:"finish";i:3;s:0:"";}i:11;a:4:{i:0;i:6293831;i:1;i:31;i:2;s:3:"dnf";i:3;s:0:"";}i:12;a:4:{i:0;i:422899;i:1;i:32;i:2;s:3:"dnf";i:3;s:0:"";}i:13;a:4:{i:0;i:54630;i:1;i:22;i:2;s:6:"finish";i:3;s:0:"";}i:14;a:4:{i:0;i:6532084;i:1;i:14;i:2;s:6:"finish";i:3;s:0:"";}i:15;a:4:{i:0;i:54359;i:1;i:23;i:2;s:6:"finish";i:3;s:0:"";}i:16;a:4:{i:0;i:6293171;i:1;i:11;i:2;s:6:"finish";i:3;s:0:"";}i:17;a:4:{i:0;i:422803;i:1;i:28;i:2;s:6:"finish";i:3;s:0:"";}i:18;a:4:{i:0;i:380335;i:1;i:19;i:2;s:6:"finish";i:3;s:0:"";}i:19;a:4:{i:0;i:60261;i:1;i:12;i:2;s:6:"finish";i:3;s:0:"";}i:20;a:4:{i:0;i:194935;i:1;i:21;i:2;s:6:"finish";i:3;s:0:"";}i:21;a:4:{i:0;i:202597;i:1;i:27;i:2;s:6:"finish";i:3;s:0:"";}i:22;a:4:{i:0;i:990048;i:1;i:29;i:2;s:3:"dnf";i:3;s:0:"";}i:23;a:4:{i:0;i:422304;i:1;i:7;i:2;s:6:"finish";i:3;s:0:"";}i:24;a:4:{i:0;i:202829;i:1;i:10;i:2;s:6:"finish";i:3;s:0:"";}i:25;a:4:{i:0;i:422732;i:1;i:1;i:2;s:3:"dnf";i:3;s:0:"";}i:26;a:4:{i:0;i:512269;i:1;i:6;i:2;s:6:"finish";i:3;s:0:"";}i:27;a:4:{i:0;i:54027;i:1;i:2;i:2;s:6:"finish";i:3;s:0:"";}i:28;a:4:{i:0;i:512182;i:1;i:5;i:2;s:6:"finish";i:3;s:0:"";}i:29;a:4:{i:0;i:422729;i:1;i:4;i:2;s:6:"finish";i:3;s:0:"";}}}}}}</lt>
