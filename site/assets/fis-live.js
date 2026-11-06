@@ -1,3 +1,4 @@
+import { readSource, recordClient } from './client-diagnostics.js';
 // Public FIS timing feed. No proxy, API key, eval, or paid data service.
 export function deserialize(xml) {
   if (xml.length > 2_000_000) throw new Error('Timing troppo grande');
@@ -169,9 +170,8 @@ export class FisConnection {
     this.closed = false; this.failures = 0; this.lastMain = 0;
   }
   async read(file) {
-    const response = await fetch(`${this.base}/${file}.xml?t=${Date.now()}`, { signal: this.controller.signal, cache: 'no-store' });
-    if (!response.ok) throw new Error(`Timing temporaneamente non disponibile (${response.status})`);
-    return deserialize(await response.text());
+    const text = await readSource(`${this.base}/${file}.xml?t=${Date.now()}`, { signal: this.controller.signal, cache: 'no-store' }, 'FIS timing', 'text');
+    return deserialize(text);
   }
   async tick() {
     if (this.closed) return;
@@ -187,6 +187,7 @@ export class FisConnection {
       this.failures = 0; this.onChange(this.state);
     } catch (error) {
       if (this.closed) return;
+      recordClient({source:'FIS timing',operation:'apply-update',endpoint:this.base,raceId:this.race.id,outcome:'error',error:error.message});
       this.failures++; if (this.failures >= 2) this.lastMain = 0;
       this.onError(error, this.state);
     }
