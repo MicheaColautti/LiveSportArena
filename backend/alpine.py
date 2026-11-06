@@ -168,6 +168,8 @@ def update(season):
     if len(raw) < 40:
         raise ValueError("FIS calendar is unexpectedly incomplete; preserving the previous calendar")
     now = datetime.now(timezone.utc)
+    old = read_json(CACHE / "alpine.json", read_json(SITE / "data/alpine.json", {}))
+    previous_races = {race["id"]: race for race in old.get("races", [])} if old.get("season") == season else {}
 
     def enrich(item):
         description = decode_ical(item.get("DESCRIPTION", "")).replace("\\Event:", "\nEvent:")
@@ -177,8 +179,18 @@ def update(season):
         url = url_match.group()
         raw_date = item["DTSTART"][:8]
         day = datetime.strptime(raw_date, "%Y%m%d").replace(tzinfo=timezone.utc)
-        ttl = 0 if abs((day - now).total_seconds()) < 172800 else 21600
-        details = race_page(fetch_text(url, ttl=ttl))
+        race_id = parse_qs(urlparse(url).query)["raceid"][0]
+        previous = previous_races.get(race_id)
+        distance = (day - now).total_seconds()
+        settled = distance < -172800 and previous and previous.get("status") in {"finished", "cancelled"}
+        # The calendar feed carries revised run times; only nearby or new races need a detail-page request.
+        reuse_details = previous and previous.get("timezone") and (distance > 172800 or settled)
+        if reuse_details:
+            details = {"timezone": previous["timezone"], "documents": previous.get("documents", []),
+                       "liveUrl": previous.get("liveUrl"), "isLive": False,
+                       "cancelled": previous.get("status") == "cancelled", "results": previous.get("results", [])}
+        else:
+            details = race_page(fetch_text(url, ttl=0))
         details["cancelled"] = details["cancelled"] or item.get("STATUS", "").upper() in {"CANCELLED", "CANCELED"}
         if not details["timezone"]:
             raise ValueError(f"Missing official timezone for {item['UID']}")
@@ -190,7 +202,6 @@ def update(season):
         gender = "W" if "Gender: Women" in description else "M"
         venue = decode_ical(item.get("LOCATION", ""))
         country_match = re.search(r"\(([A-Z]{3})\)", item.get("SUMMARY", ""))
-        race_id = parse_qs(urlparse(url).query)["raceid"][0]
         date = f"{local_date[:4]}-{local_date[4:6]}-{local_date[6:8]}"
         status = "cancelled" if details["cancelled"] else ("live" if details["isLive"] else ("finished" if details["results"] else "scheduled"))
         race = {"id": race_id, "venue": venue, "country": country_match.group(1) if country_match else "",
@@ -214,7 +225,6 @@ def update(season):
 
     with ThreadPoolExecutor(max_workers=4) as executor:
         enriched = [r for r in executor.map(enrich, raw) if r is not None]
-    old = read_json(CACHE / "alpine.json", read_json(SITE / "data/alpine.json", {}))
     old_events = old.get("events", []) if old.get("season") == season else []
     events = reconcile([e for _, group in enriched for e in group], old_events)
     data = {"season": season, "seasonLabel": f"{season-1}/{str(season)[-2:]}", "updatedAt": stamp(),

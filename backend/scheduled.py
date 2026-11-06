@@ -46,7 +46,8 @@ def main():
             alpine_standings.update(season)
             state['alpine'] = stamp()
         except Exception as exc:
-            print(f'::warning::Alpine update unavailable: {exc}', flush=True)
+            source = getattr(exc, 'url', '')
+            print(f'::warning::Alpine update unavailable: {exc}' + (f' ({source})' if source else ''), flush=True)
             # Keep the last verified calendar and record the failed source check.
             previous = read_json(SITE/'data/alpine.json', {})
             previous.update(status='stale', lastAttemptAt=stamp())
