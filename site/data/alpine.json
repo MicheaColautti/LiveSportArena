@@ -1,7 +1,7 @@
 {
   "season": 2027,
   "seasonLabel": "2026/27",
-  "updatedAt": "2026-11-05T18:41:19.096226Z",
+  "updatedAt": "2026-11-06T18:28:22.748924Z",
   "source": "FIS",
   "sourceUrl": "https://www.fis-ski.com/DB/services/public/icalendar-feed-fis-events.html?seasoncode=2027&sectorcode=AL&categorycode=WC&disciplinecode=DH%2CSL%2CGS%2CSG",
   "status": "ok",
@@ -4579,9 +4579,9 @@
       "title": "Adelboden · Slalom gigante uomini · 1ª manche",
       "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131718",
       "status": "scheduled",
-      "sourceModified": "20261018T121005Z",
-      "sequence": 216067279,
-      "modified": "2026-11-05T18:41:19.095797Z"
+      "sourceModified": "20261106T111115Z",
+      "sequence": 216152902,
+      "modified": "2026-11-06T18:28:22.748642Z"
     },
     {
       "id": "fis-al-131658-run-1",
@@ -4617,9 +4617,9 @@
       "title": "Adelboden · Slalom gigante uomini · 2ª manche",
       "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131718",
       "status": "scheduled",
-      "sourceModified": "20261018T121005Z",
-      "sequence": 216067279,
-      "modified": "2026-11-05T18:41:19.095797Z"
+      "sourceModified": "20261106T111115Z",
+      "sequence": 216152902,
+      "modified": "2026-11-06T18:28:22.748642Z"
     },
     {
       "id": "fis-al-131719-run-1",
@@ -4636,9 +4636,9 @@
       "title": "Adelboden · Slalom speciale uomini · 1ª manche",
       "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131719",
       "status": "scheduled",
-      "sourceModified": "20261018T121005Z",
-      "sequence": 216067279,
-      "modified": "2026-11-05T18:41:19.095797Z"
+      "sourceModified": "20261106T111115Z",
+      "sequence": 216152902,
+      "modified": "2026-11-06T18:28:22.748642Z"
     },
     {
       "id": "fis-al-131659-run-1",
@@ -4674,9 +4674,9 @@
       "title": "Adelboden · Slalom speciale uomini · 2ª manche",
       "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131719",
       "status": "scheduled",
-      "sourceModified": "20261018T121005Z",
-      "sequence": 216067279,
-      "modified": "2026-11-05T18:41:19.095797Z"
+      "sourceModified": "20261106T111115Z",
+      "sequence": 216152902,
+      "modified": "2026-11-06T18:28:22.748642Z"
     },
     {
       "id": "fis-al-131664-run-1",
@@ -5358,9 +5358,9 @@
       "title": "Soldeu · Slalom gigante donne · 1ª manche",
       "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131678",
       "status": "scheduled",
-      "sourceModified": "20261018T121022Z",
-      "sequence": 216067279,
-      "modified": "2026-11-05T18:41:19.095797Z"
+      "sourceModified": "20261106T111110Z",
+      "sequence": 216152902,
+      "modified": "2026-11-06T18:28:22.748642Z"
     },
     {
       "id": "fis-al-131746-run-1",
@@ -5396,9 +5396,9 @@
       "title": "Soldeu · Slalom gigante donne · 2ª manche",
       "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131678",
       "status": "scheduled",
-      "sourceModified": "20261018T121022Z",
-      "sequence": 216067279,
-      "modified": "2026-11-05T18:41:19.095797Z"
+      "sourceModified": "20261106T111110Z",
+      "sequence": 216152902,
+      "modified": "2026-11-06T18:28:22.748642Z"
     },
     {
       "id": "fis-al-131679-run-1",
@@ -5415,9 +5415,9 @@
       "title": "Soldeu · Slalom speciale donne · 1ª manche",
       "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131679",
       "status": "scheduled",
-      "sourceModified": "20261018T121023Z",
-      "sequence": 216067279,
-      "modified": "2026-11-05T18:41:19.095797Z"
+      "sourceModified": "20261106T111110Z",
+      "sequence": 216152902,
+      "modified": "2026-11-06T18:28:22.748642Z"
     },
     {
       "id": "fis-al-131747-run-1",
@@ -5453,9 +5453,9 @@
       "title": "Soldeu · Slalom speciale donne · 2ª manche",
       "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131679",
       "status": "scheduled",
-      "sourceModified": "20261018T121023Z",
-      "sequence": 216067279,
-      "modified": "2026-11-05T18:41:19.095797Z"
+      "sourceModified": "20261106T111110Z",
+      "sequence": 216152902,
+      "modified": "2026-11-06T18:28:22.748642Z"
     },
     {
       "id": "fis-al-131683-run-1",

@@ -1,11 +1,11 @@
 {
   "season": 2027,
   "source": "FIS",
-  "checkedAt": "2026-11-06T11:53:00.155033Z",
+  "checkedAt": "2026-11-06T18:28:23.528351Z",
   "groups": {
     "W": {
       "status": "ok",
-      "updatedAt": "2026-11-06T11:52:59.940169Z",
+      "updatedAt": "2026-11-06T18:28:23.180839Z",
       "sourceUrl": "https://www.fis-ski.com/DB/alpine-skiing/cup-standings.html?sectorcode=AL&seasoncode=2027&cupcode=WC&disciplinecode=ALL&gendercode=W",
       "tables": {
         "ALL": [
@@ -541,7 +541,7 @@
     },
     "M": {
       "status": "ok",
-      "updatedAt": "2026-11-06T11:53:00.155015Z",
+      "updatedAt": "2026-11-06T18:28:23.528334Z",
       "sourceUrl": "https://www.fis-ski.com/DB/alpine-skiing/cup-standings.html?sectorcode=AL&seasoncode=2027&cupcode=WC&disciplinecode=ALL&gendercode=M",
       "tables": {
         "ALL": [
