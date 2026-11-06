@@ -1,0 +1,867 @@
+{
+  "version": 1,
+  "courses": [
+    {
+      "name": "Streif",
+      "venues": [
+        "Kitzbühel",
+        "Kitzbuehel"
+      ],
+      "disciplines": [
+        "DH"
+      ],
+      "gender": "M",
+      "verifiedAt": "2026-11-06",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [
+        {
+          "label": "Lunghezza",
+          "value": "3.315 m",
+          "source": "https://hahnenkamm.com/rennstrecken/die-streif-abfahrt/"
+        },
+        {
+          "label": "Partenza",
+          "value": "1.665 m",
+          "source": "https://hahnenkamm.com/rennstrecken/die-streif-abfahrt/"
+        },
+        {
+          "label": "Arrivo",
+          "value": "805 m",
+          "source": "https://hahnenkamm.com/rennstrecken/die-streif-abfahrt/"
+        },
+        {
+          "label": "Dislivello",
+          "value": "860 m",
+          "source": "https://hahnenkamm.com/rennstrecken/die-streif-abfahrt/"
+        },
+        {
+          "label": "Pendenza massima",
+          "value": "85%",
+          "source": "https://hahnenkamm.com/rennstrecken/die-streif-abfahrt/"
+        }
+      ],
+      "history": {
+        "text": "La Streif attuale ospitò una gara nel 1937.",
+        "source": "https://hahnenkamm.com/rennstrecken/die-streif-abfahrt/"
+      },
+      "pois": [
+        {
+          "name": "Mausefalle",
+          "category": "Salto",
+          "description": "Passaggio iniziale con pendenza massima dell’85%.",
+          "source": "https://hahnenkamm.com/rennstrecken/die-streif-abfahrt/",
+          "coordinates": null
+        },
+        {
+          "name": "Hausbergkante",
+          "category": "Salto",
+          "description": "Precede una compressione e la traversa dell’Hausberg.",
+          "source": "https://hahnenkamm.com/rennstrecken/die-streif-abfahrt/",
+          "coordinates": null
+        }
+      ],
+      "id": "course-01",
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ]
+    },
+    {
+      "name": "Lauberhorn",
+      "venues": [
+        "Wengen"
+      ],
+      "disciplines": [
+        "DH"
+      ],
+      "gender": "M",
+      "verifiedAt": "2026-11-06",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [
+        {
+          "label": "Lunghezza",
+          "value": "4,5 km",
+          "source": "https://www.lauberhorn.ch/rennen/abfahrt/"
+        },
+        {
+          "label": "Dislivello",
+          "value": "1.028 m",
+          "source": "https://www.lauberhorn.ch/rennen/abfahrt/"
+        },
+        {
+          "label": "Partenza",
+          "value": "2.315 m",
+          "source": "https://www.lauberhorn.ch/rennen/abfahrt/"
+        },
+        {
+          "label": "Pendenza massima",
+          "value": "41° al Hundschopf",
+          "source": "https://www.lauberhorn.ch/rennen/abfahrt/"
+        }
+      ],
+      "history": {
+        "text": "Il Russisprung nacque da riprese televisive con Bernhard Russi e fu poi inserito nella gara.",
+        "source": "https://www.lauberhorn.ch/rennen/abfahrt/"
+      },
+      "pois": [
+        {
+          "name": "Hundschopf",
+          "category": "Salto",
+          "description": "Passaggio roccioso, il più ripido del percorso.",
+          "source": "https://www.lauberhorn.ch/rennen/abfahrt/",
+          "coordinates": null
+        },
+        {
+          "name": "Canadian Corner",
+          "category": "Curva",
+          "description": "Il nome ricorda i canadesi Dave Irwin e Ken Read e gli episodi del 1976.",
+          "source": "https://www.lauberhorn.ch/rennen/abfahrt/",
+          "coordinates": null
+        }
+      ],
+      "id": "course-02",
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ]
+    },
+    {
+      "name": "Stelvio",
+      "venues": [
+        "Bormio"
+      ],
+      "disciplines": [
+        "DH"
+      ],
+      "gender": "M",
+      "verifiedAt": "2026-11-06",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [
+        {
+          "label": "Lunghezza di riferimento",
+          "value": "3.250 m",
+          "source": "https://www.bormioski.eu/pista-stelvio/"
+        },
+        {
+          "label": "Dislivello di riferimento",
+          "value": "1.010 m",
+          "source": "https://www.bormioski.eu/pista-stelvio/"
+        },
+        {
+          "label": "Partenza di riferimento",
+          "value": "2.255 m",
+          "source": "https://www.bormioski.eu/pista-stelvio/"
+        },
+        {
+          "label": "Arrivo di riferimento",
+          "value": "1.245 m",
+          "source": "https://www.bormioski.eu/pista-stelvio/"
+        }
+      ],
+      "history": {
+        "text": "Il percorso alterna salti, diagonali e un muro finale verso Bormio.",
+        "source": "https://www.bormioski.eu/pista-stelvio/"
+      },
+      "pois": [
+        {
+          "name": "Carcentina",
+          "category": "Passaggio",
+          "description": "Diagonale impegnativa che può risultare decisiva.",
+          "source": "https://www.bormioski.eu/pista-stelvio/",
+          "coordinates": null
+        },
+        {
+          "name": "San Pietro",
+          "category": "Salto",
+          "description": "Muro ripido con un salto caratteristico.",
+          "source": "https://www.bormioski.eu/pista-stelvio/",
+          "coordinates": null
+        }
+      ],
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ],
+      "id": "course-03"
+    },
+    {
+      "name": "Saslong",
+      "venues": [
+        "Val Gardena-Groeden Südtirol",
+        "Val Gardena"
+      ],
+      "disciplines": [
+        "DH"
+      ],
+      "gender": "M",
+      "verifiedAt": "2026-11-06",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [
+        {
+          "label": "Lunghezza di riferimento 2018",
+          "value": "3.446 m",
+          "source": "https://www.saslong.org/en/news/detail/saslong-course-and-key-sections/"
+        },
+        {
+          "label": "Dislivello di riferimento 2018",
+          "value": "839 m",
+          "source": "https://www.saslong.org/en/news/detail/saslong-course-and-key-sections/"
+        }
+      ],
+      "history": {
+        "text": "Il nome richiama il termine ladino del Sassolungo. La scheda tecnica della fonte è del 2018.",
+        "source": "https://www.saslong.org/en/news/detail/saslong-course-and-key-sections/"
+      },
+      "pois": [
+        {
+          "name": "Camel Humps",
+          "category": "Salto",
+          "description": "Uli Spiess superò tutte e tre le gobbe con un salto nel 1980.",
+          "source": "https://www.saslong.org/en/news/detail/saslong-course-and-key-sections/",
+          "coordinates": null
+        },
+        {
+          "name": "Ciaslat",
+          "category": "Passaggio",
+          "description": "Sezione ondulata e ricca di curve nella parte finale.",
+          "source": "https://www.saslong.org/en/news/detail/saslong-course-and-key-sections/",
+          "coordinates": null
+        }
+      ],
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ],
+      "id": "course-04"
+    },
+    {
+      "name": "Gran Risa",
+      "venues": [
+        "Alta Badia"
+      ],
+      "disciplines": [
+        "GS"
+      ],
+      "gender": "M",
+      "verifiedAt": "2026-11-06",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [
+        {
+          "label": "Lunghezza pista di riferimento",
+          "value": "1.255 m",
+          "source": "https://www.altabadia.org/en/poi/what-to-do-in-alta-badia/detail/poi/the-gran-risa-slope"
+        },
+        {
+          "label": "Dislivello di riferimento",
+          "value": "448 m",
+          "source": "https://www.altabadia.org/en/poi/what-to-do-in-alta-badia/detail/poi/the-gran-risa-slope"
+        },
+        {
+          "label": "Pendenza massima",
+          "value": "69%",
+          "source": "https://www.altabadia.org/en/poi/what-to-do-in-alta-badia/detail/poi/the-gran-risa-slope"
+        }
+      ],
+      "history": {
+        "text": "La pista attraversa il bosco sopra La Villa, sotto Piz La Ila.",
+        "source": "https://www.altabadia.org/en/poi/what-to-do-in-alta-badia/detail/poi/the-gran-risa-slope"
+      },
+      "pois": [],
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ],
+      "id": "course-05"
+    },
+    {
+      "name": "Erta",
+      "venues": [
+        "Kronplatz"
+      ],
+      "disciplines": [
+        "GS"
+      ],
+      "gender": "W",
+      "verifiedAt": "2026-11-06",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [
+        {
+          "label": "Lunghezza di riferimento",
+          "value": "1.325 m",
+          "source": "https://alplanevents.it/en/piste"
+        },
+        {
+          "label": "Arrivo di riferimento",
+          "value": "1.200 m",
+          "source": "https://alplanevents.it/en/piste"
+        },
+        {
+          "label": "Pendenza massima",
+          "value": "61%",
+          "source": "https://alplanevents.it/en/piste"
+        }
+      ],
+      "history": {
+        "text": "Pista del Piz de Plaies. Le specifiche della fonte riportano configurazioni di omologazione; la partenza effettiva dipende dalla gara.",
+        "source": "https://alplanevents.it/en/piste"
+      },
+      "pois": [],
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ],
+      "id": "course-06"
+    },
+    {
+      "name": "Olympia delle Tofane",
+      "venues": [
+        "Cortina d'Ampezzo"
+      ],
+      "disciplines": [
+        "DH",
+        "SG"
+      ],
+      "gender": "W",
+      "verifiedAt": "2026-11-06",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [],
+      "history": {
+        "text": "Pista utilizzata ai Giochi del 1956 e ai Mondiali di Cortina del 2021; ospita le gare femminili di Coppa del Mondo.",
+        "source": "https://www.cortinaskiworldcup.com/la-pista/"
+      },
+      "pois": [],
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ],
+      "id": "course-07"
+    },
+    {
+      "name": "Rettenbach",
+      "venues": [
+        "Soelden",
+        "Sölden"
+      ],
+      "disciplines": [
+        "GS"
+      ],
+      "gender": "ALL",
+      "verifiedAt": "2026-11-06",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [
+        {
+          "label": "Partenza di riferimento",
+          "value": "3.040 m",
+          "source": "https://www.soelden.com/de/veranstaltungen-freizeittipps/events/audi-fis-skiweltcup-opening/weltcup-piste"
+        },
+        {
+          "label": "Arrivo di riferimento",
+          "value": "2.670 m",
+          "source": "https://www.soelden.com/de/veranstaltungen-freizeittipps/events/audi-fis-skiweltcup-opening/weltcup-piste"
+        },
+        {
+          "label": "Dislivello di riferimento",
+          "value": "370 m",
+          "source": "https://www.soelden.com/de/veranstaltungen-freizeittipps/events/audi-fis-skiweltcup-opening/weltcup-piste"
+        },
+        {
+          "label": "Lunghezza di riferimento",
+          "value": "1.198 m",
+          "source": "https://www.soelden.com/de/veranstaltungen-freizeittipps/events/audi-fis-skiweltcup-opening/weltcup-piste"
+        }
+      ],
+      "history": {
+        "text": "Il lungo muro ripido è il passaggio chiave del gigante di apertura.",
+        "source": "https://www.soelden.com/de/veranstaltungen-freizeittipps/events/audi-fis-skiweltcup-opening/weltcup-piste"
+      },
+      "pois": [
+        {
+          "name": "Steilhang",
+          "category": "Passaggio",
+          "description": "Il muro centrale richiede una linea attiva per portare velocità al traguardo.",
+          "source": "https://www.soelden.com/de/veranstaltungen-freizeittipps/events/audi-fis-skiweltcup-opening/weltcup-piste",
+          "coordinates": null
+        }
+      ],
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ],
+      "id": "course-08"
+    },
+    {
+      "name": "Chuenisbärgli",
+      "venues": [
+        "Adelboden"
+      ],
+      "disciplines": [
+        "GS"
+      ],
+      "gender": "M",
+      "verifiedAt": "2026-11-06",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [
+        {
+          "label": "Partenza · configurazione 2026",
+          "value": "1.730 m",
+          "source": "https://medias4.fis-ski.com/pdf/2026/AL/0022/2026AL0022.pdf"
+        },
+        {
+          "label": "Arrivo · configurazione 2026",
+          "value": "1.310 m",
+          "source": "https://medias4.fis-ski.com/pdf/2026/AL/0022/2026AL0022.pdf"
+        },
+        {
+          "label": "Dislivello · configurazione 2026",
+          "value": "420 m",
+          "source": "https://medias4.fis-ski.com/pdf/2026/AL/0022/2026AL0022.pdf"
+        }
+      ],
+      "history": {
+        "text": "Dati della configurazione del gigante maschile del 10 gennaio 2026: riferimento storico, non orari o specifiche della prossima gara.",
+        "source": "https://medias4.fis-ski.com/pdf/2026/AL/0022/2026AL0022.pdf"
+      },
+      "pois": [],
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ],
+      "id": "course-09"
+    },
+    {
+      "name": "Levi Black",
+      "venues": [
+        "Levi"
+      ],
+      "disciplines": [
+        "SL"
+      ],
+      "gender": "ALL",
+      "verifiedAt": "2026-11-06",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [],
+      "history": {
+        "text": "Levi Black, indicata anche come G.2, si trova nel settore West Slopes e ospita il circuito di Coppa del Mondo.",
+        "source": "https://www.levi.fi/en/ski/slopes-and-lifts/west-slopes/"
+      },
+      "pois": [],
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ],
+      "id": "course-10"
+    },
+    {
+      "name": "Kirchenkar",
+      "venues": [
+        "Gurgl"
+      ],
+      "disciplines": [
+        "SL"
+      ],
+      "gender": "ALL",
+      "verifiedAt": "2026-11-06",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [],
+      "history": {
+        "text": "Il media kit ufficiale del 2024 documenta la Kirchenkar e gli slalom femminile e maschile di Gurgl.",
+        "source": "https://www.gurgl.com/local/gurgl_skiweltcup_mediakit_24_EN.pdf"
+      },
+      "pois": [],
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ],
+      "id": "course-11"
+    },
+    {
+      "name": "Planai",
+      "venues": [
+        "Schladming"
+      ],
+      "disciplines": [
+        "SL",
+        "GS"
+      ],
+      "gender": "M",
+      "verifiedAt": "2026-11-06",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [],
+      "history": {
+        "text": "Il pendio finale della Planai ospita le gare notturne di slalom e gigante THE NIGHTRACE.",
+        "source": "https://www.schladming-dachstein.at/de/schladming-dachstein-entdecken/winterberge/planai"
+      },
+      "pois": [],
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ],
+      "id": "course-12"
+    },
+    {
+      "name": "Mont Lachaux",
+      "venues": [
+        "Crans-Montana"
+      ],
+      "disciplines": [
+        "DH",
+        "SG"
+      ],
+      "gender": "W",
+      "verifiedAt": "2026-11-06",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [],
+      "history": {
+        "text": "La pista, già utilizzata ai Mondiali del 1987, fu rimodellata nel 2010 e ospita regolarmente gare femminili di velocità.",
+        "source": "https://www.cransmontana2027.ch/competition/pistes/piste-mont-lachaux/"
+      },
+      "pois": [],
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ],
+      "id": "course-13"
+    },
+    {
+      "name": "Birds of Prey",
+      "venues": [
+        "Beaver Creek"
+      ],
+      "disciplines": [
+        "DH",
+        "SG",
+        "GS"
+      ],
+      "gender": "ALL",
+      "verifiedAt": "2026-11-06",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [],
+      "history": {
+        "text": "Il tratto superiore della discesa è il Flyway, una zona di scorrimento.",
+        "source": "https://bcworldcup.com/fis-alpine-ski-racing-101/"
+      },
+      "pois": [
+        {
+          "name": "Flyway",
+          "category": "Passaggio",
+          "description": "Sezione alta e scorrevole della discesa; non è comune a tutte le partenze delle diverse specialità.",
+          "source": "https://bcworldcup.com/fis-alpine-ski-racing-101/",
+          "coordinates": null
+        }
+      ],
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ],
+      "id": "course-14"
+    },
+    {
+      "name": "Kandahar",
+      "venues": [
+        "Garmisch-Partenkirchen"
+      ],
+      "disciplines": [
+        "DH"
+      ],
+      "gender": "M",
+      "verifiedAt": "2026-11-06",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [],
+      "history": {
+        "text": "Garmisch-Partenkirchen ospita gare Kandahar dal 1954. Il comprensorio distingue due varianti di discesa.",
+        "source": "https://zugspitze.de/de/Unsere-Bergwelten/Highlights/Kandahar-Abfahrt"
+      },
+      "pois": [
+        {
+          "name": "Freier Fall",
+          "category": "Passaggio",
+          "description": "Il gestore indica una pendenza del 92% per questo passaggio; il dato non si riferisce a tutta la pista.",
+          "source": "https://zugspitze.de/de/Unsere-Bergwelten/Highlights/Kandahar-Abfahrt",
+          "coordinates": null
+        }
+      ],
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ],
+      "id": "course-15"
+    },
+    {
+      "name": "Canalone Miramonti",
+      "venues": [
+        "Madonna di Campiglio"
+      ],
+      "disciplines": [
+        "SL"
+      ],
+      "gender": "M",
+      "verifiedAt": "2026-11-06",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [],
+      "history": {
+        "text": "Il Canalone Miramonti ospita lo slalom notturno della 3Tre.",
+        "source": "https://www.3trecampiglio.it/en/experience-3tre/buy-your-ticket"
+      },
+      "pois": [],
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ],
+      "id": "course-16"
+    },
+    {
+      "name": "Face de Bellevarde",
+      "venues": [
+        "Val d'Isere",
+        "Val d’Isère",
+        "Val d'Isère"
+      ],
+      "disciplines": [
+        "GS",
+        "SL"
+      ],
+      "gender": "M",
+      "verifiedAt": "2026-11-06",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [],
+      "history": {
+        "text": "La Face de Bellevarde ospitò gare ai Giochi di Albertville del 1992 e ai Mondiali del 2009.",
+        "source": "https://www.worldcup-valdisere.com/les-pistes/"
+      },
+      "pois": [],
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ],
+      "id": "course-17"
+    },
+    {
+      "name": "Luková – Koliesko",
+      "venues": [
+        "Jasna",
+        "Jasná"
+      ],
+      "disciplines": [
+        "GS"
+      ],
+      "gender": "W",
+      "verifiedAt": "2026-11-06",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [],
+      "history": {
+        "text": "Il programma ufficiale di Jasná identifica Luková – Koliesko come sede del gigante femminile.",
+        "source": "https://www.worldcupjasna.sk/"
+      },
+      "pois": [],
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ],
+      "id": "course-18"
+    },
+    {
+      "name": "Podkoren",
+      "venues": [
+        "Kranjska Gora"
+      ],
+      "disciplines": [
+        "SL",
+        "GS"
+      ],
+      "gender": "ALL",
+      "verifiedAt": "2026-11-06",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [],
+      "history": {
+        "text": "L’ente turistico segnala a Podkoren il pendio utilizzato dalla Coppa del Mondo.",
+        "source": "https://kranjska-gora.si/en/activities/through-stan-to-podkoren"
+      },
+      "pois": [],
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ],
+      "id": "course-19"
+    },
+    {
+      "name": "Hermann Maier Weltcupstrecke",
+      "venues": [
+        "Flachau"
+      ],
+      "disciplines": [
+        "SL"
+      ],
+      "gender": "W",
+      "verifiedAt": "2026-11-06",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [],
+      "history": {
+        "text": "La mappa del comprensorio identifica la Hermann Maier Weltcupstrecke come pista 1, nella zona Starjet 1.",
+        "source": "https://www.flachau.com/de/anlagen.html"
+      },
+      "pois": [],
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ],
+      "id": "course-20"
+    },
+    {
+      "name": "La Verte des Houches",
+      "venues": [
+        "Chamonix",
+        "Les Houches"
+      ],
+      "disciplines": [
+        "DH"
+      ],
+      "gender": "M",
+      "verifiedAt": "2026-11-06",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [
+        {
+          "label": "Lunghezza di riferimento",
+          "value": "3.343 m",
+          "source": "https://chamonixworldcup.com/en/the-course/the-piste"
+        },
+        {
+          "label": "Dislivello di riferimento",
+          "value": "870 m",
+          "source": "https://chamonixworldcup.com/en/the-course/the-piste"
+        },
+        {
+          "label": "Partenza di riferimento",
+          "value": "1.871 m",
+          "source": "https://chamonixworldcup.com/en/the-course/the-piste"
+        },
+        {
+          "label": "Arrivo di riferimento",
+          "value": "1.001 m",
+          "source": "https://chamonixworldcup.com/en/the-course/the-piste"
+        }
+      ],
+      "history": {
+        "text": "La discesa è bordata da abeti. L’aspetto verdastro del fondo ghiacciato ha contribuito al suo nome.",
+        "source": "https://chamonixworldcup.com/en/the-course/the-piste"
+      },
+      "pois": [
+        {
+          "name": "Cassure",
+          "category": "Passaggio",
+          "description": "Una delle sezioni tecniche indicate dall’organizzatore.",
+          "source": "https://chamonixworldcup.com/en/the-course/the-piste",
+          "coordinates": null
+        },
+        {
+          "name": "Goulet",
+          "category": "Passaggio",
+          "description": "Passaggio caratteristico della discesa.",
+          "source": "https://chamonixworldcup.com/en/the-course/the-piste",
+          "coordinates": null
+        }
+      ],
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ],
+      "id": "course-21"
+    },
+    {
+      "name": "Bald Mountain – Greyhawk",
+      "venues": [
+        "Sun Valley"
+      ],
+      "disciplines": [
+        "DH",
+        "SG",
+        "GS",
+        "SL"
+      ],
+      "gender": "ALL",
+      "verifiedAt": "2026-11-06",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [],
+      "history": {
+        "text": "Le aree di gara convergono al traguardo alla base di Greyhawk; le partenze dipendono dalla specialità.",
+        "source": "https://www.sunvalley.com/events/audi-fis-ski-world-cup/grandstand-seating/"
+      },
+      "pois": [],
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ],
+      "id": "course-22"
+    },
+    {
+      "name": "Superstar",
+      "venues": [
+        "Killington"
+      ],
+      "disciplines": [
+        "GS",
+        "SL"
+      ],
+      "gender": "W",
+      "verifiedAt": "2026-11-06",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [],
+      "history": {
+        "text": "La pista Superstar ospita gigante e slalom femminili della Killington Cup.",
+        "source": "https://killington.com/the-killington-cup?category=Experiences"
+      },
+      "pois": [],
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ],
+      "id": "course-23"
+    }
+  ],
+  "updatedAt": "2026-11-06"
+}

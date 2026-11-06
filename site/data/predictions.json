@@ -1,0 +1,15 @@
+{
+  "status": "no_model",
+  "targetDate": "2026-11-11",
+  "previousDate": "2026-10-31",
+  "previousDayComplete": true,
+  "updatedAt": "2026-11-05T18:41:19.117755Z",
+  "model": "Modello personale",
+  "version": "1.0",
+  "predictions": [],
+  "matchdayDefinition": "Partite della stessa data nel fuso Europe/Zurich",
+  "gameIds": [
+    "20271105000020",
+    "20271105000070"
+  ]
+}

@@ -1,0 +1,1007 @@
+{
+  "season": 2027,
+  "source": "FIS",
+  "checkedAt": "2026-11-06T11:53:00.155033Z",
+  "groups": {
+    "W": {
+      "status": "ok",
+      "updatedAt": "2026-11-06T11:52:59.940169Z",
+      "sourceUrl": "https://www.fis-ski.com/DB/alpine-skiing/cup-standings.html?sectorcode=AL&seasoncode=2027&cupcode=WC&disciplinecode=ALL&gendercode=W",
+      "tables": {
+        "ALL": [
+          {
+            "rank": 1,
+            "points": 100,
+            "competitorId": "155859",
+            "fisCode": "539909",
+            "name": "MOLTZAN Paula",
+            "country": "USA",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=155859&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 3,
+            "points": 60,
+            "competitorId": "237841",
+            "fisCode": "507168",
+            "name": "AICHER Emma",
+            "country": "GER",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=237841&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 4,
+            "points": 50,
+            "competitorId": "140095",
+            "fisCode": "506399",
+            "name": "HECTOR Sara",
+            "country": "SWE",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=140095&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 5,
+            "points": 45,
+            "competitorId": "175037",
+            "fisCode": "299363",
+            "name": "ZENERE Asja",
+            "country": "ITA",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=175037&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 6,
+            "points": 40,
+            "competitorId": "203812",
+            "fisCode": "516562",
+            "name": "RAST Camille",
+            "country": "SUI",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=203812&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 7,
+            "points": 36,
+            "competitorId": "164835",
+            "fisCode": "6535237",
+            "name": "SHIFFRIN Mikaela",
+            "country": "USA",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=164835&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 8,
+            "points": 32,
+            "competitorId": "221779",
+            "fisCode": "415232",
+            "name": "ROBINSON Alice",
+            "country": "NZL",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=221779&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 9,
+            "points": 29,
+            "competitorId": "160104",
+            "fisCode": "435334",
+            "name": "GASIENICA-DANIEL Maryna",
+            "country": "POL",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=160104&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 9,
+            "points": 29,
+            "competitorId": "191309",
+            "fisCode": "56392",
+            "name": "GRITSCH Franziska",
+            "country": "AUT",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=191309&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 11,
+            "points": 24,
+            "competitorId": "252519",
+            "fisCode": "385116",
+            "name": "LJUTIC Zrinka",
+            "country": "CRO",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=252519&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 12,
+            "points": 22,
+            "competitorId": "163567",
+            "fisCode": "197616",
+            "name": "ALPHAND Estelle",
+            "country": "SWE",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=163567&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 13,
+            "points": 20,
+            "competitorId": "210951",
+            "fisCode": "6536392",
+            "name": "HURT A J",
+            "country": "USA",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=210951&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 14,
+            "points": 18,
+            "competitorId": "260596",
+            "fisCode": "6537468",
+            "name": "BOCOCK Elisabeth",
+            "country": "USA",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=260596&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 15,
+            "points": 16,
+            "competitorId": "211099",
+            "fisCode": "507011",
+            "name": "LOEVBLOM Hilma",
+            "country": "SWE",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=211099&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 16,
+            "points": 15,
+            "competitorId": "165800",
+            "fisCode": "426100",
+            "name": "HOLTMANN Mina Fuerst",
+            "country": "NOR",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=165800&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 16,
+            "points": 15,
+            "competitorId": "187620",
+            "fisCode": "6535773",
+            "name": "O'BRIEN Nina",
+            "country": "USA",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=187620&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 18,
+            "points": 13,
+            "competitorId": "203427",
+            "fisCode": "6295075",
+            "name": "DELLA MEA Lara",
+            "country": "ITA",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=203427&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 19,
+            "points": 12,
+            "competitorId": "228233",
+            "fisCode": "507109",
+            "name": "ARONSSON ELFMAN Hanna",
+            "country": "SWE",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=228233&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 20,
+            "points": 11,
+            "competitorId": "148331",
+            "fisCode": "516280",
+            "name": "HOLDENER Wendy",
+            "country": "SUI",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=148331&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 20,
+            "points": 11,
+            "competitorId": "174491",
+            "fisCode": "426193",
+            "name": "STJERNESUND Thea Louise",
+            "country": "NOR",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=174491&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 22,
+            "points": 9,
+            "competitorId": "126526",
+            "fisCode": "206355",
+            "name": "DUERR Lena",
+            "country": "GER",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=126526&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 23,
+            "points": 8,
+            "competitorId": "168809",
+            "fisCode": "705423",
+            "name": "VLHOVA Petra",
+            "country": "SVK",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=168809&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 24,
+            "points": 7,
+            "competitorId": "148146",
+            "fisCode": "516268",
+            "name": "WILD Simone",
+            "country": "SUI",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=148146&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 25,
+            "points": 6,
+            "competitorId": "252204",
+            "fisCode": "516753",
+            "name": "GROB Stefanie",
+            "country": "SUI",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=252204&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 26,
+            "points": 5,
+            "competitorId": "173545",
+            "fisCode": "206668",
+            "name": "WEIDLE-WINKELMANN Kira",
+            "country": "GER",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=173545&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 27,
+            "points": 4,
+            "competitorId": "240548",
+            "fisCode": "108461",
+            "name": "RICHARDSON Britt",
+            "country": "CAN",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=240548&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 28,
+            "points": 3,
+            "competitorId": "173470",
+            "fisCode": "516407",
+            "name": "KASPER Vanessa",
+            "country": "SUI",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=173470&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 29,
+            "points": 2,
+            "competitorId": "232757",
+            "fisCode": "6295835",
+            "name": "PAZZAGLIA Alice",
+            "country": "ITA",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=232757&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 30,
+            "points": 1,
+            "competitorId": "221143",
+            "fisCode": "565491",
+            "name": "DVORNIK Neja",
+            "country": "SLO",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=221143&type=cups&cupcode=WC"
+          }
+        ],
+        "DH": [],
+        "SL": [],
+        "GS": [
+          {
+            "rank": 1,
+            "points": 100,
+            "competitorId": "155859",
+            "fisCode": "539909",
+            "name": "MOLTZAN Paula",
+            "country": "USA",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=155859&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 3,
+            "points": 60,
+            "competitorId": "237841",
+            "fisCode": "507168",
+            "name": "AICHER Emma",
+            "country": "GER",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=237841&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 4,
+            "points": 50,
+            "competitorId": "140095",
+            "fisCode": "506399",
+            "name": "HECTOR Sara",
+            "country": "SWE",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=140095&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 5,
+            "points": 45,
+            "competitorId": "175037",
+            "fisCode": "299363",
+            "name": "ZENERE Asja",
+            "country": "ITA",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=175037&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 6,
+            "points": 40,
+            "competitorId": "203812",
+            "fisCode": "516562",
+            "name": "RAST Camille",
+            "country": "SUI",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=203812&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 7,
+            "points": 36,
+            "competitorId": "164835",
+            "fisCode": "6535237",
+            "name": "SHIFFRIN Mikaela",
+            "country": "USA",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=164835&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 8,
+            "points": 32,
+            "competitorId": "221779",
+            "fisCode": "415232",
+            "name": "ROBINSON Alice",
+            "country": "NZL",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=221779&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 9,
+            "points": 29,
+            "competitorId": "160104",
+            "fisCode": "435334",
+            "name": "GASIENICA-DANIEL Maryna",
+            "country": "POL",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=160104&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 9,
+            "points": 29,
+            "competitorId": "191309",
+            "fisCode": "56392",
+            "name": "GRITSCH Franziska",
+            "country": "AUT",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=191309&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 11,
+            "points": 24,
+            "competitorId": "252519",
+            "fisCode": "385116",
+            "name": "LJUTIC Zrinka",
+            "country": "CRO",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=252519&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 12,
+            "points": 22,
+            "competitorId": "163567",
+            "fisCode": "197616",
+            "name": "ALPHAND Estelle",
+            "country": "SWE",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=163567&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 13,
+            "points": 20,
+            "competitorId": "210951",
+            "fisCode": "6536392",
+            "name": "HURT A J",
+            "country": "USA",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=210951&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 14,
+            "points": 18,
+            "competitorId": "260596",
+            "fisCode": "6537468",
+            "name": "BOCOCK Elisabeth",
+            "country": "USA",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=260596&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 15,
+            "points": 16,
+            "competitorId": "211099",
+            "fisCode": "507011",
+            "name": "LOEVBLOM Hilma",
+            "country": "SWE",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=211099&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 16,
+            "points": 15,
+            "competitorId": "165800",
+            "fisCode": "426100",
+            "name": "HOLTMANN Mina Fuerst",
+            "country": "NOR",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=165800&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 16,
+            "points": 15,
+            "competitorId": "187620",
+            "fisCode": "6535773",
+            "name": "O'BRIEN Nina",
+            "country": "USA",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=187620&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 18,
+            "points": 13,
+            "competitorId": "203427",
+            "fisCode": "6295075",
+            "name": "DELLA MEA Lara",
+            "country": "ITA",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=203427&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 19,
+            "points": 12,
+            "competitorId": "228233",
+            "fisCode": "507109",
+            "name": "ARONSSON ELFMAN Hanna",
+            "country": "SWE",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=228233&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 20,
+            "points": 11,
+            "competitorId": "148331",
+            "fisCode": "516280",
+            "name": "HOLDENER Wendy",
+            "country": "SUI",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=148331&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 20,
+            "points": 11,
+            "competitorId": "174491",
+            "fisCode": "426193",
+            "name": "STJERNESUND Thea Louise",
+            "country": "NOR",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=174491&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 22,
+            "points": 9,
+            "competitorId": "126526",
+            "fisCode": "206355",
+            "name": "DUERR Lena",
+            "country": "GER",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=126526&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 23,
+            "points": 8,
+            "competitorId": "168809",
+            "fisCode": "705423",
+            "name": "VLHOVA Petra",
+            "country": "SVK",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=168809&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 24,
+            "points": 7,
+            "competitorId": "148146",
+            "fisCode": "516268",
+            "name": "WILD Simone",
+            "country": "SUI",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=148146&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 25,
+            "points": 6,
+            "competitorId": "252204",
+            "fisCode": "516753",
+            "name": "GROB Stefanie",
+            "country": "SUI",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=252204&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 26,
+            "points": 5,
+            "competitorId": "173545",
+            "fisCode": "206668",
+            "name": "WEIDLE-WINKELMANN Kira",
+            "country": "GER",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=173545&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 27,
+            "points": 4,
+            "competitorId": "240548",
+            "fisCode": "108461",
+            "name": "RICHARDSON Britt",
+            "country": "CAN",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=240548&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 28,
+            "points": 3,
+            "competitorId": "173470",
+            "fisCode": "516407",
+            "name": "KASPER Vanessa",
+            "country": "SUI",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=173470&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 29,
+            "points": 2,
+            "competitorId": "232757",
+            "fisCode": "6295835",
+            "name": "PAZZAGLIA Alice",
+            "country": "ITA",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=232757&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 30,
+            "points": 1,
+            "competitorId": "221143",
+            "fisCode": "565491",
+            "name": "DVORNIK Neja",
+            "country": "SLO",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=221143&type=cups&cupcode=WC"
+          }
+        ],
+        "SG": []
+      }
+    },
+    "M": {
+      "status": "ok",
+      "updatedAt": "2026-11-06T11:53:00.155015Z",
+      "sourceUrl": "https://www.fis-ski.com/DB/alpine-skiing/cup-standings.html?sectorcode=AL&seasoncode=2027&cupcode=WC&disciplinecode=ALL&gendercode=M",
+      "tables": {
+        "ALL": [
+          {
+            "rank": 1,
+            "points": 100,
+            "competitorId": "213820",
+            "fisCode": "422729",
+            "name": "PINHEIRO BRAATHEN Lucas",
+            "country": "BRA",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=213820&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 2,
+            "points": 80,
+            "competitorId": "174158",
+            "fisCode": "512182",
+            "name": "MEILLARD Loic",
+            "country": "SUI",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=174158&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 3,
+            "points": 60,
+            "competitorId": "190231",
+            "fisCode": "512269",
+            "name": "ODERMATT Marco",
+            "country": "SUI",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=190231&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 4,
+            "points": 50,
+            "competitorId": "194503",
+            "fisCode": "6532084",
+            "name": "RADAMUS River",
+            "country": "USA",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=194503&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 5,
+            "points": 45,
+            "competitorId": "191305",
+            "fisCode": "54445",
+            "name": "HAASER Raphael",
+            "country": "AUT",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=191305&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 6,
+            "points": 40,
+            "competitorId": "187951",
+            "fisCode": "202829",
+            "name": "GRATZ Fabian",
+            "country": "GER",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=187951&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 7,
+            "points": 36,
+            "competitorId": "204319",
+            "fisCode": "6293171",
+            "name": "VINATZER Alex",
+            "country": "ITA",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=204319&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 8,
+            "points": 32,
+            "competitorId": "231688",
+            "fisCode": "422803",
+            "name": "SOLBERG Eirik Hystad",
+            "country": "NOR",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=231688&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 9,
+            "points": 29,
+            "competitorId": "195194",
+            "fisCode": "6190628",
+            "name": "ANGUENOT Leo",
+            "country": "FRA",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=195194&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 10,
+            "points": 26,
+            "competitorId": "176104",
+            "fisCode": "54359",
+            "name": "FEURSTEIN Patrick",
+            "country": "AUT",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=176104&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 11,
+            "points": 24,
+            "competitorId": "128892",
+            "fisCode": "54027",
+            "name": "BRENNSTEINER Stefan",
+            "country": "AUT",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=128892&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 13,
+            "points": 20,
+            "competitorId": "159244",
+            "fisCode": "194935",
+            "name": "FAVROT Thibaut",
+            "country": "FRA",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=159244&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 14,
+            "points": 18,
+            "competitorId": "264793",
+            "fisCode": "422954",
+            "name": "BAKKEVIG Rasmus",
+            "country": "NOR",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=264793&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 15,
+            "points": 16,
+            "competitorId": "195408",
+            "fisCode": "202883",
+            "name": "GRAMMEL Anton",
+            "country": "GER",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=195408&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 16,
+            "points": 15,
+            "competitorId": "246186",
+            "fisCode": "180919",
+            "name": "HALLBERG Eduard",
+            "country": "FIN",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=246186&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 17,
+            "points": 14,
+            "competitorId": "219779",
+            "fisCode": "54630",
+            "name": "STURM Joshua",
+            "country": "AUT",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=219779&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 18,
+            "points": 13,
+            "competitorId": "137306",
+            "fisCode": "561244",
+            "name": "KRANJEC Zan",
+            "country": "SLO",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=137306&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 19,
+            "points": 12,
+            "competitorId": "146641",
+            "fisCode": "380335",
+            "name": "ZUBCIC Filip",
+            "country": "CRO",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=146641&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 20,
+            "points": 11,
+            "competitorId": "194529",
+            "fisCode": "60261",
+            "name": "MAES Sam",
+            "country": "BEL",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=194529&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 21,
+            "points": 10,
+            "competitorId": "156112",
+            "fisCode": "202597",
+            "name": "SCHMID Alexander",
+            "country": "GER",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=156112&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 22,
+            "points": 9,
+            "competitorId": "154950",
+            "fisCode": "422304",
+            "name": "KRISTOFFERSEN Henrik",
+            "country": "NOR",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=154950&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 23,
+            "points": 8,
+            "competitorId": "105040",
+            "fisCode": "511638",
+            "name": "TUMLER Thomas",
+            "country": "SUI",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=105040&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 24,
+            "points": 7,
+            "competitorId": "239148",
+            "fisCode": "6191334",
+            "name": "ELEZI CANNAFERINA Alban",
+            "country": "FRA",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=239148&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 25,
+            "points": 6,
+            "competitorId": "240101",
+            "fisCode": "512588",
+            "name": "HAECHLER Lenz",
+            "country": "SUI",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=240101&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 26,
+            "points": 5,
+            "competitorId": "246187",
+            "fisCode": "422873",
+            "name": "GRAHL-MADSEN Hans",
+            "country": "NOR",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=246187&type=cups&cupcode=WC"
+          }
+        ],
+        "DH": [],
+        "SL": [],
+        "GS": [
+          {
+            "rank": 1,
+            "points": 100,
+            "competitorId": "213820",
+            "fisCode": "422729",
+            "name": "PINHEIRO BRAATHEN Lucas",
+            "country": "BRA",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=213820&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 2,
+            "points": 80,
+            "competitorId": "174158",
+            "fisCode": "512182",
+            "name": "MEILLARD Loic",
+            "country": "SUI",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=174158&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 3,
+            "points": 60,
+            "competitorId": "190231",
+            "fisCode": "512269",
+            "name": "ODERMATT Marco",
+            "country": "SUI",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=190231&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 4,
+            "points": 50,
+            "competitorId": "194503",
+            "fisCode": "6532084",
+            "name": "RADAMUS River",
+            "country": "USA",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=194503&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 5,
+            "points": 45,
+            "competitorId": "191305",
+            "fisCode": "54445",
+            "name": "HAASER Raphael",
+            "country": "AUT",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=191305&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 6,
+            "points": 40,
+            "competitorId": "187951",
+            "fisCode": "202829",
+            "name": "GRATZ Fabian",
+            "country": "GER",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=187951&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 7,
+            "points": 36,
+            "competitorId": "204319",
+            "fisCode": "6293171",
+            "name": "VINATZER Alex",
+            "country": "ITA",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=204319&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 8,
+            "points": 32,
+            "competitorId": "231688",
+            "fisCode": "422803",
+            "name": "SOLBERG Eirik Hystad",
+            "country": "NOR",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=231688&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 9,
+            "points": 29,
+            "competitorId": "195194",
+            "fisCode": "6190628",
+            "name": "ANGUENOT Leo",
+            "country": "FRA",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=195194&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 10,
+            "points": 26,
+            "competitorId": "176104",
+            "fisCode": "54359",
+            "name": "FEURSTEIN Patrick",
+            "country": "AUT",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=176104&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 11,
+            "points": 24,
+            "competitorId": "128892",
+            "fisCode": "54027",
+            "name": "BRENNSTEINER Stefan",
+            "country": "AUT",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=128892&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 13,
+            "points": 20,
+            "competitorId": "159244",
+            "fisCode": "194935",
+            "name": "FAVROT Thibaut",
+            "country": "FRA",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=159244&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 14,
+            "points": 18,
+            "competitorId": "264793",
+            "fisCode": "422954",
+            "name": "BAKKEVIG Rasmus",
+            "country": "NOR",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=264793&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 15,
+            "points": 16,
+            "competitorId": "195408",
+            "fisCode": "202883",
+            "name": "GRAMMEL Anton",
+            "country": "GER",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=195408&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 16,
+            "points": 15,
+            "competitorId": "246186",
+            "fisCode": "180919",
+            "name": "HALLBERG Eduard",
+            "country": "FIN",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=246186&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 17,
+            "points": 14,
+            "competitorId": "219779",
+            "fisCode": "54630",
+            "name": "STURM Joshua",
+            "country": "AUT",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=219779&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 18,
+            "points": 13,
+            "competitorId": "137306",
+            "fisCode": "561244",
+            "name": "KRANJEC Zan",
+            "country": "SLO",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=137306&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 19,
+            "points": 12,
+            "competitorId": "146641",
+            "fisCode": "380335",
+            "name": "ZUBCIC Filip",
+            "country": "CRO",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=146641&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 20,
+            "points": 11,
+            "competitorId": "194529",
+            "fisCode": "60261",
+            "name": "MAES Sam",
+            "country": "BEL",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=194529&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 21,
+            "points": 10,
+            "competitorId": "156112",
+            "fisCode": "202597",
+            "name": "SCHMID Alexander",
+            "country": "GER",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=156112&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 22,
+            "points": 9,
+            "competitorId": "154950",
+            "fisCode": "422304",
+            "name": "KRISTOFFERSEN Henrik",
+            "country": "NOR",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=154950&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 23,
+            "points": 8,
+            "competitorId": "105040",
+            "fisCode": "511638",
+            "name": "TUMLER Thomas",
+            "country": "SUI",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=105040&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 24,
+            "points": 7,
+            "competitorId": "239148",
+            "fisCode": "6191334",
+            "name": "ELEZI CANNAFERINA Alban",
+            "country": "FRA",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=239148&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 25,
+            "points": 6,
+            "competitorId": "240101",
+            "fisCode": "512588",
+            "name": "HAECHLER Lenz",
+            "country": "SUI",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=240101&type=cups&cupcode=WC"
+          },
+          {
+            "rank": 26,
+            "points": 5,
+            "competitorId": "246187",
+            "fisCode": "422873",
+            "name": "GRAHL-MADSEN Hans",
+            "country": "NOR",
+            "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=AL&competitorid=246187&type=cups&cupcode=WC"
+          }
+        ],
+        "SG": []
+      }
+    }
+  }
+}

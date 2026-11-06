@@ -1,0 +1,5803 @@
+{
+  "season": 2027,
+  "seasonLabel": "2026/27",
+  "updatedAt": "2026-11-05T18:41:19.096226Z",
+  "source": "FIS",
+  "sourceUrl": "https://www.fis-ski.com/DB/services/public/icalendar-feed-fis-events.html?seasoncode=2027&sectorcode=AL&categorycode=WC&disciplinecode=DH%2CSL%2CGS%2CSG",
+  "status": "ok",
+  "timezone": "Europe/Zurich",
+  "races": [
+    {
+      "id": "131577",
+      "venue": "Soelden",
+      "country": "AUT",
+      "date": "2026-10-24",
+      "discipline": "GS",
+      "disciplineName": "Slalom gigante",
+      "gender": "W",
+      "timezone": "Europe/Vienna",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131577",
+      "status": "finished",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2026-10-24T08:30:00Z",
+          "localTime": "10:30"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2026-10-24T11:30:00Z",
+          "localTime": "13:30"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/40759b6e-1e01-4487-bd35-c95352913594.pdf"
+        },
+        {
+          "name": "Daily Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/31b8a7fa-9c30-4fbb-b3e8-ae20d81a85cd.pdf"
+        },
+        {
+          "name": "Start List 1st run",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/8599ce10-3fbe-4cbc-8728-a8974af260fb.pdf"
+        },
+        {
+          "name": "Results 1st run",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/12d307ae-0b63-4b9f-be0f-539d8930292b.pdf"
+        },
+        {
+          "name": "Start List 2nd run",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/300fdb38-c817-43d9-bb7a-d5147a5e4446.pdf"
+        },
+        {
+          "name": "Results 2nd run",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/bda460d2-86b5-43ad-8fc5-e0fb01fe9e35.pdf"
+        },
+        {
+          "name": "Results, Analysis, Standings",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/4424e9d2-4dd0-4f92-a2f1-91b10bb59061.pdf"
+        },
+        {
+          "name": "Media Stats",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/690cd6a9-d05a-42c7-827e-8fa1cedb60fd.pdf"
+        }
+      ],
+      "liveUrl": "https://live.fis-ski.com/lv-al5001.htm",
+      "results": [
+        {
+          "rank": "1",
+          "bib": "6",
+          "fisCode": "539909",
+          "name": "MOLTZAN Paula",
+          "country": "USA",
+          "values": [
+            "1:07.86",
+            "1:06.96",
+            "2:14.82",
+            "2:14.82",
+            "0.00",
+            "100"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=155859"
+        },
+        {
+          "rank": "2",
+          "bib": "10",
+          "fisCode": "805009",
+          "name": "COLTURI Lara",
+          "country": "ALB",
+          "values": [
+            "1:08.05",
+            "1:06.78",
+            "2:14.83",
+            "+0.01",
+            "0.07",
+            "80"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=269077"
+        },
+        {
+          "rank": "3",
+          "bib": "16",
+          "fisCode": "507168",
+          "name": "AICHER Emma",
+          "country": "GER",
+          "values": [
+            "1:08.52",
+            "1:06.82",
+            "2:15.34",
+            "+0.52",
+            "3.90",
+            "60"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=237841"
+        },
+        {
+          "rank": "4",
+          "bib": "3",
+          "fisCode": "506399",
+          "name": "HECTOR Sara",
+          "country": "SWE",
+          "values": [
+            "1:07.41",
+            "1:08.04",
+            "2:15.45",
+            "+0.63",
+            "4.72",
+            "50"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=140095"
+        },
+        {
+          "rank": "5",
+          "bib": "21",
+          "fisCode": "299363",
+          "name": "ZENERE Asja",
+          "country": "ITA",
+          "values": [
+            "1:08.77",
+            "1:06.77",
+            "2:15.54",
+            "+0.72",
+            "5.39",
+            "45"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=175037"
+        },
+        {
+          "rank": "6",
+          "bib": "7",
+          "fisCode": "516562",
+          "name": "RAST Camille",
+          "country": "SUI",
+          "values": [
+            "1:07.64",
+            "1:07.99",
+            "2:15.63",
+            "+0.81",
+            "6.07",
+            "40"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=203812"
+        },
+        {
+          "rank": "7",
+          "bib": "5",
+          "fisCode": "6535237",
+          "name": "SHIFFRIN Mikaela",
+          "country": "USA",
+          "values": [
+            "1:07.27",
+            "1:08.38",
+            "2:15.65",
+            "+0.83",
+            "6.22",
+            "36"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=164835"
+        },
+        {
+          "rank": "8",
+          "bib": "1",
+          "fisCode": "415232",
+          "name": "ROBINSON Alice",
+          "country": "NZL",
+          "values": [
+            "1:08.63",
+            "1:07.20",
+            "2:15.83",
+            "+1.01",
+            "7.57",
+            "32"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=221779"
+        },
+        {
+          "rank": "9",
+          "bib": "29",
+          "fisCode": "56392",
+          "name": "GRITSCH Franziska",
+          "country": "AUT",
+          "values": [
+            "1:08.75",
+            "1:07.19",
+            "2:15.94",
+            "+1.12",
+            "8.39",
+            "29"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=191309"
+        },
+        {
+          "rank": "9",
+          "bib": "15",
+          "fisCode": "435334",
+          "name": "GASIENICA-DANIEL Maryna",
+          "country": "POL",
+          "values": [
+            "1:09.78",
+            "1:06.16",
+            "2:15.94",
+            "+1.12",
+            "8.39",
+            "29"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=160104"
+        },
+        {
+          "rank": "11",
+          "bib": "9",
+          "fisCode": "385116",
+          "name": "LJUTIC Zrinka",
+          "country": "CRO",
+          "values": [
+            "1:08.61",
+            "1:07.56",
+            "2:16.17",
+            "+1.35",
+            "10.11",
+            "24"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=252519"
+        },
+        {
+          "rank": "12",
+          "bib": "24",
+          "fisCode": "197616",
+          "name": "ALPHAND Estelle",
+          "country": "SWE",
+          "values": [
+            "1:08.28",
+            "1:08.04",
+            "2:16.32",
+            "+1.50",
+            "11.24",
+            "22"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=163567"
+        },
+        {
+          "rank": "13",
+          "bib": "23",
+          "fisCode": "6536392",
+          "name": "HURT A J",
+          "country": "USA",
+          "values": [
+            "1:08.65",
+            "1:07.78",
+            "2:16.43",
+            "+1.61",
+            "12.06",
+            "20"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=210951"
+        },
+        {
+          "rank": "14",
+          "bib": "27",
+          "fisCode": "6537468",
+          "name": "BOCOCK Elisabeth",
+          "country": "USA",
+          "values": [
+            "1:08.96",
+            "1:07.48",
+            "2:16.44",
+            "+1.62",
+            "12.14",
+            "18"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=260596"
+        },
+        {
+          "rank": "15",
+          "bib": "30",
+          "fisCode": "507011",
+          "name": "LOEVBLOM Hilma",
+          "country": "SWE",
+          "values": [
+            "1:09.17",
+            "1:07.30",
+            "2:16.47",
+            "+1.65",
+            "12.36",
+            "16"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=211099"
+        },
+        {
+          "rank": "16",
+          "bib": "14",
+          "fisCode": "6535773",
+          "name": "O'BRIEN Nina",
+          "country": "USA",
+          "values": [
+            "1:09.25",
+            "1:07.26",
+            "2:16.51",
+            "+1.69",
+            "12.66",
+            "15"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=187620"
+        },
+        {
+          "rank": "16",
+          "bib": "11",
+          "fisCode": "426100",
+          "name": "HOLTMANN Mina Fuerst",
+          "country": "NOR",
+          "values": [
+            "1:08.44",
+            "1:08.07",
+            "2:16.51",
+            "+1.69",
+            "12.66",
+            "15"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=165800"
+        },
+        {
+          "rank": "18",
+          "bib": "12",
+          "fisCode": "6295075",
+          "name": "DELLA MEA Lara",
+          "country": "ITA",
+          "values": [
+            "1:09.32",
+            "1:07.23",
+            "2:16.55",
+            "+1.73",
+            "12.96",
+            "13"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=203427"
+        },
+        {
+          "rank": "19",
+          "bib": "46",
+          "fisCode": "507109",
+          "name": "ARONSSON ELFMAN Hanna",
+          "country": "SWE",
+          "values": [
+            "1:09.04",
+            "1:07.55",
+            "2:16.59",
+            "+1.77",
+            "13.26",
+            "12"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=228233"
+        },
+        {
+          "rank": "20",
+          "bib": "17",
+          "fisCode": "516280",
+          "name": "HOLDENER Wendy",
+          "country": "SUI",
+          "values": [
+            "1:09.60",
+            "1:07.14",
+            "2:16.74",
+            "+1.92",
+            "14.38",
+            "11"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=148331"
+        },
+        {
+          "rank": "20",
+          "bib": "4",
+          "fisCode": "426193",
+          "name": "STJERNESUND Thea Louise",
+          "country": "NOR",
+          "values": [
+            "1:08.53",
+            "1:08.21",
+            "2:16.74",
+            "+1.92",
+            "14.38",
+            "11"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=174491"
+        },
+        {
+          "rank": "22",
+          "bib": "13",
+          "fisCode": "206355",
+          "name": "DUERR Lena",
+          "country": "GER",
+          "values": [
+            "1:09.44",
+            "1:07.35",
+            "2:16.79",
+            "+1.97",
+            "14.76",
+            "9"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=126526"
+        },
+        {
+          "rank": "23",
+          "bib": "18",
+          "fisCode": "705423",
+          "name": "VLHOVA Petra",
+          "country": "SVK",
+          "values": [
+            "1:08.58",
+            "1:08.32",
+            "2:16.90",
+            "+2.08",
+            "15.58",
+            "8"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=168809"
+        },
+        {
+          "rank": "24",
+          "bib": "42",
+          "fisCode": "516268",
+          "name": "WILD Simone",
+          "country": "SUI",
+          "values": [
+            "1:09.67",
+            "1:07.25",
+            "2:16.92",
+            "+2.10",
+            "15.73",
+            "7"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=148146"
+        },
+        {
+          "rank": "25",
+          "bib": "48",
+          "fisCode": "516753",
+          "name": "GROB Stefanie",
+          "country": "SUI",
+          "values": [
+            "1:09.44",
+            "1:07.53",
+            "2:16.97",
+            "+2.15",
+            "16.11",
+            "6"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=252204"
+        },
+        {
+          "rank": "26",
+          "bib": "32",
+          "fisCode": "206668",
+          "name": "WEIDLE-WINKELMANN Kira",
+          "country": "GER",
+          "values": [
+            "1:09.20",
+            "1:07.78",
+            "2:16.98",
+            "+2.16",
+            "16.18",
+            "5"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=173545"
+        },
+        {
+          "rank": "27",
+          "bib": "8",
+          "fisCode": "108461",
+          "name": "RICHARDSON Britt",
+          "country": "CAN",
+          "values": [
+            "1:07.80",
+            "1:09.31",
+            "2:17.11",
+            "+2.29",
+            "17.16",
+            "4"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=240548"
+        },
+        {
+          "rank": "28",
+          "bib": "22",
+          "fisCode": "516407",
+          "name": "KASPER Vanessa",
+          "country": "SUI",
+          "values": [
+            "1:09.81",
+            "1:07.80",
+            "2:17.61",
+            "+2.79",
+            "20.90",
+            "3"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=173470"
+        },
+        {
+          "rank": "29",
+          "bib": "41",
+          "fisCode": "6295835",
+          "name": "PAZZAGLIA Alice",
+          "country": "ITA",
+          "values": [
+            "1:09.27",
+            "1:09.13",
+            "2:18.40",
+            "+3.58",
+            "26.82",
+            "2"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=232757"
+        },
+        {
+          "rank": "30",
+          "bib": "20",
+          "fisCode": "565491",
+          "name": "DVORNIK Neja",
+          "country": "SLO",
+          "values": [
+            "1:09.14",
+            "1:09.51",
+            "2:18.65",
+            "+3.83",
+            "28.69",
+            "1"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=221143"
+        }
+      ]
+    },
+    {
+      "id": "131578",
+      "venue": "Soelden",
+      "country": "AUT",
+      "date": "2026-10-25",
+      "discipline": "GS",
+      "disciplineName": "Slalom gigante",
+      "gender": "M",
+      "timezone": "Europe/Vienna",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131578",
+      "status": "finished",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2026-10-25T09:00:00Z",
+          "localTime": "10:00"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2026-10-25T12:00:00Z",
+          "localTime": "13:00"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/40759b6e-1e01-4487-bd35-c95352913594.pdf"
+        },
+        {
+          "name": "Daily Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/f2754ad7-e5e1-44b5-b0d2-b226e3bd3949.pdf"
+        },
+        {
+          "name": "Start List 1st run",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/4604c7c7-2b4e-4a5d-972e-5d97b9258369.pdf"
+        },
+        {
+          "name": "Results 1st run",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/6dc89894-e283-4646-905d-6b7e1e8ca2bf.pdf"
+        },
+        {
+          "name": "Start List 2nd run",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/2a6aa5fd-9392-4bc1-87a4-465fec90a4c2.pdf"
+        },
+        {
+          "name": "Results 2nd run",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/fb902233-c14d-453e-b025-9d60d9131236.pdf"
+        },
+        {
+          "name": "Results, Analysis, Standings",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/46b1b5e0-eb0c-457a-ae6b-b63dda4ebd68.pdf"
+        },
+        {
+          "name": "Media Stats",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/dbac41a9-bbd9-4956-a51d-23d5039d2d6f.pdf"
+        }
+      ],
+      "liveUrl": "https://live.fis-ski.com/lv-al0001.htm",
+      "results": [
+        {
+          "rank": "1",
+          "bib": "4",
+          "fisCode": "422729",
+          "name": "PINHEIRO BRAATHEN Lucas",
+          "country": "BRA",
+          "values": [
+            "52.40",
+            "52.32",
+            "1:44.72",
+            "1:44.72",
+            "0.00",
+            "100"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=213820"
+        },
+        {
+          "rank": "2",
+          "bib": "5",
+          "fisCode": "512182",
+          "name": "MEILLARD Loic",
+          "country": "SUI",
+          "values": [
+            "52.64",
+            "52.56",
+            "1:45.20",
+            "+0.48",
+            "4.63",
+            "80"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=174158"
+        },
+        {
+          "rank": "3",
+          "bib": "6",
+          "fisCode": "512269",
+          "name": "ODERMATT Marco",
+          "country": "SUI",
+          "values": [
+            "52.95",
+            "52.26",
+            "1:45.21",
+            "+0.49",
+            "4.73",
+            "60"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=190231"
+        },
+        {
+          "rank": "4",
+          "bib": "14",
+          "fisCode": "6532084",
+          "name": "RADAMUS River",
+          "country": "USA",
+          "values": [
+            "53.55",
+            "51.99",
+            "1:45.54",
+            "+0.82",
+            "7.91",
+            "50"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=194503"
+        },
+        {
+          "rank": "5",
+          "bib": "16",
+          "fisCode": "54445",
+          "name": "HAASER Raphael",
+          "country": "AUT",
+          "values": [
+            "53.68",
+            "51.90",
+            "1:45.58",
+            "+0.86",
+            "8.29",
+            "45"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=191305"
+        },
+        {
+          "rank": "6",
+          "bib": "10",
+          "fisCode": "202829",
+          "name": "GRATZ Fabian",
+          "country": "GER",
+          "values": [
+            "53.09",
+            "52.58",
+            "1:45.67",
+            "+0.95",
+            "9.16",
+            "40"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=187951"
+        },
+        {
+          "rank": "7",
+          "bib": "11",
+          "fisCode": "6293171",
+          "name": "VINATZER Alex",
+          "country": "ITA",
+          "values": [
+            "53.49",
+            "52.31",
+            "1:45.80",
+            "+1.08",
+            "10.42",
+            "36"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=204319"
+        },
+        {
+          "rank": "8",
+          "bib": "28",
+          "fisCode": "422803",
+          "name": "SOLBERG Eirik Hystad",
+          "country": "NOR",
+          "values": [
+            "53.44",
+            "52.37",
+            "1:45.81",
+            "+1.09",
+            "10.51",
+            "32"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=231688"
+        },
+        {
+          "rank": "9",
+          "bib": "9",
+          "fisCode": "6190628",
+          "name": "ANGUENOT Leo",
+          "country": "FRA",
+          "values": [
+            "53.79",
+            "52.03",
+            "1:45.82",
+            "+1.10",
+            "10.61",
+            "29"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=195194"
+        },
+        {
+          "rank": "10",
+          "bib": "23",
+          "fisCode": "54359",
+          "name": "FEURSTEIN Patrick",
+          "country": "AUT",
+          "values": [
+            "53.55",
+            "52.28",
+            "1:45.83",
+            "+1.11",
+            "10.71",
+            "26"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=176104"
+        },
+        {
+          "rank": "11",
+          "bib": "2",
+          "fisCode": "54027",
+          "name": "BRENNSTEINER Stefan",
+          "country": "AUT",
+          "values": [
+            "52.89",
+            "53.04",
+            "1:45.93",
+            "+1.21",
+            "11.67",
+            "24"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=128892"
+        },
+        {
+          "rank": "12",
+          "bib": "46",
+          "fisCode": "221675",
+          "name": "CARRICK-SMITH Freddy",
+          "country": "GBR",
+          "values": [
+            "53.77",
+            "52.21",
+            "1:45.98",
+            "+1.26",
+            "12.15",
+            "22"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=278718"
+        },
+        {
+          "rank": "13",
+          "bib": "21",
+          "fisCode": "194935",
+          "name": "FAVROT Thibaut",
+          "country": "FRA",
+          "values": [
+            "53.30",
+            "52.82",
+            "1:46.12",
+            "+1.40",
+            "13.50",
+            "20"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=159244"
+        },
+        {
+          "rank": "14",
+          "bib": "49",
+          "fisCode": "422954",
+          "name": "BAKKEVIG Rasmus",
+          "country": "NOR",
+          "values": [
+            "54.02",
+            "52.16",
+            "1:46.18",
+            "+1.46",
+            "14.08",
+            "18"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=264793"
+        },
+        {
+          "rank": "15",
+          "bib": "18",
+          "fisCode": "202883",
+          "name": "GRAMMEL Anton",
+          "country": "GER",
+          "values": [
+            "54.03",
+            "52.23",
+            "1:46.26",
+            "+1.54",
+            "14.85",
+            "16"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=195408"
+        },
+        {
+          "rank": "16",
+          "bib": "55",
+          "fisCode": "180919",
+          "name": "HALLBERG Eduard",
+          "country": "FIN",
+          "values": [
+            "53.87",
+            "52.42",
+            "1:46.29",
+            "+1.57",
+            "15.14",
+            "15"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=246186"
+        },
+        {
+          "rank": "17",
+          "bib": "22",
+          "fisCode": "54630",
+          "name": "STURM Joshua",
+          "country": "AUT",
+          "values": [
+            "53.56",
+            "52.74",
+            "1:46.30",
+            "+1.58",
+            "15.24",
+            "14"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=219779"
+        },
+        {
+          "rank": "18",
+          "bib": "8",
+          "fisCode": "561244",
+          "name": "KRANJEC Zan",
+          "country": "SLO",
+          "values": [
+            "53.80",
+            "52.51",
+            "1:46.31",
+            "+1.59",
+            "15.34",
+            "13"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=137306"
+        },
+        {
+          "rank": "19",
+          "bib": "19",
+          "fisCode": "380335",
+          "name": "ZUBCIC Filip",
+          "country": "CRO",
+          "values": [
+            "53.38",
+            "53.00",
+            "1:46.38",
+            "+1.66",
+            "16.01",
+            "12"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=146641"
+        },
+        {
+          "rank": "20",
+          "bib": "12",
+          "fisCode": "60261",
+          "name": "MAES Sam",
+          "country": "BEL",
+          "values": [
+            "53.32",
+            "53.12",
+            "1:46.44",
+            "+1.72",
+            "16.59",
+            "11"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=194529"
+        },
+        {
+          "rank": "21",
+          "bib": "27",
+          "fisCode": "202597",
+          "name": "SCHMID Alexander",
+          "country": "GER",
+          "values": [
+            "53.24",
+            "53.26",
+            "1:46.50",
+            "+1.78",
+            "17.17",
+            "10"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=156112"
+        },
+        {
+          "rank": "22",
+          "bib": "7",
+          "fisCode": "422304",
+          "name": "KRISTOFFERSEN Henrik",
+          "country": "NOR",
+          "values": [
+            "53.14",
+            "53.42",
+            "1:46.56",
+            "+1.84",
+            "17.75",
+            "9"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=154950"
+        },
+        {
+          "rank": "23",
+          "bib": "17",
+          "fisCode": "511638",
+          "name": "TUMLER Thomas",
+          "country": "SUI",
+          "values": [
+            "53.82",
+            "52.79",
+            "1:46.61",
+            "+1.89",
+            "18.23",
+            "8"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=105040"
+        },
+        {
+          "rank": "24",
+          "bib": "20",
+          "fisCode": "6191334",
+          "name": "ELEZI CANNAFERINA Alban",
+          "country": "FRA",
+          "values": [
+            "53.97",
+            "52.88",
+            "1:46.85",
+            "+2.13",
+            "20.54",
+            "7"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=239148"
+        },
+        {
+          "rank": "25",
+          "bib": "43",
+          "fisCode": "512588",
+          "name": "HAECHLER Lenz",
+          "country": "SUI",
+          "values": [
+            "53.90",
+            "52.96",
+            "1:46.86",
+            "+2.14",
+            "20.64",
+            "6"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=240101"
+        },
+        {
+          "rank": "26",
+          "bib": "40",
+          "fisCode": "422873",
+          "name": "GRAHL-MADSEN Hans",
+          "country": "NOR",
+          "values": [
+            "53.77",
+            "59.25",
+            "1:53.02",
+            "+8.30",
+            "80.05",
+            "5"
+          ],
+          "athleteUrl": "https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=al&competitorid=246187"
+        }
+      ]
+    },
+    {
+      "id": "131579",
+      "venue": "Levi",
+      "country": "FIN",
+      "date": "2026-11-14",
+      "discipline": "SL",
+      "disciplineName": "Slalom speciale",
+      "gender": "W",
+      "timezone": "Europe/Helsinki",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131579",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2026-11-14T09:00:00Z",
+          "localTime": "11:00"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2026-11-14T12:00:00Z",
+          "localTime": "14:00"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131580",
+      "venue": "Levi",
+      "country": "FIN",
+      "date": "2026-11-15",
+      "discipline": "SL",
+      "disciplineName": "Slalom speciale",
+      "gender": "M",
+      "timezone": "Europe/Helsinki",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131580",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2026-11-15T09:00:00Z",
+          "localTime": "11:00"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2026-11-15T12:00:00Z",
+          "localTime": "14:00"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131581",
+      "venue": "Gurgl",
+      "country": "AUT",
+      "date": "2026-11-21",
+      "discipline": "SL",
+      "disciplineName": "Slalom speciale",
+      "gender": "W",
+      "timezone": "Europe/Vienna",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131581",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2026-11-21T09:30:00Z",
+          "localTime": "10:30"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2026-11-21T12:30:00Z",
+          "localTime": "13:30"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/de501ac1-6641-4731-84cc-c4d76c56e532.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131582",
+      "venue": "Gurgl",
+      "country": "AUT",
+      "date": "2026-11-22",
+      "discipline": "SL",
+      "disciplineName": "Slalom speciale",
+      "gender": "M",
+      "timezone": "Europe/Vienna",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131582",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2026-11-22T09:30:00Z",
+          "localTime": "10:30"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2026-11-22T12:30:00Z",
+          "localTime": "13:30"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/de501ac1-6641-4731-84cc-c4d76c56e532.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131697",
+      "venue": "Copper Mountain, CO",
+      "country": "USA",
+      "date": "2026-11-28",
+      "discipline": "SG",
+      "disciplineName": "Super-G",
+      "gender": "M",
+      "timezone": "America/Denver",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131697",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2026-11-28T18:45:00Z",
+          "localTime": "11:45"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131583",
+      "venue": "Killington",
+      "country": "USA",
+      "date": "2026-11-28",
+      "discipline": "GS",
+      "disciplineName": "Slalom gigante",
+      "gender": "W",
+      "timezone": "America/New_York",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131583",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2026-11-28T14:30:00Z",
+          "localTime": "09:30"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2026-11-28T17:30:00Z",
+          "localTime": "12:30"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/606e492f-5499-4f1a-a93d-fe823aa3aa8c.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131698",
+      "venue": "Copper Mountain, CO",
+      "country": "USA",
+      "date": "2026-11-29",
+      "discipline": "GS",
+      "disciplineName": "Slalom gigante",
+      "gender": "M",
+      "timezone": "America/Denver",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131698",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2026-11-29T17:00:00Z",
+          "localTime": "10:00"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2026-11-29T20:00:00Z",
+          "localTime": "13:00"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131584",
+      "venue": "Killington",
+      "country": "USA",
+      "date": "2026-11-29",
+      "discipline": "SL",
+      "disciplineName": "Slalom speciale",
+      "gender": "W",
+      "timezone": "America/New_York",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131584",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2026-11-29T15:30:00Z",
+          "localTime": "10:30"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2026-11-29T18:30:00Z",
+          "localTime": "13:30"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/606e492f-5499-4f1a-a93d-fe823aa3aa8c.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131702",
+      "venue": "Beaver Creek",
+      "country": "USA",
+      "date": "2026-12-03",
+      "discipline": "DH",
+      "disciplineName": "Discesa libera",
+      "gender": "M",
+      "timezone": "America/Denver",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131702",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2026-12-03T18:00:00Z",
+          "localTime": "11:00"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/82af0934-6fd6-4368-97cf-8a9435dcc5ee.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131703",
+      "venue": "Beaver Creek",
+      "country": "USA",
+      "date": "2026-12-04",
+      "discipline": "DH",
+      "disciplineName": "Discesa libera",
+      "gender": "M",
+      "timezone": "America/Denver",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131703",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2026-12-04T18:00:00Z",
+          "localTime": "11:00"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/82af0934-6fd6-4368-97cf-8a9435dcc5ee.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131704",
+      "venue": "Beaver Creek",
+      "country": "USA",
+      "date": "2026-12-05",
+      "discipline": "SG",
+      "disciplineName": "Super-G",
+      "gender": "M",
+      "timezone": "America/Denver",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131704",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2026-12-05T17:30:00Z",
+          "localTime": "10:30"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/82af0934-6fd6-4368-97cf-8a9435dcc5ee.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131597",
+      "venue": "Tremblant",
+      "country": "CAN",
+      "date": "2026-12-05",
+      "discipline": "GS",
+      "disciplineName": "Slalom gigante",
+      "gender": "W",
+      "timezone": "America/Toronto",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131597",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2026-12-05T16:00:00Z",
+          "localTime": "11:00"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2026-12-05T19:00:00Z",
+          "localTime": "14:00"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/16413041-995b-4350-990d-2db9b9bd0002.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131705",
+      "venue": "Beaver Creek",
+      "country": "USA",
+      "date": "2026-12-06",
+      "discipline": "GS",
+      "disciplineName": "Slalom gigante",
+      "gender": "M",
+      "timezone": "America/Denver",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131705",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2026-12-06T17:00:00Z",
+          "localTime": "10:00"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2026-12-06T20:00:00Z",
+          "localTime": "13:00"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/82af0934-6fd6-4368-97cf-8a9435dcc5ee.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131598",
+      "venue": "Tremblant",
+      "country": "CAN",
+      "date": "2026-12-06",
+      "discipline": "GS",
+      "disciplineName": "Slalom gigante",
+      "gender": "W",
+      "timezone": "America/Toronto",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131598",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2026-12-06T15:30:00Z",
+          "localTime": "10:30"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2026-12-06T18:30:00Z",
+          "localTime": "13:30"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/16413041-995b-4350-990d-2db9b9bd0002.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131601",
+      "venue": "Beaver Creek",
+      "country": "USA",
+      "date": "2026-12-11",
+      "discipline": "DH",
+      "disciplineName": "Discesa libera",
+      "gender": "W",
+      "timezone": "America/Denver",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131601",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2026-12-11T18:00:00Z",
+          "localTime": "11:00"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/ee5a60ef-0b2b-45dd-97b8-bd349312dccd.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131706",
+      "venue": "Val d'Isere",
+      "country": "FRA",
+      "date": "2026-12-12",
+      "discipline": "GS",
+      "disciplineName": "Slalom gigante",
+      "gender": "M",
+      "timezone": "Europe/Paris",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131706",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2026-12-12T09:00:00Z",
+          "localTime": "10:00"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2026-12-12T12:00:00Z",
+          "localTime": "13:00"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131602",
+      "venue": "Beaver Creek",
+      "country": "USA",
+      "date": "2026-12-12",
+      "discipline": "DH",
+      "disciplineName": "Discesa libera",
+      "gender": "W",
+      "timezone": "America/Denver",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131602",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2026-12-12T18:00:00Z",
+          "localTime": "11:00"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/ee5a60ef-0b2b-45dd-97b8-bd349312dccd.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131707",
+      "venue": "Val d'Isere",
+      "country": "FRA",
+      "date": "2026-12-13",
+      "discipline": "SL",
+      "disciplineName": "Slalom speciale",
+      "gender": "M",
+      "timezone": "Europe/Paris",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131707",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2026-12-13T09:00:00Z",
+          "localTime": "10:00"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2026-12-13T12:00:00Z",
+          "localTime": "13:00"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131603",
+      "venue": "Beaver Creek",
+      "country": "USA",
+      "date": "2026-12-13",
+      "discipline": "SG",
+      "disciplineName": "Super-G",
+      "gender": "W",
+      "timezone": "America/Denver",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131603",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2026-12-13T18:00:00Z",
+          "localTime": "11:00"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/ee5a60ef-0b2b-45dd-97b8-bd349312dccd.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131711",
+      "venue": "Val Gardena-Groeden Südtirol",
+      "country": "ITA",
+      "date": "2026-12-18",
+      "discipline": "SG",
+      "disciplineName": "Super-G",
+      "gender": "M",
+      "timezone": "Europe/Rome",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131711",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2026-12-18T11:00:00Z",
+          "localTime": "12:00"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131604",
+      "venue": "St. Moritz",
+      "country": "SUI",
+      "date": "2026-12-18",
+      "discipline": "SG",
+      "disciplineName": "Super-G",
+      "gender": "W",
+      "timezone": "Europe/Zurich",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131604",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2026-12-18T09:30:00Z",
+          "localTime": "10:30"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/957c9fc4-307b-471b-bf19-04159d145d8c.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131712",
+      "venue": "Val Gardena-Groeden Südtirol",
+      "country": "ITA",
+      "date": "2026-12-19",
+      "discipline": "DH",
+      "disciplineName": "Discesa libera",
+      "gender": "M",
+      "timezone": "Europe/Rome",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131712",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2026-12-19T11:00:00Z",
+          "localTime": "12:00"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131605",
+      "venue": "St. Moritz",
+      "country": "SUI",
+      "date": "2026-12-19",
+      "discipline": "SG",
+      "disciplineName": "Super-G",
+      "gender": "W",
+      "timezone": "Europe/Zurich",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131605",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2026-12-19T09:30:00Z",
+          "localTime": "10:30"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/957c9fc4-307b-471b-bf19-04159d145d8c.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131713",
+      "venue": "Alta Badia",
+      "country": "ITA",
+      "date": "2026-12-20",
+      "discipline": "GS",
+      "disciplineName": "Slalom gigante",
+      "gender": "M",
+      "timezone": "Europe/Rome",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131713",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2026-12-20T09:30:00Z",
+          "localTime": "10:30"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2026-12-20T12:30:00Z",
+          "localTime": "13:30"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/ffe18bac-99b5-4ce0-8465-c1e2215302e1.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131606",
+      "venue": "St. Moritz",
+      "country": "SUI",
+      "date": "2026-12-20",
+      "discipline": "GS",
+      "disciplineName": "Slalom gigante",
+      "gender": "W",
+      "timezone": "Europe/Zurich",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131606",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2026-12-20T08:30:00Z",
+          "localTime": "09:30"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2026-12-20T11:30:00Z",
+          "localTime": "12:30"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/957c9fc4-307b-471b-bf19-04159d145d8c.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131714",
+      "venue": "Alta Badia",
+      "country": "ITA",
+      "date": "2026-12-21",
+      "discipline": "SL",
+      "disciplineName": "Slalom speciale",
+      "gender": "M",
+      "timezone": "Europe/Rome",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131714",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2026-12-21T16:45:00Z",
+          "localTime": "17:45"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2026-12-21T20:00:00Z",
+          "localTime": "21:00"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/ffe18bac-99b5-4ce0-8465-c1e2215302e1.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131607",
+      "venue": "Courchevel",
+      "country": "FRA",
+      "date": "2026-12-22",
+      "discipline": "SL",
+      "disciplineName": "Slalom speciale",
+      "gender": "W",
+      "timezone": "Europe/Paris",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131607",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2026-12-22T16:45:00Z",
+          "localTime": "17:45"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2026-12-22T19:45:00Z",
+          "localTime": "20:45"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131715",
+      "venue": "Madonna di Campiglio",
+      "country": "ITA",
+      "date": "2026-12-23",
+      "discipline": "SL",
+      "disciplineName": "Slalom speciale",
+      "gender": "M",
+      "timezone": "Europe/Rome",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131715",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2026-12-23T16:45:00Z",
+          "localTime": "17:45"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2026-12-23T20:00:00Z",
+          "localTime": "21:00"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/e28b07ee-aab2-4072-89e7-cdf3e4c7d1bc.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131838",
+      "venue": "Bormio",
+      "country": "ITA",
+      "date": "2026-12-28",
+      "discipline": "DH",
+      "disciplineName": "Discesa libera",
+      "gender": "M",
+      "timezone": "Europe/Rome",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131838",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2026-12-28T10:30:00Z",
+          "localTime": "11:30"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131608",
+      "venue": "Dachstein West / Gosau",
+      "country": "AUT",
+      "date": "2026-12-28",
+      "discipline": "GS",
+      "disciplineName": "Slalom gigante",
+      "gender": "W",
+      "timezone": "Europe/Vienna",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131608",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2026-12-28T09:00:00Z",
+          "localTime": "10:00"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2026-12-28T12:00:00Z",
+          "localTime": "13:00"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/282f6445-1092-4e12-b66b-33e6fa5d3072.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131839",
+      "venue": "Bormio",
+      "country": "ITA",
+      "date": "2026-12-29",
+      "discipline": "SG",
+      "disciplineName": "Super-G",
+      "gender": "M",
+      "timezone": "Europe/Rome",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131839",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2026-12-29T10:30:00Z",
+          "localTime": "11:30"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131609",
+      "venue": "Dachstein West / Gosau",
+      "country": "AUT",
+      "date": "2026-12-29",
+      "discipline": "SL",
+      "disciplineName": "Slalom speciale",
+      "gender": "W",
+      "timezone": "Europe/Vienna",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131609",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2026-12-29T09:00:00Z",
+          "localTime": "10:00"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2026-12-29T12:00:00Z",
+          "localTime": "13:00"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/282f6445-1092-4e12-b66b-33e6fa5d3072.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131716",
+      "venue": "Kranjska Gora",
+      "country": "SLO",
+      "date": "2027-01-02",
+      "discipline": "GS",
+      "disciplineName": "Slalom gigante",
+      "gender": "M",
+      "timezone": "Europe/Ljubljana",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131716",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2027-01-02T09:00:00Z",
+          "localTime": "10:00"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2027-01-02T12:00:00Z",
+          "localTime": "13:00"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/aa575027-90df-4db6-aa34-a981edd0efb5.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131717",
+      "venue": "Kranjska Gora",
+      "country": "SLO",
+      "date": "2027-01-03",
+      "discipline": "SL",
+      "disciplineName": "Slalom speciale",
+      "gender": "M",
+      "timezone": "Europe/Ljubljana",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131717",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2027-01-03T09:00:00Z",
+          "localTime": "10:00"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2027-01-03T12:00:00Z",
+          "localTime": "13:00"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/aa575027-90df-4db6-aa34-a981edd0efb5.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131654",
+      "venue": "Flachau",
+      "country": "AUT",
+      "date": "2027-01-04",
+      "discipline": "GS",
+      "disciplineName": "Slalom gigante",
+      "gender": "W",
+      "timezone": "Europe/Vienna",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131654",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2027-01-04T16:45:00Z",
+          "localTime": "17:45"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2027-01-04T19:45:00Z",
+          "localTime": "20:45"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131655",
+      "venue": "Flachau",
+      "country": "AUT",
+      "date": "2027-01-05",
+      "discipline": "SL",
+      "disciplineName": "Slalom speciale",
+      "gender": "W",
+      "timezone": "Europe/Vienna",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131655",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2027-01-05T17:00:00Z",
+          "localTime": "18:00"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2027-01-05T20:00:00Z",
+          "localTime": "21:00"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131718",
+      "venue": "Adelboden",
+      "country": "SUI",
+      "date": "2027-01-09",
+      "discipline": "GS",
+      "disciplineName": "Slalom gigante",
+      "gender": "M",
+      "timezone": "Europe/Zurich",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131718",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2027-01-09T09:30:00Z",
+          "localTime": "10:30"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2027-01-09T12:30:00Z",
+          "localTime": "13:30"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131658",
+      "venue": "Val di Fassa",
+      "country": "ITA",
+      "date": "2027-01-09",
+      "discipline": "DH",
+      "disciplineName": "Discesa libera",
+      "gender": "W",
+      "timezone": "Europe/Rome",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131658",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2027-01-09T10:30:00Z",
+          "localTime": "11:30"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131719",
+      "venue": "Adelboden",
+      "country": "SUI",
+      "date": "2027-01-10",
+      "discipline": "SL",
+      "disciplineName": "Slalom speciale",
+      "gender": "M",
+      "timezone": "Europe/Zurich",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131719",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2027-01-10T09:30:00Z",
+          "localTime": "10:30"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2027-01-10T12:30:00Z",
+          "localTime": "13:30"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131659",
+      "venue": "Val di Fassa",
+      "country": "ITA",
+      "date": "2027-01-10",
+      "discipline": "SG",
+      "disciplineName": "Super-G",
+      "gender": "W",
+      "timezone": "Europe/Rome",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131659",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2027-01-10T10:30:00Z",
+          "localTime": "11:30"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131723",
+      "venue": "Wengen",
+      "country": "SUI",
+      "date": "2027-01-15",
+      "discipline": "SG",
+      "disciplineName": "Super-G",
+      "gender": "M",
+      "timezone": "Europe/Zurich",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131723",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2027-01-15T11:30:00Z",
+          "localTime": "12:30"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/ae6b8631-c82c-402d-846f-7aead88d1ca3.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131664",
+      "venue": "Cortina d'Ampezzo",
+      "country": "ITA",
+      "date": "2027-01-15",
+      "discipline": "DH",
+      "disciplineName": "Discesa libera",
+      "gender": "W",
+      "timezone": "Europe/Rome",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131664",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2027-01-15T10:00:00Z",
+          "localTime": "11:00"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131724",
+      "venue": "Wengen",
+      "country": "SUI",
+      "date": "2027-01-16",
+      "discipline": "DH",
+      "disciplineName": "Discesa libera",
+      "gender": "M",
+      "timezone": "Europe/Zurich",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131724",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2027-01-16T11:30:00Z",
+          "localTime": "12:30"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/ae6b8631-c82c-402d-846f-7aead88d1ca3.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131665",
+      "venue": "Cortina d'Ampezzo",
+      "country": "ITA",
+      "date": "2027-01-16",
+      "discipline": "DH",
+      "disciplineName": "Discesa libera",
+      "gender": "W",
+      "timezone": "Europe/Rome",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131665",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2027-01-16T10:00:00Z",
+          "localTime": "11:00"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131725",
+      "venue": "Wengen",
+      "country": "SUI",
+      "date": "2027-01-17",
+      "discipline": "SL",
+      "disciplineName": "Slalom speciale",
+      "gender": "M",
+      "timezone": "Europe/Zurich",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131725",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2027-01-17T09:00:00Z",
+          "localTime": "10:00"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2027-01-17T12:00:00Z",
+          "localTime": "13:00"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/ae6b8631-c82c-402d-846f-7aead88d1ca3.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131666",
+      "venue": "Cortina d'Ampezzo",
+      "country": "ITA",
+      "date": "2027-01-17",
+      "discipline": "SG",
+      "disciplineName": "Super-G",
+      "gender": "W",
+      "timezone": "Europe/Rome",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131666",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2027-01-17T10:15:00Z",
+          "localTime": "11:15"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131667",
+      "venue": "Kronplatz",
+      "country": "ITA",
+      "date": "2027-01-19",
+      "discipline": "GS",
+      "disciplineName": "Slalom gigante",
+      "gender": "W",
+      "timezone": "Europe/Rome",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131667",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2027-01-19T09:30:00Z",
+          "localTime": "10:30"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2027-01-19T12:30:00Z",
+          "localTime": "13:30"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131729",
+      "venue": "Kitzbuehel",
+      "country": "AUT",
+      "date": "2027-01-22",
+      "discipline": "SG",
+      "disciplineName": "Super-G",
+      "gender": "M",
+      "timezone": "Europe/Vienna",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131729",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2027-01-22T10:30:00Z",
+          "localTime": "11:30"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/1684d652-05eb-4308-81c6-2bcf84ee2024.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131730",
+      "venue": "Kitzbuehel",
+      "country": "AUT",
+      "date": "2027-01-23",
+      "discipline": "DH",
+      "disciplineName": "Discesa libera",
+      "gender": "M",
+      "timezone": "Europe/Vienna",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131730",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2027-01-23T10:30:00Z",
+          "localTime": "11:30"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/1684d652-05eb-4308-81c6-2bcf84ee2024.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131668",
+      "venue": "Jasna",
+      "country": "SVK",
+      "date": "2027-01-23",
+      "discipline": "GS",
+      "disciplineName": "Slalom gigante",
+      "gender": "W",
+      "timezone": "Europe/Bratislava",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131668",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2027-01-23T09:00:00Z",
+          "localTime": "10:00"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2027-01-23T12:30:00Z",
+          "localTime": "13:30"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131731",
+      "venue": "Kitzbuehel",
+      "country": "AUT",
+      "date": "2027-01-24",
+      "discipline": "SL",
+      "disciplineName": "Slalom speciale",
+      "gender": "M",
+      "timezone": "Europe/Vienna",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131731",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2027-01-24T09:30:00Z",
+          "localTime": "10:30"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2027-01-24T12:30:00Z",
+          "localTime": "13:30"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/1684d652-05eb-4308-81c6-2bcf84ee2024.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131866",
+      "venue": "Jasna",
+      "country": "SVK",
+      "date": "2027-01-24",
+      "discipline": "SL",
+      "disciplineName": "Slalom speciale",
+      "gender": "W",
+      "timezone": "Europe/Bratislava",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131866",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2027-01-24T08:30:00Z",
+          "localTime": "09:30"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2027-01-24T11:15:00Z",
+          "localTime": "12:15"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131732",
+      "venue": "Schladming",
+      "country": "AUT",
+      "date": "2027-01-26",
+      "discipline": "GS",
+      "disciplineName": "Slalom gigante",
+      "gender": "M",
+      "timezone": "Europe/Vienna",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131732",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2027-01-26T16:45:00Z",
+          "localTime": "17:45"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2027-01-26T19:45:00Z",
+          "localTime": "20:45"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131733",
+      "venue": "Schladming",
+      "country": "AUT",
+      "date": "2027-01-27",
+      "discipline": "SL",
+      "disciplineName": "Slalom speciale",
+      "gender": "M",
+      "timezone": "Europe/Vienna",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131733",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2027-01-27T16:45:00Z",
+          "localTime": "17:45"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2027-01-27T19:45:00Z",
+          "localTime": "20:45"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131670",
+      "venue": "Kranjska Gora",
+      "country": "SLO",
+      "date": "2027-01-29",
+      "discipline": "GS",
+      "disciplineName": "Slalom gigante",
+      "gender": "W",
+      "timezone": "Europe/Ljubljana",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131670",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2027-01-29T09:00:00Z",
+          "localTime": "10:00"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2027-01-29T12:00:00Z",
+          "localTime": "13:00"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/c89d6d49-d365-4ce5-ab45-f7aa429a4c16.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131734",
+      "venue": "Chamonix",
+      "country": "FRA",
+      "date": "2027-01-30",
+      "discipline": "SL",
+      "disciplineName": "Slalom speciale",
+      "gender": "M",
+      "timezone": "Europe/Paris",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131734",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2027-01-30T08:30:00Z",
+          "localTime": "09:30"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2027-01-30T11:30:00Z",
+          "localTime": "12:30"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131671",
+      "venue": "Kranjska Gora",
+      "country": "SLO",
+      "date": "2027-01-30",
+      "discipline": "SL",
+      "disciplineName": "Slalom speciale",
+      "gender": "W",
+      "timezone": "Europe/Ljubljana",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131671",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2027-01-30T09:30:00Z",
+          "localTime": "10:30"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2027-01-30T12:30:00Z",
+          "localTime": "13:30"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/c89d6d49-d365-4ce5-ab45-f7aa429a4c16.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131737",
+      "venue": "Garmisch-Partenkirchen",
+      "country": "GER",
+      "date": "2027-02-20",
+      "discipline": "DH",
+      "disciplineName": "Discesa libera",
+      "gender": "M",
+      "timezone": "Europe/Berlin",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131737",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2027-02-20T09:30:00Z",
+          "localTime": "10:30"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/6a181e94-5416-4660-8cec-5ab12c993ba9.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131672",
+      "venue": "Lenzerheide",
+      "country": "SUI",
+      "date": "2027-02-20",
+      "discipline": "SG",
+      "disciplineName": "Super-G",
+      "gender": "W",
+      "timezone": "Europe/Zurich",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131672",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2027-02-20T11:00:00Z",
+          "localTime": "12:00"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131738",
+      "venue": "Garmisch-Partenkirchen",
+      "country": "GER",
+      "date": "2027-02-21",
+      "discipline": "SG",
+      "disciplineName": "Super-G",
+      "gender": "M",
+      "timezone": "Europe/Berlin",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131738",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2027-02-21T09:30:00Z",
+          "localTime": "10:30"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/6a181e94-5416-4660-8cec-5ab12c993ba9.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131673",
+      "venue": "Lenzerheide",
+      "country": "SUI",
+      "date": "2027-02-21",
+      "discipline": "SG",
+      "disciplineName": "Super-G",
+      "gender": "W",
+      "timezone": "Europe/Zurich",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131673",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2027-02-21T11:00:00Z",
+          "localTime": "12:00"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131741",
+      "venue": "Saalbach",
+      "country": "AUT",
+      "date": "2027-02-27",
+      "discipline": "DH",
+      "disciplineName": "Discesa libera",
+      "gender": "M",
+      "timezone": "Europe/Vienna",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131741",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2027-02-27T10:30:00Z",
+          "localTime": "11:30"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131676",
+      "venue": "Garmisch-Partenkirchen",
+      "country": "GER",
+      "date": "2027-02-27",
+      "discipline": "DH",
+      "disciplineName": "Discesa libera",
+      "gender": "W",
+      "timezone": "Europe/Berlin",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131676",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2027-02-27T09:15:00Z",
+          "localTime": "10:15"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/2e73c998-93b3-4c64-8005-c890e628ba15.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131742",
+      "venue": "Saalbach",
+      "country": "AUT",
+      "date": "2027-02-28",
+      "discipline": "SG",
+      "disciplineName": "Super-G",
+      "gender": "M",
+      "timezone": "Europe/Vienna",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131742",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2027-02-28T10:30:00Z",
+          "localTime": "11:30"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131677",
+      "venue": "Garmisch-Partenkirchen",
+      "country": "GER",
+      "date": "2027-02-28",
+      "discipline": "DH",
+      "disciplineName": "Discesa libera",
+      "gender": "W",
+      "timezone": "Europe/Berlin",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131677",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2027-02-28T09:15:00Z",
+          "localTime": "10:15"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/2e73c998-93b3-4c64-8005-c890e628ba15.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131746",
+      "venue": "Kvitfjell",
+      "country": "NOR",
+      "date": "2027-03-06",
+      "discipline": "DH",
+      "disciplineName": "Discesa libera",
+      "gender": "M",
+      "timezone": "Europe/Oslo",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131746",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2027-03-06T10:00:00Z",
+          "localTime": "11:00"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131678",
+      "venue": "Soldeu",
+      "country": "AND",
+      "date": "2027-03-06",
+      "discipline": "GS",
+      "disciplineName": "Slalom gigante",
+      "gender": "W",
+      "timezone": "Europe/Andorra",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131678",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2027-03-06T08:30:00Z",
+          "localTime": "09:30"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2027-03-06T11:30:00Z",
+          "localTime": "12:30"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131747",
+      "venue": "Kvitfjell",
+      "country": "NOR",
+      "date": "2027-03-07",
+      "discipline": "SG",
+      "disciplineName": "Super-G",
+      "gender": "M",
+      "timezone": "Europe/Oslo",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131747",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2027-03-07T10:00:00Z",
+          "localTime": "11:00"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131679",
+      "venue": "Soldeu",
+      "country": "AND",
+      "date": "2027-03-07",
+      "discipline": "SL",
+      "disciplineName": "Slalom speciale",
+      "gender": "W",
+      "timezone": "Europe/Andorra",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131679",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2027-03-07T08:30:00Z",
+          "localTime": "09:30"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2027-03-07T11:30:00Z",
+          "localTime": "12:30"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131683",
+      "venue": "Kvitfjell",
+      "country": "NOR",
+      "date": "2027-03-12",
+      "discipline": "DH",
+      "disciplineName": "Discesa libera",
+      "gender": "W",
+      "timezone": "Europe/Oslo",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131683",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2027-03-12T10:00:00Z",
+          "localTime": "11:00"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131748",
+      "venue": "Are",
+      "country": "SWE",
+      "date": "2027-03-13",
+      "discipline": "GS",
+      "disciplineName": "Slalom gigante",
+      "gender": "M",
+      "timezone": "Europe/Stockholm",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131748",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2027-03-13T08:30:00Z",
+          "localTime": "09:30"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2027-03-13T12:00:00Z",
+          "localTime": "13:00"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131684",
+      "venue": "Kvitfjell",
+      "country": "NOR",
+      "date": "2027-03-13",
+      "discipline": "SG",
+      "disciplineName": "Super-G",
+      "gender": "W",
+      "timezone": "Europe/Oslo",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131684",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2027-03-13T10:00:00Z",
+          "localTime": "11:00"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131749",
+      "venue": "Are",
+      "country": "SWE",
+      "date": "2027-03-14",
+      "discipline": "SL",
+      "disciplineName": "Slalom speciale",
+      "gender": "M",
+      "timezone": "Europe/Stockholm",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131749",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2027-03-14T08:30:00Z",
+          "localTime": "09:30"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2027-03-14T11:30:00Z",
+          "localTime": "12:30"
+        }
+      ],
+      "documents": [],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131690",
+      "venue": "Sun Valley",
+      "country": "USA",
+      "date": "2027-03-20",
+      "discipline": "DH",
+      "disciplineName": "Discesa libera",
+      "gender": "M",
+      "timezone": "America/Boise",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131690",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2027-03-20T17:00:00Z",
+          "localTime": "11:00"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/c09e143f-81fd-464c-8380-0b4dc63dfe4f.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131689",
+      "venue": "Sun Valley",
+      "country": "USA",
+      "date": "2027-03-20",
+      "discipline": "DH",
+      "disciplineName": "Discesa libera",
+      "gender": "W",
+      "timezone": "America/Boise",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131689",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2027-03-20T18:30:00Z",
+          "localTime": "12:30"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/c09e143f-81fd-464c-8380-0b4dc63dfe4f.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131692",
+      "venue": "Sun Valley",
+      "country": "USA",
+      "date": "2027-03-21",
+      "discipline": "SG",
+      "disciplineName": "Super-G",
+      "gender": "M",
+      "timezone": "America/Boise",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131692",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2027-03-21T18:30:00Z",
+          "localTime": "12:30"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/c09e143f-81fd-464c-8380-0b4dc63dfe4f.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131691",
+      "venue": "Sun Valley",
+      "country": "USA",
+      "date": "2027-03-21",
+      "discipline": "SG",
+      "disciplineName": "Super-G",
+      "gender": "W",
+      "timezone": "America/Boise",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131691",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "Gara",
+          "start": "2027-03-21T17:00:00Z",
+          "localTime": "11:00"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/c09e143f-81fd-464c-8380-0b4dc63dfe4f.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131693",
+      "venue": "Sun Valley",
+      "country": "USA",
+      "date": "2027-03-23",
+      "discipline": "GS",
+      "disciplineName": "Slalom gigante",
+      "gender": "W",
+      "timezone": "America/Boise",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131693",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2027-03-23T15:30:00Z",
+          "localTime": "09:30"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2027-03-23T18:00:00Z",
+          "localTime": "12:00"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/c09e143f-81fd-464c-8380-0b4dc63dfe4f.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131694",
+      "venue": "Sun Valley",
+      "country": "USA",
+      "date": "2027-03-24",
+      "discipline": "GS",
+      "disciplineName": "Slalom gigante",
+      "gender": "M",
+      "timezone": "America/Boise",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131694",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2027-03-24T15:30:00Z",
+          "localTime": "09:30"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2027-03-24T18:00:00Z",
+          "localTime": "12:00"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/c09e143f-81fd-464c-8380-0b4dc63dfe4f.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131696",
+      "venue": "Sun Valley",
+      "country": "USA",
+      "date": "2027-03-25",
+      "discipline": "SL",
+      "disciplineName": "Slalom speciale",
+      "gender": "M",
+      "timezone": "America/Boise",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131696",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2027-03-25T16:00:00Z",
+          "localTime": "10:00"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2027-03-25T19:00:00Z",
+          "localTime": "13:00"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/c09e143f-81fd-464c-8380-0b4dc63dfe4f.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    },
+    {
+      "id": "131695",
+      "venue": "Sun Valley",
+      "country": "USA",
+      "date": "2027-03-25",
+      "discipline": "SL",
+      "disciplineName": "Slalom speciale",
+      "gender": "W",
+      "timezone": "America/Boise",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131695",
+      "status": "scheduled",
+      "runs": [
+        {
+          "number": 1,
+          "label": "1ª manche",
+          "start": "2027-03-25T15:00:00Z",
+          "localTime": "09:00"
+        },
+        {
+          "number": 2,
+          "label": "2ª manche",
+          "start": "2027-03-25T18:00:00Z",
+          "localTime": "12:00"
+        }
+      ],
+      "documents": [
+        {
+          "name": "Event Program",
+          "url": "https://www.fis-ski.com/DB/v2/download/competition-attachment/c09e143f-81fd-464c-8380-0b4dc63dfe4f.pdf"
+        }
+      ],
+      "liveUrl": null,
+      "results": []
+    }
+  ],
+  "events": [
+    {
+      "id": "fis-al-131577-run-1",
+      "raceId": "131577",
+      "season": 2027,
+      "date": "2026-10-24",
+      "start": "2026-10-24T08:30:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Soelden",
+      "country": "AUT",
+      "discipline": "GS",
+      "gender": "W",
+      "title": "Soelden · Slalom gigante donne · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131577",
+      "status": "scheduled",
+      "sourceModified": "20261027T101008Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131577-run-2",
+      "raceId": "131577",
+      "season": 2027,
+      "date": "2026-10-24",
+      "start": "2026-10-24T11:30:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Soelden",
+      "country": "AUT",
+      "discipline": "GS",
+      "gender": "W",
+      "title": "Soelden · Slalom gigante donne · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131577",
+      "status": "scheduled",
+      "sourceModified": "20261027T101008Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131578-run-1",
+      "raceId": "131578",
+      "season": 2027,
+      "date": "2026-10-25",
+      "start": "2026-10-25T09:00:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Soelden",
+      "country": "AUT",
+      "discipline": "GS",
+      "gender": "M",
+      "title": "Soelden · Slalom gigante uomini · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131578",
+      "status": "scheduled",
+      "sourceModified": "20261027T101008Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131578-run-2",
+      "raceId": "131578",
+      "season": 2027,
+      "date": "2026-10-25",
+      "start": "2026-10-25T12:00:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Soelden",
+      "country": "AUT",
+      "discipline": "GS",
+      "gender": "M",
+      "title": "Soelden · Slalom gigante uomini · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131578",
+      "status": "scheduled",
+      "sourceModified": "20261027T101008Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131579-run-1",
+      "raceId": "131579",
+      "season": 2027,
+      "date": "2026-11-14",
+      "start": "2026-11-14T09:00:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Levi",
+      "country": "FIN",
+      "discipline": "SL",
+      "gender": "W",
+      "title": "Levi · Slalom speciale donne · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131579",
+      "status": "scheduled",
+      "sourceModified": "20261018T111043Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131579-run-2",
+      "raceId": "131579",
+      "season": 2027,
+      "date": "2026-11-14",
+      "start": "2026-11-14T12:00:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Levi",
+      "country": "FIN",
+      "discipline": "SL",
+      "gender": "W",
+      "title": "Levi · Slalom speciale donne · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131579",
+      "status": "scheduled",
+      "sourceModified": "20261018T111043Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131580-run-1",
+      "raceId": "131580",
+      "season": 2027,
+      "date": "2026-11-15",
+      "start": "2026-11-15T09:00:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Levi",
+      "country": "FIN",
+      "discipline": "SL",
+      "gender": "M",
+      "title": "Levi · Slalom speciale uomini · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131580",
+      "status": "scheduled",
+      "sourceModified": "20261018T111044Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131580-run-2",
+      "raceId": "131580",
+      "season": 2027,
+      "date": "2026-11-15",
+      "start": "2026-11-15T12:00:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Levi",
+      "country": "FIN",
+      "discipline": "SL",
+      "gender": "M",
+      "title": "Levi · Slalom speciale uomini · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131580",
+      "status": "scheduled",
+      "sourceModified": "20261018T111044Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131581-run-1",
+      "raceId": "131581",
+      "season": 2027,
+      "date": "2026-11-21",
+      "start": "2026-11-21T09:30:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Gurgl",
+      "country": "AUT",
+      "discipline": "SL",
+      "gender": "W",
+      "title": "Gurgl · Slalom speciale donne · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131581",
+      "status": "scheduled",
+      "sourceModified": "20261018T111045Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131581-run-2",
+      "raceId": "131581",
+      "season": 2027,
+      "date": "2026-11-21",
+      "start": "2026-11-21T12:30:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Gurgl",
+      "country": "AUT",
+      "discipline": "SL",
+      "gender": "W",
+      "title": "Gurgl · Slalom speciale donne · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131581",
+      "status": "scheduled",
+      "sourceModified": "20261018T111045Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131582-run-1",
+      "raceId": "131582",
+      "season": 2027,
+      "date": "2026-11-22",
+      "start": "2026-11-22T09:30:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Gurgl",
+      "country": "AUT",
+      "discipline": "SL",
+      "gender": "M",
+      "title": "Gurgl · Slalom speciale uomini · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131582",
+      "status": "scheduled",
+      "sourceModified": "20261018T111045Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131582-run-2",
+      "raceId": "131582",
+      "season": 2027,
+      "date": "2026-11-22",
+      "start": "2026-11-22T12:30:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Gurgl",
+      "country": "AUT",
+      "discipline": "SL",
+      "gender": "M",
+      "title": "Gurgl · Slalom speciale uomini · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131582",
+      "status": "scheduled",
+      "sourceModified": "20261018T111045Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131583-run-1",
+      "raceId": "131583",
+      "season": 2027,
+      "date": "2026-11-28",
+      "start": "2026-11-28T14:30:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Killington",
+      "country": "USA",
+      "discipline": "GS",
+      "gender": "W",
+      "title": "Killington · Slalom gigante donne · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131583",
+      "status": "scheduled",
+      "sourceModified": "20261018T111046Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131583-run-2",
+      "raceId": "131583",
+      "season": 2027,
+      "date": "2026-11-28",
+      "start": "2026-11-28T17:30:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Killington",
+      "country": "USA",
+      "discipline": "GS",
+      "gender": "W",
+      "title": "Killington · Slalom gigante donne · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131583",
+      "status": "scheduled",
+      "sourceModified": "20261018T111046Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131697-run-1",
+      "raceId": "131697",
+      "season": 2027,
+      "date": "2026-11-28",
+      "start": "2026-11-28T18:45:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "Copper Mountain, CO",
+      "country": "USA",
+      "discipline": "SG",
+      "gender": "M",
+      "title": "Copper Mountain, CO · Super-G uomini · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131697",
+      "status": "scheduled",
+      "sourceModified": "20261018T111047Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131584-run-1",
+      "raceId": "131584",
+      "season": 2027,
+      "date": "2026-11-29",
+      "start": "2026-11-29T15:30:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Killington",
+      "country": "USA",
+      "discipline": "SL",
+      "gender": "W",
+      "title": "Killington · Slalom speciale donne · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131584",
+      "status": "scheduled",
+      "sourceModified": "20261018T111047Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131698-run-1",
+      "raceId": "131698",
+      "season": 2027,
+      "date": "2026-11-29",
+      "start": "2026-11-29T17:00:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Copper Mountain, CO",
+      "country": "USA",
+      "discipline": "GS",
+      "gender": "M",
+      "title": "Copper Mountain, CO · Slalom gigante uomini · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131698",
+      "status": "scheduled",
+      "sourceModified": "20261018T111048Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131584-run-2",
+      "raceId": "131584",
+      "season": 2027,
+      "date": "2026-11-29",
+      "start": "2026-11-29T18:30:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Killington",
+      "country": "USA",
+      "discipline": "SL",
+      "gender": "W",
+      "title": "Killington · Slalom speciale donne · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131584",
+      "status": "scheduled",
+      "sourceModified": "20261018T111047Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131698-run-2",
+      "raceId": "131698",
+      "season": 2027,
+      "date": "2026-11-29",
+      "start": "2026-11-29T20:00:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Copper Mountain, CO",
+      "country": "USA",
+      "discipline": "GS",
+      "gender": "M",
+      "title": "Copper Mountain, CO · Slalom gigante uomini · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131698",
+      "status": "scheduled",
+      "sourceModified": "20261018T111048Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131702-run-1",
+      "raceId": "131702",
+      "season": 2027,
+      "date": "2026-12-03",
+      "start": "2026-12-03T18:00:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "Beaver Creek",
+      "country": "USA",
+      "discipline": "DH",
+      "gender": "M",
+      "title": "Beaver Creek · Discesa libera uomini · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131702",
+      "status": "scheduled",
+      "sourceModified": "20261026T121010Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131703-run-1",
+      "raceId": "131703",
+      "season": 2027,
+      "date": "2026-12-04",
+      "start": "2026-12-04T18:00:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "Beaver Creek",
+      "country": "USA",
+      "discipline": "DH",
+      "gender": "M",
+      "title": "Beaver Creek · Discesa libera uomini · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131703",
+      "status": "scheduled",
+      "sourceModified": "20261026T121010Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131597-run-1",
+      "raceId": "131597",
+      "season": 2027,
+      "date": "2026-12-05",
+      "start": "2026-12-05T16:00:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Tremblant",
+      "country": "CAN",
+      "discipline": "GS",
+      "gender": "W",
+      "title": "Tremblant · Slalom gigante donne · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131597",
+      "status": "scheduled",
+      "sourceModified": "20261018T111050Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131704-run-1",
+      "raceId": "131704",
+      "season": 2027,
+      "date": "2026-12-05",
+      "start": "2026-12-05T17:30:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "Beaver Creek",
+      "country": "USA",
+      "discipline": "SG",
+      "gender": "M",
+      "title": "Beaver Creek · Super-G uomini · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131704",
+      "status": "scheduled",
+      "sourceModified": "20261026T121010Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131597-run-2",
+      "raceId": "131597",
+      "season": 2027,
+      "date": "2026-12-05",
+      "start": "2026-12-05T19:00:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Tremblant",
+      "country": "CAN",
+      "discipline": "GS",
+      "gender": "W",
+      "title": "Tremblant · Slalom gigante donne · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131597",
+      "status": "scheduled",
+      "sourceModified": "20261018T111050Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131598-run-1",
+      "raceId": "131598",
+      "season": 2027,
+      "date": "2026-12-06",
+      "start": "2026-12-06T15:30:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Tremblant",
+      "country": "CAN",
+      "discipline": "GS",
+      "gender": "W",
+      "title": "Tremblant · Slalom gigante donne · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131598",
+      "status": "scheduled",
+      "sourceModified": "20261018T111052Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131705-run-1",
+      "raceId": "131705",
+      "season": 2027,
+      "date": "2026-12-06",
+      "start": "2026-12-06T17:00:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Beaver Creek",
+      "country": "USA",
+      "discipline": "GS",
+      "gender": "M",
+      "title": "Beaver Creek · Slalom gigante uomini · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131705",
+      "status": "scheduled",
+      "sourceModified": "20261026T121010Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131598-run-2",
+      "raceId": "131598",
+      "season": 2027,
+      "date": "2026-12-06",
+      "start": "2026-12-06T18:30:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Tremblant",
+      "country": "CAN",
+      "discipline": "GS",
+      "gender": "W",
+      "title": "Tremblant · Slalom gigante donne · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131598",
+      "status": "scheduled",
+      "sourceModified": "20261018T111052Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131705-run-2",
+      "raceId": "131705",
+      "season": 2027,
+      "date": "2026-12-06",
+      "start": "2026-12-06T20:00:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Beaver Creek",
+      "country": "USA",
+      "discipline": "GS",
+      "gender": "M",
+      "title": "Beaver Creek · Slalom gigante uomini · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131705",
+      "status": "scheduled",
+      "sourceModified": "20261026T121010Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131601-run-1",
+      "raceId": "131601",
+      "season": 2027,
+      "date": "2026-12-11",
+      "start": "2026-12-11T18:00:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "Beaver Creek",
+      "country": "USA",
+      "discipline": "DH",
+      "gender": "W",
+      "title": "Beaver Creek · Discesa libera donne · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131601",
+      "status": "scheduled",
+      "sourceModified": "20261026T121012Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131706-run-1",
+      "raceId": "131706",
+      "season": 2027,
+      "date": "2026-12-12",
+      "start": "2026-12-12T09:00:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Val d'Isere",
+      "country": "FRA",
+      "discipline": "GS",
+      "gender": "M",
+      "title": "Val d'Isere · Slalom gigante uomini · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131706",
+      "status": "scheduled",
+      "sourceModified": "20261018T111053Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131706-run-2",
+      "raceId": "131706",
+      "season": 2027,
+      "date": "2026-12-12",
+      "start": "2026-12-12T12:00:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Val d'Isere",
+      "country": "FRA",
+      "discipline": "GS",
+      "gender": "M",
+      "title": "Val d'Isere · Slalom gigante uomini · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131706",
+      "status": "scheduled",
+      "sourceModified": "20261018T111053Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131602-run-1",
+      "raceId": "131602",
+      "season": 2027,
+      "date": "2026-12-12",
+      "start": "2026-12-12T18:00:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "Beaver Creek",
+      "country": "USA",
+      "discipline": "DH",
+      "gender": "W",
+      "title": "Beaver Creek · Discesa libera donne · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131602",
+      "status": "scheduled",
+      "sourceModified": "20261102T031103Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131707-run-1",
+      "raceId": "131707",
+      "season": 2027,
+      "date": "2026-12-13",
+      "start": "2026-12-13T09:00:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Val d'Isere",
+      "country": "FRA",
+      "discipline": "SL",
+      "gender": "M",
+      "title": "Val d'Isere · Slalom speciale uomini · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131707",
+      "status": "scheduled",
+      "sourceModified": "20261018T111053Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131707-run-2",
+      "raceId": "131707",
+      "season": 2027,
+      "date": "2026-12-13",
+      "start": "2026-12-13T12:00:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Val d'Isere",
+      "country": "FRA",
+      "discipline": "SL",
+      "gender": "M",
+      "title": "Val d'Isere · Slalom speciale uomini · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131707",
+      "status": "scheduled",
+      "sourceModified": "20261018T111053Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131603-run-1",
+      "raceId": "131603",
+      "season": 2027,
+      "date": "2026-12-13",
+      "start": "2026-12-13T18:00:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "Beaver Creek",
+      "country": "USA",
+      "discipline": "SG",
+      "gender": "W",
+      "title": "Beaver Creek · Super-G donne · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131603",
+      "status": "scheduled",
+      "sourceModified": "20261026T121012Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131604-run-1",
+      "raceId": "131604",
+      "season": 2027,
+      "date": "2026-12-18",
+      "start": "2026-12-18T09:30:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "St. Moritz",
+      "country": "SUI",
+      "discipline": "SG",
+      "gender": "W",
+      "title": "St. Moritz · Super-G donne · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131604",
+      "status": "scheduled",
+      "sourceModified": "20261018T111055Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131711-run-1",
+      "raceId": "131711",
+      "season": 2027,
+      "date": "2026-12-18",
+      "start": "2026-12-18T11:00:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "Val Gardena-Groeden Südtirol",
+      "country": "ITA",
+      "discipline": "SG",
+      "gender": "M",
+      "title": "Val Gardena-Groeden Südtirol · Super-G uomini · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131711",
+      "status": "scheduled",
+      "sourceModified": "20261018T111055Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131605-run-1",
+      "raceId": "131605",
+      "season": 2027,
+      "date": "2026-12-19",
+      "start": "2026-12-19T09:30:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "St. Moritz",
+      "country": "SUI",
+      "discipline": "SG",
+      "gender": "W",
+      "title": "St. Moritz · Super-G donne · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131605",
+      "status": "scheduled",
+      "sourceModified": "20261018T111056Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131712-run-1",
+      "raceId": "131712",
+      "season": 2027,
+      "date": "2026-12-19",
+      "start": "2026-12-19T11:00:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "Val Gardena-Groeden Südtirol",
+      "country": "ITA",
+      "discipline": "DH",
+      "gender": "M",
+      "title": "Val Gardena-Groeden Südtirol · Discesa libera uomini · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131712",
+      "status": "scheduled",
+      "sourceModified": "20261018T111056Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131606-run-1",
+      "raceId": "131606",
+      "season": 2027,
+      "date": "2026-12-20",
+      "start": "2026-12-20T08:30:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "St. Moritz",
+      "country": "SUI",
+      "discipline": "GS",
+      "gender": "W",
+      "title": "St. Moritz · Slalom gigante donne · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131606",
+      "status": "scheduled",
+      "sourceModified": "20261018T111058Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131713-run-1",
+      "raceId": "131713",
+      "season": 2027,
+      "date": "2026-12-20",
+      "start": "2026-12-20T09:30:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Alta Badia",
+      "country": "ITA",
+      "discipline": "GS",
+      "gender": "M",
+      "title": "Alta Badia · Slalom gigante uomini · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131713",
+      "status": "scheduled",
+      "sourceModified": "20261018T111057Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131606-run-2",
+      "raceId": "131606",
+      "season": 2027,
+      "date": "2026-12-20",
+      "start": "2026-12-20T11:30:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "St. Moritz",
+      "country": "SUI",
+      "discipline": "GS",
+      "gender": "W",
+      "title": "St. Moritz · Slalom gigante donne · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131606",
+      "status": "scheduled",
+      "sourceModified": "20261018T111058Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131713-run-2",
+      "raceId": "131713",
+      "season": 2027,
+      "date": "2026-12-20",
+      "start": "2026-12-20T12:30:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Alta Badia",
+      "country": "ITA",
+      "discipline": "GS",
+      "gender": "M",
+      "title": "Alta Badia · Slalom gigante uomini · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131713",
+      "status": "scheduled",
+      "sourceModified": "20261018T111057Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131714-run-1",
+      "raceId": "131714",
+      "season": 2027,
+      "date": "2026-12-21",
+      "start": "2026-12-21T16:45:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Alta Badia",
+      "country": "ITA",
+      "discipline": "SL",
+      "gender": "M",
+      "title": "Alta Badia · Slalom speciale uomini · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131714",
+      "status": "scheduled",
+      "sourceModified": "20261018T111059Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131714-run-2",
+      "raceId": "131714",
+      "season": 2027,
+      "date": "2026-12-21",
+      "start": "2026-12-21T20:00:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Alta Badia",
+      "country": "ITA",
+      "discipline": "SL",
+      "gender": "M",
+      "title": "Alta Badia · Slalom speciale uomini · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131714",
+      "status": "scheduled",
+      "sourceModified": "20261018T111059Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131607-run-1",
+      "raceId": "131607",
+      "season": 2027,
+      "date": "2026-12-22",
+      "start": "2026-12-22T16:45:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Courchevel",
+      "country": "FRA",
+      "discipline": "SL",
+      "gender": "W",
+      "title": "Courchevel · Slalom speciale donne · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131607",
+      "status": "scheduled",
+      "sourceModified": "20261018T111059Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131607-run-2",
+      "raceId": "131607",
+      "season": 2027,
+      "date": "2026-12-22",
+      "start": "2026-12-22T19:45:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Courchevel",
+      "country": "FRA",
+      "discipline": "SL",
+      "gender": "W",
+      "title": "Courchevel · Slalom speciale donne · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131607",
+      "status": "scheduled",
+      "sourceModified": "20261018T111059Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131715-run-1",
+      "raceId": "131715",
+      "season": 2027,
+      "date": "2026-12-23",
+      "start": "2026-12-23T16:45:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Madonna di Campiglio",
+      "country": "ITA",
+      "discipline": "SL",
+      "gender": "M",
+      "title": "Madonna di Campiglio · Slalom speciale uomini · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131715",
+      "status": "scheduled",
+      "sourceModified": "20261025T041036Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131715-run-2",
+      "raceId": "131715",
+      "season": 2027,
+      "date": "2026-12-23",
+      "start": "2026-12-23T20:00:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Madonna di Campiglio",
+      "country": "ITA",
+      "discipline": "SL",
+      "gender": "M",
+      "title": "Madonna di Campiglio · Slalom speciale uomini · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131715",
+      "status": "scheduled",
+      "sourceModified": "20261025T041036Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131608-run-1",
+      "raceId": "131608",
+      "season": 2027,
+      "date": "2026-12-28",
+      "start": "2026-12-28T09:00:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Dachstein West / Gosau",
+      "country": "AUT",
+      "discipline": "GS",
+      "gender": "W",
+      "title": "Dachstein West / Gosau · Slalom gigante donne · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131608",
+      "status": "scheduled",
+      "sourceModified": "20261101T101129Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131838-run-1",
+      "raceId": "131838",
+      "season": 2027,
+      "date": "2026-12-28",
+      "start": "2026-12-28T10:30:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "Bormio",
+      "country": "ITA",
+      "discipline": "DH",
+      "gender": "M",
+      "title": "Bormio · Discesa libera uomini · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131838",
+      "status": "scheduled",
+      "sourceModified": "20261018T121000Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131608-run-2",
+      "raceId": "131608",
+      "season": 2027,
+      "date": "2026-12-28",
+      "start": "2026-12-28T12:00:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Dachstein West / Gosau",
+      "country": "AUT",
+      "discipline": "GS",
+      "gender": "W",
+      "title": "Dachstein West / Gosau · Slalom gigante donne · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131608",
+      "status": "scheduled",
+      "sourceModified": "20261101T101129Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131609-run-1",
+      "raceId": "131609",
+      "season": 2027,
+      "date": "2026-12-29",
+      "start": "2026-12-29T09:00:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Dachstein West / Gosau",
+      "country": "AUT",
+      "discipline": "SL",
+      "gender": "W",
+      "title": "Dachstein West / Gosau · Slalom speciale donne · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131609",
+      "status": "scheduled",
+      "sourceModified": "20261101T101129Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131839-run-1",
+      "raceId": "131839",
+      "season": 2027,
+      "date": "2026-12-29",
+      "start": "2026-12-29T10:30:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "Bormio",
+      "country": "ITA",
+      "discipline": "SG",
+      "gender": "M",
+      "title": "Bormio · Super-G uomini · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131839",
+      "status": "scheduled",
+      "sourceModified": "20261018T121001Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131609-run-2",
+      "raceId": "131609",
+      "season": 2027,
+      "date": "2026-12-29",
+      "start": "2026-12-29T12:00:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Dachstein West / Gosau",
+      "country": "AUT",
+      "discipline": "SL",
+      "gender": "W",
+      "title": "Dachstein West / Gosau · Slalom speciale donne · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131609",
+      "status": "scheduled",
+      "sourceModified": "20261101T101129Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131716-run-1",
+      "raceId": "131716",
+      "season": 2027,
+      "date": "2027-01-02",
+      "start": "2027-01-02T09:00:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Kranjska Gora",
+      "country": "SLO",
+      "discipline": "GS",
+      "gender": "M",
+      "title": "Kranjska Gora · Slalom gigante uomini · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131716",
+      "status": "scheduled",
+      "sourceModified": "20261018T121003Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131716-run-2",
+      "raceId": "131716",
+      "season": 2027,
+      "date": "2027-01-02",
+      "start": "2027-01-02T12:00:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Kranjska Gora",
+      "country": "SLO",
+      "discipline": "GS",
+      "gender": "M",
+      "title": "Kranjska Gora · Slalom gigante uomini · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131716",
+      "status": "scheduled",
+      "sourceModified": "20261018T121003Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131717-run-1",
+      "raceId": "131717",
+      "season": 2027,
+      "date": "2027-01-03",
+      "start": "2027-01-03T09:00:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Kranjska Gora",
+      "country": "SLO",
+      "discipline": "SL",
+      "gender": "M",
+      "title": "Kranjska Gora · Slalom speciale uomini · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131717",
+      "status": "scheduled",
+      "sourceModified": "20261018T121003Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131717-run-2",
+      "raceId": "131717",
+      "season": 2027,
+      "date": "2027-01-03",
+      "start": "2027-01-03T12:00:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Kranjska Gora",
+      "country": "SLO",
+      "discipline": "SL",
+      "gender": "M",
+      "title": "Kranjska Gora · Slalom speciale uomini · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131717",
+      "status": "scheduled",
+      "sourceModified": "20261018T121003Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131654-run-1",
+      "raceId": "131654",
+      "season": 2027,
+      "date": "2027-01-04",
+      "start": "2027-01-04T16:45:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Flachau",
+      "country": "AUT",
+      "discipline": "GS",
+      "gender": "W",
+      "title": "Flachau · Slalom gigante donne · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131654",
+      "status": "scheduled",
+      "sourceModified": "20261018T121004Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131654-run-2",
+      "raceId": "131654",
+      "season": 2027,
+      "date": "2027-01-04",
+      "start": "2027-01-04T19:45:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Flachau",
+      "country": "AUT",
+      "discipline": "GS",
+      "gender": "W",
+      "title": "Flachau · Slalom gigante donne · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131654",
+      "status": "scheduled",
+      "sourceModified": "20261018T121004Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131655-run-1",
+      "raceId": "131655",
+      "season": 2027,
+      "date": "2027-01-05",
+      "start": "2027-01-05T17:00:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Flachau",
+      "country": "AUT",
+      "discipline": "SL",
+      "gender": "W",
+      "title": "Flachau · Slalom speciale donne · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131655",
+      "status": "scheduled",
+      "sourceModified": "20261018T121004Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131655-run-2",
+      "raceId": "131655",
+      "season": 2027,
+      "date": "2027-01-05",
+      "start": "2027-01-05T20:00:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Flachau",
+      "country": "AUT",
+      "discipline": "SL",
+      "gender": "W",
+      "title": "Flachau · Slalom speciale donne · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131655",
+      "status": "scheduled",
+      "sourceModified": "20261018T121004Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131718-run-1",
+      "raceId": "131718",
+      "season": 2027,
+      "date": "2027-01-09",
+      "start": "2027-01-09T09:30:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Adelboden",
+      "country": "SUI",
+      "discipline": "GS",
+      "gender": "M",
+      "title": "Adelboden · Slalom gigante uomini · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131718",
+      "status": "scheduled",
+      "sourceModified": "20261018T121005Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131658-run-1",
+      "raceId": "131658",
+      "season": 2027,
+      "date": "2027-01-09",
+      "start": "2027-01-09T10:30:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "Val di Fassa",
+      "country": "ITA",
+      "discipline": "DH",
+      "gender": "W",
+      "title": "Val di Fassa · Discesa libera donne · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131658",
+      "status": "scheduled",
+      "sourceModified": "20261018T121005Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131718-run-2",
+      "raceId": "131718",
+      "season": 2027,
+      "date": "2027-01-09",
+      "start": "2027-01-09T12:30:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Adelboden",
+      "country": "SUI",
+      "discipline": "GS",
+      "gender": "M",
+      "title": "Adelboden · Slalom gigante uomini · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131718",
+      "status": "scheduled",
+      "sourceModified": "20261018T121005Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131719-run-1",
+      "raceId": "131719",
+      "season": 2027,
+      "date": "2027-01-10",
+      "start": "2027-01-10T09:30:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Adelboden",
+      "country": "SUI",
+      "discipline": "SL",
+      "gender": "M",
+      "title": "Adelboden · Slalom speciale uomini · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131719",
+      "status": "scheduled",
+      "sourceModified": "20261018T121005Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131659-run-1",
+      "raceId": "131659",
+      "season": 2027,
+      "date": "2027-01-10",
+      "start": "2027-01-10T10:30:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "Val di Fassa",
+      "country": "ITA",
+      "discipline": "SG",
+      "gender": "W",
+      "title": "Val di Fassa · Super-G donne · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131659",
+      "status": "scheduled",
+      "sourceModified": "20261018T121006Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131719-run-2",
+      "raceId": "131719",
+      "season": 2027,
+      "date": "2027-01-10",
+      "start": "2027-01-10T12:30:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Adelboden",
+      "country": "SUI",
+      "discipline": "SL",
+      "gender": "M",
+      "title": "Adelboden · Slalom speciale uomini · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131719",
+      "status": "scheduled",
+      "sourceModified": "20261018T121005Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131664-run-1",
+      "raceId": "131664",
+      "season": 2027,
+      "date": "2027-01-15",
+      "start": "2027-01-15T10:00:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "Cortina d'Ampezzo",
+      "country": "ITA",
+      "discipline": "DH",
+      "gender": "W",
+      "title": "Cortina d'Ampezzo · Discesa libera donne · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131664",
+      "status": "scheduled",
+      "sourceModified": "20261018T121009Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131723-run-1",
+      "raceId": "131723",
+      "season": 2027,
+      "date": "2027-01-15",
+      "start": "2027-01-15T11:30:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "Wengen",
+      "country": "SUI",
+      "discipline": "SG",
+      "gender": "M",
+      "title": "Wengen · Super-G uomini · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131723",
+      "status": "scheduled",
+      "sourceModified": "20261018T121008Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131665-run-1",
+      "raceId": "131665",
+      "season": 2027,
+      "date": "2027-01-16",
+      "start": "2027-01-16T10:00:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "Cortina d'Ampezzo",
+      "country": "ITA",
+      "discipline": "DH",
+      "gender": "W",
+      "title": "Cortina d'Ampezzo · Discesa libera donne · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131665",
+      "status": "scheduled",
+      "sourceModified": "20261018T121010Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131724-run-1",
+      "raceId": "131724",
+      "season": 2027,
+      "date": "2027-01-16",
+      "start": "2027-01-16T11:30:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "Wengen",
+      "country": "SUI",
+      "discipline": "DH",
+      "gender": "M",
+      "title": "Wengen · Discesa libera uomini · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131724",
+      "status": "scheduled",
+      "sourceModified": "20261018T121009Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131725-run-1",
+      "raceId": "131725",
+      "season": 2027,
+      "date": "2027-01-17",
+      "start": "2027-01-17T09:00:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Wengen",
+      "country": "SUI",
+      "discipline": "SL",
+      "gender": "M",
+      "title": "Wengen · Slalom speciale uomini · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131725",
+      "status": "scheduled",
+      "sourceModified": "20261018T121010Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131666-run-1",
+      "raceId": "131666",
+      "season": 2027,
+      "date": "2027-01-17",
+      "start": "2027-01-17T10:15:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "Cortina d'Ampezzo",
+      "country": "ITA",
+      "discipline": "SG",
+      "gender": "W",
+      "title": "Cortina d'Ampezzo · Super-G donne · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131666",
+      "status": "scheduled",
+      "sourceModified": "20261018T121011Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131725-run-2",
+      "raceId": "131725",
+      "season": 2027,
+      "date": "2027-01-17",
+      "start": "2027-01-17T12:00:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Wengen",
+      "country": "SUI",
+      "discipline": "SL",
+      "gender": "M",
+      "title": "Wengen · Slalom speciale uomini · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131725",
+      "status": "scheduled",
+      "sourceModified": "20261018T121010Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131667-run-1",
+      "raceId": "131667",
+      "season": 2027,
+      "date": "2027-01-19",
+      "start": "2027-01-19T09:30:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Kronplatz",
+      "country": "ITA",
+      "discipline": "GS",
+      "gender": "W",
+      "title": "Kronplatz · Slalom gigante donne · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131667",
+      "status": "scheduled",
+      "sourceModified": "20261018T121011Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131667-run-2",
+      "raceId": "131667",
+      "season": 2027,
+      "date": "2027-01-19",
+      "start": "2027-01-19T12:30:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Kronplatz",
+      "country": "ITA",
+      "discipline": "GS",
+      "gender": "W",
+      "title": "Kronplatz · Slalom gigante donne · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131667",
+      "status": "scheduled",
+      "sourceModified": "20261018T121011Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131729-run-1",
+      "raceId": "131729",
+      "season": 2027,
+      "date": "2027-01-22",
+      "start": "2027-01-22T10:30:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "Kitzbuehel",
+      "country": "AUT",
+      "discipline": "SG",
+      "gender": "M",
+      "title": "Kitzbuehel · Super-G uomini · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131729",
+      "status": "scheduled",
+      "sourceModified": "20261018T121012Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131668-run-1",
+      "raceId": "131668",
+      "season": 2027,
+      "date": "2027-01-23",
+      "start": "2027-01-23T09:00:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Jasna",
+      "country": "SVK",
+      "discipline": "GS",
+      "gender": "W",
+      "title": "Jasna · Slalom gigante donne · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131668",
+      "status": "scheduled",
+      "sourceModified": "20261019T101037Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131730-run-1",
+      "raceId": "131730",
+      "season": 2027,
+      "date": "2027-01-23",
+      "start": "2027-01-23T10:30:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "Kitzbuehel",
+      "country": "AUT",
+      "discipline": "DH",
+      "gender": "M",
+      "title": "Kitzbuehel · Discesa libera uomini · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131730",
+      "status": "scheduled",
+      "sourceModified": "20261018T121012Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131668-run-2",
+      "raceId": "131668",
+      "season": 2027,
+      "date": "2027-01-23",
+      "start": "2027-01-23T12:30:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Jasna",
+      "country": "SVK",
+      "discipline": "GS",
+      "gender": "W",
+      "title": "Jasna · Slalom gigante donne · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131668",
+      "status": "scheduled",
+      "sourceModified": "20261019T101037Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131866-run-1",
+      "raceId": "131866",
+      "season": 2027,
+      "date": "2027-01-24",
+      "start": "2027-01-24T08:30:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Jasna",
+      "country": "SVK",
+      "discipline": "SL",
+      "gender": "W",
+      "title": "Jasna · Slalom speciale donne · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131866",
+      "status": "scheduled",
+      "sourceModified": "20261019T101037Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131731-run-1",
+      "raceId": "131731",
+      "season": 2027,
+      "date": "2027-01-24",
+      "start": "2027-01-24T09:30:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Kitzbuehel",
+      "country": "AUT",
+      "discipline": "SL",
+      "gender": "M",
+      "title": "Kitzbuehel · Slalom speciale uomini · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131731",
+      "status": "scheduled",
+      "sourceModified": "20261018T121013Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131866-run-2",
+      "raceId": "131866",
+      "season": 2027,
+      "date": "2027-01-24",
+      "start": "2027-01-24T11:15:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Jasna",
+      "country": "SVK",
+      "discipline": "SL",
+      "gender": "W",
+      "title": "Jasna · Slalom speciale donne · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131866",
+      "status": "scheduled",
+      "sourceModified": "20261019T101037Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131731-run-2",
+      "raceId": "131731",
+      "season": 2027,
+      "date": "2027-01-24",
+      "start": "2027-01-24T12:30:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Kitzbuehel",
+      "country": "AUT",
+      "discipline": "SL",
+      "gender": "M",
+      "title": "Kitzbuehel · Slalom speciale uomini · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131731",
+      "status": "scheduled",
+      "sourceModified": "20261018T121013Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131732-run-1",
+      "raceId": "131732",
+      "season": 2027,
+      "date": "2027-01-26",
+      "start": "2027-01-26T16:45:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Schladming",
+      "country": "AUT",
+      "discipline": "GS",
+      "gender": "M",
+      "title": "Schladming · Slalom gigante uomini · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131732",
+      "status": "scheduled",
+      "sourceModified": "20261018T121014Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131732-run-2",
+      "raceId": "131732",
+      "season": 2027,
+      "date": "2027-01-26",
+      "start": "2027-01-26T19:45:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Schladming",
+      "country": "AUT",
+      "discipline": "GS",
+      "gender": "M",
+      "title": "Schladming · Slalom gigante uomini · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131732",
+      "status": "scheduled",
+      "sourceModified": "20261018T121014Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131733-run-1",
+      "raceId": "131733",
+      "season": 2027,
+      "date": "2027-01-27",
+      "start": "2027-01-27T16:45:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Schladming",
+      "country": "AUT",
+      "discipline": "SL",
+      "gender": "M",
+      "title": "Schladming · Slalom speciale uomini · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131733",
+      "status": "scheduled",
+      "sourceModified": "20261018T121015Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131733-run-2",
+      "raceId": "131733",
+      "season": 2027,
+      "date": "2027-01-27",
+      "start": "2027-01-27T19:45:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Schladming",
+      "country": "AUT",
+      "discipline": "SL",
+      "gender": "M",
+      "title": "Schladming · Slalom speciale uomini · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131733",
+      "status": "scheduled",
+      "sourceModified": "20261018T121015Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131670-run-1",
+      "raceId": "131670",
+      "season": 2027,
+      "date": "2027-01-29",
+      "start": "2027-01-29T09:00:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Kranjska Gora",
+      "country": "SLO",
+      "discipline": "GS",
+      "gender": "W",
+      "title": "Kranjska Gora · Slalom gigante donne · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131670",
+      "status": "scheduled",
+      "sourceModified": "20261018T121016Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131670-run-2",
+      "raceId": "131670",
+      "season": 2027,
+      "date": "2027-01-29",
+      "start": "2027-01-29T12:00:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Kranjska Gora",
+      "country": "SLO",
+      "discipline": "GS",
+      "gender": "W",
+      "title": "Kranjska Gora · Slalom gigante donne · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131670",
+      "status": "scheduled",
+      "sourceModified": "20261018T121016Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131734-run-1",
+      "raceId": "131734",
+      "season": 2027,
+      "date": "2027-01-30",
+      "start": "2027-01-30T08:30:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Chamonix",
+      "country": "FRA",
+      "discipline": "SL",
+      "gender": "M",
+      "title": "Chamonix · Slalom speciale uomini · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131734",
+      "status": "scheduled",
+      "sourceModified": "20261018T121016Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131671-run-1",
+      "raceId": "131671",
+      "season": 2027,
+      "date": "2027-01-30",
+      "start": "2027-01-30T09:30:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Kranjska Gora",
+      "country": "SLO",
+      "discipline": "SL",
+      "gender": "W",
+      "title": "Kranjska Gora · Slalom speciale donne · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131671",
+      "status": "scheduled",
+      "sourceModified": "20261018T121017Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131734-run-2",
+      "raceId": "131734",
+      "season": 2027,
+      "date": "2027-01-30",
+      "start": "2027-01-30T11:30:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Chamonix",
+      "country": "FRA",
+      "discipline": "SL",
+      "gender": "M",
+      "title": "Chamonix · Slalom speciale uomini · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131734",
+      "status": "scheduled",
+      "sourceModified": "20261018T121016Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131671-run-2",
+      "raceId": "131671",
+      "season": 2027,
+      "date": "2027-01-30",
+      "start": "2027-01-30T12:30:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Kranjska Gora",
+      "country": "SLO",
+      "discipline": "SL",
+      "gender": "W",
+      "title": "Kranjska Gora · Slalom speciale donne · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131671",
+      "status": "scheduled",
+      "sourceModified": "20261018T121017Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131737-run-1",
+      "raceId": "131737",
+      "season": 2027,
+      "date": "2027-02-20",
+      "start": "2027-02-20T09:30:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "Garmisch-Partenkirchen",
+      "country": "GER",
+      "discipline": "DH",
+      "gender": "M",
+      "title": "Garmisch-Partenkirchen · Discesa libera uomini · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131737",
+      "status": "scheduled",
+      "sourceModified": "20261019T121008Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131672-run-1",
+      "raceId": "131672",
+      "season": 2027,
+      "date": "2027-02-20",
+      "start": "2027-02-20T11:00:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "Lenzerheide",
+      "country": "SUI",
+      "discipline": "SG",
+      "gender": "W",
+      "title": "Lenzerheide · Super-G donne · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131672",
+      "status": "scheduled",
+      "sourceModified": "20261018T121018Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131738-run-1",
+      "raceId": "131738",
+      "season": 2027,
+      "date": "2027-02-21",
+      "start": "2027-02-21T09:30:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "Garmisch-Partenkirchen",
+      "country": "GER",
+      "discipline": "SG",
+      "gender": "M",
+      "title": "Garmisch-Partenkirchen · Super-G uomini · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131738",
+      "status": "scheduled",
+      "sourceModified": "20261019T121008Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131673-run-1",
+      "raceId": "131673",
+      "season": 2027,
+      "date": "2027-02-21",
+      "start": "2027-02-21T11:00:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "Lenzerheide",
+      "country": "SUI",
+      "discipline": "SG",
+      "gender": "W",
+      "title": "Lenzerheide · Super-G donne · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131673",
+      "status": "scheduled",
+      "sourceModified": "20261018T121018Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131676-run-1",
+      "raceId": "131676",
+      "season": 2027,
+      "date": "2027-02-27",
+      "start": "2027-02-27T09:15:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "Garmisch-Partenkirchen",
+      "country": "GER",
+      "discipline": "DH",
+      "gender": "W",
+      "title": "Garmisch-Partenkirchen · Discesa libera donne · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131676",
+      "status": "scheduled",
+      "sourceModified": "20261104T081150Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131741-run-1",
+      "raceId": "131741",
+      "season": 2027,
+      "date": "2027-02-27",
+      "start": "2027-02-27T10:30:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "Saalbach",
+      "country": "AUT",
+      "discipline": "DH",
+      "gender": "M",
+      "title": "Saalbach · Discesa libera uomini · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131741",
+      "status": "scheduled",
+      "sourceModified": "20261020T091031Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131677-run-1",
+      "raceId": "131677",
+      "season": 2027,
+      "date": "2027-02-28",
+      "start": "2027-02-28T09:15:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "Garmisch-Partenkirchen",
+      "country": "GER",
+      "discipline": "DH",
+      "gender": "W",
+      "title": "Garmisch-Partenkirchen · Discesa libera donne · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131677",
+      "status": "scheduled",
+      "sourceModified": "20261104T081150Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131742-run-1",
+      "raceId": "131742",
+      "season": 2027,
+      "date": "2027-02-28",
+      "start": "2027-02-28T10:30:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "Saalbach",
+      "country": "AUT",
+      "discipline": "SG",
+      "gender": "M",
+      "title": "Saalbach · Super-G uomini · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131742",
+      "status": "scheduled",
+      "sourceModified": "20261020T091031Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131678-run-1",
+      "raceId": "131678",
+      "season": 2027,
+      "date": "2027-03-06",
+      "start": "2027-03-06T08:30:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Soldeu",
+      "country": "AND",
+      "discipline": "GS",
+      "gender": "W",
+      "title": "Soldeu · Slalom gigante donne · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131678",
+      "status": "scheduled",
+      "sourceModified": "20261018T121022Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131746-run-1",
+      "raceId": "131746",
+      "season": 2027,
+      "date": "2027-03-06",
+      "start": "2027-03-06T10:00:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "Kvitfjell",
+      "country": "NOR",
+      "discipline": "DH",
+      "gender": "M",
+      "title": "Kvitfjell · Discesa libera uomini · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131746",
+      "status": "scheduled",
+      "sourceModified": "20261022T101056Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131678-run-2",
+      "raceId": "131678",
+      "season": 2027,
+      "date": "2027-03-06",
+      "start": "2027-03-06T11:30:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Soldeu",
+      "country": "AND",
+      "discipline": "GS",
+      "gender": "W",
+      "title": "Soldeu · Slalom gigante donne · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131678",
+      "status": "scheduled",
+      "sourceModified": "20261018T121022Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131679-run-1",
+      "raceId": "131679",
+      "season": 2027,
+      "date": "2027-03-07",
+      "start": "2027-03-07T08:30:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Soldeu",
+      "country": "AND",
+      "discipline": "SL",
+      "gender": "W",
+      "title": "Soldeu · Slalom speciale donne · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131679",
+      "status": "scheduled",
+      "sourceModified": "20261018T121023Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131747-run-1",
+      "raceId": "131747",
+      "season": 2027,
+      "date": "2027-03-07",
+      "start": "2027-03-07T10:00:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "Kvitfjell",
+      "country": "NOR",
+      "discipline": "SG",
+      "gender": "M",
+      "title": "Kvitfjell · Super-G uomini · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131747",
+      "status": "scheduled",
+      "sourceModified": "20261022T101056Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131679-run-2",
+      "raceId": "131679",
+      "season": 2027,
+      "date": "2027-03-07",
+      "start": "2027-03-07T11:30:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Soldeu",
+      "country": "AND",
+      "discipline": "SL",
+      "gender": "W",
+      "title": "Soldeu · Slalom speciale donne · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131679",
+      "status": "scheduled",
+      "sourceModified": "20261018T121023Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131683-run-1",
+      "raceId": "131683",
+      "season": 2027,
+      "date": "2027-03-12",
+      "start": "2027-03-12T10:00:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "Kvitfjell",
+      "country": "NOR",
+      "discipline": "DH",
+      "gender": "W",
+      "title": "Kvitfjell · Discesa libera donne · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131683",
+      "status": "scheduled",
+      "sourceModified": "20261029T091059Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131748-run-1",
+      "raceId": "131748",
+      "season": 2027,
+      "date": "2027-03-13",
+      "start": "2027-03-13T08:30:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Are",
+      "country": "SWE",
+      "discipline": "GS",
+      "gender": "M",
+      "title": "Are · Slalom gigante uomini · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131748",
+      "status": "scheduled",
+      "sourceModified": "20261018T121024Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131684-run-1",
+      "raceId": "131684",
+      "season": 2027,
+      "date": "2027-03-13",
+      "start": "2027-03-13T10:00:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "Kvitfjell",
+      "country": "NOR",
+      "discipline": "SG",
+      "gender": "W",
+      "title": "Kvitfjell · Super-G donne · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131684",
+      "status": "scheduled",
+      "sourceModified": "20261029T091059Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131748-run-2",
+      "raceId": "131748",
+      "season": 2027,
+      "date": "2027-03-13",
+      "start": "2027-03-13T12:00:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Are",
+      "country": "SWE",
+      "discipline": "GS",
+      "gender": "M",
+      "title": "Are · Slalom gigante uomini · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131748",
+      "status": "scheduled",
+      "sourceModified": "20261018T121024Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131749-run-1",
+      "raceId": "131749",
+      "season": 2027,
+      "date": "2027-03-14",
+      "start": "2027-03-14T08:30:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Are",
+      "country": "SWE",
+      "discipline": "SL",
+      "gender": "M",
+      "title": "Are · Slalom speciale uomini · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131749",
+      "status": "scheduled",
+      "sourceModified": "20261103T101135Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131749-run-2",
+      "raceId": "131749",
+      "season": 2027,
+      "date": "2027-03-14",
+      "start": "2027-03-14T11:30:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Are",
+      "country": "SWE",
+      "discipline": "SL",
+      "gender": "M",
+      "title": "Are · Slalom speciale uomini · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131749",
+      "status": "scheduled",
+      "sourceModified": "20261103T101135Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131690-run-1",
+      "raceId": "131690",
+      "season": 2027,
+      "date": "2027-03-20",
+      "start": "2027-03-20T17:00:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "Sun Valley",
+      "country": "USA",
+      "discipline": "DH",
+      "gender": "M",
+      "title": "Sun Valley · Discesa libera uomini · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131690",
+      "status": "scheduled",
+      "sourceModified": "20261026T121014Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131689-run-1",
+      "raceId": "131689",
+      "season": 2027,
+      "date": "2027-03-20",
+      "start": "2027-03-20T18:30:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "Sun Valley",
+      "country": "USA",
+      "discipline": "DH",
+      "gender": "W",
+      "title": "Sun Valley · Discesa libera donne · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131689",
+      "status": "scheduled",
+      "sourceModified": "20261026T121014Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131691-run-1",
+      "raceId": "131691",
+      "season": 2027,
+      "date": "2027-03-21",
+      "start": "2027-03-21T17:00:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "Sun Valley",
+      "country": "USA",
+      "discipline": "SG",
+      "gender": "W",
+      "title": "Sun Valley · Super-G donne · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131691",
+      "status": "scheduled",
+      "sourceModified": "20261026T121014Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131692-run-1",
+      "raceId": "131692",
+      "season": 2027,
+      "date": "2027-03-21",
+      "start": "2027-03-21T18:30:00Z",
+      "run": 1,
+      "runLabel": "Gara",
+      "venue": "Sun Valley",
+      "country": "USA",
+      "discipline": "SG",
+      "gender": "M",
+      "title": "Sun Valley · Super-G uomini · Gara",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131692",
+      "status": "scheduled",
+      "sourceModified": "20261026T121014Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131693-run-1",
+      "raceId": "131693",
+      "season": 2027,
+      "date": "2027-03-23",
+      "start": "2027-03-23T15:30:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Sun Valley",
+      "country": "USA",
+      "discipline": "GS",
+      "gender": "W",
+      "title": "Sun Valley · Slalom gigante donne · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131693",
+      "status": "scheduled",
+      "sourceModified": "20261026T121014Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131693-run-2",
+      "raceId": "131693",
+      "season": 2027,
+      "date": "2027-03-23",
+      "start": "2027-03-23T18:00:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Sun Valley",
+      "country": "USA",
+      "discipline": "GS",
+      "gender": "W",
+      "title": "Sun Valley · Slalom gigante donne · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131693",
+      "status": "scheduled",
+      "sourceModified": "20261026T121014Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131694-run-1",
+      "raceId": "131694",
+      "season": 2027,
+      "date": "2027-03-24",
+      "start": "2027-03-24T15:30:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Sun Valley",
+      "country": "USA",
+      "discipline": "GS",
+      "gender": "M",
+      "title": "Sun Valley · Slalom gigante uomini · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131694",
+      "status": "scheduled",
+      "sourceModified": "20261026T121014Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131694-run-2",
+      "raceId": "131694",
+      "season": 2027,
+      "date": "2027-03-24",
+      "start": "2027-03-24T18:00:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Sun Valley",
+      "country": "USA",
+      "discipline": "GS",
+      "gender": "M",
+      "title": "Sun Valley · Slalom gigante uomini · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131694",
+      "status": "scheduled",
+      "sourceModified": "20261026T121014Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131695-run-1",
+      "raceId": "131695",
+      "season": 2027,
+      "date": "2027-03-25",
+      "start": "2027-03-25T15:00:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Sun Valley",
+      "country": "USA",
+      "discipline": "SL",
+      "gender": "W",
+      "title": "Sun Valley · Slalom speciale donne · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131695",
+      "status": "scheduled",
+      "sourceModified": "20261026T121014Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131696-run-1",
+      "raceId": "131696",
+      "season": 2027,
+      "date": "2027-03-25",
+      "start": "2027-03-25T16:00:00Z",
+      "run": 1,
+      "runLabel": "1ª manche",
+      "venue": "Sun Valley",
+      "country": "USA",
+      "discipline": "SL",
+      "gender": "M",
+      "title": "Sun Valley · Slalom speciale uomini · 1ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131696",
+      "status": "scheduled",
+      "sourceModified": "20261026T121014Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131695-run-2",
+      "raceId": "131695",
+      "season": 2027,
+      "date": "2027-03-25",
+      "start": "2027-03-25T18:00:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Sun Valley",
+      "country": "USA",
+      "discipline": "SL",
+      "gender": "W",
+      "title": "Sun Valley · Slalom speciale donne · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131695",
+      "status": "scheduled",
+      "sourceModified": "20261026T121014Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    },
+    {
+      "id": "fis-al-131696-run-2",
+      "raceId": "131696",
+      "season": 2027,
+      "date": "2027-03-25",
+      "start": "2027-03-25T19:00:00Z",
+      "run": 2,
+      "runLabel": "2ª manche",
+      "venue": "Sun Valley",
+      "country": "USA",
+      "discipline": "SL",
+      "gender": "M",
+      "title": "Sun Valley · Slalom speciale uomini · 2ª manche",
+      "sourceUrl": "https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131696",
+      "status": "scheduled",
+      "sourceModified": "20261026T121014Z",
+      "sequence": 216067279,
+      "modified": "2026-11-05T18:41:19.095797Z"
+    }
+  ]
+}
