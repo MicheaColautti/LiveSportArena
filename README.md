@@ -6,16 +6,16 @@ Calendari, risultati e preferiti in uno spazio pensato per computer, tablet e te
 
 ## Esplora
 
-- **Home**: accesso agli sport, prossimi eventi e classifica.
-- **Calendario**: tutti gli sport ordinati per giorno, con le manche dello sci separate nei dettagli e nell’abbonamento ICS.
+- **Home**: un’unica lista dei prossimi 12 eventi di sci e hockey, in ordine cronologico.
+- **Calendario**: sport selezionabili insieme; “Tutti gli sport” nasconde i filtri specifici. Discipline sci multiple e località a tendina; manche separate nei dettagli e nell’abbonamento ICS.
 - **In diretta**: timing FIS, podio provvisorio, atleta in pista e partite in corso.
 - **Sci alpino**: programma, ultimo vincitore, classifiche ufficiali della generale e delle specialità per donne e uomini; statistiche su vittorie, podi, distacchi e località.
-- **Hockey**: squadre, risultati, statistiche e previsioni quando sarà collegato un modello.
+- **Hockey**: apertura su Stagione → Risultati, punteggi fra i loghi, cronaca, formazioni per linea, arbitri e previsione quando disponibile. Top Scorer con un giocatore per squadra.
 - **Impostazioni**: squadra, federazioni e atleti preferiti, evidenziati nelle viste.
 
 ## Usa il sito o scarica il progetto
 
-Per usare la versione pubblicata, apri il collegamento **GitHub Pages** nella sezione **Deployments → github-pages** di questo repository. L’indirizzo sarà disponibile dopo la prima pubblicazione. Questa copia locale non contiene ancora un collegamento al repository: il link pubblico verrà aggiunto quando sarà noto.
+Per usare la versione pubblicata, apri il collegamento **GitHub Pages** nella sezione **Deployments → github-pages** di questo repository. L’indirizzo sarà disponibile dopo la prima pubblicazione. Il sito è disponibile su [Live Sport Arena](https://micheacolautti.github.io/LiveSportArena/); la versione online dipende dall’ultima pubblicazione riuscita.
 
 Puoi anche scaricare il progetto con **Code → Download ZIP**, estrarlo e avviarlo dalla sua cartella:
 
@@ -31,7 +31,7 @@ Lo sci legge il timing ufficiale FIS direttamente dal browser. Calendari, ICS e 
 
 I modelli previsionali sono predisposti ma disattivati. Non sono pubblicate quote Sporttip o previsioni live inventate: servono una fonte quote collegata e un modello appropriato.
 
-[Installazione, pubblicazione e dettagli tecnici](GUIDA-TECNICA.md) · [Architettura e flussi](docs/ARCHITETTURA.md)
+[Aggiornamenti locali e log diagnostici](docs/AGGIORNAMENTI-E-LOG.md) · [Architettura e flussi](docs/ARCHITETTURA.md)
 
 Progetto indipendente, non affiliato a FIS, SIHF o National League. Loghi e immagini forniti dall’utente; i banner originali includono watermark, conservati senza modifiche.
 
@@ -40,3 +40,11 @@ Progetto indipendente, non affiliato a FIS, SIHF o National League. Loghi e imma
 Le anteprime di gare e partite includono il collegamento **Dettagli** a una pagina completa con URL condivisibile. La National League dispone di una pagina statistica dedicata, con tabelle di squadre, giocatori e portieri.
 
 L’archivio locale contiene 23 schede di tracciati con fonti e dati mancanti dichiarati. Le mappe interattive richiedono geometrie georeferenziate verificate: nessun tracciato viene disegnato da coordinate inventate. Consulta [copertura e aggiornamento dei tracciati](docs/TRACCIATI.md).
+
+## Stato degli aggiornamenti
+
+Il pulsante **Connesso** nella barra laterale apre le date degli ultimi dati acquisiti per sci, classifiche, hockey e previsioni. Le statistiche hockey hanno un riepilogo e un dettaglio espandibile. “Connesso” descrive la rete del dispositivo, non garantisce che tutte le fonti siano aggiornate.
+
+I collettori salvano log rotanti in `.cache/logs/`. Ogni workflow conserva anche un artefatto `update-logs-…` per 7 giorni, indipendente dal risultato della pubblicazione Pages. Il browser mantiene inoltre gli ultimi 150 eventi diagnostici della sessione per JSON e timing FIS.
+
+[Modifiche UI e logging del 6 novembre](docs/UI-LOGGING-2026-11-06.md).
