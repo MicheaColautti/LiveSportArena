@@ -1,0 +1,21 @@
+.DS_Store
+.venv/
+__pycache__/
+*.py[cod]
+.cache/
+.env
+.env.*
+!*.example
+node_modules/
+national_league_data/
+national_league_predictions/
+artifacts/
+
+.idea/
+MODIFICHE-PROSSIMA-SESSIONE.md
+NOTE-*.md
+
+Implementazione tracciati.md
+
+# Local live score snapshots are produced by the running collector.
+site/data/hockey-live.json

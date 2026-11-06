@@ -1,0 +1,4 @@
+-r requirements.txt
+scipy>=1.11,<2
+scikit-learn>=1.4,<2
+xgboost>=2,<4

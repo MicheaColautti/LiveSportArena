@@ -1,0 +1,7 @@
+{
+  "enabled": false,
+  "name": "Modello personale",
+  "version": "1.0",
+  "entrypoint": "models.hockey.reference_adapter",
+  "dataDirectory": "national_league_data"
+}

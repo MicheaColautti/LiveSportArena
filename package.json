@@ -1,0 +1,12 @@
+{
+  "name": "live-sport-arena",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Calendari, risultati e previsioni per sci alpino e National League svizzera.",
+  "scripts": {
+    "dev": "python3 -m http.server 4173 --bind 127.0.0.1 --directory site",
+    "check": "node --check site/assets/app.js && node --test tests/*.test.mjs && python3 -m unittest discover -s tests",
+    "live:hockey": "python3 -m backend.hockey_live"
+  }
+}
