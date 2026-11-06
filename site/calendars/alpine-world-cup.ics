@@ -1,0 +1,2058 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Live Sport Arena//FIS World Cup//IT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Live Sport Arena · Coppa del Mondo
+X-WR-TIMEZONE:Europe/Zurich
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+X-PUBLISHED-TTL:PT1H
+BEGIN:VEVENT
+UID:fis-al-131577-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261024T083000Z
+SUMMARY:Soelden · Slalom gigante donne · 1ª manche
+LOCATION:Soelden\, AUT
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131577
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131577
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131577-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261024T113000Z
+SUMMARY:Soelden · Slalom gigante donne · 2ª manche
+LOCATION:Soelden\, AUT
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131577
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131577
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131578-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261025T090000Z
+SUMMARY:Soelden · Slalom gigante uomini · 1ª manche
+LOCATION:Soelden\, AUT
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131578
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131578
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131578-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261025T120000Z
+SUMMARY:Soelden · Slalom gigante uomini · 2ª manche
+LOCATION:Soelden\, AUT
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131578
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131578
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131579-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261114T090000Z
+SUMMARY:Levi · Slalom speciale donne · 1ª manche
+LOCATION:Levi\, FIN
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131579
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131579
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131579-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261114T120000Z
+SUMMARY:Levi · Slalom speciale donne · 2ª manche
+LOCATION:Levi\, FIN
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131579
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131579
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131580-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261115T090000Z
+SUMMARY:Levi · Slalom speciale uomini · 1ª manche
+LOCATION:Levi\, FIN
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131580
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131580
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131580-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261115T120000Z
+SUMMARY:Levi · Slalom speciale uomini · 2ª manche
+LOCATION:Levi\, FIN
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131580
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131580
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131581-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261121T093000Z
+SUMMARY:Gurgl · Slalom speciale donne · 1ª manche
+LOCATION:Gurgl\, AUT
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131581
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131581
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131581-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261121T123000Z
+SUMMARY:Gurgl · Slalom speciale donne · 2ª manche
+LOCATION:Gurgl\, AUT
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131581
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131581
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131582-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261122T093000Z
+SUMMARY:Gurgl · Slalom speciale uomini · 1ª manche
+LOCATION:Gurgl\, AUT
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131582
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131582
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131582-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261122T123000Z
+SUMMARY:Gurgl · Slalom speciale uomini · 2ª manche
+LOCATION:Gurgl\, AUT
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131582
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131582
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131583-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261128T143000Z
+SUMMARY:Killington · Slalom gigante donne · 1ª manche
+LOCATION:Killington\, USA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131583
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131583
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131583-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261128T173000Z
+SUMMARY:Killington · Slalom gigante donne · 2ª manche
+LOCATION:Killington\, USA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131583
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131583
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131697-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261128T184500Z
+SUMMARY:Copper Mountain\, CO · Super-G uomini · Gara
+LOCATION:Copper Mountain\, CO\, USA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131697
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131697
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131584-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261129T153000Z
+SUMMARY:Killington · Slalom speciale donne · 1ª manche
+LOCATION:Killington\, USA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131584
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131584
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131698-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261129T170000Z
+SUMMARY:Copper Mountain\, CO · Slalom gigante uomini · 1ª manche
+LOCATION:Copper Mountain\, CO\, USA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131698
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131698
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131584-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261129T183000Z
+SUMMARY:Killington · Slalom speciale donne · 2ª manche
+LOCATION:Killington\, USA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131584
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131584
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131698-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261129T200000Z
+SUMMARY:Copper Mountain\, CO · Slalom gigante uomini · 2ª manche
+LOCATION:Copper Mountain\, CO\, USA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131698
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131698
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131702-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261203T180000Z
+SUMMARY:Beaver Creek · Discesa libera uomini · Gara
+LOCATION:Beaver Creek\, USA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131702
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131702
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131703-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261204T180000Z
+SUMMARY:Beaver Creek · Discesa libera uomini · Gara
+LOCATION:Beaver Creek\, USA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131703
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131703
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131597-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261205T160000Z
+SUMMARY:Tremblant · Slalom gigante donne · 1ª manche
+LOCATION:Tremblant\, CAN
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131597
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131597
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131704-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261205T173000Z
+SUMMARY:Beaver Creek · Super-G uomini · Gara
+LOCATION:Beaver Creek\, USA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131704
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131704
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131597-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261205T190000Z
+SUMMARY:Tremblant · Slalom gigante donne · 2ª manche
+LOCATION:Tremblant\, CAN
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131597
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131597
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131598-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261206T153000Z
+SUMMARY:Tremblant · Slalom gigante donne · 1ª manche
+LOCATION:Tremblant\, CAN
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131598
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131598
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131705-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261206T170000Z
+SUMMARY:Beaver Creek · Slalom gigante uomini · 1ª manche
+LOCATION:Beaver Creek\, USA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131705
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131705
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131598-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261206T183000Z
+SUMMARY:Tremblant · Slalom gigante donne · 2ª manche
+LOCATION:Tremblant\, CAN
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131598
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131598
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131705-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261206T200000Z
+SUMMARY:Beaver Creek · Slalom gigante uomini · 2ª manche
+LOCATION:Beaver Creek\, USA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131705
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131705
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131601-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261211T180000Z
+SUMMARY:Beaver Creek · Discesa libera donne · Gara
+LOCATION:Beaver Creek\, USA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131601
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131601
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131706-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261212T090000Z
+SUMMARY:Val d'Isere · Slalom gigante uomini · 1ª manche
+LOCATION:Val d'Isere\, FRA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131706
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131706
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131706-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261212T120000Z
+SUMMARY:Val d'Isere · Slalom gigante uomini · 2ª manche
+LOCATION:Val d'Isere\, FRA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131706
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131706
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131602-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261212T180000Z
+SUMMARY:Beaver Creek · Discesa libera donne · Gara
+LOCATION:Beaver Creek\, USA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131602
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131602
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131707-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261213T090000Z
+SUMMARY:Val d'Isere · Slalom speciale uomini · 1ª manche
+LOCATION:Val d'Isere\, FRA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131707
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131707
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131707-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261213T120000Z
+SUMMARY:Val d'Isere · Slalom speciale uomini · 2ª manche
+LOCATION:Val d'Isere\, FRA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131707
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131707
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131603-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261213T180000Z
+SUMMARY:Beaver Creek · Super-G donne · Gara
+LOCATION:Beaver Creek\, USA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131603
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131603
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131604-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261218T093000Z
+SUMMARY:St. Moritz · Super-G donne · Gara
+LOCATION:St. Moritz\, SUI
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131604
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131604
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131711-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261218T110000Z
+SUMMARY:Val Gardena-Groeden Südtirol · Super-G uomini · Gara
+LOCATION:Val Gardena-Groeden Südtirol\, ITA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131711
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131711
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131605-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261219T093000Z
+SUMMARY:St. Moritz · Super-G donne · Gara
+LOCATION:St. Moritz\, SUI
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131605
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131605
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131712-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261219T110000Z
+SUMMARY:Val Gardena-Groeden Südtirol · Discesa libera uomini · Gara
+LOCATION:Val Gardena-Groeden Südtirol\, ITA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131712
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131712
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131606-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261220T083000Z
+SUMMARY:St. Moritz · Slalom gigante donne · 1ª manche
+LOCATION:St. Moritz\, SUI
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131606
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131606
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131713-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261220T093000Z
+SUMMARY:Alta Badia · Slalom gigante uomini · 1ª manche
+LOCATION:Alta Badia\, ITA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131713
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131713
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131606-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261220T113000Z
+SUMMARY:St. Moritz · Slalom gigante donne · 2ª manche
+LOCATION:St. Moritz\, SUI
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131606
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131606
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131713-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261220T123000Z
+SUMMARY:Alta Badia · Slalom gigante uomini · 2ª manche
+LOCATION:Alta Badia\, ITA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131713
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131713
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131714-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261221T164500Z
+SUMMARY:Alta Badia · Slalom speciale uomini · 1ª manche
+LOCATION:Alta Badia\, ITA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131714
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131714
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131714-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261221T200000Z
+SUMMARY:Alta Badia · Slalom speciale uomini · 2ª manche
+LOCATION:Alta Badia\, ITA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131714
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131714
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131607-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261222T164500Z
+SUMMARY:Courchevel · Slalom speciale donne · 1ª manche
+LOCATION:Courchevel\, FRA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131607
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131607
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131607-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261222T194500Z
+SUMMARY:Courchevel · Slalom speciale donne · 2ª manche
+LOCATION:Courchevel\, FRA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131607
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131607
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131715-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261223T164500Z
+SUMMARY:Madonna di Campiglio · Slalom speciale uomini · 1ª manche
+LOCATION:Madonna di Campiglio\, ITA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131715
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131715
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131715-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261223T200000Z
+SUMMARY:Madonna di Campiglio · Slalom speciale uomini · 2ª manche
+LOCATION:Madonna di Campiglio\, ITA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131715
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131715
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131608-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261228T090000Z
+SUMMARY:Dachstein West / Gosau · Slalom gigante donne · 1ª manche
+LOCATION:Dachstein West / Gosau\, AUT
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131608
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131608
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131838-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261228T103000Z
+SUMMARY:Bormio · Discesa libera uomini · Gara
+LOCATION:Bormio\, ITA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131838
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131838
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131608-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261228T120000Z
+SUMMARY:Dachstein West / Gosau · Slalom gigante donne · 2ª manche
+LOCATION:Dachstein West / Gosau\, AUT
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131608
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131608
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131609-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261229T090000Z
+SUMMARY:Dachstein West / Gosau · Slalom speciale donne · 1ª manche
+LOCATION:Dachstein West / Gosau\, AUT
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131609
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131609
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131839-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261229T103000Z
+SUMMARY:Bormio · Super-G uomini · Gara
+LOCATION:Bormio\, ITA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131839
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131839
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131609-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20261229T120000Z
+SUMMARY:Dachstein West / Gosau · Slalom speciale donne · 2ª manche
+LOCATION:Dachstein West / Gosau\, AUT
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131609
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131609
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131716-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270102T090000Z
+SUMMARY:Kranjska Gora · Slalom gigante uomini · 1ª manche
+LOCATION:Kranjska Gora\, SLO
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131716
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131716
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131716-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270102T120000Z
+SUMMARY:Kranjska Gora · Slalom gigante uomini · 2ª manche
+LOCATION:Kranjska Gora\, SLO
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131716
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131716
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131717-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270103T090000Z
+SUMMARY:Kranjska Gora · Slalom speciale uomini · 1ª manche
+LOCATION:Kranjska Gora\, SLO
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131717
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131717
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131717-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270103T120000Z
+SUMMARY:Kranjska Gora · Slalom speciale uomini · 2ª manche
+LOCATION:Kranjska Gora\, SLO
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131717
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131717
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131654-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270104T164500Z
+SUMMARY:Flachau · Slalom gigante donne · 1ª manche
+LOCATION:Flachau\, AUT
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131654
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131654
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131654-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270104T194500Z
+SUMMARY:Flachau · Slalom gigante donne · 2ª manche
+LOCATION:Flachau\, AUT
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131654
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131654
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131655-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270105T170000Z
+SUMMARY:Flachau · Slalom speciale donne · 1ª manche
+LOCATION:Flachau\, AUT
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131655
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131655
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131655-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270105T200000Z
+SUMMARY:Flachau · Slalom speciale donne · 2ª manche
+LOCATION:Flachau\, AUT
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131655
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131655
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131718-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270109T093000Z
+SUMMARY:Adelboden · Slalom gigante uomini · 1ª manche
+LOCATION:Adelboden\, SUI
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131718
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131718
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131658-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270109T103000Z
+SUMMARY:Val di Fassa · Discesa libera donne · Gara
+LOCATION:Val di Fassa\, ITA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131658
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131658
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131718-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270109T123000Z
+SUMMARY:Adelboden · Slalom gigante uomini · 2ª manche
+LOCATION:Adelboden\, SUI
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131718
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131718
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131719-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270110T093000Z
+SUMMARY:Adelboden · Slalom speciale uomini · 1ª manche
+LOCATION:Adelboden\, SUI
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131719
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131719
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131659-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270110T103000Z
+SUMMARY:Val di Fassa · Super-G donne · Gara
+LOCATION:Val di Fassa\, ITA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131659
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131659
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131719-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270110T123000Z
+SUMMARY:Adelboden · Slalom speciale uomini · 2ª manche
+LOCATION:Adelboden\, SUI
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131719
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131719
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131664-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270115T100000Z
+SUMMARY:Cortina d'Ampezzo · Discesa libera donne · Gara
+LOCATION:Cortina d'Ampezzo\, ITA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131664
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131664
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131723-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270115T113000Z
+SUMMARY:Wengen · Super-G uomini · Gara
+LOCATION:Wengen\, SUI
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131723
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131723
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131665-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270116T100000Z
+SUMMARY:Cortina d'Ampezzo · Discesa libera donne · Gara
+LOCATION:Cortina d'Ampezzo\, ITA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131665
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131665
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131724-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270116T113000Z
+SUMMARY:Wengen · Discesa libera uomini · Gara
+LOCATION:Wengen\, SUI
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131724
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131724
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131725-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270117T090000Z
+SUMMARY:Wengen · Slalom speciale uomini · 1ª manche
+LOCATION:Wengen\, SUI
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131725
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131725
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131666-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270117T101500Z
+SUMMARY:Cortina d'Ampezzo · Super-G donne · Gara
+LOCATION:Cortina d'Ampezzo\, ITA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131666
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131666
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131725-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270117T120000Z
+SUMMARY:Wengen · Slalom speciale uomini · 2ª manche
+LOCATION:Wengen\, SUI
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131725
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131725
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131667-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270119T093000Z
+SUMMARY:Kronplatz · Slalom gigante donne · 1ª manche
+LOCATION:Kronplatz\, ITA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131667
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131667
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131667-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270119T123000Z
+SUMMARY:Kronplatz · Slalom gigante donne · 2ª manche
+LOCATION:Kronplatz\, ITA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131667
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131667
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131729-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270122T103000Z
+SUMMARY:Kitzbuehel · Super-G uomini · Gara
+LOCATION:Kitzbuehel\, AUT
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131729
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131729
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131668-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270123T090000Z
+SUMMARY:Jasna · Slalom gigante donne · 1ª manche
+LOCATION:Jasna\, SVK
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131668
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131668
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131730-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270123T103000Z
+SUMMARY:Kitzbuehel · Discesa libera uomini · Gara
+LOCATION:Kitzbuehel\, AUT
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131730
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131730
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131668-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270123T123000Z
+SUMMARY:Jasna · Slalom gigante donne · 2ª manche
+LOCATION:Jasna\, SVK
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131668
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131668
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131866-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270124T083000Z
+SUMMARY:Jasna · Slalom speciale donne · 1ª manche
+LOCATION:Jasna\, SVK
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131866
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131866
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131731-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270124T093000Z
+SUMMARY:Kitzbuehel · Slalom speciale uomini · 1ª manche
+LOCATION:Kitzbuehel\, AUT
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131731
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131731
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131866-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270124T111500Z
+SUMMARY:Jasna · Slalom speciale donne · 2ª manche
+LOCATION:Jasna\, SVK
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131866
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131866
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131731-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270124T123000Z
+SUMMARY:Kitzbuehel · Slalom speciale uomini · 2ª manche
+LOCATION:Kitzbuehel\, AUT
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131731
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131731
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131732-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270126T164500Z
+SUMMARY:Schladming · Slalom gigante uomini · 1ª manche
+LOCATION:Schladming\, AUT
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131732
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131732
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131732-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270126T194500Z
+SUMMARY:Schladming · Slalom gigante uomini · 2ª manche
+LOCATION:Schladming\, AUT
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131732
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131732
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131733-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270127T164500Z
+SUMMARY:Schladming · Slalom speciale uomini · 1ª manche
+LOCATION:Schladming\, AUT
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131733
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131733
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131733-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270127T194500Z
+SUMMARY:Schladming · Slalom speciale uomini · 2ª manche
+LOCATION:Schladming\, AUT
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131733
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131733
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131670-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270129T090000Z
+SUMMARY:Kranjska Gora · Slalom gigante donne · 1ª manche
+LOCATION:Kranjska Gora\, SLO
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131670
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131670
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131670-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270129T120000Z
+SUMMARY:Kranjska Gora · Slalom gigante donne · 2ª manche
+LOCATION:Kranjska Gora\, SLO
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131670
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131670
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131734-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270130T083000Z
+SUMMARY:Chamonix · Slalom speciale uomini · 1ª manche
+LOCATION:Chamonix\, FRA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131734
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131734
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131671-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270130T093000Z
+SUMMARY:Kranjska Gora · Slalom speciale donne · 1ª manche
+LOCATION:Kranjska Gora\, SLO
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131671
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131671
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131734-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270130T113000Z
+SUMMARY:Chamonix · Slalom speciale uomini · 2ª manche
+LOCATION:Chamonix\, FRA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131734
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131734
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131671-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270130T123000Z
+SUMMARY:Kranjska Gora · Slalom speciale donne · 2ª manche
+LOCATION:Kranjska Gora\, SLO
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131671
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131671
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131737-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270220T093000Z
+SUMMARY:Garmisch-Partenkirchen · Discesa libera uomini · Gara
+LOCATION:Garmisch-Partenkirchen\, GER
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131737
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131737
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131672-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270220T110000Z
+SUMMARY:Lenzerheide · Super-G donne · Gara
+LOCATION:Lenzerheide\, SUI
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131672
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131672
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131738-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270221T093000Z
+SUMMARY:Garmisch-Partenkirchen · Super-G uomini · Gara
+LOCATION:Garmisch-Partenkirchen\, GER
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131738
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131738
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131673-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270221T110000Z
+SUMMARY:Lenzerheide · Super-G donne · Gara
+LOCATION:Lenzerheide\, SUI
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131673
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131673
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131676-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270227T091500Z
+SUMMARY:Garmisch-Partenkirchen · Discesa libera donne · Gara
+LOCATION:Garmisch-Partenkirchen\, GER
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131676
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131676
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131741-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270227T103000Z
+SUMMARY:Saalbach · Discesa libera uomini · Gara
+LOCATION:Saalbach\, AUT
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131741
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131741
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131677-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270228T091500Z
+SUMMARY:Garmisch-Partenkirchen · Discesa libera donne · Gara
+LOCATION:Garmisch-Partenkirchen\, GER
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131677
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131677
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131742-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270228T103000Z
+SUMMARY:Saalbach · Super-G uomini · Gara
+LOCATION:Saalbach\, AUT
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131742
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131742
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131678-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270306T083000Z
+SUMMARY:Soldeu · Slalom gigante donne · 1ª manche
+LOCATION:Soldeu\, AND
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131678
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131678
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131746-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270306T100000Z
+SUMMARY:Kvitfjell · Discesa libera uomini · Gara
+LOCATION:Kvitfjell\, NOR
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131746
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131746
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131678-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270306T113000Z
+SUMMARY:Soldeu · Slalom gigante donne · 2ª manche
+LOCATION:Soldeu\, AND
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131678
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131678
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131679-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270307T083000Z
+SUMMARY:Soldeu · Slalom speciale donne · 1ª manche
+LOCATION:Soldeu\, AND
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131679
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131679
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131747-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270307T100000Z
+SUMMARY:Kvitfjell · Super-G uomini · Gara
+LOCATION:Kvitfjell\, NOR
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131747
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131747
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131679-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270307T113000Z
+SUMMARY:Soldeu · Slalom speciale donne · 2ª manche
+LOCATION:Soldeu\, AND
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131679
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131679
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131683-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270312T100000Z
+SUMMARY:Kvitfjell · Discesa libera donne · Gara
+LOCATION:Kvitfjell\, NOR
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131683
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131683
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131748-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270313T083000Z
+SUMMARY:Are · Slalom gigante uomini · 1ª manche
+LOCATION:Are\, SWE
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131748
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131748
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131684-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270313T100000Z
+SUMMARY:Kvitfjell · Super-G donne · Gara
+LOCATION:Kvitfjell\, NOR
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131684
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131684
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131748-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270313T120000Z
+SUMMARY:Are · Slalom gigante uomini · 2ª manche
+LOCATION:Are\, SWE
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131748
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131748
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131749-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270314T083000Z
+SUMMARY:Are · Slalom speciale uomini · 1ª manche
+LOCATION:Are\, SWE
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131749
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131749
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131749-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270314T113000Z
+SUMMARY:Are · Slalom speciale uomini · 2ª manche
+LOCATION:Are\, SWE
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131749
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131749
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131690-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270320T170000Z
+SUMMARY:Sun Valley · Discesa libera uomini · Gara
+LOCATION:Sun Valley\, USA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131690
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131690
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131689-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270320T183000Z
+SUMMARY:Sun Valley · Discesa libera donne · Gara
+LOCATION:Sun Valley\, USA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131689
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131689
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131691-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270321T170000Z
+SUMMARY:Sun Valley · Super-G donne · Gara
+LOCATION:Sun Valley\, USA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131691
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131691
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131692-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270321T183000Z
+SUMMARY:Sun Valley · Super-G uomini · Gara
+LOCATION:Sun Valley\, USA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131692
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131692
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131693-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270323T153000Z
+SUMMARY:Sun Valley · Slalom gigante donne · 1ª manche
+LOCATION:Sun Valley\, USA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131693
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131693
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131693-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270323T180000Z
+SUMMARY:Sun Valley · Slalom gigante donne · 2ª manche
+LOCATION:Sun Valley\, USA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131693
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131693
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131694-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270324T153000Z
+SUMMARY:Sun Valley · Slalom gigante uomini · 1ª manche
+LOCATION:Sun Valley\, USA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131694
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131694
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131694-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270324T180000Z
+SUMMARY:Sun Valley · Slalom gigante uomini · 2ª manche
+LOCATION:Sun Valley\, USA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131694
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131694
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131695-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270325T150000Z
+SUMMARY:Sun Valley · Slalom speciale donne · 1ª manche
+LOCATION:Sun Valley\, USA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131695
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131695
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131696-run-1@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270325T160000Z
+SUMMARY:Sun Valley · Slalom speciale uomini · 1ª manche
+LOCATION:Sun Valley\, USA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131696
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131696
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131695-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270325T180000Z
+SUMMARY:Sun Valley · Slalom speciale donne · 2ª manche
+LOCATION:Sun Valley\, USA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131695
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131695
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:fis-al-131696-run-2@sportarenalive
+SEQUENCE:216067279
+DTSTAMP:20261105T184119Z
+LAST-MODIFIED:20261105T184119Z
+DTSTART:20270325T190000Z
+SUMMARY:Sun Valley · Slalom speciale uomini · 2ª manche
+LOCATION:Sun Valley\, USA
+DESCRIPTION:Orario convertito dal fuso della gara. Visualizzazione consigli
+ ata: Europe/Zurich.\nFonte: https://www.fis-ski.com/DB/general/results.htm
+ l?seasoncode=2027&sectorcode=AL&raceid=131696
+URL:https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorc
+ ode=AL&raceid=131696
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR
