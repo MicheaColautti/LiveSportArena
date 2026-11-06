@@ -47,6 +47,11 @@ def main():
             state['alpine'] = stamp()
         except Exception as exc:
             print(f'::warning::Alpine update unavailable: {exc}', flush=True)
+            # Keep the last verified calendar and record the failed source check.
+            previous = read_json(SITE/'data/alpine.json', {})
+            previous.update(status='stale', lastAttemptAt=stamp())
+            write_json(SITE/'data/alpine.json', previous)
+            state['alpine'] = stamp()
     write_json(CACHE/'schedule-state.json', state)
     for name in ('data','calendars'):
         shutil.copytree(SITE/name, archive/name, dirs_exist_ok=True)

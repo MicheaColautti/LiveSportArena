@@ -35,6 +35,8 @@ const readStore = (key, fallback) => { try { return JSON.parse(localStorage.getI
 const saveStore = (key, value) => { try { localStorage.setItem(`sal:${key}`, JSON.stringify(value)); } catch { /* private browser: preferences remain in memory */ } };
 const data = { hockeyStats:{tables:{}}, tracks:{courses:[]}, cups: { groups: {} }, alpine: { races: [], events: [] }, hockey: { games: [], teams: [], standings: [], details: {}, leaders: [] }, predictions: { predictions: [], gameIds: [] } };
 let hockeyPollTimer;
+const sourceSignatures = new Map();
+let hockeyScoreSignature = '';
 let hockeyBaseline = null; let hockeyScores = null; let hockeyPollBusy = false;
 const state = { route: 'home', sport: 'all', discipline: 'all', gender: 'all', scope: 'upcoming', date: '', query: '', month: '', limit: 60, hockeyTab: 'calendar', teams: readStore('teams', []), alerts: { enabled: false, swiss: true, athletes: [], minutes: 3, ...readStore('alerts', {}) } };
 const preferences = { team: '', nations: state.alerts.swiss ? ['SUI'] : [], athletes: [...state.alerts.athletes], stars: true, ...readStore('preferences', {}) };
@@ -79,7 +81,19 @@ const badge = (label, cls = '') => `<span class="status-tag ${cls}">${esc(label)
 const raceStatus = r => r.status === 'live' ? '<span class="status-tag live"><span class="dot live"></span>LIVE</span>' : r.status === 'cancelled' ? badge('Annullata', 'muted') : r.status === 'finished' ? badge('Conclusa', 'muted') : '';
 const gameStatus = g => g.status === 'live' ? '<span class="status-tag live"><span class="dot live"></span>LIVE</span>' : g.status === 'finished' ? badge(`Finale${g.decision ? ' · ' + g.decision : ''}`, 'muted') : g.status === 'cancelled' ? badge('Annullata', 'muted') : `<span>${clock(g.start)}</span>`;
 const empty = (title, description, symbol = 'calendar') => `<div class="empty-state">${icon(symbol)}<h3>${title}</h3><p>${description}</p></div>`;
-const sourceNotice = sport => sport==='hockey' ? hockeySourceNotice() : data[sport].status !== 'ok' || Date.now() - new Date(data[sport].updatedAt || 0) > 2 * 3600000 ? `<div class="notice">${icon('info')}Ultimo aggiornamento ${data[sport].updatedAt ? dateLabel(data[sport].updatedAt) + ' alle ' + clock(data[sport].updatedAt) : 'non disponibile'}. ${data[sport].status === 'stale' ? 'La fonte non risponde; restano visibili gli ultimi dati verificati.' : 'I dati vengono aggiornati quando la sincronizzazione del sito è attiva.'}</div>` : '';
+const sourceNotice = sport => {
+  if (sport === 'hockey') return hockeySourceNotice();
+  const source = data[sport];
+  const lastUpdate = source.updatedAt ? `${dateLabel(source.updatedAt)} alle ${clock(source.updatedAt)}` : 'non disponibile';
+  if (source.status === 'stale') {
+    const checked = source.lastAttemptAt ? ` Ultima verifica: ${dateLabel(source.lastAttemptAt)} alle ${clock(source.lastAttemptAt)}.` : '';
+    return `<div class="notice">${icon('info')}FIS non ha risposto all'ultima verifica.${checked} Calendario disponibile dall'ultimo aggiornamento: ${lastUpdate}.</div>`;
+  }
+  if (Date.now() - Date.parse(source.updatedAt || 0) > 2 * 3600000) {
+    return `<div class="notice">${icon('info')}Calendario FIS aggiornato l'ultima volta il ${lastUpdate}. Gli orari restano quelli dell'ultimo calendario acquisito.</div>`;
+  }
+  return '';
+};
 
 // Files are sprite sheets: DH, SL, giant slalom, Super-G from left to right.
 const DISCIPLINE_ART = {
@@ -609,10 +623,22 @@ document.addEventListener('input', e => { if (e.target.id === 'athlete-search') 
 
 async function loadData(initial = false) {
   const files = [...MODULES, {id:'hockeyStats',file:'data/hockey-statistics.json'}, {id:'tracks',file:'data/tracks.json'}, {id:'cups',file:'data/alpine-standings.json'}, { id: 'predictions', file: 'data/predictions.json' }];
-  const outcomes = await Promise.allSettled(files.map(async module => { const response = await fetch(`${module.file}?v=${Math.floor(Date.now() / 60000)}`, { cache: 'no-cache' }); if (!response.ok) throw new Error(module.id); const value = await response.json(); if(module.id==='hockey') hockeyBaseline=value; data[module.id] = { ...data[module.id], ...value }; }));
-  applyHockeyScores();
+  let changed = initial;
+  const outcomes = await Promise.allSettled(files.map(async module => {
+    const response = await fetch(`${module.file}?v=${Math.floor(Date.now() / 60000)}`, { cache: 'no-cache' });
+    if (!response.ok) throw new Error(module.id);
+    const value = await response.json();
+    const signature = JSON.stringify(value);
+    if (sourceSignatures.get(module.id) === signature) return;
+    sourceSignatures.set(module.id, signature);
+    if (module.id === 'hockey') hockeyBaseline = value;
+    data[module.id] = { ...data[module.id], ...value };
+    changed = true;
+  }));
   const failed = outcomes.filter(x => x.status === 'rejected');
   if (failed.length && initial) toast('Alcuni dati non sono disponibili. Riproveremo automaticamente.');
+  if (!changed) return;
+  applyHockeyScores();
   if (state.route !== 'settings' || initial) render();
   syncLiveConnections();
   if (activeDetail?.type === 'race' && (dialog.open || state.route==='race')) {
@@ -634,10 +660,9 @@ async function loadData(initial = false) {
   }
 }
 readRoute();
-loadData(true);
+loadData(true).then(pollHockeyScores);
 setInterval(() => { if (!document.hidden) loadData(); }, 60000);
-pollHockeyScores();
-document.addEventListener('visibilitychange', () => { if (!document.hidden) { loadData(); pollHockeyScores(); } });
+document.addEventListener('visibilitychange', () => { if (!document.hidden) loadData().then(pollHockeyScores); });
 
 // Enhance every result table, including tables replaced by live updates.
 enableTableSorting();
@@ -651,11 +676,12 @@ function hockeyCalendar() {
 }
 
 function hockeyScoreFresh() {
- return hockeyScores?.status==='ok' && Number(hockeyScores.season)===Number(data.hockey.season) && Date.now()-Date.parse(hockeyScores.updatedAt)<(Number(hockeyScores.nextPollSeconds||20)+45)*1000;
+ const freshness = hockeyScores?.mode === 'github-actions' ? 15 * 60000 : (Number(hockeyScores?.nextPollSeconds || 20) + 45) * 1000;
+ return hockeyScores?.status==='ok' && Number(hockeyScores.season)===Number(data.hockey.season) && Date.now()-Date.parse(hockeyScores.updatedAt)<freshness;
 }
 function hockeyScoreNote() {
  if(hockeyScoreFresh()) return `Punteggi SIHF · controllo ${since(hockeyScores.updatedAt)}`;
- if(hockeyScores?.updatedAt) return `Punteggi SIHF · ultimo controllo ${since(hockeyScores.updatedAt)} · aggiornamento rapido interrotto`;
+ if(hockeyScores?.updatedAt) return `Punteggi SIHF · ultimo controllo ${since(hockeyScores.updatedAt)}${hockeyScores.mode === 'github-actions' ? ' · aggiornamento periodico' : ' · aggiornamento rapido interrotto'}`;
  return `Punteggi SIHF · aggiornati ${since(data.hockey.updatedAt)}`;
 }
 function hockeySourceNotice() {
@@ -684,13 +710,18 @@ async function pollHockeyScores() {
  hockeyPollBusy=true;
  try {
   if(!document.hidden) {
+   let changed = false;
    const response=await fetch(`data/hockey-live.json?v=${Date.now()}`,{cache:'no-store',signal:AbortSignal.timeout(10000)});
    if(response.ok) {
-    hockeyScores=await response.json();
-    applyHockeyScores();
+    const next = await response.json();
+    const signature = JSON.stringify({ season: next.season, status: next.status, games: (next.games || []).map(g => [g.id, g.status, g.homeScore, g.awayScore, g.homePeriods, g.awayPeriods, g.statusText, g.decision]), standings: next.standings, liveStandings: next.liveStandings });
+    changed = signature !== hockeyScoreSignature;
+    hockeyScores = next;
+    hockeyScoreSignature = signature;
+    if (changed) applyHockeyScores();
    }
-   // Avoid interrupting a selection or typed search while refreshing scores.
-   if(!document.activeElement?.closest('input,select,.custom-select') && ['home','calendar','hockey','live','game','predictions'].includes(state.route)) {
+   // Keep the current view intact when only the collector timestamp changes.
+   if(changed && !document.activeElement?.closest('input,select,.custom-select') && ['home','calendar','hockey','live','game','predictions'].includes(state.route)) {
     const scroll=window.scrollY, modalScroll=dialog.scrollTop;
     render(); window.scrollTo(0,scroll);
     if(dialog.open && activeDetail?.type==='game') {
@@ -702,7 +733,7 @@ async function pollHockeyScores() {
  } catch { /* The timestamp makes a stopped collector visible; keep last valid scores. */ }
  finally {
   hockeyPollBusy=false;
-  hockeyPollTimer=setTimeout(pollHockeyScores, hockeyScores?.nextPollSeconds===20 ? 5000 : 15000);
+  hockeyPollTimer=setTimeout(pollHockeyScores, hockeyScores?.nextPollSeconds===20 ? 5000 : 60000);
  }
 }
 
