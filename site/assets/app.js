@@ -1,0 +1,717 @@
+import { enhanceSelects as upgradeSelects } from './select-control.js';
+import { enableTableSorting } from './table-sort.js';
+import { mountCourseMaps } from './course-map.js';
+import { raceTime, raceResults, seasonMetrics } from './alpine-insights.js';
+import { TEAM_LOGOS, NATIONS, projectedStandings } from './preferences.js';
+import { MODULES } from './modules.js';
+import { FisConnection, rowsForRun, alertCandidates, venueInstant, STATUS, STARTED } from './fis-live.js';
+
+const paths = {
+  home: '<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>',
+  calendar: '<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7 3v4m10-4v4M3 11h18m-13 4h1m6 0h1m-8 3h1"/>',
+  live: '<path d="M8 7a7 7 0 0 0 0 10m8-10a7 7 0 0 1 0 10M5 4a11 11 0 0 0 0 16M19 4a11 11 0 0 1 0 16"/><circle cx="12" cy="12" r="2"/>',
+  mountain: '<path d="m2 20 7-14 4 7 3-5 6 12H2Zm4-8 3 2 3-2m3 0 2 2 2-1"/>',
+  hockey: '<path d="m6 3 8 14h6l2 4h-9L3 4m14-1-4 7"/><ellipse cx="5" cy="20" rx="3" ry="1.5"/>',
+  flame: '<path d="M12 3c1 5-4 5-3 10 1-1 2-2 2-4 4 3 7 5 7 8a6 6 0 0 1-12 0c0-3 2-6 6-14Z"/>',
+  chart: '<path d="M3 3v18h18M7 17v-5m5 5V6m5 11V9"/>',
+  spark: '<path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5L12 3ZM20 2v4m-2-2h4"/>',
+  arrow: '<path d="M4 12h16m-6-6 6 6-6 6"/>',
+  chevron: '<path d="m9 5 7 7-7 7"/>',
+  clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  bell: '<path d="M18 8a6 6 0 0 0-12 0c0 8-3 7-3 10h18c0-3-3-2-3-10m-9 13h6"/>',
+  refresh: '<path d="M20 7a9 9 0 0 0-15-2L2 8m0-6v6h6M4 17a9 9 0 0 0 15 2l3-3m0 6v-6h-6"/>',
+  check: '<path d="m5 12 4 4L20 5"/>',
+  close: '<path d="m6 6 12 12M18 6 6 18"/>',
+  download: '<path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/>',
+  link: '<path d="m10 14 4-4m-6 6-1 1a4 4 0 0 1-6-6l5-5a4 4 0 0 1 6 0m0 12a4 4 0 0 0 6 0l5-5a4 4 0 0 0-6-6l-1 1"/>',
+  info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v.1"/>',
+  filter: '<path d="M4 6h16M7 12h10m-7 6h4"/>',
+  trophy: '<path d="M8 3h8v6a4 4 0 0 1-8 0V3Zm8 2h4v2a4 4 0 0 1-4 4M8 5H4v2a4 4 0 0 0 4 4m4 2v5m-5 3h10m-8-3h6v3"/>',
+};
+const icon = name => `<svg class="icon" viewBox="0 0 24 24" aria-hidden="true">${paths[name] || paths.info}</svg>`;
+const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const safeUrl = value => { try { const url = new URL(value); return url.protocol === 'https:' ? esc(url.href) : '#'; } catch { return '#'; } };
+const readStore = (key, fallback) => { try { return JSON.parse(localStorage.getItem(`sal:${key}`)) ?? fallback; } catch { return fallback; } };
+const saveStore = (key, value) => { try { localStorage.setItem(`sal:${key}`, JSON.stringify(value)); } catch { /* private browser: preferences remain in memory */ } };
+const data = { hockeyStats:{tables:{}}, tracks:{courses:[]}, cups: { groups: {} }, alpine: { races: [], events: [] }, hockey: { games: [], teams: [], standings: [], details: {}, leaders: [] }, predictions: { predictions: [], gameIds: [] } };
+let hockeyPollTimer;
+let hockeyBaseline = null; let hockeyScores = null; let hockeyPollBusy = false;
+const state = { route: 'home', sport: 'all', discipline: 'all', gender: 'all', scope: 'upcoming', date: '', query: '', month: '', limit: 60, hockeyTab: 'calendar', teams: readStore('teams', []), alerts: { enabled: false, swiss: true, athletes: [], minutes: 3, ...readStore('alerts', {}) } };
+const preferences = { team: '', nations: state.alerts.swiss ? ['SUI'] : [], athletes: [...state.alerts.athletes], stars: true, ...readStore('preferences', {}) };
+preferences.teams ||= preferences.team ? [preferences.team] : [];
+state.leagueTable = 'player_stats';
+const athleteNames = readStore('athleteNames', {});
+const navigation = [['home', 'Home', 'home'], ['calendar', 'Calendario', 'calendar'], ['live', 'In diretta', 'live'], ['alpine', 'Sci alpino', 'mountain'], ['hockey', 'Hockey', 'hockey'], ['predictions', 'Previsioni', 'spark'], ['settings', 'Impostazioni', 'user'], ['alpine-standings', 'Classifiche', 'trophy'], ['alpine-stats', 'Statistiche', 'chart'], ['hockey-stats','Statistiche National League','chart']];
+paths.user = '<circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/>';
+state.teamFilter = '';
+state.alpineExpanded = location.hash.startsWith('#alpine');
+state.cupGender = 'W'; state.cupDiscipline = 'ALL'; state.statsGender = 'all';
+state.hockeyExpanded = ['hockey', 'predictions'].includes(location.hash.slice(1));
+const main = document.querySelector('main');
+const dialog = document.querySelector('#detail-dialog');
+const content = document.querySelector('#dialog-content');
+const connections = new Map(); const timings = new Map(); const timingErrors = new Map(); const news = new Map(); const notified = new Set();
+const timingSignatures = new Map();
+let activeDetail = null; let detailTab = 'overview'; let selectedRun = null; let toastTimer; let audioContext;
+
+const dayKey = value => new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Zurich', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date(value));
+const today = () => dayKey(new Date());
+const dateObject = value => new Date(value.length === 10 ? value + 'T12:00:00Z' : value);
+const dateLabel = (value, options = {}) => new Intl.DateTimeFormat('it-CH', { timeZone: 'Europe/Zurich', day: 'numeric', month: 'long', ...options }).format(dateObject(value));
+const clock = value => value ? new Intl.DateTimeFormat('it-CH', { timeZone: 'Europe/Zurich', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).format(new Date(value)) : 'Da confermare';
+const since = value => { if (!value) return 'Non disponibile'; const minutes = Math.max(0, Math.floor((Date.now() - new Date(value)) / 60000)); return minutes < 1 ? 'ora' : minutes < 60 ? `${minutes} min fa` : minutes < 1440 ? `${Math.floor(minutes / 60)} h fa` : `${Math.floor(minutes / 1440)} giorni fa`; };
+const countries = { ALB:'AL', LAT:'LV', JPN:'JP', BIH:'BA', HUN:'HU', ISR:'IL', AUT: 'AT', SUI: 'CH', ITA: 'IT', FRA: 'FR', FIN: 'FI', NOR: 'NO', SWE: 'SE', GER: 'DE', USA: 'US', CAN: 'CA', SLO: 'SI', SVK: 'SK', AND: 'AD', BRA: 'BR', NZL: 'NZ', GBR: 'GB', CRO: 'HR', CZE: 'CZ', POL: 'PL', ESP: 'ES', BEL: 'BE' };
+const flag = country => countries[country] ? `<span class="flag" aria-label="${esc(country)}">${[...countries[country]].map(c => String.fromCodePoint(c.charCodeAt(0) + 127397)).join('')}</span>` : '';
+const team = id => data.hockey.teams.find(t => String(t.id) === String(id)) || { id, name: 'Squadra', short: '—' };
+const mark = (id, big = false) => TEAM_LOGOS[String(id)] ? `<span class="team-mark logo${big ? ' big' : ''}"><img src="assets/teams/${TEAM_LOGOS[String(id)]}.png" alt="${esc(team(id).name)}" loading="lazy"></span>` : `<span class="team-mark">${esc(team(id).short)}</span>`;
+const favouriteGame = g => preferences.teams.some(id => [g.home,g.away].includes(id));
+const favouriteAthlete = r => preferences.athletes.includes(String(r.id || r.fisCode)) || state.alerts.athletes.includes(String(r.id || r.fisCode)) || preferences.nations.includes(r.country);
+const athleteStyle = r => favouriteAthlete(r) ? `style="--favourite:${NATIONS[r.country]?.color || '#6c8051'}" class="athlete-favourite"` : '';
+const leagueLogo = sport => `<img class="league-logo" src="assets/Logos/${sport === 'alpine' ? 'Fis%20Logo.jpeg' : 'National%20League%20Logo.png'}" alt="${sport === 'alpine' ? 'FIS World Cup' : 'National League'}">`;
+const liveBadge = () => '<span class="status-tag live"><span class="dot live"></span>LIVE</span>';
+const teamName = id => esc(team(id).name);
+const liveCount = () => data.alpine.races.filter(r => r.status === 'live').length + data.hockey.games.filter(g => g.status === 'live').length;
+const sportButton = (sport, title, glyph) => `<button class="chip${state.sport === sport ? ' active' : ''}" data-filter="sport" data-value="${sport}" aria-pressed="${state.sport === sport}">${icon(glyph)}${title}</button>`;
+const heading = (eyebrow, title, description, action = '') => `<div class="page-heading"><div><div class="eyebrow">${eyebrow}</div><h1>${title}</h1><p>${description}</p></div>${action}</div>`;
+const subscribeButton = `<button class="button" data-action="subscribe">${icon('calendar')}<span class="button-text">Aggiungi al calendario</span></button>`;
+const sync = sport => sport==='hockey' ? `<span class="sync-note">${icon('refresh')}${hockeyScoreNote()} · Statistiche ${since(data.hockey.updatedAt)}</span>` : `<span class="sync-note">${icon('refresh')}${esc(data[sport].source || '')} · aggiornato ${since(data[sport].updatedAt)}</span>`;
+const badge = (label, cls = '') => `<span class="status-tag ${cls}">${esc(label)}</span>`;
+const raceStatus = r => r.status === 'live' ? '<span class="status-tag live"><span class="dot live"></span>LIVE</span>' : r.status === 'cancelled' ? badge('Annullata', 'muted') : r.status === 'finished' ? badge('Conclusa', 'muted') : '';
+const gameStatus = g => g.status === 'live' ? '<span class="status-tag live"><span class="dot live"></span>LIVE</span>' : g.status === 'finished' ? badge(`Finale${g.decision ? ' · ' + g.decision : ''}`, 'muted') : g.status === 'cancelled' ? badge('Annullata', 'muted') : `<span>${clock(g.start)}</span>`;
+const empty = (title, description, symbol = 'calendar') => `<div class="empty-state">${icon(symbol)}<h3>${title}</h3><p>${description}</p></div>`;
+const sourceNotice = sport => sport==='hockey' ? hockeySourceNotice() : data[sport].status !== 'ok' || Date.now() - new Date(data[sport].updatedAt || 0) > 2 * 3600000 ? `<div class="notice">${icon('info')}Ultimo aggiornamento ${data[sport].updatedAt ? dateLabel(data[sport].updatedAt) + ' alle ' + clock(data[sport].updatedAt) : 'non disponibile'}. ${data[sport].status === 'stale' ? 'La fonte non risponde; restano visibili gli ultimi dati verificati.' : 'I dati vengono aggiornati quando la sincronizzazione del sito è attiva.'}</div>` : '';
+
+// Files are sprite sheets: DH, SL, giant slalom, Super-G from left to right.
+const DISCIPLINE_ART = {
+  DH: {file:'DH.png', slot:0, label:'Discesa libera'},
+  SL: {file:'SL.png', slot:1, label:'Slalom speciale'},
+  GS: {file:'SG.png', slot:2, label:'Slalom gigante'},
+  SG: {file:'SP.png', slot:3, label:'Super-G'},
+};
+function disciplineIcon(code) {
+  const art = DISCIPLINE_ART[code];
+  if (!art) return `<span class="sport-icon">${esc(code)}</span>`;
+  return `<span class="race-discipline-icon discipline-${code}" role="img" aria-label="${art.label}" title="${art.label}"><span class="race-icon-viewport"><img src="assets/RacesIcons/${art.file}" style="--icon-slot:${art.slot}" alt="" aria-hidden="true" loading="lazy"></span></span>`;
+}
+
+function raceRow(r, showDate = true) {
+  return `<button class="event-row ski-event gender-${r.gender} discipline-${r.discipline}" data-race="${r.id}">${showDate ? `<span class="event-date"><strong>${Number(r.date.slice(8))}</strong><small>${dateLabel(r.date, { month: 'short', day: undefined })}</small></span>` : ''}${disciplineIcon(r.discipline)}<span class="event-main"><span class="event-title">${flag(r.country)}${esc(r.venue)}<span class="discipline-pill">${r.discipline}</span></span><span class="event-meta">${esc(r.disciplineName)} · ${r.gender === 'W' ? 'Donne' : 'Uomini'} ${r.status === 'live' ? liveBadge() : ''}</span></span><span class="event-time">${clock(r.runs[0]?.start)}<small>${r.runs.length > 1 ? '2ª ' + clock(r.runs[1]?.start) : 'Manche unica'}</small></span>${icon('chevron')}</button>`;
+}
+
+function matchSections(g) {
+  const row = data.predictions.status === 'ready' && data.predictions.predictions?.find(r => r.gameId === g.id);
+  const valid = row && Number.isFinite(row.homeProbability) && Number.isFinite(row.awayProbability);
+  const hasScore = ['live','finished'].includes(g.status) && g.homeScore != null && g.awayScore != null;
+  const label = {scheduled:'Non iniziata',live:'LIVE · In corso',finished:'Terminata',cancelled:'Annullata'}[g.status] || 'Dato non disponibile';
+  return `<span class="match-sections"><span class="match-teams"><span class="match-side">${mark(g.home,true)}<span>${teamName(g.home)}</span></span><span class="match-versus">VS</span><span class="match-side">${mark(g.away,true)}<span>${teamName(g.away)}</span></span></span><span class="match-real"><small>Punteggio reale · ${label}</small><strong>${hasScore ? `${esc(g.homeScore)} – ${esc(g.awayScore)}` : '—'}</strong>${!hasScore && g.status==='live' ? '<small>Dato non disponibile</small>' : ''}${g.status==='live' && g.statusText ? `<small>${esc(g.statusText)}</small>` : ''}<small>${esc(hockeyScoreNote())}</small></span><span class="match-forecast"><small>Previsione del modello</small>${valid ? `<strong>${Math.round(row.homeProbability*100)}% casa · ${Math.round(row.awayProbability*100)}% ospiti</strong><span>Risultato previsto: ${esc(row.score || 'Non disponibile')}</span>` : '<span>Previsione non disponibile</span>'}</span></span>`;
+}
+function matchCard(g) {
+  return `<button class="match-card hockey-event${favouriteGame(g) ? ' favourite-game' : ''}" data-game="${g.id}" aria-label="${teamName(g.home)} contro ${teamName(g.away)}, ${dateLabel(g.date)}"><span class="match-card-meta"><span>${favouriteGame(g) && preferences.stars ? '★ ' : ''}NATIONAL LEAGUE</span>${gameStatus(g)}</span>${matchSections(g)}<span class="match-footer"><span>${dateLabel(g.date, { month: 'short' })}</span><span>Dettagli ↗</span></span></button>`;
+}
+
+function standingsTable(short = false) {
+  const table = projectedStandings(data.hockey);
+  const rows = short ? table.rows.slice(0, 5) : table.rows;
+  if (short) return `<table class="mini-table"><thead><tr><th>#</th><th>Squadra</th><th>PG</th><th>PT</th></tr></thead><tbody>${rows.map(r => `<tr class="${preferences.teams.includes(String(r.team_id)) ? 'favourite-team' : ''}"><td class="rank">${r.rank}</td><td><span class="team-cell">${mark(r.team_id)}${esc(r.team_acronym)}</span></td><td>${r.games_played}</td><td><b>${r.points}</b></td></tr>`).join('')}</tbody></table>`;
+  return `<div class="standings-caption">${table.live ? liveBadge() + ' Classifica provvisoria al risultato attuale · parità in ordine ufficiale' : 'Classifica ufficiale'} · ${since(data.hockey.updatedAt)}</div><div class="scroll-table standings-table"><table class="data-table"><thead><tr><th>#</th><th>Squadra</th><th>PG</th><th>Punti</th><th>V</th><th>V OT/SO</th><th>P OT/SO</th><th>P</th><th>GF</th><th>GS</th><th>Diff.</th></tr></thead><tbody>${rows.map(r => `<tr class="${preferences.teams.includes(String(r.team_id)) ? 'selected favourite-team' : ''}"><td>${r.rank}</td><td><span class="team-cell">${mark(r.team_id)}${esc(r.team_name)}</span></td><td>${r.games_played}</td><td><b>${r.points}</b></td><td>${r.games_won_in_time}</td><td>${r.games_won_extra_time + r.games_won_penalty}</td><td>${r.games_lost_extra_time + r.games_lost_penalty}</td><td>${r.games_lost_in_time}</td><td>${r.goals_for}</td><td>${r.goals_against}</td><td>${r.goals_difference > 0 ? '+' : ''}${r.goals_difference}</td></tr>`).join('')}</tbody></table></div>`;
+}
+
+function homePage() {
+  const races = data.alpine.races.filter(r => r.date >= today() && !['cancelled', 'finished'].includes(r.status)).slice(0, 4);
+  const games = data.hockey.games.filter(g => g.date >= today() && g.status !== 'finished').slice(0, 4);
+  return `<section class="home-intro"><div><div class="eyebrow">LIVE SPORT ARENA</div><h1>I tuoi sport.<br><em>Un’unica arena.</em></h1></div><div class="home-season">Stagione <strong>${esc(data.alpine.seasonLabel || '2026/27')}</strong>${subscribeButton}</div></section>
+  <div class="sport-entry-grid">${[['alpine','Sci alpino','Coppa del Mondo'],['hockey','Hockey','National League']].map(([id,title,sub]) => `<a class="sport-entry ${id}" href="#${id}"><div>${leagueLogo(id)}<h2>${title}</h2><span>${sub} ${icon('arrow')}</span></div></a>`).join('')}</div>
+  <div class="dashboard-grid home-widgets"><section class="panel"><div class="panel-head"><h2>Prossime gare</h2><a class="text-button" href="#alpine">Calendario ↗</a></div><div class="event-list">${races.map(r => raceRow(r)).join('') || empty('Nessun evento attuale','')}</div></section>
+  <section class="panel"><div class="panel-head"><h2>Prossime partite</h2><a class="text-button" href="#hockey">Calendario ↗</a></div><div class="match-grid">${games.map(matchCard).join('') || empty('Nessun evento attuale','')}</div></section>
+  <section class="panel"><div class="panel-head"><h2>National League</h2><button class="text-button" data-action="standings">Classifica ↗</button></div><div class="panel-body">${standingsTable(true)}</div></section>
+  <section class="panel"><div class="panel-head"><h2>In diretta</h2>${liveCount() ? liveBadge() : ''}</div><div class="panel-body"><p>${liveCount() ? liveCount() + ' eventi in corso' : 'Nessun evento attuale'}</p><a class="button" href="#live">Apri live center ${icon('arrow')}</a></div></section></div>`;
+}
+
+function runCards(r, useLive = false) {
+  return `<div class="run-cards">${r.runs.map((run, index) => {
+    const info = useLive ? timings.get(r.id)?.runs[index]?.info : null;
+    const start = info ? venueInstant(info, r.timezone) || run.start : run.start;
+    return `<div class="run-card"><small>${run.label.toUpperCase()}</small><strong>${clock(start)}</strong><span class="run-day">${dateLabel(start || r.date)} · Svizzera</span></div>`;
+  }).join('')}</div>`;
+}
+
+function teamSelector() {
+ return `<label class="field-label team-filter">Squadra hockey<span class="team-select-wrap"><select class="input" data-select="teamFilter" aria-label="Squadra hockey"><option value="">Tutte le squadre</option>${[...data.hockey.teams].sort((a,b)=>a.name.localeCompare(b.name,'it')).map(t=>`<option value="${esc(t.id)}"${state.teamFilter===String(t.id)?' selected':''}>${esc(t.name)}</option>`).join('')}</select>${icon('chevron')}</span></label>`;
+}
+function filterBar(ski = true) {
+ const hockey = state.route==='hockey' || (state.route==='calendar' && state.sport!=='alpine');
+ return `<div class="calendar-filters"><div class="filter-period"><div class="segmented">${(state.route === 'hockey' ? [['upcoming', 'Prossime'], ['all', 'Risultati e stagione']] : [['upcoming', 'Prossime'], ['results', 'Risultati'], ['all', 'Tutta la stagione']]).map(([v,l])=>`<button class="${state.scope===v?'active':''}" data-filter="scope" data-value="${v}" aria-pressed="${state.scope===v}">${l}</button>`).join('')}</div><label class="field-label">Data<input class="input" type="date" aria-label="Filtra per data" data-select="date" value="${state.date}"></label><button class="text-button reset-filters" data-action="reset-filters">Azzera filtri</button></div><div class="sport-filter-grid">${ski?`<div class="sport-filter-group"><span class="filter-caption">${icon('mountain')}Sci alpino</span><div class="filters-group">${['all','DH','SG','GS','SL'].map(d=>`<button class="chip${state.discipline===d?' active':''}" data-filter="discipline" data-value="${d}" aria-pressed="${state.discipline===d}">${d==='all'?'Tutte le discipline':d}</button>`).join('')}</div><div class="filter-fields"><label class="field-label">Categoria<select class="input" data-select="gender"><option value="all"${state.gender==='all'?' selected':''}>Donne e uomini</option><option value="W"${state.gender==='W'?' selected':''}>Donne</option><option value="M"${state.gender==='M'?' selected':''}>Uomini</option></select></label><label class="field-label">Località<input class="input" type="search" id="search-filter" placeholder="Cerca località…" value="${esc(state.query)}"></label></div></div>`:''}${hockey?`<div class="sport-filter-group"><span class="filter-caption">${icon('hockey')}National League</span>${teamSelector()}${ski?'<span class="tiny">La squadra filtra solo le partite di hockey.</span>':''}</div>`:''}</div></div>`;
+}
+
+function filteredRaces() {
+  return data.alpine.races.filter(r => (state.scope === 'all' || (state.scope === 'upcoming' ? r.date >= today() : r.date < today() || r.status === 'finished')) && (!state.date || r.date === state.date) && (state.discipline === 'all' || state.discipline === r.discipline) && (state.gender === 'all' || state.gender === r.gender) && r.venue.toLowerCase().includes(state.query.toLowerCase()));
+}
+function filteredGames() {
+  return data.hockey.games.filter(g => (state.scope === 'all' || (state.scope === 'upcoming' ? g.date >= today() && g.status !== 'finished' : g.status === 'finished')) && (!state.date || g.date === state.date) && (!state.teamFilter || [g.home,g.away].includes(state.teamFilter)));
+}
+
+function skiSeasonStats() {
+  const races = data.alpine.races;
+  const finished = races.filter(r => r.status === 'finished').length;
+  const latest = [...races].filter(r => raceResults(r).length).sort((a,b) => raceTime(b)-raceTime(a))[0];
+  const winners = latest ? raceResults(latest).filter(r => Number(r.rank) === 1) : [];
+  const now = Date.now();
+  const next = races.filter(r => !['finished', 'cancelled', 'live'].includes(r.status)
+    && (r.runs[0]?.start ? new Date(r.runs[0].start).getTime() >= now : r.date >= today()))
+    .sort((a,b) => new Date(a.runs[0]?.start || a.date + 'T23:59:59Z') - new Date(b.runs[0]?.start || b.date + 'T23:59:59Z'))[0];
+  return `<div class="stats-strip"><div class="stat"><span class="sport-icon">${icon('mountain')}</span><div><strong>${finished}/${races.length}</strong><small>Gare concluse</small></div></div>
+  ${next ? `<button class="stat next-race-stat" data-race="${next.id}">${disciplineIcon(next.discipline)}<span><small>Prossima gara</small><strong>${flag(next.country)}${esc(next.venue)}</strong><small>${esc(next.disciplineName)} · ${next.gender === 'W' ? 'Donne' : 'Uomini'}</small><small>${dateLabel(next.runs[0]?.start || next.date, { month:'short' })} · ${clock(next.runs[0]?.start)}</small></span></button>` : `<div class="stat next-race-stat"><span class="sport-icon">${icon('calendar')}</span><div><small>Prossima gara</small><strong>Da annunciare</strong></div></div>`}
+  ${latest ? `<button class="stat next-race-stat winner-stat" data-race="${latest.id}"><span class="sport-icon">${icon('trophy')}</span><span><small>${winners.length > 1 ? 'Ultimi vincitori' : 'Ultimo vincitore'}</small><strong>${winners.map(w => flag(w.country)+esc(w.name)).join(' · ')}</strong><small>${esc(latest.venue)} · ${latest.discipline} · ${latest.gender === 'W' ? 'Donne' : 'Uomini'}</small><small>${dateLabel(latest.date,{month:'short'})}</small></span></button>` : `<div class="stat"><span class="sport-icon">${icon('trophy')}</span><div><small>Ultimo vincitore</small><strong>Da assegnare</strong></div></div>`}</div>`;
+}
+
+function calendarPage(alpineOnly = false) {
+  let events = [];
+  if (alpineOnly || state.sport !== 'hockey') events.push(...filteredRaces().map(r => ({ ...r, sport: 'alpine' })));
+  if (!alpineOnly && state.sport !== 'alpine') events.push(...filteredGames().map(g => ({ ...g, sport: 'hockey' })));
+  events = events.map(e => ({...e, date: e.runs?.[0]?.start || e.start ? dayKey(e.runs?.[0]?.start || e.start) : e.date}));
+  events.sort((a,b) => (new Date(a.runs?.[0]?.start || a.start || a.date+'T23:59:59Z') - new Date(b.runs?.[0]?.start || b.start || b.date+'T23:59:59Z')) * (state.scope === 'results' ? -1 : 1));
+  const groups = Object.groupBy ? Object.groupBy(events.slice(0, state.scope === 'all' ? events.length : state.limit), e => e.date) : groupBy(events.slice(0, state.scope === 'all' ? events.length : state.limit), e => e.date);
+  return `${heading(alpineOnly ? 'COPPA DEL MONDO FIS' : 'TUTTI I TUOI APPUNTAMENTI', alpineOnly ? 'Sci alpino' : 'Il calendario', alpineOnly ? 'Discesa · Super-G · Gigante · Slalom' : 'I tuoi sport, giorno per giorno. Ora svizzera.', subscribeButton)}${sourceNotice('alpine')}${alpineOnly ? `<div class="module-banner alpine">${leagueLogo('alpine')}<strong>Coppa del Mondo</strong></div>` : ''}
+  ${alpineOnly ? `${skiSeasonStats()}` : `<div class="sport-tabs">${sportButton('all', 'Tutti gli sport', 'home')}${sportButton('alpine', 'Sci alpino', 'mountain')}${sportButton('hockey', 'Hockey', 'hockey')}</div>`}
+  <section class="panel"><div class="panel-head"><h2>${alpineOnly ? 'Il programma delle gare' : 'Programma della stagione'}</h2><span class="tiny">${events.length} eventi</span></div>${filterBar(alpineOnly || state.sport !== 'hockey')}${events.length ? Object.entries(groups).map(([day, group]) => `<div class="date-heading">${dateLabel(day, { weekday: 'long', year: 'numeric' })}<span>${group.length} ${group.length === 1 ? 'evento' : 'eventi'}</span></div><div class="mixed-events">${group.map(e => e.sport === 'alpine' ? raceRow(e,false) : matchCard(e)).join('')}</div>`).join('') : empty('Nessun evento con questi filtri', 'Prova un’altra data oppure azzera la ricerca.')}${state.scope !== 'all' && events.length > state.limit ? '<div class="load-more"><button class="button" data-action="load-more">Mostra altri eventi</button></div>' : ''}<div class="panel-bottom">${sync('alpine')}<span>Apri una gara per gli orari di ogni manche.</span></div></section>`;
+}
+function groupBy(items, key) { return items.reduce((all, item) => { (all[key(item)] ||= []).push(item); return all; }, {}); }
+
+function hockeyPage() {
+  if (state.scope === 'results') state.scope = 'all';
+  const games = filteredGames().sort((a,b)=>(a.start||a.date).localeCompare(b.start||b.date));
+  const groups = groupBy(games.slice(0, state.scope==='all'?games.length:state.limit), g => g.date);
+  const dayGroups=Object.entries(groups);
+  return `${heading('NATIONAL LEAGUE · SVIZZERA', 'Hockey', 'Calendario, risultati, classifica e statistiche delle tue squadre.', `<button class="button" data-action="hockey-calendar">${icon('calendar')}Aggiungi al calendario</button>`)}${sourceNotice('hockey')}<div class="module-banner hockey">${leagueLogo('hockey')}<strong>National League</strong></div>${hockeyWidgets()}
+  <div class="sport-tabs">${[['calendar', 'Partite', 'hockey'], ['standings', 'Classifica', 'trophy'], ['stats', '🔥 Top Scorer', '']].map(([v, label, symbol]) => `<button class="chip${state.hockeyTab === v ? ' active' : ''}" data-hockey-tab="${v}">${symbol ? icon(symbol) : ''}${label}</button>`).join('')}</div>
+  <section class="panel"><div class="panel-head"><div><h2>${state.hockeyTab === 'calendar' ? 'Il programma della National League' : state.hockeyTab === 'standings' ? 'Classifica generale' : '🔥 PostFinance Top Scorer'}</h2><p>Stagione ${esc(data.hockey.seasonLabel)}</p></div>${badge('NATIONAL LEAGUE')}</div>
+  ${state.hockeyTab === 'calendar' ? `${filterBar(false)}<div class="match-list-scroll">${dayGroups.map(([day, group]) => `<div class="date-heading">${dateLabel(day, { weekday: 'long' })}<span>${group.length} partite</span></div><div class="match-grid">${group.map(matchCard).join('')}</div>`).join('') || empty('Nessuna partita con questi filtri', 'Cambia la data o la selezione delle squadre.')}${state.scope!=='all' && games.length > state.limit ? '<div class="load-more"><button class="button" data-action="load-more">Mostra altre partite</button></div>' : ''}</div>` : state.hockeyTab === 'standings' ? standingsTable() : `<div class="scorer-section"><div class="scorer-toolbar">${teamSelector()}<a class="button" href="#hockey-stats">${icon('chart')}Statistiche National League ↗</a></div>${playerLeaders()}</div>`}
+  <div class="panel-bottom">${sync('hockey')}<button class="text-button" data-action="csv">Scarica statistiche CSV ↗</button></div></section>`;
+}
+
+function playerLeaders() {
+ const number = value => value == null || value === '' ? null : Number.isFinite(Number(value)) ? Number(value) : null;
+ const candidates = (data.hockey.leaders || []).filter(p => p.team_id != null && number(p.points) != null)
+   .map((p,index)=>({...p,points:number(p.points),sourceOrder:index}))
+   .sort((a,b)=>b.points-a.points || (number(a.rank) ?? Infinity)-(number(b.rank) ?? Infinity) || a.sourceOrder-b.sourceOrder);
+ const perTeam = new Map();
+ for(const player of candidates) if(!perTeam.has(String(player.team_id))) perTeam.set(String(player.team_id),player);
+ const leaders = [...perTeam.values()].map((p,index,all)=>({...p,
+   rank: all.findIndex(other=>other.points===p.points)+1, chf:p.points*300}));
+ if(!leaders.length) return empty('Top Scorer non disponibili','La classifica comparirà al prossimo aggiornamento delle statistiche SIHF.','chart');
+ const rows=leaders.filter(p=>!state.teamFilter||String(p.team_id)===state.teamFilter);
+ const money=value=>new Intl.NumberFormat('it-CH',{style:'currency',currency:'CHF',maximumFractionDigits:0}).format(value);
+ const total=rows.reduce((sum,p)=>sum+p.chf,0);
+ return `<div class="scorer-summary"><p class="tiny">Stagione ${esc(data.hockey.seasonLabel)} · Statistiche SIHF ${since(data.hockey.updatedAt)}${data.hockey.status==='stale'?' · Ultimi dati in cache':''}<br>Un giocatore per squadra, selezionato per punti. A parità vale l’ordine della fonte.</p><p><strong>${money(total)}</strong><br><span class="tiny">Totale${state.teamFilter?' · squadra selezionata':` · ${leaders.length} squadre`}</span></p></div>${rows.length ? `<div class="scroll-table"><table class="data-table" data-table-tools="Giocatore o squadra"><thead><tr><th>#</th><th>Giocatore</th><th>Squadra</th><th>Goal</th><th>Assist</th><th>Punti</th><th>CHF per i giovani</th></tr></thead><tbody>${rows.map(p=>`<tr><td>${p.rank}</td><td>${esc(p.player)}</td><td><span class="team-cell">${mark(p.team_id)}${esc(p.team_acronym || team(p.team_id).short)}</span></td><td>${esc(p.goals ?? '–')}</td><td>${esc(p.assists ?? '–')}</td><td><b>${p.points}</b></td><td data-sort-value="${p.chf}"><b>${money(p.chf)}</b></td></tr>`).join('')}</tbody></table></div>` : empty('Nessun dato per questa squadra','Seleziona tutte le squadre oppure attendi il prossimo aggiornamento.')}`;
+}
+
+function generalPlayerLeaders() {
+  const rows = data.hockey.leaders.filter(p => !state.teamFilter || state.teamFilter === String(p.team_id)).sort((a,b)=>a.rank-b.rank);
+  return `<div class="scroll-table"><table class="data-table" data-table-tools="Giocatore o squadra"><thead><tr><th>#</th><th>Giocatore</th><th>Squadra</th><th>PG</th><th>Goal</th><th>Assist</th><th>Punti</th><th>+/−</th><th>Penalità</th></tr></thead><tbody>${rows.map(p => `<tr><td>${p.rank}</td><td class="athlete-name">${esc(p.player)}</td><td><span class="team-cell">${mark(p.team_id)}${esc(p.team_acronym)}</span></td><td>${p.games_played}</td><td>${p.goals}</td><td>${p.assists}</td><td><b>${p.points}</b></td><td>${esc(p.plus_minus ?? '–')}</td><td>${esc(p.pim_total ?? '–')}</td></tr>`).join('')}</tbody></table></div>`;
+}
+
+function liveRacePreview(race) {
+  const timing = timings.get(race.id);
+  const rows = timing ? rowsForRun(timing) : [];
+  const podium = rows.filter(r => r.rank && r.rank <= 3).sort((a,b) => a.rank-b.rank);
+  return `<article class="panel live-race">${raceRow(race)}${timingErrors.has(race.id) ? `<p class="tiny">${esc(timingErrors.get(race.id))}</p>` : ''}<div class="live-podium">${podium.map(r => `<div ${athleteStyle(r)}><b>${r.rank}</b> ${flag(r.country)} ${esc(r.name)} <strong>${duration(r.total)}</strong></div>`).join('')}${rows.filter(r => r.status === 'start').map(r => `<div class="on-course">In pista · ${flag(r.country)} ${esc(r.name)}</div>`).join('')}</div></article>`;
+}
+function livePage() {
+  const races = data.alpine.races.filter(r => r.status === 'live');
+  const games = data.hockey.games.filter(g => g.status === 'live');
+  return `${heading('', 'In diretta', '')}<div class="live-sections"><section><div class="panel-head"><h2>${leagueLogo('alpine')} Sci alpino</h2><span class="tiny">Live feed</span></div><div id="live-race-previews">${races.map(liveRacePreview).join('') || empty('Nessun evento attuale','','mountain')}</div></section><section><div class="panel-head"><h2>${leagueLogo('hockey')} Hockey</h2><span class="tiny">Live feed · ${since(data.hockey.updatedAt)}</span></div>${games.length ? `<div class="match-grid">${games.map(matchCard).join('')}</div>` : empty('Nessun evento attuale','','hockey')}</section></div>`;
+}
+
+function predictionsPage() {
+  const p = data.predictions;
+  const games = data.hockey.games.filter(g => (p.gameIds || []).includes(g.id));
+  const active = p.status === 'ready';
+  return `${heading('UNO SGUARDO AL PROSSIMO INCONTRO', 'L’arena delle previsioni.', 'National League · Previsioni della prossima giornata, dopo la conclusione di quella precedente.')}
+  <section class="panel"><div class="panel-head"><div><h2>${p.targetDate ? 'Partite di ' + dateLabel(p.targetDate, { weekday: 'long' }) : 'La prossima giornata'}</h2><p>${active ? `${esc(p.model)} · versione ${esc(p.version)} · elaborato ${since(p.generatedAt)}` : 'La sezione è pronta per il tuo modello.'}</p></div>${badge(active ? 'PREVISIONI DISPONIBILI' : p.status === 'no_model' ? 'MODELLO NON ATTIVO' : 'IN ATTESA', active ? '' : 'muted')}</div><div class="process"><span class="${p.previousDayComplete ? 'done' : ''}">${icon(p.previousDayComplete ? 'check' : 'clock')}Giornata precedente conclusa</span><span class="next">→</span><span class="${active ? 'done' : ''}">${icon(active ? 'check' : 'spark')}Elaborazione del modello</span><span class="next">→</span><span>Nuove previsioni</span></div>
+  ${!active ? `<div class="panel-body"><div class="notice">${icon('info')}${p.status === 'no_model' ? 'Il modello non è ancora attivo. Le probabilità e i risultati previsti compariranno dopo il collegamento.' : p.status === 'error' ? 'Il modello non ha prodotto previsioni valide. È necessario verificare l’elaborazione.' : 'Aspettiamo la conclusione della giornata precedente e dati completi prima di elaborare nuove previsioni.'}</div></div>` : ''}
+  <div class="prediction-grid">${games.map(g => `<article class="prediction-card"><div class="match-card-meta"><span>${clock(g.start)} · Svizzera</span><button class="text-button" data-game="${g.id}">Partita ↗</button></div>${matchSections(g)}</article>`).join('')}</div>${!games.length ? empty('Il prossimo turno sarà qui', 'Le partite compariranno quando saranno pubblicate nel calendario.') : ''}<div class="panel-bottom"><span>Per giornata si intendono le partite della stessa data svizzera.</span>${active ? '<span>Le probabilità sono stime del modello.</span>' : ''}</div></section>`;
+}
+
+function detailPage(type) {
+ const item=(type==='game'?data.hockey.games:data.alpine.races).find(r=>r.id===state.detailId);
+ return item ? '<section class="panel full-detail" id="full-detail"></section>' : empty('Evento non disponibile','Torna al calendario.');
+}
+function hockeyWidgets() {
+ const games=data.hockey.games, upcoming=games.filter(g=>g.status==='scheduled'&&g.date>=today()).sort((a,b)=>(a.start||a.date).localeCompare(b.start||b.date));
+ const next=upcoming[0], leader=[...data.hockey.standings].sort((a,b)=>Number(a.rank)-Number(b.rank))[0];
+ return `<div class="stats-strip hockey-widgets"><div class="stat"><div><strong>${games.filter(g=>g.status==='finished').length}/${games.length}</strong><small>Partite disputate</small></div></div><div class="stat"><div><small>Prossima giornata</small><strong>${next?dateLabel(next.date,{month:'short'}):'Da annunciare'}</strong>${preferences.teams.map(id=>{const g=upcoming.find(g=>[g.home,g.away].includes(id));return `<div class="next-team-game">${mark(id)}<span>${teamName(id)}<small>${g?`${dateLabel(g.date,{month:'short'})} · ${clock(g.start)}<br>${teamName(g.home)} – ${teamName(g.away)}`:'Da annunciare'}</small>${g?`<a class="text-button" href="#game/${g.id}">Dettagli ↗</a>`:''}</span></div>`;}).join('')}</div></div><button class="stat" data-action="standings">${leader?mark(leader.team_id):icon('trophy')}<div><small>Prima in classifica</small><strong>${leader?teamName(leader.team_id):'–'}</strong><small>${leader?leader.points+' punti':''}</small></div></button></div>`;
+}
+const metricLabels={games_played:'PG · Partite giocate',goals:'G · Goal',assists:'A · Assist',points:'PT · Punti',plus_minus:'+/- · Bilancio sul ghiaccio',pim_total:'PIM · Minuti di penalità',time_on_ice:'TOI · Tempo sul ghiaccio',shots_on_goal:'SOG · Tiri in porta',save_percentage:'SV% · Percentuale parate',player:'Giocatore',player_name:'Giocatore',team_name:'Squadra',team_acronym:'Squadra',rank:'Posizione',home_value:'Casa',away_value:'Ospiti',statistic:'Statistica'};
+Object.assign(metricLabels,{position:'Ruolo',player_position:'Ruolo',points_per_game:'Punti per partita'});
+const roleLabel=value=>({ 'Stürmer':'Attaccante', 'Verteidiger':'Difensore', 'Torhüter':'Portiere', 'Torwart':'Portiere', 'Forward':'Attaccante', 'Defender':'Difensore', 'Defenseman':'Difensore', 'Goalkeeper':'Portiere', 'Goalie':'Portiere', 'goalkeeper':'Portiere', 'F':'Attaccante', 'D':'Difensore', 'G':'Portiere' }[value] || value);
+const columnLabel=k=>metricLabels[k]||k.replaceAll('_',' ');
+function tableLegend(){return '<p class="table-legend">PG: partite giocate · G/GF: goal segnati · GS/GA: goal subiti · A: assist · PT: punti · V/P: vittoria/sconfitta · PIM: minuti di penalità · TOI: tempo sul ghiaccio · SOG: tiri in porta · OT: supplementari · SO: rigori · +/−: bilancio goal sul ghiaccio. Le altre intestazioni descrivono i campi della fonte SIHF.</p>';}
+function allColumns(rows) {
+ if(!rows?.length) return empty('Dati non disponibili','');
+ const omit=['season','phase_id','row_type','game_id'];
+ rows=[...rows].sort((a,b)=>(a.rank??0)-(b.rank??0));
+ const available=[...new Set(rows.flatMap(Object.keys))];
+ const hasTeamName=rows.some(r=>r.team_name);
+ const keys=available.filter(k=>!omit.includes(k)&&!k.endsWith('_id')&&!(k==='team_acronym'&&hasTeamName));
+ return `<div class="scroll-table"><table class="data-table" data-table-tools="Cerca nei dati"><thead><tr>${keys.map(k=>`<th>${esc(columnLabel(k))}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${keys.map(k=>`<td>${['team_acronym','team_name'].includes(k) && r.team_id ? `<span class="team-cell">${mark(r.team_id)}${esc(r[k])}</span>` : esc(r[k]==null?'–':['position','player_position','unit'].includes(k)?roleLabel(r[k]):typeof r[k]==='object'?JSON.stringify(r[k]):r[k])}</td>`).join('')}</tr>`).join('')}</tbody></table></div><details class="table-legend"><summary>Legenda delle colonne</summary>${keys.map(k=>`<div><b>${esc(k)}</b>: ${esc(columnLabel(k))}</div>`).join('')}</details>${tableLegend()}`;
+}
+function hockeyStatisticsPage() {
+ const tables=data.hockeyStats.tables||{}, selected=tables[state.leagueTable];
+ const entries=Object.entries(tables).sort(([a],[b])=>a==='player_stats'?-1:b==='player_stats'?1:0);
+ const label=(key,t)=>key==='player_stats'?'Top Scorer · tutti i giocatori':(t?.label||'Statistiche National League').replaceAll('Gol','Goal');
+ return `${heading('NATIONAL LEAGUE','Statistiche','')}<section class="panel"><div class="filter-row statistics-filters"><label class="field-label statistics-category">Categoria<select class="input" data-select="leagueTable">${entries.map(([key,t])=>`<option value="${key}"${key===state.leagueTable?' selected':''}>${esc(label(key,t))}</option>`).join('')}</select></label><span class="tiny">${selected?.updatedAt?since(selected.updatedAt):''}</span></div><div class="panel-head"><h2>${esc(label(state.leagueTable,selected))}</h2></div>${selected?.status==='stale'?'<p class="notice">Fonte temporaneamente non disponibile: ultimi dati acquisiti.</p>':''}${allColumns(selected?.rows||[])}</section>`;
+}
+
+function teamForm(id,before) {
+ return data.hockey.games.filter(g=>g.status==='finished'&&[g.home,g.away].includes(id)&&(!before||(g.start||g.date+'T23:59:59Z')<before)).sort((a,b)=>(b.start||b.date).localeCompare(a.start||a.date)).slice(0,5);
+}
+function formDots(id,before) {
+ const games=teamForm(id,before);
+ return `<section class="team-form"><h3>${mark(id)} ${teamName(id)}</h3><div class="form-dots">${games.map(m=>{
+  const known=m.homeScore!=null&&m.awayScore!=null;
+  const won=known&&(m.home===id ? m.homeScore>m.awayScore : m.awayScore>m.homeScore);
+  const result=known?(won?'Vittoria':'Sconfitta'):'Risultato non disponibile';
+  const label=`${result}${m.decision?' · '+m.decision:''} · ${dateLabel(m.date,{month:'short'})} · ${team(m.home).name} ${m.homeScore??'–'}–${m.awayScore??'–'} ${team(m.away).name}`;
+  return `<button class="form-result" data-game="${m.id}" title="${esc(label)}" aria-label="${esc(label)}"><span class="form-dot ${known?(won?'won':'lost'):'unknown'}">${known?(won?'V':'P'):'–'}</span><small>${dateLabel(m.date,{month:'short'})}</small><span class="form-score">${m.homeScore??'–'}–${m.awayScore??'–'}</span></button>`;
+ }).join('')}</div>${games.length?'<p class="tiny">Più recente a sinistra · V: vittoria · P: sconfitta. Apri un risultato per i dettagli.</p>':'<p class="tiny">Nessun risultato precedente disponibile</p>'}</section>`;
+}
+function gameExtra(g,d,tab) {
+ const form=()=>`<div class="form-grid">${[g.home,g.away].map(id=>formDots(id,g.start||g.date+'T00:00:00Z')).join('')}</div>`;
+ const info=d?.info?.[0];
+ if(tab==='form') return form()+standingsTable()+tableLegend();
+ if(tab==='summary') return `<div class="panel-body"><h3>Riepilogo</h3><p>${esc(info?.venue_name||'')}${info?.venue_city?' · '+esc(info.venue_city):''}${info?.spectators!=null?' · '+info.spectators+' spettatori':''}</p><div class="period-grid">${(g.homePeriods||[]).map((v,i)=>`<div><small>${i<3?(i+1)+'° periodo':i===3?'Supplementari':'Rigori'}</small><strong>${v??'–'} – ${g.awayPeriods?.[i]??'–'}</strong></div>`).join('')}</div><h3>Ultime cinque partite prima dell’incontro</h3>${form()}<a class="text-button" href="${safeUrl(g.sourceUrl)}" target="_blank" rel="noopener">Fonte SIHF ↗</a></div>`;
+ const stats=d?.stats||[];
+ return `<div class="panel-body"><h3>Tiri e gol per periodo</h3><div class="period-grid">${(info?.home_shots_by_period||[]).map((v,i)=>`<div><small>${i+1}° periodo · tiri casa/ospiti</small><strong>${v??'–'} / ${info.away_shots_by_period?.[i]??'–'}</strong></div>`).join('')||'<p>Dati per periodo non disponibili</p>'}</div><div class="stat-bars">${stats.filter(r=>Number.isFinite(Number(r.home_value))&&Number.isFinite(Number(r.away_value))&&r.home_value!=null&&r.away_value!=null&&Number(r.home_value)>=0&&Number(r.away_value)>=0).map(r=>{const a=Number(r.home_value),b=Number(r.away_value),sum=a+b||1;return `<div><div class="stat-bar-head"><b>${a}</b><span>${esc(r.statistic)}</span><b>${b}</b></div><div class="stat-bar-track"><i style="width:${a/sum*100}%"></i><i style="width:${b/sum*100}%"></i></div></div>`;}).join('')}</div>${tableLegend()}</div>`;
+}
+function trackSection(race) {
+ const course=(data.tracks.courses||[]).find(c=>c.venues.includes(race.venue)&&c.disciplines.includes(race.discipline)&&(c.gender==='ALL'||c.gender===race.gender));
+ if(!course) return `<section class="panel track-panel"><div class="panel-head"><h2>Tracciato</h2></div><div class="panel-body"><p>Informazioni e geometria non ancora disponibili per questa gara.</p><a class="text-button" href="${safeUrl(race.sourceUrl)}" target="_blank" rel="noopener">Documenti ufficiali FIS ↗</a></div></section>`;
+ return `<section class="panel track-panel"><div class="panel-head"><h2>${esc(course.name)}</h2><span class="tiny">Verificato ${esc(course.verifiedAt)}</span></div><div class="panel-body"><p class="tiny">Tracciato di riferimento: configurazione, partenza e lunghezza della singola gara possono variare.</p><div class="period-grid">${course.facts.map(f=>`<div><small>${esc(f.label)}</small><strong>${esc(f.value)}</strong><a class="text-button" href="${safeUrl(f.source)}" target="_blank" rel="noopener">Fonte ↗</a></div>`).join('')}</div><p>${esc(course.history.text)} <a class="text-button" href="${safeUrl(course.history.source)}" target="_blank" rel="noopener">Fonte ↗</a></p>${course.geometry?.source ? `<div data-course-map="${course.id}"></div>` : '<p class="notice">Geometria e coordinate dei punti non disponibili: mappa interattiva non pubblicata.</p>'}${course.pois.map(p=>`<details class="track-poi"><summary>${esc(p.name)} · ${esc(p.category)}</summary><p>${esc(p.description)} <a class="text-button" href="${safeUrl(p.source)}" target="_blank" rel="noopener">Fonte ↗</a></p></details>`).join('')}</div></section>`;
+}
+
+function renderNavigation() {
+  const childRoutes = ['predictions','settings','alpine-standings','alpine-stats','hockey-stats'];
+  document.querySelector('#navigation').innerHTML = navigation.filter(n => !childRoutes.includes(n[0])).map(([route,label,symbol],i) => {
+    const children = route === 'alpine' ? [['alpine-standings','Classifiche','trophy'],['alpine-stats','Statistiche','chart']] : route === 'hockey' ? [['hockey-stats','Statistiche','chart'],['predictions','Previsioni','spark']] : [];
+    const expanded = state[route+'Expanded'];
+    return `${i === 3 ? '<div class="nav-divider"></div><div class="nav-caption">I TUOI SPORT</div>' : ''}<div class="nav-row"><a class="nav-item${route === state.route ? ' active' : ''}${route === 'live' && liveCount() ? ' live-glow' : ''}" href="#${route}" title="${label}" ${route === state.route ? 'aria-current="page"' : ''}>${icon(symbol)}<span class="nav-label">${label}</span>${route === 'live' && liveCount() ? liveBadge() : ''}</a>${children.length ? `<button class="nav-expand${expanded ? ' expanded' : ''}" data-action="expand-${route}" aria-label="Sezioni ${label}" aria-expanded="${!!expanded}" aria-controls="submenu-${route}">${icon('chevron')}</button>` : ''}</div>${children.length ? `<div id="submenu-${route}" class="nav-submenu${expanded ? ' expanded' : ''}" ${expanded ? '' : 'inert'}><div>${children.map(([id,title,glyph]) => `<a class="nav-item nav-child${state.route === id ? ' active' : ''}" href="#${id}" title="${title}" ${state.route === id ? 'aria-current="page"' : ''}>${icon(glyph)}<span class="nav-label">${title}</span></a>`).join('')}</div></div>` : ''}`;
+  }).join('');
+}
+function toggleSportMenu(sport) {
+  state[sport+'Expanded'] = !state[sport+'Expanded'];
+  const open = state[sport+'Expanded'];
+  const panel = document.getElementById('submenu-'+sport);
+  const button = document.querySelector(`[data-action="expand-${sport}"]`);
+  panel.classList.toggle('expanded',open); panel.toggleAttribute('inert',!open);
+  button.classList.toggle('expanded',open); button.setAttribute('aria-expanded',String(open));
+}
+const cupNames = {ALL:'Generale', DH:'Discesa', SL:'Slalom', GS:'Gigante', SG:'Super-G'};
+function alpineStandingsPage() {
+  const group = data.cups.groups?.[state.cupGender];
+  const rows = [...(group?.tables?.[state.cupDiscipline] || [])].sort((a,b)=>Number(a.rank)-Number(b.rank));
+  const leader = rows[0]?.points || 0;
+  return `${heading('COPPA DEL MONDO', 'Classifiche', data.alpine.seasonLabel || '')}<div class="module-banner alpine">${leagueLogo('alpine')}<strong>Coppa del Mondo</strong></div>
+  <section class="panel"><div class="filter-row"><div class="segmented">${[['W','Donne'],['M','Uomini']].map(([id,label]) => `<button data-filter="cupGender" data-value="${id}" class="${state.cupGender === id ? 'active' : ''}" aria-pressed="${state.cupGender === id}">${label}</button>`).join('')}</div><div class="filters-group">${Object.entries(cupNames).map(([id,label]) => `<button class="chip${state.cupDiscipline === id ? ' active' : ''}" data-filter="cupDiscipline" data-value="${id}" aria-pressed="${state.cupDiscipline === id}">${label}</button>`).join('')}</div></div>
+  <div class="panel-head"><h2>${cupNames[state.cupDiscipline]} · ${state.cupGender === 'W' ? 'Donne' : 'Uomini'}</h2><span class="tiny">${group?.updatedAt ? 'FIS · '+since(group.updatedAt) : 'FIS'}</span></div>
+  ${group?.status === 'stale' ? '<div class="panel-body"><div class="notice">Aggiornamento FIS non disponibile. Sono mostrati gli ultimi dati acquisiti, se presenti.</div></div>' : ''}
+  ${rows.length ? `<div class="scroll-table"><table class="data-table cup-table"><thead><tr><th>#</th><th>Atleta</th><th>Nazione</th><th>Punti</th><th>Distacco punti</th></tr></thead><tbody>${rows.map(r => `<tr ${athleteStyle(r)}><td class="rank">${r.rank}</td><td class="athlete-name"><a href="${safeUrl(r.athleteUrl)}" target="_blank" rel="noopener noreferrer">${esc(r.name)}</a></td><td>${flag(r.country)}${esc(r.country)}</td><td><div class="cup-points"><strong>${r.points}</strong><span style="width:${leader ? Math.round(r.points/leader*100) : 0}%"></span></div></td><td>${leader-r.points || '—'}</td></tr>`).join('')}</tbody></table></div>` : empty(group?.status === 'ok' ? 'Nessun punto assegnato' : 'Classifica non disponibile', group?.status === 'ok' ? 'La classifica comparirà dopo le prime gare della specialità.' : 'In attesa dei dati ufficiali FIS.','trophy')}
+  <div class="panel-bottom"><span>Punti ufficiali della stagione</span>${group?.sourceUrl ? `<a class="text-button" href="${safeUrl(group.sourceUrl)}" target="_blank" rel="noopener noreferrer">Fonte FIS ↗</a>` : ''}</div></section>`;
+}
+function alpineStatsPage() {
+  const m=seasonMetrics(data.alpine.races,state.statsGender);
+  const maxVenues=Math.max(1,...m.venues.map(v=>v.total));
+  const maxDisc=Math.max(1,...m.disciplines.map(d=>d[1]));
+  return `${heading('SCI ALPINO', 'Statistiche', data.alpine.seasonLabel || '')}<div class="sport-tabs">${[['all','Donne e uomini'],['W','Donne'],['M','Uomini']].map(([id,label]) => `<button class="chip${state.statsGender === id ? ' active' : ''}" data-filter="statsGender" data-value="${id}" aria-pressed="${state.statsGender === id}">${label}</button>`).join('')}</div>
+  <div class="stats-strip"><div class="stat"><div><strong>${m.covered}/${m.finished}</strong><small>Gare concluse con risultati disponibili</small></div></div><div class="stat"><div><strong>${m.athletes.length}</strong><small>Atleti classificati nelle gare disponibili</small></div></div><div class="stat"><div><strong>${m.venues.length}</strong><small>Località nel calendario</small></div></div></div>
+  <div class="insights-grid"><section class="panel"><div class="panel-head"><h2>Vittorie e podi</h2>${icon('trophy')}</div>${m.athletes.length ? `<div class="scroll-table"><table class="data-table"><thead><tr><th>Atleta</th><th>Vittorie</th><th>Podi</th><th>Top 10</th></tr></thead><tbody>${m.athletes.slice(0,15).map(a=>`<tr ${athleteStyle(a)}><td>${flag(a.country)}${esc(a.name)}</td><td><b>${a.wins}</b></td><td>${a.podiums}</td><td>${a.top10}</td></tr>`).join('')}</tbody></table></div>` : empty('Nessun risultato disponibile','','trophy')}<div class="panel-bottom">Primi 15 per vittorie, podi e top 10 · risultati disponibili.</div></section>
+  <section class="panel"><div class="panel-head"><h2>Gare decise sul filo</h2>${icon('clock')}</div><div class="insight-list">${m.closeRaces.slice(0,5).map(({race,gap,winner})=>`<button data-race="${race.id}"><div>${flag(race.country)}<strong>${esc(race.venue)}</strong><small>${race.discipline} · ${race.gender==='W'?'Donne':'Uomini'} · ${dateLabel(race.date,{month:'short'})}<br>${esc(winner.name)}</small></div><b>${gap.toFixed(2)} s</b></button>`).join('') || empty('Dati non disponibili','','clock')}</div><div class="panel-bottom">Distacco tra il primo e il secondo atleta classificato.</div></section>
+  <section class="panel"><div class="panel-head"><h2>Il calendario per specialità</h2>${icon('calendar')}</div><div class="insight-bars">${m.disciplines.map(([code,count])=>`<div class="discipline-${code}"><div>${disciplineIcon(code)}<span>${cupNames[code]}</span><b>${count}</b></div><progress value="${count}" max="${maxDisc}" aria-label="${cupNames[code]}: ${count} gare"></progress></div>`).join('')}</div><div class="panel-bottom">Programma pubblicato, incluse le eventuali gare annullate.</div></section>
+  <section class="panel"><div class="panel-head"><h2>Le località con più gare</h2>${icon('mountain')}</div><div class="insight-bars">${m.venues.slice(0,8).map(v=>`<div><div><span>${flag(v.country)}${esc(v.venue)}</span><b>${v.total}</b></div><progress value="${v.total}" max="${maxVenues}" aria-label="${esc(v.venue)}: ${v.total} gare"></progress><small>${v.finished} concluse</small></div>`).join('')}</div><div class="panel-bottom">Località del calendario, non singole piste.</div></section>
+  <section class="panel"><div class="panel-head"><h2>Nazioni sul podio</h2>${icon('trophy')}</div><div class="scroll-table"><table class="data-table"><thead><tr><th>Nazione</th><th>Podi</th><th>Vittorie</th></tr></thead><tbody>${m.nations.map(n=>`<tr><td>${flag(n.country)}${esc(n.country)}</td><td>${n.podiums}</td><td>${n.wins}</td></tr>`).join('') || '<tr><td colspan="3">Nessun risultato disponibile</td></tr>'}</tbody></table></div></section></div><p class="tiny">Elaborazioni sui risultati FIS disponibili · ${since(data.alpine.updatedAt)}. I conteggi non includono gare concluse prive di risultati acquisiti.</p>`;
+}
+
+function render() {
+  const listScroll=document.querySelector('.match-list-scroll')?.scrollTop||0;
+  const current = document.activeElement; const focusId = current?.id; const selection = current?.selectionStart;
+  renderNavigation();
+  const eventTitle=state.route==='game' ? (()=>{const g=data.hockey.games.find(g=>g.id===state.detailId);return g ? team(g.home).name+' – '+team(g.away).name : 'Partita';})() : state.route==='race' ? (()=>{const r=data.alpine.races.find(r=>r.id===state.detailId);return r ? r.venue+' · '+r.disciplineName : 'Gara';})() : navigation.find(n=>n[0]===state.route)?.[1] || 'Home';
+  document.querySelector('#page-label').textContent = eventTitle;
+  document.body.dataset.route=state.route;
+  document.querySelector('#today-label').textContent = dateLabel(new Date().toISOString(), { weekday: 'long', year: 'numeric' });
+  document.querySelector('#bell-icon').innerHTML = icon('bell');
+  document.querySelector('#user-icon').innerHTML = icon('user');
+  document.title = `${eventTitle} · Live Sport Arena`;
+  main.innerHTML = ({ home: homePage, calendar: () => calendarPage(), alpine: () => calendarPage(true), hockey: hockeyPage, live: livePage, predictions: predictionsPage, settings: settingsPage, 'hockey-stats': hockeyStatisticsPage, game: () => detailPage('game'), race: () => detailPage('race'), 'alpine-standings': alpineStandingsPage, 'alpine-stats': alpineStatsPage }[state.route] || homePage)();
+  if (['game','race'].includes(state.route)) { const tab=detailTab; const run=selectedRun; if (state.route==='game') { openGame(state.detailId); detailTab=tab; renderGameTab(); } else { openRace(state.detailId); detailTab=tab; selectedRun=run; renderRaceTab(); } }
+  const matchList=document.querySelector('.match-list-scroll'); if(matchList) {
+    matchList.scrollTop=listScroll;
+    if(state.anchorLatestGame && state.scope==='all') {
+      const games=filteredGames().sort((a,b)=>(a.start||a.date).localeCompare(b.start||b.date));
+      const anchor=games.filter(g=>g.status==='finished').at(-1)||games[0];
+      const card=anchor ? [...matchList.querySelectorAll('[data-game]')].find(el=>el.dataset.game===anchor.id) : null;
+      const day=card?.closest('.match-grid')?.previousElementSibling;
+      if(day) matchList.scrollTop+=day.getBoundingClientRect().top-matchList.getBoundingClientRect().top;
+      state.anchorLatestGame=false;
+    }
+  }
+  upgradeSelects(main, mark);
+  if (focusId) { const replacement = document.getElementById(focusId); replacement?.focus({ preventScroll: true }); if (typeof selection === 'number' && replacement?.type === 'search') replacement.setSelectionRange(selection, selection); }
+}
+
+function modalHeader(label) { if (['game','race'].includes(state.route) && activeDetail) return `<div class="dialog-top"><a class="text-button" href="#${state.route==='game'?'hockey':'alpine'}">← ${state.route==='game'?'Hockey':'Sci alpino'}</a><span class="eyebrow">${label}</span></div>`; return `<div class="dialog-top"><span class="eyebrow">${label}</span><button class="icon-button" data-action="close-dialog" aria-label="Chiudi dettagli">${icon('close')}</button></div>`; }
+function openDialog(html) { if (['game','race'].includes(state.route) && activeDetail) { document.querySelector('#full-detail').innerHTML=html; return; } content.innerHTML = html; if (!dialog.open) dialog.showModal(); dialog.scrollTop = 0; }
+
+function openRace(id, tab = 'overview') {
+  const race = data.alpine.races.find(r => r.id === id); if (!race) return;
+  activeDetail = { type: 'race', id }; detailTab = tab; selectedRun = null;
+  openDialog(`${modalHeader('COPPA DEL MONDO FIS · ' + (race.gender === 'W' ? 'DONNE' : 'UOMINI'))}<div class="dialog-body"><div id="race-status">${raceStatus(race)}</div><h2 id="dialog-title" class="race-detail-title">${disciplineIcon(race.discipline)}${flag(race.country)}${esc(race.venue)}</h2><div class="dialog-description">${esc(race.disciplineName)} · ${dateLabel(race.date, { weekday: 'long', year: 'numeric' })}</div><div id="run-summary">${runCards(race, true)}</div><div class="sync-note">${icon('clock')}Tutti gli orari sono svizzeri · Europe/Zurich</div></div><div id="race-tabs" class="dialog-tabs"></div><div class="detail-content" id="detail-content"></div>`);
+  renderRaceTab();
+  if (race.liveUrl) startTiming(race);
+}
+
+function startTiming(race) {
+  const existing = connections.get(race.id);
+  if (existing?.race.liveUrl === race.liveUrl) return;
+  if (existing) { existing.close(); connections.delete(race.id); timings.delete(race.id); }
+  try {
+    const connection = new FisConnection(race, timing => {
+      // Copy primitive signatures: the incremental feed mutates its state.
+      const previous = timingSignatures.get(race.id);
+      const signature = { message: timing.message, runs: Object.values(timing.runs).map(r => ({ start: r.scheduledStart, altitude: r.info?.[7] })) };
+      const announcements = [];
+      if (timing.message && timing.message !== previous?.message) announcements.push(timing.message);
+      signature.runs.forEach((r, index) => {
+        const old = previous?.runs[index];
+        if (old && r.start && old.start && r.start !== old.start) announcements.push(`Programma FIS aggiornato: ${index + 1}ª manche alle ${clock(r.start)} svizzere.`);
+        if (old && r.altitude && old.altitude && r.altitude !== old.altitude) announcements.push(`Quota di partenza FIS aggiornata: ${old.altitude} → ${r.altitude} m (${index + 1}ª manche).`);
+      });
+      if (announcements.length) news.set(race.id, [...announcements.map(message => ({ message, at: new Date().toISOString() })), ...(news.get(race.id) || [])].slice(0, 12));
+      timingSignatures.set(race.id, signature);
+      timings.set(race.id, timing); timingErrors.delete(race.id);
+      Object.values(timing.runs).forEach(run => run.rows.forEach(r => { athleteNames[r.id] = { id:r.id, name:r.name, country:r.country }; }));
+      saveStore('athleteNames', athleteNames);
+      if (state.route === 'live') { const target = document.querySelector('#live-race-previews'); if (target) target.innerHTML = data.alpine.races.filter(r => r.status === 'live').map(liveRacePreview).join(''); }
+      if (race.date >= today()) maybeNotify(race, timing);
+      if ((dialog.open || state.route==='race') && activeDetail?.type === 'race' && activeDetail.id === race.id) {
+        document.querySelector('#run-summary').innerHTML = runCards(race, true);
+        renderRaceTab();
+      }
+      if (race.date < today()) { connection.close(); connections.delete(race.id); }
+    }, error => {
+      timingErrors.set(race.id, error.message);
+      if ((dialog.open || state.route==='race') && activeDetail?.type === 'race' && activeDetail.id === race.id) renderRaceTab();
+    });
+    connections.set(race.id, connection); connection.tick();
+  } catch (error) { timingErrors.set(race.id, error.message); }
+}
+
+function renderRaceTab() {
+  const race = data.alpine.races.find(r => r.id === activeDetail?.id); if (!race || activeDetail?.type !== 'race') return;
+  const target = document.querySelector('#detail-content'); if (!target) return;
+  const scroller = target.querySelector('.scroll-table'); const scrollTop = scroller?.scrollTop; const scrollLeft = scroller?.scrollLeft;
+  const focusedAthlete = document.activeElement?.dataset.athlete;
+  const priorMap=target.querySelector('[data-course-map]');
+  const timing = timings.get(race.id); const error = timingErrors.get(race.id); const run = selectedRun ?? timing?.activeRun ?? 0;
+  document.querySelector('#race-tabs').innerHTML = [['overview', 'La gara'], ['results', 'Classifica'], ['startlist', 'Lista di partenza'], ['news', 'Avvisi gara']].map(([v, label]) => `<button class="chip${detailTab === v ? ' active' : ''}" data-race-tab="${v}">${label}</button>`).join('');
+  let html = '';
+  const timingHeader = `<div class="timing-top"><span class="timing-status">${error ? icon('info') : timing ? '<span class="dot"></span>' : '<span class="small-loader"></span>'}${error ? esc(error) : timing ? (race.date < today() ? 'Timing FIS · archivio della gara' : 'Collegato a FIS · ' + clock(new Date(timing.receivedAt).toISOString())) : race.liveUrl ? 'Collegamento al timing FIS…' : 'Timing non ancora pubblicato'}</span>${timing ? `<div class="segmented">${Object.entries(timing.runs).map(([index, value]) => `<button data-run="${index}" class="${Number(index) === run ? 'active' : ''}">${value.number}ª manche</button>`).join('')}</div>` : ''}</div>`;
+  const message = timing?.message ? `<div class="notice fis">${icon('info')}<strong>Messaggio ufficiale FIS</strong><br>${esc(timing.message)}</div>` : '';
+  if (detailTab === 'overview') {
+    html = `${message}<div class="panel"><div class="panel-head"><h2>Il programma, nel dettaglio</h2>${badge(race.discipline, 'blue')}</div><div class="panel-body"><p class="explanation">${race.runs.length === 2 ? 'Prima e seconda manche sono appuntamenti distinti anche nel calendario in abbonamento.' : 'Questa gara prevede una manche unica.'} Gli orari pubblicati da FIS sono convertiti automaticamente nel fuso svizzero.</p><div class="dialog-actions"><button class="button primary" data-race-tab="startlist">${icon('live')}Segui la lista di partenza</button><button class="button" data-action="subscribe">${icon('calendar')}Calendario in abbonamento</button></div></div></div>${timing?.runs[run]?.info ? `<p class="explanation">Pista: ${esc(race.venue)} · Quota partenza: ${esc(timing.runs[run].info[7])} m · Arrivo: ${esc(timing.runs[run].info[8])} m<br>Quote e programma dal timing ufficiale.</p>` : ''}${documents(race)}${state.route === 'race' ? trackSection(race) : ''}`;
+  } else if (detailTab === 'news') {
+    html = `${timingHeader}${(news.get(race.id) || []).map(n => `<div class="news-item"><small>FIS · rilevato alle ${clock(n.at)}</small>${esc(n.message)}</div>`).join('') || empty('Nessun avviso ufficiale disponibile', 'Qui compariranno i messaggi del timing FIS su ritardi, interruzioni e variazioni del programma.', 'info')}<p class="tiny">I messaggi sono riportati nella lingua originale della fonte.</p>`;
+  } else {
+    html = timingHeader + message;
+    if (timing) {
+      let rows = rowsForRun(timing, run);
+      const ranking = detailTab === 'results';
+      if (ranking) rows = rows.filter(r => r.rank).sort((a, b) => a.rank - b.rank);
+      html += !ranking ? `<div class="timing-controls"><button class="button" data-action="toggle-swiss">${flag('SUI')}${state.alerts.swiss ? 'Svizzeri selezionati' : 'Segui gli svizzeri'}</button><button class="button${state.alerts.enabled ? ' primary' : ''}" data-action="toggle-alerts">${icon('bell')}${state.alerts.enabled ? 'Avvisi attivi' : 'Attiva avvisi'}</button><span class="tiny">★ per seguire un atleta</span></div><p class="tiny">Gli atleti già partiti sono attenuati. ${run !== timing.activeRun ? 'Stai consultando una manche diversa da quella attiva.' : 'Gli avvisi seguono la manche attiva.'}</p>` : '';
+      html += rows.length ? `<div class="scroll-table"><table class="data-table"><thead><tr><th>${ranking ? '#' : 'Ord.'}</th><th>Pett.</th><th>Atleta</th><th>Naz.</th>${ranking ? `<th>${run ? '1ª manche' : 'Tempo'}</th>${run ? '<th>2ª manche</th><th>Totale</th>' : ''}<th>Distacco</th>` : '<th>Stato</th><th>Segui</th>'}</tr></thead><tbody>${rows.map((r, i) => `<tr style="--favourite:${NATIONS[r.country]?.color || '#6c8051'}" class="${favouriteAthlete(r) ? 'athlete-favourite ' : ''}${!ranking && r.status === 'start' ? 'on-course' : !ranking && STARTED.has(r.status) ? 'gone' : ''}"><td>${ranking ? r.rank : r.index + 1}</td><td>${r.bib}</td><td class="athlete-name">${esc(r.name || r.id)}</td><td>${flag(r.country)}${esc(r.country)}</td>${ranking ? `<td>${duration(run ? r.first : r.total)}</td>${run ? `<td>${duration(r.second)}</td><td><b>${duration(r.total)}</b></td>` : ''}<td>${r.diff ? '+' + (r.diff / 1000).toFixed(2) : '—'}</td>` : `<td>${esc(STATUS[r.status] || (r.status ? r.status.toUpperCase() : 'Da partire'))}</td><td><button class="star-button${state.alerts.athletes.includes(r.id) ? ' on' : ''}" data-athlete="${r.id}" aria-label="${state.alerts.athletes.includes(r.id) ? 'Non seguire più' : 'Segui'} ${esc(r.name)}" aria-pressed="${state.alerts.athletes.includes(r.id)}">${state.alerts.athletes.includes(r.id) ? '★' : '☆'}</button></td>`}</tr>`).join('')}</tbody></table></div>` : empty(ranking ? 'In attesa dei primi arrivi' : 'Lista non ancora disponibile', 'I dati compariranno appena saranno trasmessi dal timing FIS.');
+    } else if (detailTab === 'results' && race.results.length) {
+      html += `<div class="scroll-table"><table class="data-table"><thead><tr><th>#</th><th>Pett.</th><th>Atleta</th><th>Naz.</th><th>1ª</th>${race.runs.length > 1 ? '<th>2ª</th>' : ''}<th>Totale</th></tr></thead><tbody>${race.results.map(r => `<tr ${athleteStyle(r)}><td>${r.rank}</td><td>${r.bib}</td><td>${esc(r.name)}</td><td>${esc(r.country)}</td><td>${esc(r.values[0])}</td>${race.runs.length > 1 ? `<td>${esc(r.values[1])}</td>` : ''}<td>${esc(r.values[race.runs.length] || r.values[0])}</td></tr>`).join('')}</tbody></table></div><p class="tiny">Risultato dall’ultimo aggiornamento FIS: ${since(data.alpine.updatedAt)}.</p>`;
+    } else html += empty(detailTab === 'startlist' ? 'La lista arriverà qui.' : 'I risultati arriveranno qui.', 'La fonte ufficiale non ha ancora pubblicato questi dati. Puoi consultare il programma e i documenti disponibili.', 'live');
+    html += documents(race, detailTab === 'startlist');
+  }
+  html += `<div class="dialog-actions detail-links">${state.route !== 'race' ? `<a class="text-button" href="#race/${race.id}" data-full-detail>Dettagli ↗</a>` : ''}<a class="text-button" href="${safeUrl(race.sourceUrl)}" target="_blank" rel="noopener noreferrer">Pagina ufficiale FIS ↗</a>${race.liveUrl ? `<a class="text-button" href="${safeUrl(race.liveUrl)}" target="_blank" rel="noopener noreferrer">Timing ufficiale ↗</a>` : ''}</div>`;
+  target.innerHTML = html;
+  const newScroller = target.querySelector('.scroll-table'); if (newScroller) { newScroller.scrollTop = scrollTop || 0; newScroller.scrollLeft = scrollLeft || 0; }
+  const nextMap=target.querySelector('[data-course-map]');
+  if(priorMap&&nextMap&&priorMap.dataset.courseMap===nextMap.dataset.courseMap) nextMap.replaceWith(priorMap); else mountCourseMaps(data.tracks.courses||[]);
+  if (focusedAthlete) target.querySelector(`[data-athlete="${CSS.escape(focusedAthlete)}"]`)?.focus({ preventScroll: true });
+}
+
+function duration(ms) { if (!ms || !Number.isFinite(ms)) return '—'; const seconds = ms / 1000; return seconds >= 60 ? `${Math.floor(seconds / 60)}:${(seconds % 60).toFixed(2).padStart(5, '0')}` : seconds.toFixed(2); }
+function documents(race, startsOnly = false) {
+  const docs = race.documents.filter(d => !startsOnly || d.name.toLowerCase().includes('start list'));
+  return docs.length ? `<div class="document-links">${docs.map(d => `<a class="button" href="${safeUrl(d.url)}" target="_blank" rel="noopener noreferrer">${icon('download')}${esc(({ 'Start List 1st run': 'Partenza 1ª manche · PDF', 'Start List 2nd run': 'Partenza 2ª manche · PDF', 'Results 1st run': 'Risultati 1ª manche · PDF', 'Results 2nd run': 'Risultati finali · PDF', 'Event Program': 'Programma · PDF' })[d.name] || d.name)}</a>`).join('')}</div>` : '';
+}
+
+function openGame(id) {
+  const g = data.hockey.games.find(g => g.id === id); if (!g) return;
+  activeDetail = { type: 'game', id }; detailTab = 'stats';
+  openDialog(`${modalHeader('NATIONAL LEAGUE · DETTAGLIO PARTITA')}<div class="dialog-body" id="game-summary">${gameSummary(g)}</div><div class="dialog-tabs" id="game-tabs"></div><div class="detail-content" id="detail-content"></div>`);
+  renderGameTab();
+}
+
+function gameSummary(g) {
+  return `<h2 id="dialog-title" style="font-size:18px">${dateLabel(g.date, { weekday: 'long', year: 'numeric' })} · ${clock(g.start)}</h2><div class="dialog-description">Ora svizzera${state.route !== 'game' ? ` · <a class="text-button" href="#game/${g.id}" data-full-detail>Dettagli ↗</a>` : ''}</div><div class="scoreboard"><div>${mark(g.home, true)}<div class="score-team">${teamName(g.home)}</div></div><div><div class="score-number">${g.status === 'scheduled' ? 'VS' : `${g.homeScore ?? '–'} : ${g.awayScore ?? '–'}`}</div><div class="score-label">${g.status === 'scheduled' ? 'In programma' : g.status === 'finished' ? 'Finale' + (g.decision ? ' · ' + g.decision : '') : esc(g.statusText)}${g.homePeriods?.length ? '<br>' + g.homePeriods.map((s, i) => `${s ?? '–'}–${g.awayPeriods?.[i] ?? '–'}`).join(' / ') : ''}</div></div><div>${mark(g.away, true)}<div class="score-team">${teamName(g.away)}</div></div></div><span class="sync-note">${icon('refresh')}Punteggio SIHF ${since(g.scoreCheckedAt || data.hockey.updatedAt)} · Statistiche ${since(data.hockey.updatedAt)}</span>`;
+}
+
+function renderGameTab() {
+  const g = data.hockey.games.find(g => g.id === activeDetail?.id); if (!g) return;
+  const d = data.hockey.details[g.id]; const info = d?.info?.[0];
+  document.querySelector('#game-tabs').innerHTML = [['summary','Riepilogo'],['stats','Squadre'],['events','Cronologia'],...(d?.lineups?.length ? [['lineups','Formazioni']] : []),...(d?.players?.length ? [['players','Giocatori']] : []),['graphics','Grafici'],['form','Forma e classifica']].map(([v, l]) => `<button class="chip${detailTab === v ? ' active' : ''}" data-game-tab="${v}">${l}</button>`).join('');
+  if (['summary','graphics','form'].includes(detailTab)) { document.querySelector('#detail-content').innerHTML=gameExtra(g,d,detailTab); return; }
+  const rows = d?.[detailTab] || [];
+  let html = '';
+  if (!rows.length) html = empty('Dati non ancora disponibili', g.status === 'scheduled' ? 'Formazioni e statistiche saranno disponibili quando pubblicate da SIHF.' : 'I dettagli di questa partita non sono ancora presenti nell’ultimo aggiornamento.', 'hockey');
+  else if (detailTab === 'stats') {
+    const labels = { 'SOG Total': 'Tiri in porta', 'PIM': 'Minuti di penalità', 'Face-offs won': 'Ingaggi vinti', 'Shots blocked': 'Tiri bloccati', 'Powerplay': 'Power play' };
+    html = `<div class="stat-bars">${rows.map(r => { const a = parseFloat(r.home_value), b = parseFloat(r.away_value); const ratio = a + b > 0 ? a / (a + b) : .5; return `<div><div class="stat-bar-head"><strong>${esc(r.home_value ?? '–')}</strong><span>${esc(labels[r.statistic] || r.statistic)}</span><strong>${esc(r.away_value ?? '–')}</strong></div>${Number.isFinite(a) && Number.isFinite(b) ? `<div class="stat-bar-track"><i style="width:${ratio * 100}%"></i><i style="width:${(1 - ratio) * 100}%"></i></div>` : ''}</div>`; }).join('')}</div>`;
+  } else if (detailTab === 'events') {
+    html = [...rows].sort((a,b)=>Number(a.period_number||0)-Number(b.period_number||0)||String(a.time||'').localeCompare(String(b.time||''),undefined,{numeric:true})).map(r => `<div class="timeline-event"><span class="timeline-time">${esc(r.time)}</span><div class="timeline-text"><strong>${({ goal: 'GOAL', penalty: 'Penalità', goalie: 'Cambio portiere', shootout: 'Rigore' })[r.event_type] || esc(r.event_type)} · ${r.team_id ? teamName(r.team_id) : ''}</strong>${esc(r.player_name || r.text || '')}${r.assist1_player_name ? ' · Assist: ' + esc([r.assist1_player_name, r.assist2_player_name].filter(Boolean).join(', ')) : ''}${r.penalty_minutes ? ` · ${r.penalty_minutes} min` : ''}<br>${r.period_number ? r.period_number + '° periodo' : ''}${r.score_home != null ? ` · ${r.score_home}–${r.score_away}` : ''}</div></div>`).join('');
+  } else {
+    html = `<div class="scroll-table"><table class="data-table"><thead><tr><th>#</th><th>Giocatore</th><th>Squadra</th>${detailTab === 'lineups' ? '<th>Ruolo / linea</th>' : '<th>Goal</th><th>Assist</th><th>Punti</th><th>Tempo sul ghiaccio</th>'}</tr></thead><tbody>${rows.map(r => `<tr><td>${esc(r.player_jersey ?? r.player_number ?? r.jersey ?? '–')}</td><td>${esc(r.player_name || r.player || '–')}</td><td>${teamName(r.team_id || (r.team_side === 'home' ? g.home : g.away))}</td>${detailTab === 'lineups' ? `<td>${r.unit === 'goalkeeper' ? 'Portiere' : esc(r.unit || '–')}${r.is_captain ? ' · Capitano' : ''}</td>` : `<td>${esc(r.goals ?? '–')}</td><td>${esc(r.assists ?? '–')}</td><td>${esc(r.points ?? '–')}</td><td>${esc(r.time_on_ice ?? r.toi ?? '–')}</td>`}</tr>`).join('')}</tbody></table></div>`;
+  }
+  if (['lineups','players'].includes(detailTab) && rows.length && state.route==='game') html=allColumns(rows);
+  html += tableLegend();
+  if (info) html += `<p class="explanation">${esc(info.venue_name || '')}${info.spectators ? ` · ${Number(info.spectators).toLocaleString('it-CH')} spettatori` : ''}${info.broadcasts ? '<br>TV: ' + esc(info.broadcasts) : ''}</p>`;
+  html += `<div class="dialog-actions"><a class="text-button" href="${safeUrl(g.sourceUrl)}" target="_blank" rel="noopener noreferrer">Dettaglio ufficiale SIHF ↗</a></div>`;
+  document.querySelector('#detail-content').innerHTML = html;
+}
+
+function subscribe() {
+  activeDetail = null;
+  const url = new URL('calendars/alpine-world-cup.ics', location.href.split('#')[0]).href;
+  const local = ['localhost', '127.0.0.1'].includes(location.hostname);
+  const webcal = url.replace(/^https?:/, 'webcal:');
+  openDialog(`${modalHeader('IL TUO CALENDARIO, SEMPRE IN PISTA')}<div class="dialog-body"><h2 id="dialog-title">Ogni manche, al suo posto.</h2><p class="explanation">Abbonati al calendario della Coppa del Mondo: discesa, Super-G, gigante e slalom, donne e uomini. Prima e seconda manche sono eventi separati.</p>${local ? '<div class="notice">L’abbonamento aggiornabile sarà utilizzabile dopo la pubblicazione del sito. Ora puoi scaricare il file ICS e controllarne gli eventi.</div>' : ''}<div class="dialog-actions">${!local ? `<a class="button primary" href="${esc(webcal)}">${icon('calendar')}Abbonati al calendario</a>` : ''}<a class="button" href="calendars/alpine-world-cup.ics" download="LiveSportArena-Coppa-del-Mondo.ics">${icon('download')}Scarica ICS</a></div><p class="explanation">Per un calendario che si aggiorna, aggiungi questo indirizzo come <strong>abbonamento tramite URL</strong> in Apple Calendar, Google Calendar o Outlook.</p><div class="subscribe-url">${esc(url)}</div><div class="dialog-actions"><button class="button" data-action="copy-calendar">${icon('link')}Copia indirizzo</button></div><p class="tiny">Il file scaricato una sola volta è una copia. L’abbonamento riceve le modifiche senza duplicare gli eventi; la frequenza di aggiornamento dipende anche dall’app calendario. Gli eventi senza un orario pubblicato vengono aggiornati quando FIS lo comunica.</p></div>`);
+}
+
+function alerts() {
+  activeDetail = null;
+  openDialog(`${modalHeader('SEGUI I TUOI ATLETI')}<div class="dialog-body"><h2 id="dialog-title">Vicino al cancelletto.</h2><p class="explanation">Ricevi un avviso per gli atleti che segui mentre Live Sport Arena è aperto. Una stella nella lista di partenza aggiunge l’atleta ai tuoi preferiti.</p><label class="settings-row"><span>Avvisi durante la gara<small>Per le gare di oggi con timing FIS disponibile.</small></span><input type="checkbox" id="alerts-enabled" ${state.alerts.enabled ? 'checked' : ''}></label><label class="settings-row"><span>Segui tutti gli svizzeri ${flag('SUI')}</span><input type="checkbox" id="alerts-swiss" ${state.alerts.swiss ? 'checked' : ''}></label><label class="settings-row"><span>Anticipo desiderato<small>Stima basata sul ritmo osservato delle partenze.</small></span><select class="input" id="alerts-minutes">${[1, 2, 3, 5].map(n => `<option value="${n}"${n === state.alerts.minutes ? ' selected' : ''}>${n} min</option>`).join('')}</select></label><div class="settings-row"><span>Atleti selezionati<small>${state.alerts.athletes.length} preferiti dalla lista di partenza.</small></span><button class="text-button" data-action="clear-athletes">Azzera</button></div><p class="tiny">Se il ritmo non è ancora stimabile, l’avviso segnala l’atleta tra i prossimi tre in lista. Durante una sospensione ufficiale gli avvisi sono sospesi. Gli avvisi a sito chiuso restano in sospeso.</p><div class="dialog-actions"><button class="button primary" data-action="save-alerts">${icon('check')}Salva preferenze</button><button class="button" data-action="notification-permission">${icon('bell')}Abilita notifiche del browser</button></div></div>`);
+}
+
+function maybeNotify(race, timing) {
+  if (!state.alerts.enabled || Date.now() - timing.receivedAt > 20000) return;
+  for (const row of alertCandidates(timing, { ...state.alerts, nations: preferences.nations, athletes: [...new Set([...state.alerts.athletes,...preferences.athletes])] })) {
+    const key = `${race.id}:${timing.activeRun}:${row.id}`;
+    if (notified.has(key)) continue;
+    notified.add(key);
+    const message = `${row.name} · ${race.venue}. ${row.runStartsIn ? 'Manche in programma tra ' + Math.max(1, Math.ceil(row.runStartsIn / 60)) + ' min; atleta tra i primi tre.' : row.estimatedSeconds ? 'Partenza stimata tra circa ' + Math.max(1, Math.round(row.estimatedSeconds / 60)) + ' min.' : 'Tra i prossimi ' + (row.ahead + 1) + ' atleti in lista.'}`;
+    toast(message, 18000);
+    if ('Notification' in window && Notification.permission === 'granted') {
+      try { new Notification('Live Sport Arena · Al cancelletto', { body: message, tag: key, icon: 'assets/favicon.svg' }); } catch { /* Some mobile browsers require service workers; in-page alert remains visible. */ }
+    }
+    if (audioContext?.state === 'running') { const oscillator = audioContext.createOscillator(); const gain = audioContext.createGain(); oscillator.connect(gain); gain.connect(audioContext.destination); gain.gain.value = .04; oscillator.frequency.value = 780; oscillator.start(); oscillator.stop(audioContext.currentTime + .16); }
+  }
+}
+
+function armAlerts() {
+  saveStore('alerts', state.alerts);
+  if (state.alerts.enabled) {
+    try { audioContext ||= new (window.AudioContext || window.webkitAudioContext)(); audioContext.resume(); } catch { /* visual alerts still work */ }
+    data.alpine.races.filter(r => r.date === today() && r.liveUrl).forEach(startTiming);
+  }
+}
+function toast(message, duration = 4000) { const el = document.querySelector('#toast'); el.textContent = message; el.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove('show'), duration); }
+function teamsModal() {
+  activeDetail = null;
+  openDialog(`${modalHeader('LA TUA NATIONAL LEAGUE')}<div class="dialog-body"><h2 id="dialog-title">Le tue squadre.</h2><p class="explanation">Scegli le squadre da seguire. Senza selezioni vedrai tutta la National League.</p><div class="teams-grid">${data.hockey.teams.sort((a, b) => a.name.localeCompare(b.name)).map(t => `<label class="team-option">${mark(t.id)}<span>${esc(t.name)}</span><input type="checkbox" data-team-option="${t.id}" ${state.teams.includes(t.id) ? 'checked' : ''}></label>`).join('')}</div><div class="dialog-actions"><button class="button primary" data-action="save-teams">Salva selezione ${icon('check')}</button><button class="button" data-action="all-teams">Tutte le squadre</button></div></div>`);
+}
+function sources() {
+  activeDetail = null;
+  openDialog(`${modalHeader('DATI TRASPARENTI')}<div class="dialog-body"><h2 id="dialog-title">Direttamente dalle fonti.</h2><div class="source-links"><a href="${safeUrl(data.alpine.sourceUrl)}" target="_blank" rel="noopener">Calendario ufficiale FIS ↗</a><a href="https://live.fis-ski.com/" target="_blank" rel="noopener">Timing ufficiale FIS ↗</a><a href="https://www.sihf.ch/de/game-center/liga/1-1" target="_blank" rel="noopener">National League · Swiss Ice Hockey Federation ↗</a></div><p class="explanation">Il timing sci viene letto direttamente dalla fonte durante la gara, normalmente ogni 6 secondi, rispettando l’intervallo indicato da FIS. Sul Mac, il processo hockey dedicato controlla i punteggi ogni 20 secondi durante gli incontri e ogni 5 minuti fuori partita, rallentando in caso di errori. Statistiche complete e calendario seguono la sincronizzazione separata. Su GitHub Pages, senza un servizio live esterno, resta l’aggiornamento programmato ogni 20 minuti.</p><p class="explanation">Sci: ultimo aggiornamento ${data.alpine.updatedAt ? dateLabel(data.alpine.updatedAt) + ', ' + clock(data.alpine.updatedAt) : 'non disponibile'}.<br>Hockey: ultimo aggiornamento ${data.hockey.updatedAt ? dateLabel(data.hockey.updatedAt) + ', ' + clock(data.hockey.updatedAt) : 'non disponibile'}.</p><p class="tiny">Live Sport Arena è un progetto indipendente e non è affiliato a FIS o SIHF. Gli orari sono visualizzati in Europe/Zurich, con ora solare e legale automatiche.</p></div>`);
+}
+
+document.addEventListener('click', async event => {
+  const el = event.target.closest('button, a, .sidebar-scrim'); if (!el) return;
+  if (el.hasAttribute('data-full-detail')) { dialog.close(); activeDetail=null; } 
+  if (el.dataset.race) { if (['race','game'].includes(state.route)) { location.hash='race/'+el.dataset.race; return; } return openRace(el.dataset.race); }
+  if (el.dataset.game) { if (['race','game'].includes(state.route)) { location.hash='game/'+el.dataset.game; return; } return openGame(el.dataset.game); }
+  if (el.dataset.filter) { const list=document.querySelector('.match-list-scroll'); if(list) list.scrollTop=0; state[el.dataset.filter] = el.dataset.value; if(state.route==='hockey' && el.dataset.filter==='scope' && el.dataset.value==='all') state.anchorLatestGame=true; state.limit = 60; render(); return; }
+  if (el.dataset.hockeyTab) { state.hockeyTab = el.dataset.hockeyTab; render(); return; }
+  if (el.dataset.raceTab) { detailTab = el.dataset.raceTab; renderRaceTab(); return; }
+  if (el.dataset.gameTab) { detailTab = el.dataset.gameTab; renderGameTab(); return; }
+  if (el.dataset.run != null) { selectedRun = Number(el.dataset.run); renderRaceTab(); return; }
+  if (el.dataset.athlete) { const id = el.dataset.athlete; state.alerts.athletes = state.alerts.athletes.includes(id) ? state.alerts.athletes.filter(x => x !== id) : [...state.alerts.athletes, id]; preferences.athletes = [...state.alerts.athletes]; saveStore('preferences',preferences); saveStore('alerts', state.alerts); renderRaceTab(); return; }
+  const action = el.dataset.action;
+  switch (action) {
+    case 'expand-hockey': toggleSportMenu('hockey'); break;
+    case 'expand-alpine': toggleSportMenu('alpine'); break;
+    case 'save-settings': saveSettings(); break;
+    case 'menu-toggle': { const open = document.querySelector('#sidebar').classList.toggle('open'); el.setAttribute('aria-expanded', String(open)); break; }
+    case 'menu-close': closeMenu(); break;
+    case 'close-dialog': dialog.close(); break;
+    case 'subscribe': subscribe(); break;
+    case 'hockey-calendar': hockeyCalendar(); break;
+    case 'copy-hockey-calendar': try { await navigator.clipboard.writeText(new URL(hockeyCalendarPath(),location.href.split('#')[0]).href); toast('Indirizzo copiato.'); } catch { toast('Copia l’indirizzo mostrato.'); } break;
+    case 'alerts': alerts(); break;
+    case 'sources': sources(); break;
+    case 'csv': activeDetail = null; openDialog(`${modalHeader('ESPORTAZIONI HOCKEY')}<div class="dialog-body"><h2 id="dialog-title">I dati della stagione.</h2><p class="explanation">CSV aggiornati insieme al sito. I dettagli delle partite vengono aggiunti progressivamente: i dati mancanti restano vuoti.</p><div class="document-links">${[['matches', 'Partite'], ['game_stats', 'Statistiche squadre'], ['player_stats', 'Statistiche giocatori'], ['team_features', 'Feature pregara'], ['ml_dataset', 'Dataset per i modelli']].map(([file, name]) => `<a class="button" href="data/csv/${file}.csv" download>${icon('download')}${name}</a>`).join('')}</div></div>`); break;
+    case 'teams': teamsModal(); break;
+    case 'save-teams': state.teams = [...dialog.querySelectorAll('[data-team-option]:checked')].map(e => e.dataset.teamOption); saveStore('teams', state.teams); dialog.close(); render(); break;
+    case 'all-teams': state.teams = []; saveStore('teams', []); dialog.close(); render(); break;
+    case 'standings': state.hockeyTab = 'standings'; if (location.hash === '#hockey') render(); else location.hash = 'hockey'; break;
+    case 'reset-filters': Object.assign(state, { teamFilter: '', date: '', query: '', discipline: 'all', gender: 'all', limit: 60 }); render(); break;
+    case 'load-more': state.limit += 60; render(); break;
+    case 'copy-calendar': { const url = new URL('calendars/alpine-world-cup.ics', location.href.split('#')[0]).href; try { await navigator.clipboard.writeText(url); toast('Indirizzo del calendario copiato.'); } catch { toast('Copia l’indirizzo mostrato nella scheda.'); } break; }
+    case 'toggle-swiss': state.alerts.swiss = !state.alerts.swiss; preferences.nations = state.alerts.swiss ? [...new Set([...preferences.nations,'SUI'])] : preferences.nations.filter(n => n !== 'SUI'); saveStore('preferences',preferences); saveStore('alerts', state.alerts); renderRaceTab(); break;
+    case 'toggle-alerts': state.alerts.enabled = !state.alerts.enabled; armAlerts(); renderRaceTab(); toast(state.alerts.enabled ? 'Avvisi attivi mentre il sito è aperto.' : 'Avvisi disattivati.'); break;
+    case 'clear-athletes': preferences.athletes = []; saveStore('preferences',preferences); state.alerts.athletes = []; saveStore('alerts', state.alerts); alerts(); break;
+    case 'save-alerts': state.alerts.enabled = dialog.querySelector('#alerts-enabled').checked; state.alerts.swiss = dialog.querySelector('#alerts-swiss').checked; preferences.nations = state.alerts.swiss ? [...new Set([...preferences.nations,'SUI'])] : preferences.nations.filter(n => n !== 'SUI'); saveStore('preferences',preferences); state.alerts.minutes = Number(dialog.querySelector('#alerts-minutes').value); armAlerts(); dialog.close(); toast('Preferenze degli avvisi salvate.'); break;
+    case 'notification-permission': if ('Notification' in window) { const result = await Notification.requestPermission(); toast(result === 'granted' ? 'Notifiche abilitate mentre il sito è aperto.' : 'Restano disponibili gli avvisi dentro il sito.'); } else toast('Questo browser supporta gli avvisi dentro il sito.'); break;
+  }
+});
+document.addEventListener('change', event => { if (event.target.dataset.select) { state[event.target.dataset.select] = event.target.value; if(state.route==='hockey' && state.scope==='all') state.anchorLatestGame=true; state.limit = 60; render(); } });
+let searchTimer;
+document.addEventListener('input', event => { if (event.target.id === 'search-filter') { state.query = event.target.value; clearTimeout(searchTimer); searchTimer = setTimeout(render, 160); } });
+function closeMenu() { document.querySelector('#sidebar').classList.remove('open'); document.querySelector('[data-action="menu-toggle"]').setAttribute('aria-expanded', 'false'); }
+document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
+dialog.addEventListener('click', event => { if (event.target === dialog) { const rect = dialog.getBoundingClientRect(); if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close(); } });
+dialog.addEventListener('close', () => { if (['race','game'].includes(state.route)) return; if (!state.alerts.enabled && state.route !== 'live') { for (const c of connections.values()) c.close(); connections.clear(); } activeDetail = null; });
+function readRoute() {
+ const [route,id]=location.hash.slice(1).split('/');
+ state.route=['game','race'].includes(route) ? route : navigation.some(n=>n[0]===route) ? route : 'home';
+ state.detailId=id; detailTab=state.route==='game'?'summary':'overview';
+ if (state.route.startsWith('hockey') || state.route==='predictions') state.hockeyExpanded=true;
+ if (state.route.startsWith('alpine')) state.alpineExpanded=true;
+ if (!dialog.open) activeDetail=null;
+}
+window.addEventListener('hashchange', () => { readRoute(); Object.assign(state,{date:'',query:'',limit:60,scope:'upcoming',discipline:'all',gender:'all',teamFilter:''}); closeMenu();render();syncLiveConnections();window.scrollTo(0,0); });
+
+
+function syncLiveConnections() {
+  const wanted = new Set(data.alpine.races.filter(r => r.liveUrl && ((state.alerts.enabled && r.date === today()) || (state.route === 'live' && r.status === 'live'))).map(r => r.id));
+  if (activeDetail?.type === 'race') wanted.add(activeDetail.id);
+  for (const [id,c] of connections) if (!wanted.has(id)) { c.close(); connections.delete(id); }
+  data.alpine.races.filter(r => wanted.has(r.id) && r.liveUrl).forEach(startTiming);
+}
+function settingsPage() {
+  const known = new Map(Object.values(athleteNames).map(r => [String(r.id),r]));
+  data.alpine.races.forEach(race => race.results.forEach(r => { if (r.fisCode) known.set(String(r.fisCode), {id:String(r.fisCode), name:r.name, country:r.country}); }));
+  [...preferences.athletes,...state.alerts.athletes].forEach(id => { if (!known.has(id)) known.set(id,{id,name:'Atleta FIS '+id,country:''}); });
+  return `${heading('', 'Impostazioni', 'Preferenze salvate su questo dispositivo.')}<div class="settings-grid"><section class="panel"><div class="panel-head"><h2>Hockey</h2>${leagueLogo('hockey')}</div><div class="panel-body"><div class="field-label">Squadre preferite</div><div class="nation-options">${data.hockey.teams.map(t=>`<label>${mark(t.id)}<input type="checkbox" data-preferred-team="${t.id}" ${preferences.teams.includes(t.id)?'checked':''}>${esc(t.name)}</label>`).join('')}</div><label class="settings-row">Mostra la stella sulle partite preferite<input id="preferred-stars" type="checkbox" ${preferences.stars ? 'checked' : ''}></label></div></section>
+  <section class="panel"><div class="panel-head"><h2>Sci alpino</h2>${leagueLogo('alpine')}</div><div class="panel-body"><h3>Federazioni</h3><div class="nation-options">${Object.entries(NATIONS).map(([code,n]) => `<label style="--favourite:${n.color}"><input type="checkbox" data-nation="${code}" ${preferences.nations.includes(code) ? 'checked' : ''}>${flag(code)}${n.name}<i class="nation-color"></i></label>`).join('')}</div><h3>Atleti</h3><input class="input" id="athlete-search" type="search" placeholder="Cerca atleta" aria-label="Cerca atleta"><div class="athlete-options">${[...known.values()].sort((a,b) => a.name.localeCompare(b.name)).map(r => `<label data-athlete-name="${esc(r.name.toLowerCase())}"><input type="checkbox" data-preferred-athlete="${r.id}" ${preferences.athletes.includes(r.id) || state.alerts.athletes.includes(r.id) ? 'checked' : ''}>${flag(r.country)}${esc(r.name)}</label>`).join('') || '<p class="tiny">Gli atleti compaiono quando FIS pubblica le liste.</p>'}</div></div></section></div><div class="settings-actions"><button class="button primary" data-action="save-settings">Salva preferenze</button><button class="button" data-action="alerts">${icon('bell')}Avvisi di partenza</button></div>`;
+}
+function saveSettings() {
+  preferences.teams=[...document.querySelectorAll('[data-preferred-team]:checked')].map(el=>el.dataset.preferredTeam); preferences.team=preferences.teams[0]||'';
+  preferences.stars = document.querySelector('#preferred-stars').checked;
+  preferences.nations = [...document.querySelectorAll('[data-nation]:checked')].map(el => el.dataset.nation);
+  preferences.athletes = [...document.querySelectorAll('[data-preferred-athlete]:checked')].map(el => el.dataset.preferredAthlete);
+  state.alerts.athletes = [...preferences.athletes];
+  state.alerts.swiss = preferences.nations.includes('SUI');
+  saveStore('preferences',preferences); saveStore('alerts',state.alerts); toast('Preferenze salvate.');
+}
+document.addEventListener('input', e => { if (e.target.id === 'athlete-search') document.querySelectorAll('[data-athlete-name]').forEach(el => { el.hidden = !el.dataset.athleteName.includes(e.target.value.toLowerCase()); }); });
+
+async function loadData(initial = false) {
+  const files = [...MODULES, {id:'hockeyStats',file:'data/hockey-statistics.json'}, {id:'tracks',file:'data/tracks.json'}, {id:'cups',file:'data/alpine-standings.json'}, { id: 'predictions', file: 'data/predictions.json' }];
+  const outcomes = await Promise.allSettled(files.map(async module => { const response = await fetch(`${module.file}?v=${Math.floor(Date.now() / 60000)}`, { cache: 'no-cache' }); if (!response.ok) throw new Error(module.id); const value = await response.json(); if(module.id==='hockey') hockeyBaseline=value; data[module.id] = { ...data[module.id], ...value }; }));
+  applyHockeyScores();
+  const failed = outcomes.filter(x => x.status === 'rejected');
+  if (failed.length && initial) toast('Alcuni dati non sono disponibili. Riproveremo automaticamente.');
+  if (state.route !== 'settings' || initial) render();
+  syncLiveConnections();
+  if (activeDetail?.type === 'race' && (dialog.open || state.route==='race')) {
+    const race = data.alpine.races.find(r => r.id === activeDetail.id);
+    if (race) {
+      document.querySelector('#run-summary').innerHTML = runCards(race, true);
+      document.querySelector('#race-status').innerHTML = raceStatus(race);
+      renderRaceTab();
+      if (race.liveUrl) startTiming(race);
+    }
+  } else if (activeDetail?.type === 'game' && (dialog.open || ['race','game'].includes(state.route))) {
+    const game = data.hockey.games.find(g => g.id === activeDetail.id);
+    if (game) {
+      const scroll = dialog.scrollTop;
+      document.querySelector('#game-summary').innerHTML = gameSummary(game);
+      renderGameTab();
+      dialog.scrollTop = scroll;
+    }
+  }
+}
+readRoute();
+loadData(true);
+setInterval(() => { if (!document.hidden) loadData(); }, 60000);
+pollHockeyScores();
+document.addEventListener('visibilitychange', () => { if (!document.hidden) { loadData(); pollHockeyScores(); } });
+
+// Enhance every result table, including tables replaced by live updates.
+enableTableSorting();
+
+function hockeyCalendarPath() { return `calendars/hockey-${state.teamFilter || 'national-league'}.ics`; }
+function hockeyCalendar() {
+ activeDetail=null;
+ const path=hockeyCalendarPath(), url=new URL(path,location.href.split('#')[0]).href;
+ const local=['localhost','127.0.0.1',''].includes(location.hostname);
+ openDialog(`${modalHeader('NATIONAL LEAGUE')}<div class="dialog-body"><h2 id="dialog-title">Aggiungi al calendario</h2><p class="explanation">${state.teamFilter?esc(team(state.teamFilter).name):'Tutte le squadre'} · stagione ${esc(data.hockey.seasonLabel)}</p><div class="dialog-actions">${local?'':`<a class="button primary" href="${esc(url.replace(/^https?:/,'webcal:'))}">${icon('calendar')}Abbonati</a>`}<a class="button" href="${esc(path)}" download>${icon('download')}Scarica ICS</a></div><p class="explanation">${local?'L’abbonamento sarà disponibile dopo la pubblicazione. ':''}Il download è una copia; l’abbonamento tramite URL riceve le modifiche agli orari. La frequenza dipende dall’app calendario.</p><div class="subscribe-url">${esc(url)}</div><div class="dialog-actions"><button class="button" data-action="copy-hockey-calendar">${icon('link')}Copia indirizzo</button></div><p class="tiny">Il calendario include l’intera stagione della squadra selezionata, indipendentemente dalla data filtrata.</p></div>`);
+}
+
+function hockeyScoreFresh() {
+ return hockeyScores?.status==='ok' && Number(hockeyScores.season)===Number(data.hockey.season) && Date.now()-Date.parse(hockeyScores.updatedAt)<(Number(hockeyScores.nextPollSeconds||20)+45)*1000;
+}
+function hockeyScoreNote() {
+ if(hockeyScoreFresh()) return `Punteggi SIHF · controllo ${since(hockeyScores.updatedAt)}`;
+ if(hockeyScores?.updatedAt) return `Punteggi SIHF · ultimo controllo ${since(hockeyScores.updatedAt)} · aggiornamento rapido interrotto`;
+ return `Punteggi SIHF · aggiornati ${since(data.hockey.updatedAt)}`;
+}
+function hockeySourceNotice() {
+ const local=['localhost','127.0.0.1'].includes(location.hostname);
+ if(hockeyScoreFresh()) return `<div class="notice fis">${icon('refresh')}Punteggi: controllo ogni ${hockeyScores.nextPollSeconds} secondi${hockeyScores.mode==='github-actions'?' previsti, con possibili ritardi':hockeyScores.nextPollSeconds===20?' durante le partite':''}. Statistiche complete: ${since(data.hockey.updatedAt)}.</div>`;
+ return `<div class="notice">${icon('info')}${hockeyScoreNote()}. ${local?'Per gli aggiornamenti rapidi deve essere attivo il processo hockey locale.':'Sono disponibili gli aggiornamenti periodici del sito.'}</div>`;
+}
+function applyHockeyScores() {
+ if(!hockeyBaseline) return;
+ data.hockey={...hockeyBaseline};
+ if(!hockeyScores || Number(hockeyScores.season)!==Number(hockeyBaseline.season)) return;
+ const patches=new Map((hockeyScores.games||[]).map(g=>[g.id,g]));
+ data.hockey.games=hockeyBaseline.games.map(g=>{
+   const patch=patches.get(g.id);
+   if(!patch || patch.home!==g.home || patch.away!==g.away) return g;
+   if(Date.parse(patch.scoreCheckedAt)<Date.parse(hockeyBaseline.updatedAt)) return g;
+   if(g.sourceUpdatedAt && patch.sourceUpdatedAt && Date.parse(patch.sourceUpdatedAt)<Date.parse(g.sourceUpdatedAt)) return g;
+   return {...g,...patch};
+ });
+ if(hockeyScoreFresh() && hockeyScores.standings?.length) data.hockey.standings=hockeyScores.standings;
+ data.hockey.liveStandings=hockeyScoreFresh() && hockeyScores.baseUpdatedAt===hockeyBaseline.updatedAt ? hockeyScores.liveStandings||[] : [];
+}
+async function pollHockeyScores() {
+ clearTimeout(hockeyPollTimer);
+ if(hockeyPollBusy) return;
+ hockeyPollBusy=true;
+ try {
+  if(!document.hidden) {
+   const response=await fetch(`data/hockey-live.json?v=${Date.now()}`,{cache:'no-store',signal:AbortSignal.timeout(10000)});
+   if(response.ok) {
+    hockeyScores=await response.json();
+    applyHockeyScores();
+   }
+   // Avoid interrupting a selection or typed search while refreshing scores.
+   if(!document.activeElement?.closest('input,select,.custom-select') && ['home','calendar','hockey','live','game','predictions'].includes(state.route)) {
+    const scroll=window.scrollY, modalScroll=dialog.scrollTop;
+    render(); window.scrollTo(0,scroll);
+    if(dialog.open && activeDetail?.type==='game') {
+     const game=data.hockey.games.find(g=>g.id===activeDetail.id);
+     if(game) { document.querySelector('#game-summary').innerHTML=gameSummary(game); renderGameTab(); dialog.scrollTop=modalScroll; }
+    }
+   }
+  }
+ } catch { /* The timestamp makes a stopped collector visible; keep last valid scores. */ }
+ finally {
+  hockeyPollBusy=false;
+  hockeyPollTimer=setTimeout(pollHockeyScores, hockeyScores?.nextPollSeconds===20 ? 5000 : 15000);
+ }
+}
+
+function updateConnectionStatus() {
+ const status=document.querySelector('#connection-status');
+ if(!status) return;
+ status.classList.toggle('offline',!navigator.onLine);
+ document.querySelector('#connection-label').textContent=navigator.onLine?'Connesso':'Non connesso';
+}
+window.addEventListener('online',updateConnectionStatus);
+window.addEventListener('offline',updateConnectionStatus);
+updateConnectionStatus();
