@@ -38,7 +38,14 @@ def main():
                         liveStandings=snapshot['liveStandings'])
             write_json(SITE/'data/hockey-live.json', live)
         else:
-            record('update', operation='hockey_statistics', outcome='skipped', reason='no-new-finished-games-or-not-due')
+            # Recover legacy snapshots once without refreshing healthy tables on idle matchdays.
+            statistics = read_json(SITE/'data/hockey-statistics.json', {})
+            shots = statistics.get('tables', {}).get('goalie_shots', {})
+            if statistics.get('season') == season and shots.get('status') == 'stale' and state.get('goalieShotsRepairSeason') != season:
+                hockey_statistics.update(season, only={'goalie_shots'})
+                state['goalieShotsRepairSeason'] = season
+            else:
+                record('update', operation='hockey_statistics', outcome='skipped', reason='no-new-finished-games-or-not-due')
     except Exception as exc:
         record('fallback', outcome='error', errorType=type(exc).__name__, error=str(exc))
         print(f'::warning::Hockey update unavailable: {exc}', flush=True)
