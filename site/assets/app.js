@@ -1,3 +1,4 @@
+import { skiMaps, mapForRace } from './maps-3d.js';
 import { readSource } from './client-diagnostics.js';
 import { enhanceSelects as upgradeSelects } from './select-control.js';
 import { enableTableSorting } from './table-sort.js?v=20261107-compact';
@@ -46,7 +47,7 @@ const preferences = { team: '', nations: state.alerts.swiss ? ['SUI'] : [], athl
 preferences.teams ||= preferences.team ? [preferences.team] : [];
 state.leagueTable = 'player_stats';
 const athleteNames = readStore('athleteNames', {});
-const navigation = [['home', 'Home', 'home'], ['calendar', 'Calendario', 'calendar'], ['live', 'In diretta', 'live'], ['alpine', 'Sci alpino', 'mountain'], ['hockey', 'Hockey', 'hockey'], ['predictions', 'Previsioni', 'spark'], ['settings', 'Impostazioni', 'user'], ['alpine-standings', 'Classifiche', 'trophy'], ['alpine-stats', 'Statistiche', 'chart'], ['hockey-stats','Statistiche National League','chart']];
+const navigation = [['home', 'Home', 'home'], ['calendar', 'Calendario', 'calendar'], ['live', 'In diretta', 'live'], ['alpine', 'Sci alpino', 'mountain'], ['maps-3d', 'Mappe 3D', 'mountain'], ['hockey', 'Hockey', 'hockey'], ['predictions', 'Previsioni', 'spark'], ['settings', 'Impostazioni', 'user'], ['alpine-standings', 'Classifiche', 'trophy'], ['alpine-stats', 'Statistiche', 'chart'], ['hockey-stats','Statistiche National League','chart']];
 paths.user = '<circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/>';
 state.teamFilter = '';
 state.alpineExpanded = location.hash.startsWith('#alpine');
@@ -480,6 +481,30 @@ function gameExtra(g,d,tab) {
  const stats=d?.stats||[];
  return `<div class="panel-body"><h3>Tiri e gol per periodo</h3><div class="period-grid">${(info?.home_shots_by_period||[]).map((v,i)=>`<div><small>${i+1}° periodo · tiri casa/ospiti</small><strong>${v??'–'} / ${info.away_shots_by_period?.[i]??'–'}</strong></div>`).join('')||'<p>Dati per periodo non disponibili</p>'}</div><div class="stat-bars">${stats.filter(r=>Number.isFinite(Number(r.home_value))&&Number.isFinite(Number(r.away_value))&&r.home_value!=null&&r.away_value!=null&&Number(r.home_value)>=0&&Number(r.away_value)>=0).map(r=>{const a=Number(r.home_value),b=Number(r.away_value),sum=a+b||1;return `<div><div class="stat-bar-head"><b>${a}</b><span>${esc(r.statistic)}</span><b>${b}</b></div><div class="stat-bar-track"><i style="width:${a/sum*100}%"></i><i style="width:${b/sum*100}%"></i></div></div>`;}).join('')}</div>${tableLegend()}</div>`;
 }
+function mapLink(race) {
+  const map = mapForRace(race);
+  return map ? `<a class="text-button" href="maps-3d/${map.id}.html">Apri mappa 3D · ${esc(map.disciplineLabel)} ↗</a>`
+    : '<span class="tiny">Mappa 3D non disponibile</span>';
+}
+
+function mapsPage() {
+  const selected = state.detailId || 'all';
+  const filters = ['all', 'DH', 'SG', 'GS', 'SL'].map(d =>
+    `<a class="chip discipline-filter discipline-${d}${selected === d ? ' active' : ''}" href="#maps-3d${d === 'all' ? '' : '/' + d}" ${selected === d ? 'aria-current="true"' : ''}>${d === 'all' ? 'Tutte le discipline' : cupNames[d]}</a>`
+  ).join('');
+  const groups = new Map();
+  for (const map of skiMaps) {
+    if (selected !== 'all' && selected !== map.discipline) continue;
+    const key = map.location + ' · ' + map.course;
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(map);
+  }
+  const cards = [...groups].sort(([a], [b]) => a.localeCompare(b, 'it')).map(([label, maps]) =>
+    `<article class="panel"><div class="panel-head"><h2>${esc(label)}</h2></div><div class="panel-body"><p class="tiny">${esc(maps[0].country)}</p><div class="filters-group">${maps.map(m => `<a class="chip discipline-filter discipline-${m.discipline}" href="maps-3d/${m.id}.html">${esc(m.disciplineLabel)} ↗</a>`).join('')}</div></div></article>`
+  ).join('');
+  return `${heading('SCI ALPINO', 'Mappe 3D', 'Diorami interattivi delle piste di Coppa del Mondo. Le geometrie sono illustrative.')}<nav class="filters-group" aria-label="Filtra le mappe per disciplina">${filters}</nav><div class="ski-map-grid">${cards}</div>`;
+}
+
 function trackSection(race) {
  const course=(data.tracks.courses||[]).find(c=>c.venues.includes(race.venue)&&c.disciplines.includes(race.discipline)&&(c.gender==='ALL'||c.gender===race.gender));
  if(!course) return `<section class="panel track-panel"><div class="panel-head"><h2>Tracciato</h2></div><div class="panel-body"><p>Informazioni e geometria non ancora disponibili per questa gara.</p><a class="text-button" href="${safeUrl(race.sourceUrl)}" target="_blank" rel="noopener">Documenti ufficiali FIS ↗</a></div></section>`;
@@ -540,7 +565,7 @@ function render() {
   document.querySelector('#bell-icon').innerHTML = icon('bell');
   document.querySelector('#user-icon').innerHTML = icon('user');
   document.title = `${eventTitle} · Live Sport Arena`;
-  main.innerHTML = ({ home: homePage, calendar: () => calendarPage(), alpine: () => calendarPage(true), hockey: hockeyPage, live: livePage, predictions: predictionsPage, settings: settingsPage, 'hockey-stats': hockeyStatisticsPage, game: () => detailPage('game'), race: () => detailPage('race'), 'alpine-standings': alpineStandingsPage, 'alpine-stats': alpineStatsPage }[state.route] || homePage)();
+  main.innerHTML = ({ 'maps-3d': mapsPage, home: homePage, calendar: () => calendarPage(), alpine: () => calendarPage(true), hockey: hockeyPage, live: livePage, predictions: predictionsPage, settings: settingsPage, 'hockey-stats': hockeyStatisticsPage, game: () => detailPage('game'), race: () => detailPage('race'), 'alpine-standings': alpineStandingsPage, 'alpine-stats': alpineStatsPage }[state.route] || homePage)();
   if (['game','race'].includes(state.route)) { const tab=detailTab; const run=selectedRun; if (state.route==='game') { openGame(state.detailId); detailTab=tab; renderGameTab(); } else { openRace(state.detailId); detailTab=tab; selectedRun=run; renderRaceTab(); } }
   bindSeasonList(previousDay);
   upgradeSelects(main, mark);
@@ -622,7 +647,7 @@ function renderRaceTab() {
     } else html += empty(detailTab === 'startlist' ? 'La lista arriverà qui.' : 'I risultati arriveranno qui.', 'La fonte ufficiale non ha ancora pubblicato questi dati. Puoi consultare il programma e i documenti disponibili.', 'live');
     html += documents(race, detailTab === 'startlist');
   }
-  html += `<div class="dialog-actions detail-links">${state.route !== 'race' ? `<a class="text-button" href="#race/${race.id}" data-full-detail>Dettagli ↗</a>` : ''}<a class="text-button" href="${safeUrl(race.sourceUrl)}" target="_blank" rel="noopener noreferrer">Pagina ufficiale FIS ↗</a>${race.liveUrl ? `<a class="text-button" href="${safeUrl(race.liveUrl)}" target="_blank" rel="noopener noreferrer">Timing ufficiale ↗</a>` : ''}</div>`;
+  html += `<div class="dialog-actions detail-links">${mapLink(race)}${state.route !== 'race' ? `<a class="text-button" href="#race/${race.id}" data-full-detail>Dettagli ↗</a>` : ''}<a class="text-button" href="${safeUrl(race.sourceUrl)}" target="_blank" rel="noopener noreferrer">Pagina ufficiale FIS ↗</a>${race.liveUrl ? `<a class="text-button" href="${safeUrl(race.liveUrl)}" target="_blank" rel="noopener noreferrer">Timing ufficiale ↗</a>` : ''}</div>`;
   target.innerHTML = html;
   const newScroller = target.querySelector('.scroll-table'); if (newScroller) { newScroller.scrollTop = scrollTop || 0; newScroller.scrollLeft = scrollLeft || 0; }
   const nextMap=target.querySelector('[data-course-map]');

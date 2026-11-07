@@ -1,0 +1,12 @@
+/* Controlli delle mappe, coordinati con Live Sport Arena. */
+:root {
+  --ink: #182c2c;
+  --muted: #596967;
+  --accent: #365747;
+  --line: #e6ebe8;
+  --glass: rgba(250, 252, 249, .93);
+  --font: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+html, body { background: #f4f6f5; }
+.back:hover { background: #e5efda; }
+:focus-visible { outline: 3px solid #80a631; outline-offset: 2px; }

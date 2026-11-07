@@ -216,3 +216,5 @@ input.input[type=date]::-webkit-date-and-time-value{text-align:left}
   .hockey-insight-summary {grid-template-columns:repeat(3,minmax(0,1fr))}
   .hockey-insight-summary .stat {padding:12px 8px}
 }
+
+.ski-map-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr)); gap:16px; margin-top:20px; align-items:start; }
