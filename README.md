@@ -6,11 +6,11 @@ Calendari, risultati e preferiti in uno spazio pensato per computer, tablet e te
 
 ## Esplora
 
-- **Home**: un’unica lista dei prossimi 12 eventi di sci e hockey, in ordine cronologico.
-- **Calendario**: sport selezionabili insieme; “Tutti gli sport” nasconde i filtri specifici. Discipline sci multiple e località a tendina; manche separate nei dettagli e nell’abbonamento ICS.
+- **Home**: card fotografiche di sci e hockey, prossimi 12 eventi in ordine cronologico e classifiche sintetiche di National League e Coppa del Mondo (donne e uomini).
+- **Calendario**: stagione completa in ordine cronologico, con selettore della data e sport selezionabili insieme; “Tutti gli sport” nasconde i filtri specifici. Discipline sci multiple e località a tendina; manche separate nei dettagli e nell’abbonamento ICS.
 - **In diretta**: timing FIS, podio provvisorio, atleta in pista e partite in corso.
 - **Sci alpino**: programma, ultimo vincitore, classifiche ufficiali della generale e delle specialità per donne e uomini; statistiche su vittorie, podi, distacchi e località.
-- **Hockey**: apertura su Stagione → Risultati, punteggi fra i loghi, cronaca, formazioni per linea, arbitri e previsione quando disponibile. Top Scorer con un giocatore per squadra.
+- **Hockey**: apertura su Stagione → Risultati, punteggi fra i loghi, cronaca, formazioni per linea, arbitri e previsione nelle schede delle prossime partite, quando disponibile. Top Scorer con un giocatore per squadra.
 - **Impostazioni**: squadra, federazioni e atleti preferiti, evidenziati nelle viste.
 
 ## Usa il sito o scarica il progetto
