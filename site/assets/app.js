@@ -50,7 +50,7 @@ const athleteNames = readStore('athleteNames', {});
 const navigation = [['home', 'Home', 'home'], ['calendar', 'Calendario', 'calendar'], ['live', 'In diretta', 'live'], ['alpine', 'Sci alpino', 'mountain'], ['maps-3d', 'Mappe 3D', 'mountain'], ['hockey', 'Hockey', 'hockey'], ['predictions', 'Previsioni', 'spark'], ['settings', 'Impostazioni', 'user'], ['alpine-standings', 'Classifiche', 'trophy'], ['alpine-stats', 'Statistiche', 'chart'], ['hockey-stats','Statistiche National League','chart']];
 paths.user = '<circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/>';
 state.teamFilter = '';
-state.alpineExpanded = location.hash.startsWith('#alpine');
+state.alpineExpanded = location.hash.startsWith('#alpine') || location.hash.startsWith('#maps-3d');
 state.cupGender = 'W'; state.cupDiscipline = 'ALL'; state.statsGender = 'M';
 state.hockeyExpanded = ['hockey', 'predictions'].includes(location.hash.slice(1));
 const main = document.querySelector('main');
@@ -512,9 +512,9 @@ function trackSection(race) {
 }
 
 function renderNavigation() {
-  const childRoutes = ['predictions','settings','alpine-standings','alpine-stats','hockey-stats'];
+  const childRoutes = ['maps-3d','predictions','settings','alpine-standings','alpine-stats','hockey-stats'];
   document.querySelector('#navigation').innerHTML = navigation.filter(n => !childRoutes.includes(n[0])).map(([route,label,symbol],i) => {
-    const children=route==='alpine'?[['alpine','Stagione','calendar'],['alpine-standings','Classifiche','trophy'],['alpine-stats','Statistiche','chart']]:route==='hockey'?[['hockey','Stagione','calendar'],['hockey/standings','Classifica','trophy'],['hockey-stats','Statistiche','chart'],['predictions','Previsioni','spark']]:[];
+    const children=route==='alpine'?[['alpine','Stagione','calendar'],['alpine-standings','Classifiche','trophy'],['alpine-stats','Statistiche','chart'],['maps-3d','Mappe 3D','mountain']]:route==='hockey'?[['hockey','Stagione','calendar'],['hockey/standings','Classifica','trophy'],['hockey-stats','Statistiche','chart'],['predictions','Previsioni','spark']]:[];
     const expanded=state[route+'Expanded'];
     const current=state.route==='hockey'?hockeyRoute(state.hockeyTab):state.route;
     const active=!children.length && route===current;
@@ -821,7 +821,7 @@ function readRoute() {
  if(state.route==='calendar') state.scope='all';
  if(['calendar','live'].includes(state.route)) state.sports=[];
  if (state.route.startsWith('hockey') || state.route==='predictions') state.hockeyExpanded=true;
- if (state.route.startsWith('alpine')) state.alpineExpanded=true;
+ if (state.route.startsWith('alpine') || state.route === 'maps-3d') state.alpineExpanded=true;
  if (!dialog.open) activeDetail=null;
 }
 window.addEventListener('hashchange', () => { Object.assign(state,{date:'',query:'',scope:'upcoming',disciplines:[],gender:'all',teamFilter:''}); readRoute(); closeMenu();render();syncLiveConnections();window.scrollTo(0,0); });
