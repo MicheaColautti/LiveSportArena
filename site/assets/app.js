@@ -1,4 +1,4 @@
-import { skiMaps, mapForRace } from './maps-3d.js';
+import { mapFlags, skiMaps, mapForRace } from './maps-3d.js';
 import { readSource } from './client-diagnostics.js';
 import { enhanceSelects as upgradeSelects } from './select-control.js';
 import { enableTableSorting } from './table-sort.js?v=20261107-compact';
@@ -483,7 +483,7 @@ function gameExtra(g,d,tab) {
 }
 function mapLink(race) {
   const map = mapForRace(race);
-  return map ? `<a class="text-button" href="maps-3d/${map.id}.html">Apri mappa 3D · ${esc(map.disciplineLabel)} ↗</a>`
+  return map ? `<a class="button map-launch" target="_self" href="maps-3d/${map.id}.html"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 9 5v10l-9 5-9-5V7zM3 7l9 5 9-5m-9 5v10"/></svg>Mappa 3D</a>`
     : '<span class="tiny">Mappa 3D non disponibile</span>';
 }
 
@@ -500,7 +500,8 @@ function mapsPage() {
     groups.get(key).push(map);
   }
   const cards = [...groups].sort(([a], [b]) => a.localeCompare(b, 'it')).map(([label, maps]) =>
-    `<article class="panel"><div class="panel-head"><h2>${esc(label)}</h2></div><div class="panel-body"><p class="tiny">${esc(maps[0].country)}</p><div class="filters-group">${maps.map(m => `<a class="chip discipline-filter discipline-${m.discipline}" href="maps-3d/${m.id}.html">${esc(m.disciplineLabel)} ↗</a>`).join('')}</div></div></article>`
+    `<article class="map-card"><header><span class="map-flag">${mapFlags[maps[0].iso]}</span><div><h2>${esc(maps[0].location)}</h2><small>${esc(maps[0].course)} · ${esc(maps[0].country)}</small></div></header>
+      ${maps.map(m => `<a class="map-discipline" target="_self" href="maps-3d/${m.id}.html"><b data-disc="${m.discipline}">${m.discipline}</b><strong>${esc(m.disciplineLabel)}</strong><small>${esc(m.terrain)}</small></a>`).join('')}</article>`
   ).join('');
   return `${heading('SCI ALPINO', 'Mappe 3D', 'Diorami interattivi delle piste di Coppa del Mondo. Le geometrie sono illustrative.')}<nav class="filters-group" aria-label="Filtra le mappe per disciplina">${filters}</nav><div class="ski-map-grid">${cards}</div>`;
 }
@@ -578,7 +579,7 @@ function openDialog(html) { if (['game','race'].includes(state.route) && activeD
 function openRace(id, tab = 'overview') {
   const race = data.alpine.races.find(r => r.id === id); if (!race) return;
   activeDetail = { type: 'race', id }; detailTab = tab; selectedRun = null;
-  openDialog(`${modalHeader('COPPA DEL MONDO FIS · ' + (race.gender === 'W' ? 'DONNE' : 'UOMINI'))}<div class="dialog-body"><div id="race-status">${raceStatus(race)}</div><h2 id="dialog-title" class="race-detail-title">${disciplineIcon(race.discipline)}${flag(race.country)}${esc(race.venue)}</h2><div class="dialog-description">${esc(race.disciplineName)} · ${dateLabel(race.date, { weekday: 'long', year: 'numeric' })}</div><div id="run-summary">${runCards(race, true)}</div><div class="sync-note">${icon('clock')}Tutti gli orari sono svizzeri · Europe/Zurich</div></div><div id="race-tabs" class="dialog-tabs"></div><div class="detail-content" id="detail-content"></div>`);
+  openDialog(`${modalHeader('COPPA DEL MONDO FIS · ' + (race.gender === 'W' ? 'DONNE' : 'UOMINI'))}<div class="dialog-body"><div id="race-status">${raceStatus(race)}</div><div class="race-map-header"><h2 id="dialog-title" class="race-detail-title">${disciplineIcon(race.discipline)}${flag(race.country)}${esc(race.venue)}</h2>${mapLink(race)}</div><div class="dialog-description">${esc(race.disciplineName)} · ${dateLabel(race.date, { weekday: 'long', year: 'numeric' })}</div><div id="run-summary">${runCards(race, true)}</div><div class="sync-note">${icon('clock')}Tutti gli orari sono svizzeri · Europe/Zurich</div></div><div id="race-tabs" class="dialog-tabs"></div><div class="detail-content" id="detail-content"></div>`);
   renderRaceTab();
   if (race.liveUrl) startTiming(race);
 }
@@ -647,7 +648,7 @@ function renderRaceTab() {
     } else html += empty(detailTab === 'startlist' ? 'La lista arriverà qui.' : 'I risultati arriveranno qui.', 'La fonte ufficiale non ha ancora pubblicato questi dati. Puoi consultare il programma e i documenti disponibili.', 'live');
     html += documents(race, detailTab === 'startlist');
   }
-  html += `<div class="dialog-actions detail-links">${mapLink(race)}${state.route !== 'race' ? `<a class="text-button" href="#race/${race.id}" data-full-detail>Dettagli ↗</a>` : ''}<a class="text-button" href="${safeUrl(race.sourceUrl)}" target="_blank" rel="noopener noreferrer">Pagina ufficiale FIS ↗</a>${race.liveUrl ? `<a class="text-button" href="${safeUrl(race.liveUrl)}" target="_blank" rel="noopener noreferrer">Timing ufficiale ↗</a>` : ''}</div>`;
+  html += `<div class="dialog-actions detail-links">${state.route !== 'race' ? `<a class="text-button" href="#race/${race.id}" data-full-detail>Dettagli ↗</a>` : ''}<a class="text-button" href="${safeUrl(race.sourceUrl)}" target="_blank" rel="noopener noreferrer">Pagina ufficiale FIS ↗</a>${race.liveUrl ? `<a class="text-button" href="${safeUrl(race.liveUrl)}" target="_blank" rel="noopener noreferrer">Timing ufficiale ↗</a>` : ''}</div>`;
   target.innerHTML = html;
   const newScroller = target.querySelector('.scroll-table'); if (newScroller) { newScroller.scrollTop = scrollTop || 0; newScroller.scrollLeft = scrollLeft || 0; }
   const nextMap=target.querySelector('[data-course-map]');

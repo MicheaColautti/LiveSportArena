@@ -217,4 +217,23 @@ input.input[type=date]::-webkit-date-and-time-value{text-align:left}
   .hockey-insight-summary .stat {padding:12px 8px}
 }
 
-.ski-map-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr)); gap:16px; margin-top:20px; align-items:start; }
+
+.ski-map-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,310px),1fr)); gap:14px; margin-top:20px; }
+.map-card { padding:16px; background:white; border:1px solid var(--line); border-radius:16px; }
+.map-card header, .race-map-header { display:flex; gap:12px; align-items:center; }
+.map-card header { margin-bottom:12px; }
+.map-flag { display:flex; flex:none; }
+.map-flag svg { height:21px; border-radius:4px; box-shadow:0 0 0 1px #182c2c19; }
+.map-card h2 { font-size:17px; margin:0 0 2px; }
+.map-card small { color:#5c706a; }
+.map-discipline { display:grid; grid-template-columns:36px 1fr auto; align-items:center; gap:8px; padding:8px; background:#f3f6f5; border-radius:9px; margin-top:6px; }
+.map-discipline:hover { background:#e8efeb; }
+.map-discipline strong { font-size:14px; }
+.map-discipline small { font-size:11px; max-width:9em; text-align:right; }
+.map-discipline b { padding:4px; text-align:center; border-radius:6px; font-size:12px; background:#d9e9f6; }
+.map-discipline [data-disc=SG] { background:#d4ebe8; }
+.map-discipline [data-disc=GS] { background:#f4dcd7; }
+.map-discipline [data-disc=SL] { background:#e7def5; }
+.race-map-header { justify-content:space-between; flex-wrap:wrap; }
+.map-launch { background:var(--green); color:white; }
+.map-launch .icon { color:var(--lime); }
