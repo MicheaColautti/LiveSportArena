@@ -88,6 +88,7 @@ def live_projection(standings, games):
 @logged_update("hockey")
 def update(season, detail_limit=8):
     from sportsdataverse.hockey import sihf
+    from sportsdataverse.hockey.sihf import sihf_api_web_parsers as parsers
     call = lambda fn, **kw: records(sihf_call(fn, return_as_pandas=True, language="en", **kw))
     raw = call(sihf.sihf_results, season=season, league_id=1)
     if not raw or any(int(m["season"]) != season for m in raw):
@@ -121,6 +122,12 @@ def update(season, detail_limit=8):
     if upcoming:
         candidates.extend([g for g in upcoming if g["date"] == upcoming[0]["date"]])
     candidates.extend(reversed(recent))
+    # Migrate one older saved lineup per update without fetching the entire archive.
+    legacy = next((g for g in reversed(games) if g["status"] == "finished"
+                   and details.get(g["id"], {}).get("lineups")
+                   and "topScorers" not in details[g["id"]]), None)
+    if legacy:
+        candidates.append(legacy)
     seen = set()
     for game in candidates:
         gid = game["id"]
@@ -128,20 +135,35 @@ def update(season, detail_limit=8):
             continue
         seen.add(gid)
         cached = details.get(gid)
-        if cached and cached.get("sourceUpdatedAt") == game["sourceUpdatedAt"] and cached.get("complete") and game["status"] == "finished":
+        if cached and cached.get("sourceUpdatedAt") == game["sourceUpdatedAt"] and cached.get("complete") and "topScorers" in cached and game["status"] == "finished":
             continue
         print(f"SIHF details: {gid}", flush=True)
-        detail = {"sourceUpdatedAt": game["sourceUpdatedAt"], "updatedAt": stamp(), "complete": True}
-        routes = {"info": sihf.sihf_game_info, "stats": sihf.sihf_game_team_stats,
-                  "events": sihf.sihf_pbp, "lineups": sihf.sihf_game_lineups,
-                  "players": sihf.sihf_game_player_stats}
-        for key, fn in routes.items():
+        # All five views come from the same SIHF game report.
+        try:
+            report = sihf_call(sihf.sihf_game_info, game_id=int(gid), language="en", return_parsed=False)
+            if str(report.get("gameId")) != gid:
+                raise ValueError(f"SIHF game report does not match {gid}")
+        except Exception as exc:
+            print(f"SIHF report {gid}: {exc}", flush=True)
+            continue
+        detail = dict(cached or {}, sourceUpdatedAt=game["sourceUpdatedAt"], updatedAt=stamp(), complete=True)
+        routes = {"info": parsers.parse_sihf_game_info, "stats": parsers.parse_sihf_game_team_stats,
+                  "events": parsers.parse_sihf_pbp, "lineups": parsers.parse_sihf_game_lineups,
+                  "players": parsers.parse_sihf_game_player_stats}
+        for key, parse in routes.items():
             try:
-                detail[key] = call(fn, game_id=int(gid))
+                detail[key] = records(parse(report, return_as_pandas=True))
+                if key == "lineups":
+                    lineups = report.get("lineUps") or {}
+                    detail["topScorers"] = sorted({
+                        str(tag["id"]) for side in ("homeTeam", "awayTeam")
+                        for tag in ((lineups.get(side) or {}).get("taggedPlayers") or [])
+                        if tag.get("type") == "pftopscorer" and tag.get("id")
+                    })
             except Exception as exc:
                 detail[key] = (cached or {}).get(key, [])
                 detail["complete"] = False
-                print(f"SIHF {key}: {exc}", flush=True)
+                print(f"SIHF {key} {gid}: {exc}", flush=True)
         details[gid] = detail
     # Keep the current season's previously fetched details for browsing results.
     valid_ids = {g["id"] for g in games}

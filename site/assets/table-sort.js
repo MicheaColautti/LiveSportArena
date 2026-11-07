@@ -64,7 +64,7 @@ export function enableTableSorting() {
         });
       });
       if (table.hasAttribute('data-table-tools')) {
-        const view = views.get(key) || { query: '', size: 10, page: 0 };
+        const view = views.get(key) || { query: '', size: table.dataset.defaultRows === 'all' ? 0 : 10, page: 0 };
         views.set(key, view);
         const toolbar = document.createElement('div'); toolbar.className = 'table-controls';
         const searchLabel = document.createElement('label'); searchLabel.className = 'field-label'; searchLabel.append('Ricerca');
