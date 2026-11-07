@@ -148,8 +148,8 @@ input.input[type=date]::-webkit-date-and-time-value{text-align:left}
 .calendar-filters .filter-date{height:48px;min-height:48px;max-height:48px;width:180px;min-width:160px;margin:0;font-size:14px;box-sizing:border-box}
 .calendar-filters .segmented{box-sizing:border-box;min-height:48px;padding:4px;align-items:stretch}.calendar-filters .segmented button{min-height:40px;padding:8px 14px;white-space:nowrap}
 .calendar-filters .reset-filters{min-height:48px}.calendar-filters .chip{min-height:44px;box-sizing:border-box}
-.discipline-filter.active{background:#183b38;color:white;border-color:#183b38;box-shadow:inset 0 -3px #b6d78e}
-.discipline-filter.active:not(.discipline-all){background:var(--discipline-bg);color:var(--discipline-ink);border-color:var(--discipline-ink);box-shadow:inset 0 -3px var(--discipline-ink)}
+.discipline-filter.active{background:#183b38;color:white;border-color:#183b38}
+.discipline-filter.active:not(.discipline-all){background:var(--discipline-bg);color:var(--discipline-ink);border-color:var(--discipline-ink)}
 .match-card{padding:14px 18px;gap:10px;min-height:0;text-align:left}.match-card-meta{font-size:10px;gap:10px}
 .match-card .match-teams,.prediction-card .match-teams{grid-template-columns:minmax(0,1fr) minmax(64px,.45fr) minmax(0,1fr);padding:8px 0;gap:12px;align-items:center}
 .match-card .match-side,.prediction-card .match-side{gap:6px}.match-card .match-side>span:last-child,.prediction-card .match-side>span:last-child{min-height:0;font-size:12px;line-height:1.25}
@@ -191,3 +191,28 @@ input.input[type=date]::-webkit-date-and-time-value{text-align:left}
 .game-officials dt {font-size:.85rem;color:var(--muted);margin-bottom:.3rem}
 .game-officials dd {margin:0;font-weight:600}
 .lineup-badge {display:inline-block;margin-inline-start:.35em;white-space:nowrap}
+/* Space belongs to the list, so scrolling still lands on the date heading. */
+.date-heading + .mixed-events, .date-heading + .agenda-list {padding-block:clamp(14px,2vw,24px)}
+.hockey-data-table th,.hockey-data-table td {padding-inline:clamp(6px,1vw,11px)}
+.hockey-data-table .table-sort {gap:4px}
+.hockey-data-table td {font-variant-numeric:tabular-nums}
+.hockey-stat-ranking {padding:0 clamp(16px,2vw,24px) 20px;margin:0;list-style:none}
+.hockey-stat-ranking li {display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:5px 12px;padding:11px 0}
+.hockey-stat-ranking strong,.hockey-stat-ranking small {display:block}
+.hockey-stat-ranking strong {font-size:14px}
+.hockey-stat-ranking small {margin-top:3px;font-size:12px;color:var(--muted)}
+.hockey-stat-ranking b {font-variant-numeric:tabular-nums;white-space:nowrap}
+.hockey-stat-ranking progress {grid-column:2/-1;width:100%;height:5px;display:block;appearance:none;border:0;background:#edf1ed;border-radius:5px;overflow:hidden}
+.hockey-stat-ranking progress::-webkit-progress-bar {background:#edf1ed}
+.hockey-stat-ranking progress::-webkit-progress-value {background:#71916c;border-radius:5px}
+.hockey-stat-ranking progress::-moz-progress-bar {background:#71916c}
+.hockey-insights .insight-list>button {font-size:14px}
+.sidebar-connection.score-delay .connection-dot {background:#edba71}
+.connection-copy {display:grid;gap:2px}
+#connection-hint {font-size:10px;color:#edc38c}
+#connection-hint[hidden] {display:none}
+@media(max-width:560px) {
+  body[data-route="hockey-stats"] .page-heading {flex-wrap:wrap}
+  .hockey-insight-summary {grid-template-columns:repeat(3,minmax(0,1fr))}
+  .hockey-insight-summary .stat {padding:12px 8px}
+}

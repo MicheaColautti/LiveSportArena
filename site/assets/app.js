@@ -1,6 +1,7 @@
 import { readSource } from './client-diagnostics.js';
 import { enhanceSelects as upgradeSelects } from './select-control.js';
-import { enableTableSorting } from './table-sort.js?v=20261107-players';
+import { enableTableSorting } from './table-sort.js?v=20261107-compact';
+import { hockeyColumn } from './hockey-columns.js';
 import { mountCourseMaps } from './course-map.js';
 import { raceTime, raceResults, seasonMetrics } from './alpine-insights.js';
 import { TEAM_LOGOS, NATIONS, projectedStandings } from './preferences.js';
@@ -36,6 +37,7 @@ const readStore = (key, fallback) => { try { return JSON.parse(localStorage.getI
 const saveStore = (key, value) => { try { localStorage.setItem(`sal:${key}`, JSON.stringify(value)); } catch { /* private browser: preferences remain in memory */ } };
 const data = { hockeyStats:{tables:{}}, tracks:{courses:[]}, cups: { groups: {} }, alpine: { races: [], events: [] }, hockey: { games: [], teams: [], standings: [], details: {}, leaders: [] }, predictions: { predictions: [], gameIds: [] } };
 let hockeyPollTimer;
+let scoreReadFailed = false;
 const sourceSignatures = new Map();
 let hockeyScoreSignature = '';
 let hockeyBaseline = null; let hockeyScores = null; let hockeyPollBusy = false;
@@ -88,13 +90,12 @@ const sportActive = sport => sport === 'all' ? !state.sports.length : state.spor
 const sportButton = (sport, title, glyph) => `<button class="chip${sportActive(sport) ? ' active' : ''}" id="sport-${sport}" data-filter="sport" data-value="${sport}" aria-pressed="${sportActive(sport)}">${icon(glyph)}${title}</button>`;
 const heading = (eyebrow, title, description, action = '') => `<div class="page-heading"><div><div class="eyebrow">${eyebrow}</div><h1>${title}</h1><p>${description}</p></div>${action}</div>`;
 const subscribeButton = `<button class="button" data-action="subscribe">${icon('calendar')}<span class="button-text">Aggiungi al calendario</span></button>`;
-const sync = sport => sport==='hockey' ? `<span class="sync-note">${icon('refresh')}${hockeyScoreNote()} · Statistiche ${since(data.hockey.updatedAt)}</span>` : `<span class="sync-note">${icon('refresh')}${esc(data[sport].source || '')} · aggiornato ${since(data[sport].updatedAt)}</span>`;
+const sync = sport => sport==='hockey' ? `<span class="sync-note">${icon('refresh')}Punteggi SIHF · ${since(hockeyScores?.updatedAt || data.hockey.updatedAt)} · Statistiche ${since(data.hockey.updatedAt)}</span>` : `<span class="sync-note">${icon('refresh')}${esc(data[sport].source || '')} · aggiornato ${since(data[sport].updatedAt)}</span>`;
 const badge = (label, cls = '') => `<span class="status-tag ${cls}">${esc(label)}</span>`;
 const raceStatus = r => r.status === 'live' ? '<span class="status-tag live"><span class="dot live"></span>LIVE</span>' : r.status === 'cancelled' ? badge('Annullata', 'muted') : r.status === 'finished' ? badge('Conclusa', 'muted') : '';
 const gameStatus = g => g.status === 'live' ? '<span class="status-tag live"><span class="dot live"></span>LIVE</span>' : g.status === 'finished' ? badge(`Finale${g.decision ? ' · ' + g.decision : ''}`, 'muted') : g.status === 'cancelled' ? badge('Annullata', 'muted') : `<span>${clock(g.start)}</span>`;
 const empty = (title, description, symbol = 'calendar') => `<div class="empty-state">${icon(symbol)}<h3>${title}</h3><p>${description}</p></div>`;
 const sourceNotice = sport => {
-  if (sport === 'hockey') return hockeySourceNotice();
   const source = data[sport];
   const lastUpdate = source.updatedAt ? `${dateLabel(source.updatedAt)} alle ${clock(source.updatedAt)}` : 'non disponibile';
   if (source.status === 'stale') {
@@ -324,7 +325,7 @@ function bindSeasonList(previous) {
 
 
 function hockeyPage() {
-  return `${heading('NATIONAL LEAGUE · SVIZZERA', 'Hockey', 'Calendario, risultati, classifica e statistiche delle tue squadre.', `<button class="button" data-action="hockey-calendar">${icon('calendar')}Aggiungi al calendario</button>`)}${sourceNotice('hockey')}<div class="module-banner hockey">${leagueLogo('hockey')}<strong>National League</strong></div>${hockeyWidgets()}
+  return `${heading('NATIONAL LEAGUE · SVIZZERA', 'Hockey', 'Calendario, risultati, classifica e statistiche delle tue squadre.', `<button class="button" data-action="hockey-calendar">${icon('calendar')}Aggiungi al calendario</button>`)}<div class="module-banner hockey">${leagueLogo('hockey')}<strong>National League</strong></div>${hockeyWidgets()}
   <div class="sport-tabs">${[['calendar', 'Stagione', 'calendar'], ['standings', 'Classifica', 'trophy'], ['stats', '🔥 Top Scorer', '']].map(([v, label, symbol]) => `<button class="chip${state.hockeyTab === v ? ' active' : ''}" data-hockey-tab="${v}">${symbol ? icon(symbol) : ''}${label}</button>`).join('')}</div>
   <section class="panel"><div class="panel-head"><div><h2>${state.hockeyTab === 'calendar' ? 'Il programma della National League' : state.hockeyTab === 'standings' ? 'Classifica generale' : '🔥 PostFinance Top Scorer'}</h2><p>Stagione ${esc(data.hockey.seasonLabel)}</p></div>${badge('NATIONAL LEAGUE')}</div>
   ${state.hockeyTab === 'calendar' ? `${filterBar()}${seasonList(filteredGames().sort(chronological), true)}` : state.hockeyTab === 'standings' ? standingsTable() : `<div class="scorer-section"><div class="scorer-toolbar"><a class="button" href="#hockey-stats">${icon('chart')}Statistiche National League ↗</a></div>${playerLeaders()}</div>`}
@@ -383,10 +384,7 @@ function hockeyWidgets() {
  const next=upcoming[0], leader=[...data.hockey.standings].sort((a,b)=>Number(a.rank)-Number(b.rank))[0];
  return `<div class="stats-strip hockey-widgets"><div class="stat"><div><strong>${games.filter(g=>g.status==='finished').length}/${games.length}</strong><small>Partite disputate</small></div></div><div class="stat"><div><small>Prossima giornata</small><strong>${next?dateLabel(next.date,{month:'short'}):'Da annunciare'}</strong>${preferences.teams.map(id=>{const g=upcoming.find(g=>[g.home,g.away].includes(id));return `<div class="next-team-game">${mark(id)}<span>${teamName(id)}<small>${g?`${dateLabel(g.date,{month:'short'})} · ${clock(g.start)}<br>${teamName(g.home)} – ${teamName(g.away)}`:'Da annunciare'}</small>${g?`<a class="text-button" href="#game/${g.id}">Dettagli ↗</a>`:''}</span></div>`;}).join('')}</div></div><button class="stat" data-action="standings">${leader?mark(leader.team_id):icon('trophy')}<div><small>Prima in classifica</small><strong>${leader?teamName(leader.team_id):'–'}</strong><small>${leader?leader.points+' punti':''}</small></div></button></div>`;
 }
-const metricLabels={games_played:'PG · Partite giocate',goals:'G · Goal',assists:'A · Assist',points:'PT · Punti',plus_minus:'+/- · Bilancio sul ghiaccio',pim_total:'PIM · Minuti di penalità',time_on_ice:'TOI · Tempo sul ghiaccio',shots_on_goal:'SOG · Tiri in porta',save_percentage:'SV% · Percentuale parate',player:'Giocatore',player_name:'Giocatore',team_name:'Squadra',team_acronym:'Squadra',rank:'Posizione',home_value:'Casa',away_value:'Ospiti',statistic:'Statistica'};
-Object.assign(metricLabels,{position:'Ruolo',player_position:'Ruolo',nationality:'Nazionalità',player_number:'Maglia',points_per_game:'Punti per partita'});
 const roleLabel=value=>({ 'Stürmer':'Attaccante', 'Verteidiger':'Difensore', 'Torhüter':'Portiere', 'Torwart':'Portiere', 'Forward':'Attaccante', 'Defender':'Difensore', 'Defenseman':'Difensore', 'Goalkeeper':'Portiere', 'Goalie':'Portiere', 'goalkeeper':'Portiere', 'F':'Attaccante', 'D':'Difensore', 'G':'Portiere' }[value] || value);
-const columnLabel=k=>metricLabels[k]||k.replaceAll('_',' ');
 function tableLegend(){return '<p class="table-legend">PG: partite giocate · G/GF: goal segnati · GS/GA: goal subiti · A: assist · PT: punti · V/P: vittoria/sconfitta · PIM: minuti di penalità · TOI: tempo sul ghiaccio · SOG: tiri in porta · OT: supplementari · SO: rigori · +/−: bilancio goal sul ghiaccio. Le altre intestazioni descrivono i campi della fonte SIHF.</p>';}
 function allColumns(rows, showAll = false) {
  if(!rows?.length) return empty('Dati non disponibili','');
@@ -395,13 +393,69 @@ function allColumns(rows, showAll = false) {
  const available=[...new Set(rows.flatMap(Object.keys))];
  const hasTeamName=rows.some(r=>r.team_name);
  const keys=available.filter(k=>!omit.includes(k)&&!k.endsWith('_id')&&!(k==='team_acronym'&&hasTeamName));
- return `<div class="scroll-table"><table class="data-table" data-table-tools="Cerca nei dati"${showAll ? ' data-default-rows="all"' : ''}><thead><tr>${keys.map(k=>`<th>${esc(columnLabel(k))}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${keys.map(k=>`<td>${['team_acronym','team_name'].includes(k) && r.team_id ? `<span class="team-cell">${mark(r.team_id)}${esc(r[k])}</span>` : esc(r[k]==null?'–':['position','player_position','unit'].includes(k)?roleLabel(r[k]):typeof r[k]==='object'?JSON.stringify(r[k]):r[k])}</td>`).join('')}</tr>`).join('')}</tbody></table></div><details class="table-legend"><summary>Legenda delle colonne</summary>${keys.map(k=>`<div><b>${esc(k)}</b>: ${esc(columnLabel(k))}</div>`).join('')}</details>${tableLegend()}`;
+ const labels=keys.map(hockeyColumn);
+ return `<div class="scroll-table"><table class="data-table hockey-data-table" data-table-tools="Cerca nei dati"${showAll ? ' data-default-rows="all"' : ''}><thead><tr>${labels.map(([abbr,meaning])=>`<th scope="col" title="${esc(meaning)}">${esc(abbr)}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${keys.map(k=>`<td>${['team_acronym','team_name'].includes(k) && r.team_id ? `<span class="team-cell">${mark(r.team_id)}${esc(r[k])}</span>` : esc(r[k]==null?'–':['position','player_position','unit'].includes(k)?roleLabel(r[k]):typeof r[k]==='object'?JSON.stringify(r[k]):r[k])}</td>`).join('')}</tr>`).join('')}</tbody></table></div><details class="table-legend"><summary>Legenda delle colonne</summary>${labels.map(([abbr,meaning])=>`<div><b>${esc(abbr)}</b> · ${esc(meaning)}</div>`).join('')}</details>`;
 }
+const hockeyStatNumber = new Intl.NumberFormat('it-CH', {maximumFractionDigits:2});
+
 function hockeyStatisticsPage() {
- const tables=data.hockeyStats.tables||{}, selected=tables[state.leagueTable];
+  if (state.detailId === 'tabelle') return hockeyTablesPage();
+  const {tables} = data.hockeyStats;
+  const games = data.hockey.games;
+  const finished = games.filter(g => g.status === 'finished');
+  const scored = finished.filter(g => Number.isFinite(g.homeScore) && Number.isFinite(g.awayScore));
+  const overtime = finished.filter(g => g.decision === 'OT' || g.decision === 'SO').length;
+  const awayWins = scored.filter(g => g.awayScore > g.homeScore).length;
+  const summary = [
+    ['Partite concluse', games.length ? finished.length : '–'],
+    ['Vittorie in trasferta', scored.length ? awayWins : '–'],
+    ['Partite oltre i 60 minuti', finished.length ? overtime : '–']
+  ];
+  const headingLink = `<a class="button" href="#hockey-stats/tabelle">${icon('chart')}Vedi tutte le statistiche ${icon('arrow')}</a>`;
+  const cards = [
+    {title:'Punti dei giocatori', table:'player_stats', metric:'points', unit:' PT', glyph:'trophy',
+      caption:r => `${r.goals ?? '–'} G · ${r.assists ?? '–'} A`},
+    {title:'Portieri per percentuale di parate', table:'goalie_stats', metric:'saves_percentage', unit:'%', glyph:'hockey',
+      qualify:r => r.shots_against >= 100, note:'Almeno 100 tiri in porta subiti.', caption:r => `${r.saves ?? '–'} parate su ${r.shots_against} tiri`},
+    {title:'Migliori attacchi', table:'team_goals', metric:'goals_for_quotient', unit:'', glyph:'hockey',
+      note:'Goal segnati per partita.', caption:r => `${r.goals_for ?? '–'} goal in ${r.games_played ?? '–'} partite`},
+    {title:'Power play', table:'team_power_play', metric:'pp_percent', unit:'%', glyph:'spark',
+      qualify:r => r.pp_opportunities > 0, note:'Superiorità numeriche trasformate in goal.'},
+    {title:'Box play', table:'team_penalty_kill', metric:'pk_percent', unit:'%', glyph:'chart',
+      qualify:r => r.pk_situations > 0, note:'Inferiorità numeriche superate senza subire goal.'}
+  ];
+  const rankings = cards.map(card => {
+    const rows = (tables?.[card.table]?.rows || [])
+      .filter(r => Number.isFinite(r[card.metric]) && r[card.metric] >= 0 && (!card.qualify || card.qualify(r)))
+      .sort((a,b) => b[card.metric] - a[card.metric] || (a.rank ?? Infinity) - (b.rank ?? Infinity)).slice(0,5);
+    return `<section class="panel"><div class="panel-head"><h2>${card.title}</h2>${icon(card.glyph)}</div>
+      ${rows.length ? `<ol class="hockey-stat-ranking">${rows.map(row => {
+        const name = row.player || row.team_name;
+        const detail = [row.player && row.team_acronym, card.caption?.(row)].filter(Boolean).join(' · ');
+        const value = hockeyStatNumber.format(row[card.metric]) + card.unit;
+        return `<li>${mark(row.team_id)}<div><strong>${esc(name)}</strong>${detail ? `<small>${esc(detail)}</small>` : ''}</div><b>${esc(value)}</b>
+          <progress value="${row[card.metric]}" max="${card.unit === '%' ? 100 : Math.max(1, rows[0][card.metric])}" aria-label="${esc(name)} · ${esc(value)}"></progress></li>`;
+      }).join('')}</ol>` : '<p class="panel-body">Dati non disponibili.</p>'}
+      ${card.note ? `<div class="panel-bottom">${card.note}</div>` : ''}</section>`;
+  });
+  // A shootout adds a deciding goal to the final score, but no goal to game play.
+  const totalGoals = g => g.homeScore + g.awayScore - (g.decision === 'SO' ? 1 : 0);
+  const highest = [...scored].sort((a,b) => totalGoals(b)-totalGoals(a) || b.date.localeCompare(a.date)).slice(0,5);
+  const matches = `<section class="panel"><div class="panel-head"><h2>Partite con più goal</h2>${icon('hockey')}</div>
+    <div class="insight-list">${highest.map(g => `<button data-game="${esc(g.id)}"><span><strong>${teamName(g.home)} – ${teamName(g.away)}</strong><small>${dateLabel(g.date)} · ${totalGoals(g)} goal in gioco</small></span><b>${g.homeScore}–${g.awayScore}${g.decision ? ' ' + esc(g.decision) : ''}</b></button>`).join('') || '<p>Dati non disponibili.</p>'}</div></section>`;
+  return `${heading('NATIONAL LEAGUE','Statistiche',esc(data.hockey.seasonLabel || ''),headingLink)}
+    <div class="stats-strip hockey-insight-summary">${summary.map(([label,value]) => `<div class="stat"><div><strong>${value}</strong><small>${label}</small></div></div>`).join('')}</div>
+    <div class="insights-grid hockey-insights">${rankings.join('')}${matches}</div>`;
+}
+
+
+function hockeyTablesPage() {
+ const tables=data.hockeyStats.tables||{};
  const entries=Object.entries(tables).sort(([a],[b])=>a==='player_stats'?-1:b==='player_stats'?1:0);
+ const selectedKey = tables[state.leagueTable] ? state.leagueTable : entries[0]?.[0];
+ const selected = tables[selectedKey];
  const label=(key,t)=>key==='player_stats'?'Top Scorer · tutti i giocatori':(t?.label||'Statistiche National League').replaceAll('Gol','Goal');
- return `${heading('NATIONAL LEAGUE','Statistiche','')}<section class="panel"><div class="filter-row statistics-filters"><label class="field-label statistics-category">Categoria<select class="input" data-select="leagueTable">${entries.map(([key,t])=>`<option value="${key}"${key===state.leagueTable?' selected':''}>${esc(label(key,t))}</option>`).join('')}</select></label><span class="tiny">${selected?.updatedAt?since(selected.updatedAt):''}</span></div><div class="panel-head"><h2>${esc(label(state.leagueTable,selected))}</h2></div>${selected?.status==='stale'?'<p class="notice">Fonte temporaneamente non disponibile: ultimi dati acquisiti.</p>':''}${allColumns(selected?.rows||[])}</section>`;
+ return `${heading('NATIONAL LEAGUE','Tutte le statistiche',esc(data.hockey.seasonLabel || ''),'<a class="button" href="#hockey-stats">← Panoramica</a>')}<section class="panel"><div class="filter-row statistics-filters"><label class="field-label statistics-category">Categoria<select class="input" data-select="leagueTable">${entries.map(([key,t])=>`<option value="${key}"${key===selectedKey?' selected':''}>${esc(label(key,t))}</option>`).join('')}</select></label><span class="tiny">${selected?.updatedAt?since(selected.updatedAt):''}</span></div><div class="panel-head"><h2>${esc(label(selectedKey,selected))}</h2></div>${selected?.status==='stale'?'<p class="notice">Fonte temporaneamente non disponibile: ultimi dati acquisiti.</p>':''}${allColumns(selected?.rows||[])}</section>`;
 }
 
 function teamForm(id,before) {
@@ -479,7 +533,7 @@ function render() {
   const previousDay = seasonPosition();
   const current = document.activeElement; const focusId = current?.id; const selection = current?.selectionStart;
   renderNavigation();
-  const eventTitle=state.route==='game' ? (()=>{const g=data.hockey.games.find(g=>g.id===state.detailId);return g ? team(g.home).name+' – '+team(g.away).name : 'Partita';})() : state.route==='race' ? (()=>{const r=data.alpine.races.find(r=>r.id===state.detailId);return r ? r.venue+' · '+r.disciplineName : 'Gara';})() : navigation.find(n=>n[0]===state.route)?.[1] || 'Home';
+  const eventTitle=state.route==='hockey-stats' && state.detailId==='tabelle' ? 'Tutte le statistiche' : state.route==='game' ? (()=>{const g=data.hockey.games.find(g=>g.id===state.detailId);return g ? team(g.home).name+' – '+team(g.away).name : 'Partita';})() : state.route==='race' ? (()=>{const r=data.alpine.races.find(r=>r.id===state.detailId);return r ? r.venue+' · '+r.disciplineName : 'Gara';})() : navigation.find(n=>n[0]===state.route)?.[1] || 'Home';
   renderBreadcrumb(eventTitle);
   document.body.dataset.route=state.route;
   document.querySelector('#today-label').textContent = dateLabel(new Date().toISOString(), { weekday: 'long', year: 'numeric' });
@@ -829,15 +883,12 @@ function hockeyScoreFresh() {
  const freshness = hockeyScores?.mode === 'github-actions' ? 15 * 60000 : (Number(hockeyScores?.nextPollSeconds || 20) + 45) * 1000;
  return hockeyScores?.status==='ok' && Number(hockeyScores.season)===Number(data.hockey.season) && Date.now()-Date.parse(hockeyScores.updatedAt)<freshness;
 }
-function hockeyScoreNote() {
- if(hockeyScoreFresh()) return `Punteggi SIHF · controllo ${since(hockeyScores.updatedAt)}`;
- if(hockeyScores?.updatedAt) return `Punteggi SIHF · ultimo controllo ${since(hockeyScores.updatedAt)}${hockeyScores.mode === 'github-actions' ? ' · aggiornamento periodico' : ' · aggiornamento rapido interrotto'}`;
- return `Punteggi SIHF · aggiornati ${since(data.hockey.updatedAt)}`;
-}
-function hockeySourceNotice() {
- const local=['localhost','127.0.0.1'].includes(location.hostname);
- if(hockeyScoreFresh()) return '';
- return `<div class="notice">${icon('info')}${hockeyScoreNote()}. ${local?'Per gli aggiornamenti rapidi deve essere attivo il processo hockey locale.':'Sono disponibili gli aggiornamenti periodici del sito.'}</div>`;
+function scoreUpdateIssue() {
+ if (scoreReadFailed) return 'Punteggi SIHF non raggiungibili';
+ if (!hockeyScores) return '';
+ if (hockeyScores.status === 'stopped') return 'Aggiornamento locale dei punteggi fermo';
+ if (hockeyScores.status === 'stale' || hockeyScores.status === 'error') return 'Ultimo aggiornamento SIHF non riuscito';
+ return hockeyScoreFresh() ? '' : 'Aggiornamento dei punteggi in ritardo';
 }
 function applyHockeyScores() {
  if(!hockeyBaseline) return;
@@ -861,16 +912,25 @@ async function pollHockeyScores() {
  try {
   if(!document.hidden) {
    let changed = false;
-   const next=await readSource(`data/hockey-live.json?v=${Date.now()}`,{cache:'no-store',signal:AbortSignal.timeout(10000)},'hockey-live');
+   let next;
+   try {
+     next=await readSource(`data/hockey-live.json?v=${Date.now()}`,{cache:'no-store',signal:AbortSignal.timeout(10000)},'hockey-live');
+   } catch {
+     scoreReadFailed = true;
+     return;
+   }
    {
     const signature = JSON.stringify({ season: next.season, status: next.status, games: (next.games || []).map(g => [g.id, g.status, g.homeScore, g.awayScore, g.homePeriods, g.awayPeriods, g.statusText, g.decision]), standings: next.standings, liveStandings: next.liveStandings });
     changed = signature !== hockeyScoreSignature;
     hockeyScores = next;
     hockeyScoreSignature = signature;
+    scoreReadFailed = false;
     if (changed) applyHockeyScores();
    }
    // Keep the current view intact when only the collector timestamp changes.
-   if(changed && !document.activeElement?.closest('input,select,.custom-select') && ['home','calendar','hockey','live','game','predictions'].includes(state.route)) {
+   const scoreView = ['home','calendar','hockey','live','game','predictions'].includes(state.route) ||
+     (state.route === 'hockey-stats' && state.detailId !== 'tabelle');
+   if(changed && !document.activeElement?.closest('input,select,.custom-select') && scoreView) {
     const scroll=window.scrollY, modalScroll=dialog.scrollTop;
     render(); window.scrollTo(0,scroll);
     if(dialog.open && activeDetail?.type==='game') {
@@ -879,18 +939,40 @@ async function pollHockeyScores() {
     }
    }
   }
- } catch { /* The timestamp makes a stopped collector visible; keep last valid scores. */ }
- finally {
+ } finally {
   hockeyPollBusy=false;
+  updateConnectionStatus();
   hockeyPollTimer=setTimeout(pollHockeyScores, hockeyScores?.nextPollSeconds===20 ? 5000 : 60000);
  }
 }
 
 function updateConnectionStatus() {
- const status=document.querySelector('#connection-status');
- if(!status) return;
- status.classList.toggle('offline',!navigator.onLine);
- document.querySelector('#connection-label').textContent=navigator.onLine?'Connesso':'Non connesso';
+ const status = document.querySelector('#connection-status');
+ const online = navigator.onLine;
+ const issue = scoreUpdateIssue();
+ const label = online ? 'Connesso' : 'Non connesso';
+ status.classList.toggle('offline', !online);
+ status.classList.toggle('score-delay', online && !!issue);
+ status.title = [label, issue, 'Stato degli aggiornamenti'].filter(Boolean).join(' · ');
+ const connectionLabel = document.querySelector('#connection-label');
+ if (connectionLabel.textContent !== label) connectionLabel.textContent = label;
+ const hint = document.querySelector('#connection-hint');
+ hint.hidden = !online || !issue;
+ const scoreInfo = dialog.querySelector('[data-score-connection]');
+ if (dialog.open && scoreInfo) {
+   const detail = scoreConnectionDetail();
+   if (scoreInfo.innerHTML !== detail) scoreInfo.innerHTML = detail;
+   const title = dialog.querySelector('#dialog-title');
+   if (title.textContent !== label) title.textContent = label;
+ }
+}
+function sourceTime(value) {
+ return value && Number.isFinite(Date.parse(value)) ? dateLabel(value,{year:'numeric'}) + ' · ' + clock(value) : 'Non disponibile';
+}
+function scoreConnectionDetail() {
+ const issue = scoreUpdateIssue();
+ const scoreTime = hockeyScores?.updatedAt || data.hockey.updatedAt;
+ return `<time>${sourceTime(scoreTime)}</time>${issue ? `<span class="status-tag muted">${esc(issue)}</span>` : ''}${hockeyScores?.checkedAt ? `<small>Ultimo controllo · ${sourceTime(hockeyScores.checkedAt)}</small>` : ''}`;
 }
 window.addEventListener('online',updateConnectionStatus);
 window.addEventListener('offline',updateConnectionStatus);
@@ -904,6 +986,8 @@ function renderBreadcrumb(title) {
   parts.push([state.route,title]);
   const label=state.route==='hockey'?({calendar:'Stagione',standings:'Classifica',stats:'Top Scorer'})[state.hockeyTab]:'Stagione';
   parts.push([state.route==='hockey'?hockeyRoute(state.hockeyTab):state.route,label]);
+ } else if(state.route==='hockey-stats' && state.detailId==='tabelle') {
+  parts.push(['hockey-stats','Statistiche'],['hockey-stats/tabelle',title]);
  } else if(state.route!=='home') parts.push([state.route+(state.detailId?'/'+state.detailId:''),title]);
  document.querySelector('.breadcrumb').innerHTML=parts.map(([route,label],i)=>`${i?'<span aria-hidden="true">/</span>':''}<a href="#${esc(route)}" ${i===parts.length-1?'aria-current="page"':''}>${esc(label)}</a>`).join('');
 }
@@ -942,7 +1026,7 @@ function connectionDetails() {
  const staleTables=tables.filter(([,t])=>t.status==='stale').length;
  const stats={updatedAt:times[0],status:staleTables?'partial':'ok',staleTables,total:tables.length};
  const entries=[['Calendario e risultati sci',data.alpine],['Classifiche sci · Donne',data.cups.groups?.W],['Classifiche sci · Uomini',data.cups.groups?.M],['Punteggi e classifica hockey',hockeyScores || data.hockey],['Dettagli hockey',data.hockey],['Statistiche hockey',stats],['Previsioni',data.predictions]];
- const timestamp=v=>v && Number.isFinite(Date.parse(v))?`${dateLabel(v,{year:'numeric'})} · ${clock(v)}`:'Non disponibile';
- const rows=items=>items.map(([label,entry])=>`<div><dt>${esc(label)}</dt><dd><time>${timestamp(entry?.updatedAt)}</time>${entry?.status==='stale'?'<span class="status-tag muted">Ultimo tentativo non riuscito</span>':entry?.status==='partial'?`<span class="status-tag muted">${entry.staleTables} di ${entry.total} tabelle da aggiornare</span>`:entry?.status==='stopped'?'<span class="status-tag muted">Aggiornamento locale fermo</span>':''}${entry?.lastAttemptAt?`<small>Ultimo tentativo: ${timestamp(entry.lastAttemptAt)}</small>`:''}</dd></div>`).join('');
+ const rows=items=>items.map(([label,entry])=>label==='Punteggi e classifica hockey' ?
+  `<div><dt>${esc(label)}</dt><dd data-score-connection>${scoreConnectionDetail()}</dd></div>` : `<div><dt>${esc(label)}</dt><dd><time>${sourceTime(entry?.updatedAt)}</time>${entry?.status==='stale'?'<span class="status-tag muted">Ultimo tentativo non riuscito</span>':entry?.status==='partial'?`<span class="status-tag muted">${entry.staleTables} di ${entry.total} tabelle da aggiornare</span>`:entry?.status==='stopped'?'<span class="status-tag muted">Aggiornamento locale fermo</span>':''}${entry?.lastAttemptAt?`<small>Ultimo tentativo: ${sourceTime(entry.lastAttemptAt)}</small>`:''}</dd></div>`).join('');
  openDialog(`${modalHeader('STATO DEGLI AGGIORNAMENTI')}<div class="dialog-body"><h2 id="dialog-title">${navigator.onLine?'Connesso':'Non connesso'}</h2><p class="tiny">Connessione del dispositivo. Ultimi dati acquisiti, in ora svizzera.</p><dl class="update-status-list">${rows(entries)}</dl>${tables.length?`<details class="update-status-tables"><summary>Dettaglio statistiche hockey</summary><dl class="update-status-list">${rows(tables.map(([key,t])=>[(t.label||key).replaceAll('Gol','Goal'),t]))}</dl></details>`:''}</div>`);
 }

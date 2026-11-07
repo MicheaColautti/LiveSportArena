@@ -53,7 +53,7 @@ export function enableTableSorting() {
         const button = document.createElement('button');
         button.type = 'button'; button.className = 'table-sort';
         button.append(document.createTextNode(label));
-        button.setAttribute('aria-label', 'Ordina per ' + label);
+        button.setAttribute('aria-label', 'Ordina per ' + (th.title || label));
         const arrow = document.createElement('span');
         arrow.className = 'sort-indicator'; arrow.textContent = '↕'; arrow.setAttribute('aria-hidden', 'true');
         button.append(arrow); th.replaceChildren(button);
