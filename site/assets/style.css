@@ -237,3 +237,6 @@ input.input[type=date]::-webkit-date-and-time-value{text-align:left}
 .race-map-header { justify-content:space-between; flex-wrap:wrap; }
 .map-launch { background:var(--green); color:white; }
 .map-launch .icon { color:var(--lime); }
+
+.race-map-header .map-launch { flex:0 0 auto; width:auto; min-height:44px; }
+.race-map-header .map-launch:is(:hover,:focus-visible,:active) { background:var(--green2); color:white; }

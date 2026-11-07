@@ -40,6 +40,10 @@ button{font:inherit;color:inherit}
 .segmented button{border:0;background:none;padding:0 13px;height:32px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;color:var(--muted)}
 .segmented button.active{background:#fff;color:var(--ink);box-shadow:0 1px 4px rgba(23,49,77,.14)}
 .chip{display:inline-flex;align-items:center;gap:7px;height:38px;padding:0 14px;border-radius:13px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid rgba(255,255,255,.75)}
+.lighting{display:inline-flex;align-items:center;height:38px;padding:3px;border-radius:13px;cursor:pointer}
+.lighting span{padding:5px 8px;border-radius:9px;font-size:13px;font-weight:600;color:var(--muted)}
+.lighting[aria-checked=false] span:first-child,.lighting[aria-checked=true] span:last-child{background:var(--ink);color:#fff}
+@media(max-width:480px){.toolbar:has(.lighting:not(.hidden)){gap:3px}.toolbar:has(.lighting:not(.hidden)) .segmented button,.toolbar:has(.lighting:not(.hidden)) .chip,.toolbar:has(.lighting:not(.hidden)) .switch{padding-inline:5px}.lighting span{padding-inline:4px}}
 .chip svg{width:16px;height:16px}
 .chip[aria-pressed=true],.chip[aria-expanded=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
 .switch{display:inline-flex;align-items:center;gap:9px;height:38px;padding:0 10px 0 14px;border-radius:13px;font-size:13px;font-weight:600;cursor:pointer}
@@ -140,7 +144,7 @@ button{font:inherit;color:inherit}
 }
 @media (max-width:420px){.switch span{display:none}.switch{padding:0 10px}.switch svg{display:block}}
 </style>
-<link rel="stylesheet" href="../assets/maps-3d.css"></head>
+<link rel="stylesheet" href="../assets/maps-3d.css"><script defer src="../assets/map-return.js"></script></head>
 <body>
 <div id="app" class="app">
   <canvas id="world" aria-label="Diorama 3D illustrativo: Gran Risa, Slalom gigante"></canvas>
@@ -158,7 +162,7 @@ button{font:inherit;color:inherit}
       <button type="button" id="viewTop">Dall'alto</button>
     </div>
     <button type="button" id="profileBtn" class="chip panel" aria-pressed="false">Profilo</button>
-    <button type="button" id="nightBtn" class="chip panel hidden" aria-pressed="false">Gara serale</button>
+    <button type="button" id="nightBtn" class="lighting panel hidden" role="switch" aria-label="Modalità notte" aria-checked="false"><span>Giorno</span><span>Notte</span></button>
     <button type="button" id="labelsToggle" class="switch panel" role="switch" aria-checked="false" aria-label="Etichette" title="Mostra o nascondi le etichette"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 4.5h7l6 6-6 6-7-7z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="7" cy="8" r="1.3" fill="currentColor"/></svg><span>Etichette</span><i aria-hidden="true"><b></b></i></button>
   </div>
 
@@ -1320,7 +1324,7 @@ button{font:inherit;color:inherit}
     };
     $('nightBtn').onclick = () => {
       R.night = !R.night; app.classList.toggle('night', R.night);
-      $('nightBtn').setAttribute('aria-pressed', String(R.night)); dirty = true;
+      $('nightBtn').setAttribute('aria-checked', String(R.night)); dirty = true;
     };
 
     // ---------------- input: ruota, zoom (rotella/pizzico), sposta (tasto destro, Maiusc, due dita)
@@ -1402,7 +1406,7 @@ button{font:inherit;color:inherit}
     const hp = new URLSearchParams(location.hash.slice(1));
     if (hp.get('view') === 'top') $('viewTop').click();
     if (hp.get('labels') === '1') $('labelsToggle').click();
-    if (hp.get('night') === '1' && course.model.night) $('nightBtn').click();
+    if (course.model.night && hp.get('night') !== '0') $('nightBtn').click();
     if (hp.get('poi')) { select(clamp(parseInt(hp.get('poi'), 10) - 1 || 0, 0, poi.length - 1)); Object.assign(cam, { az: cam.goal.az, tilt: cam.goal.tilt, dist: cam.goal.dist, t: cam.goal.t.slice() }); }
     if (hp.get('panel') === 'list') $('listBtn').click();
     if (hp.get('panel') === 'profile') $('profileBtn').click();

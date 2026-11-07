@@ -483,7 +483,7 @@ function gameExtra(g,d,tab) {
 }
 function mapLink(race) {
   const map = mapForRace(race);
-  return map ? `<a class="button map-launch" target="_self" href="maps-3d/${map.id}.html"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 9 5v10l-9 5-9-5V7zM3 7l9 5 9-5m-9 5v10"/></svg>Mappa 3D</a>`
+  return map ? `<a class="button map-launch" target="_self" href="maps-3d/${map.id}.html?race=${encodeURIComponent(race.id)}"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 9 5v10l-9 5-9-5V7zM3 7l9 5 9-5m-9 5v10"/></svg>Mappa 3D</a>`
     : '<span class="tiny">Mappa 3D non disponibile</span>';
 }
 
@@ -755,6 +755,12 @@ function sources() {
 document.addEventListener('click', async event => {
   const el = event.target.closest('button, a, .sidebar-scrim'); if (!el) return;
   if (['#hockey','#alpine'].includes(el.getAttribute('href')) && location.hash===el.getAttribute('href')) { readRoute(); closeMenu(); render(); return; }
+  if (el.matches('.map-launch') && !event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) {
+    const origin = { id: activeDetail.id, tab: detailTab, run: selectedRun, scroll: dialog.scrollTop,
+      filters: Object.fromEntries(['date','scope','query','sports','disciplines','gender','teamFilter'].map(key => [key, state[key]])) };
+    history.replaceState({ ...history.state, mapOrigin: origin }, '');
+    return;
+  }
   if (el.hasAttribute('data-full-detail')) { dialog.close(); activeDetail=null; } 
   if (el.dataset.race) { if (['race','game'].includes(state.route)) { location.hash='race/'+el.dataset.race; return; } return openRace(el.dataset.race); }
   if (el.dataset.game) { if (['race','game'].includes(state.route)) { location.hash='game/'+el.dataset.game; return; } return openGame(el.dataset.game); }
@@ -890,7 +896,24 @@ async function loadData(initial = false) {
   }
 }
 readRoute();
-loadData(true).then(pollHockeyScores);
+const mapOrigin = history.state?.mapOrigin;
+function clearMapOrigin() {
+  if (!history.state?.mapOrigin) return;
+  const { mapOrigin, ...rest } = history.state;
+  history.replaceState(rest, '');
+}
+if (mapOrigin) Object.assign(state, mapOrigin.filters);
+window.addEventListener('pageshow', event => { if (event.persisted) clearMapOrigin(); });
+loadData(true).then(() => {
+  if (mapOrigin && history.state?.mapOrigin) {
+    openRace(mapOrigin.id, mapOrigin.tab);
+    selectedRun = mapOrigin.run;
+    renderRaceTab();
+    dialog.scrollTop = mapOrigin.scroll;
+    clearMapOrigin();
+  }
+  return pollHockeyScores();
+});
 setInterval(() => { if (!document.hidden) loadData(); }, 60000);
 document.addEventListener('visibilitychange', () => { if (!document.hidden) loadData().then(pollHockeyScores); });
 
