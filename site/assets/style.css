@@ -251,3 +251,26 @@ input.input[type=date]::-webkit-date-and-time-value{text-align:left}
   .ski-event.with-podium { flex-wrap:wrap; }
   .calendar-podium { order:1; flex-basis:100%; border-inline-start:0; border-top:1px solid var(--line); padding:8px 0 0; }
 }
+
+/* Race preview and race detail */
+.ski-race-title,.course-profile-head,.profile-elevations{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.ski-race-title .button,.course-profile-head .map-launch{flex:none}
+.ski-race #race-status:not(:empty),.ski-race #race-bulletin:not(:empty){margin-top:10px}
+.ski-race .run-cards{margin:12px 0 4px;display:flex;gap:20px;flex-wrap:wrap}
+.ski-race .run-card{border:0;background:transparent;padding:0 18px 0 0;border-right:1px solid #cdd9cf;border-radius:0;min-width:84px}
+.ski-race .run-card:last-child{border:0}
+.ski-race .sync-note{margin-top:8px}
+.ski-preview{max-width:650px}
+.detail-dialog:has(.ski-preview){max-width:min(560px,95vw)}
+.race-dashboard{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(220px,1fr);gap:18px;margin-top:20px;align-items:start}
+.course-profile,.race-day{border:1px solid #d9e4db;border-radius:14px;padding:18px;min-width:0}
+.course-profile{background:#f3f7f1}
+.course-profile h3,.race-day h3{margin:0}.course-profile-head small,.profile-elevations,.profile-facts dt{font-size:.78rem;color:#53695d}
+.course-profile-head h3{font-size:1.35rem}.profile-elevations{margin-top:20px}.race-elevation{display:block;width:100%;max-height:190px}
+.profile-marks{display:flex;gap:10px 16px;flex-wrap:wrap;margin:8px 0;font-size:.78rem}
+.profile-marks b{border-radius:50%;background:#204c39;color:white;display:inline-grid;place-items:center;width:18px;height:18px;margin-right:5px}
+.profile-facts{display:flex;flex-wrap:wrap;gap:12px 20px;margin:14px 0 0;border-top:1px solid #cdd9cf;padding-top:12px}.profile-facts dd{margin:3px 0 0;font-weight:700}
+.race-stat{margin-top:15px;border-top:1px solid #d9e4db;padding-top:12px}.race-stat h3{font-size:.94rem}.race-stat p{margin:6px 0}
+.race-athlete{display:flex;gap:8px;align-items:baseline;margin-top:7px;font-size:.84rem}.race-athlete b{margin-left:auto}
+.race-documents,.race-archive{margin:0 20px 16px}.race-documents>a{display:inline-block;margin:8px 16px 0 0}.race-archive summary{cursor:pointer}
+@media(max-width:760px){.race-dashboard{grid-template-columns:1fr}.race-day{grid-row:1}.course-profile,.race-day{padding:14px}.course-profile-head{flex-wrap:wrap}}

@@ -1,13 +1,14 @@
+import { skiProfiles } from './ski-profiles.js';
 import { mapFlags, skiMaps, mapForRace } from './maps-3d.js';
 import { readSource } from './client-diagnostics.js';
 import { enhanceSelects as upgradeSelects } from './select-control.js';
 import { enableTableSorting } from './table-sort.js?v=20261107-compact';
 import { hockeyColumn } from './hockey-columns.js';
 import { mountCourseMaps } from './course-map.js';
-import { raceTime, raceResults, seasonMetrics } from './alpine-insights.js';
+import { raceTime, raceResults, timeSeconds, seasonMetrics } from './alpine-insights.js';
 import { TEAM_LOGOS, NATIONS, projectedStandings } from './preferences.js';
 import { MODULES } from './modules.js';
-import { FisConnection, rowsForRun, alertCandidates, venueInstant, STATUS, STARTED } from './fis-live.js';
+import { FisConnection, rowsForRun, alertCandidates, venueInstant, STATUS, STARTED, FINISHED } from './fis-live.js';
 
 const paths = {
   home: '<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>',
@@ -203,7 +204,7 @@ function runCards(r, useLive = false) {
   return `<div class="run-cards">${r.runs.map((run, index) => {
     const info = useLive ? timings.get(r.id)?.runs[index]?.info : null;
     const start = info ? venueInstant(info, r.timezone) || run.start : run.start;
-    return `<div class="run-card"><small>${run.label.toUpperCase()}</small><strong>${clock(start)}</strong><span class="run-day">${dateLabel(start || r.date)}</span></div>`;
+    return `<div class="run-card"><small>${run.label.toUpperCase()}</small><strong>${clock(start)}</strong>${start && dayKey(start) !== r.date ? `<span class="run-day">${dateLabel(start)}</span>` : ''}</div>`;
   }).join('')}</div>`;
 }
 
@@ -494,7 +495,7 @@ function gameExtra(g,d,tab) {
 }
 function mapLink(race) {
   const map = mapForRace(race);
-  return map ? `<a class="button map-launch" target="_self" href="maps-3d/${map.id}.html?race=${encodeURIComponent(race.id)}"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 9 5v10l-9 5-9-5V7zM3 7l9 5 9-5m-9 5v10"/></svg>Mappa 3D</a>`
+  return map ? `<a class="button map-launch" target="_self" href="maps-3d/${map.id}.html?race=${encodeURIComponent(race.id)}"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 9 5v10l-9 5-9-5V7zM3 7l9 5 9-5m-9 5v10"/></svg>Esplora in 3D</a>`
     : '<span class="tiny">Mappa 3D non disponibile</span>';
 }
 
@@ -517,8 +518,7 @@ function mapsPage() {
   return `${heading('SCI ALPINO', 'Mappe 3D', 'Diorami interattivi delle piste di Coppa del Mondo. Le geometrie sono illustrative.')}<nav class="filters-group" aria-label="Filtra le mappe per disciplina">${filters}</nav><div class="ski-map-grid">${cards}</div>`;
 }
 
-function trackSection(race) {
- const course=(data.tracks.courses||[]).find(c=>c.venues.includes(race.venue)&&c.disciplines.includes(race.discipline)&&(c.gender==='ALL'||c.gender===race.gender));
+function trackSection(race, course) {
  if(!course) return `<section class="panel track-panel"><div class="panel-head"><h2>Tracciato</h2></div><div class="panel-body"><p>Dati pista non disponibili.</p><a class="text-button" href="${safeUrl(race.sourceUrl)}" target="_blank" rel="noopener">Documenti ufficiali FIS ↗</a></div></section>`;
  return `<section class="panel track-panel"><div class="panel-head"><h2>${esc(course.name)}</h2><span class="tiny">Verificato ${esc(course.verifiedAt)}</span></div><div class="panel-body"><p class="tiny">Tracciato di riferimento. Partenza e lunghezza variano secondo la gara.</p><div class="period-grid">${course.facts.map(f=>`<div><small>${esc(f.label)}</small><strong>${esc(f.value)}</strong><a class="text-button" href="${safeUrl(f.source)}" target="_blank" rel="noopener">Fonte ↗</a></div>`).join('')}</div><p>${esc(course.history.text)} <a class="text-button" href="${safeUrl(course.history.source)}" target="_blank" rel="noopener">Fonte ↗</a></p>${course.geometry?.source ? `<div data-course-map="${course.id}"></div>` : '<p class="notice">Mappa del tracciato non disponibile.</p>'}${course.pois.map(p=>`<details class="track-poi"><summary>${esc(p.name)} · ${esc(p.category)}</summary><p>${esc(p.description)} <a class="text-button" href="${safeUrl(p.source)}" target="_blank" rel="noopener">Fonte ↗</a></p></details>`).join('')}</div></section>`;
 }
@@ -587,10 +587,76 @@ function render() {
 function modalHeader(label) { if (['game','race'].includes(state.route) && activeDetail) return `<div class="dialog-top"><a class="text-button" href="#${state.route==='game'?'hockey':'alpine'}">← ${state.route==='game'?'Hockey':'Sci alpino'}</a><span class="eyebrow">${label}</span></div>`; return `<div class="dialog-top"><span class="eyebrow">${label}</span><button class="icon-button" data-action="close-dialog" aria-label="Chiudi dettagli">${icon('close')}</button></div>`; }
 function openDialog(html) { if (['game','race'].includes(state.route) && activeDetail) { document.querySelector('#full-detail').innerHTML=html; return; } content.innerHTML = html; if (!dialog.open) dialog.showModal(); dialog.scrollTop = 0; }
 
+function courseProfile(race, map) {
+  const profile = skiProfiles[map?.id];
+  if (!profile) return '';
+  const { line, marks, metrics } = profile;
+  const x = i => 14 + i * 4.9, y = i => 16 + line[i];
+  const path = line.map((_, i) => (i ? 'L' : 'M') + x(i).toFixed(1) + ' ' + y(i)).join(' ');
+  const [start, finish] = (metrics.alt || '').split(' → ');
+  const facts = [['Lunghezza', metrics.length], ['Dislivello', metrics.vertical], ['Pendenza massima', metrics.maxgrad]].filter(([,v]) => v);
+  return `<section class="course-profile"><div class="course-profile-head"><div><small>Profilo schematico</small><h3>${esc(map.course)}</h3></div>${mapLink(race)}</div>
+    <div class="profile-elevations"><span>Partenza ${esc(start || '')}</span><span>Arrivo ${esc(finish || '')}</span></div>
+    <svg class="race-elevation" viewBox="0 0 420 138" role="img" aria-label="Profilo schematico di ${esc(map.course)}">
+      <path d="M14 29H406 M14 67H406 M14 105H406" fill="none" stroke="#bfd1c7" stroke-dasharray="3 5"/>
+      <path d="${path} V138 H14 Z" fill="#c4d9ca"/><path d="${path}" stroke="#285740" stroke-width="3" fill="none"/>
+      ${marks.map(([i],k)=>`<circle cx="${x(i)}" cy="${y(i)}" r="8" fill="#163f30"/><text x="${x(i)}" y="${y(i)+3.6}" text-anchor="middle" fill="white" font-size="10">${k+1}</text>`).join('')}
+    </svg><div class="profile-marks">${marks.map(([,name],k)=>`<span><b>${k+1}</b>${esc(name)}</span>`).join('')}</div>
+    ${facts.length ? `<dl class="profile-facts">${facts.map(([k,v])=>`<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>` : ''}</section>`;
+}
+
+function raceSnapshot(race, timing) {
+  const sections = [];
+  const block = (title, lines) => {
+    if (lines.length) sections.push(`<section class="race-stat"><h3>${title}</h3>${lines.join('')}</section>`);
+  };
+  const athlete = (r, prefix, value = '') => `<div class="race-athlete"><span>${esc(prefix)}</span><strong>${flag(r.country)}${esc(r.name || r.id)}</strong><b>${esc(value)}</b></div>`;
+  const finals = raceResults(race).sort((a,b)=>Number(a.rank)-Number(b.rank));
+  if (finals.length) {
+    const index = race.runs.length === 2 ? 2 : 0;
+    const winner = timeSeconds(finals[0].values[index]);
+    block('Podio', finals.filter(r=>Number(r.rank)<=3).map(r=>athlete(r,r.rank,Number(r.rank)===1 ? r.values[index] : '+'+(timeSeconds(r.values[index])-winner).toFixed(2))));
+    if (index === 2) {
+      const best = Math.min(...finals.map(r=>timeSeconds(r.values[1])));
+      block('Miglior seconda manche', finals.filter(r=>timeSeconds(r.values[1])===best).map(r=>athlete(r,'',r.values[1])));
+    }
+  } else if (timing) {
+    const rows = rowsForRun(timing);
+    const waiting = rows.filter(r=>!STARTED.has(r.status) && !FINISHED.has(r.status));
+    let leaders = rows.filter(r=>r.rank && r.rank<=3);
+    const previous = !leaders.length && timing.activeRun > 0;
+    if (previous) leaders = rowsForRun(timing,timing.activeRun-1).filter(r=>r.rank && r.rank<=3);
+    block(previous ? 'Dopo la prima manche' : 'In testa',leaders.sort((a,b)=>a.rank-b.rank).map(r=>athlete(r,r.rank,r.diff ? '+'+(r.diff/1000).toFixed(2) : duration(r.total))));
+    block('In pista',rows.filter(r=>r.status==='start').map(r=>athlete(r,r.bib)));
+    if (waiting.length) {
+      const countries = new Set(rows.map(r=>r.country).filter(Boolean));
+      block('Al via',[`<p>${rows.length} in lista · ${countries.size} nazioni</p>`]);
+      block('Prossimi al via',waiting.slice(0,3).map(r=>athlete(r,r.bib)));
+      block('Preferiti al via',waiting.filter(favouriteAthlete).map(r=>athlete(r,r.bib)));
+    }
+  }
+  return sections.join('');
+}
+
 function openRace(id, tab = 'overview') {
   const race = data.alpine.races.find(r => r.id === id); if (!race) return;
   activeDetail = { type: 'race', id }; detailTab = tab; selectedRun = null;
-  openDialog(`${modalHeader('COPPA DEL MONDO FIS · ' + (race.gender === 'W' ? 'DONNE' : 'UOMINI'))}<div class="dialog-body"><div id="race-status">${raceStatus(race)}</div><div class="race-map-header"><h2 id="dialog-title" class="race-detail-title">${disciplineIcon(race.discipline)}${flag(race.country)}${esc(race.venue)}</h2>${mapLink(race)}</div><div class="dialog-description">${esc(race.disciplineName)} · ${dateLabel(race.date, { weekday: 'long', year: 'numeric' })}</div><div id="run-summary">${runCards(race, true)}</div><div class="sync-note">${timezoneLabel}</div></div><div id="race-tabs" class="dialog-tabs"></div><div class="detail-content" id="detail-content"></div>`);
+  const full = state.route === 'race';
+  const map = mapForRace(race);
+  const schedule = `<div id="run-summary">${runCards(race, true)}</div><div class="sync-note">${timezoneLabel}</div>`;
+  const title = `<div class="ski-race-title"><h2 id="dialog-title" class="race-detail-title">${disciplineIcon(race.discipline)}${flag(race.country)}${esc(race.venue)}</h2>
+    ${full ? '' : `<a class="button primary" href="#race/${encodeURIComponent(id)}" data-full-detail>Dettagli ↗</a>`}</div>`;
+  const track = (data.tracks.courses || []).find(c => c.venues.includes(race.venue) && c.disciplines.includes(race.discipline) && (c.gender === 'ALL' || c.gender === race.gender));
+  openDialog(`${modalHeader('COPPA DEL MONDO FIS · ' + (race.gender === 'W' ? 'DONNE' : 'UOMINI'))}
+    <div class="dialog-body ski-race ${full ? 'ski-page' : 'ski-preview'}">${title}
+    <div class="dialog-description">${esc(race.disciplineName)} · ${dateLabel(race.date, { weekday:'long', year:'numeric' })}</div>
+    <div id="race-status">${raceStatus(race)}</div><div id="race-bulletin"></div>
+    ${full ? `<div class="race-dashboard">${courseProfile(race,map)}<aside class="race-day"><h3>Orari di gara</h3>${schedule}<div id="race-snapshot"></div></aside></div>` : schedule}</div>
+    ${full ? `<div id="race-tabs" class="dialog-tabs"></div><div class="detail-content" id="detail-content"></div>
+    ${track ? `<details class="race-archive"><summary>Scheda tecnica · ${esc(track.name)}</summary>${trackSection(race, track)}</details>` : ''}
+    <div class="race-documents">${documents(race)}<a class="text-button" href="${safeUrl(race.sourceUrl)}" target="_blank" rel="noopener">Pagina ufficiale FIS ↗</a>
+    ${race.liveUrl ? `<a class="text-button" href="${safeUrl(race.liveUrl)}" target="_blank" rel="noopener">Timing ufficiale ↗</a>` : ''}</div>` : ''}`);
+  if (full && track) mountCourseMaps(data.tracks.courses || []);
   renderRaceTab();
   if (race.liveUrl) startTiming(race);
 }
@@ -633,37 +699,37 @@ function startTiming(race) {
 
 function renderRaceTab() {
   const race = data.alpine.races.find(r => r.id === activeDetail?.id); if (!race || activeDetail?.type !== 'race') return;
+  const timing = timings.get(race.id);
+  const bulletin = document.querySelector('#race-bulletin');
+  const latest = timing?.message || news.get(race.id)?.[0]?.message;
+  if (bulletin) bulletin.innerHTML = latest ? `<div class="notice fis">${icon('info')}${esc(latest)}</div>` : '';
+  if (state.route !== 'race') return;
   const target = document.querySelector('#detail-content'); if (!target) return;
+  document.querySelector('#race-snapshot').innerHTML = raceSnapshot(race, timing);
+  const underway = timing && (timing.activeRun > 0 || rowsForRun(timing).some(r=>STARTED.has(r.status)));
+  const tab = detailTab === 'overview' ? (underway || ['finished','live'].includes(race.status) ? 'results' : 'startlist') : detailTab;
   const scroller = target.querySelector('.scroll-table'); const scrollTop = scroller?.scrollTop; const scrollLeft = scroller?.scrollLeft;
   const focusedAthlete = document.activeElement?.dataset.athlete;
-  const priorMap=target.querySelector('[data-course-map]');
-  const timing = timings.get(race.id); const error = timingErrors.get(race.id); const run = selectedRun ?? timing?.activeRun ?? 0;
-  document.querySelector('#race-tabs').innerHTML = [['overview', 'La gara'], ['results', 'Classifica'], ['startlist', 'Lista di partenza'], ['news', 'Avvisi gara']].map(([v, label]) => `<button class="chip${detailTab === v ? ' active' : ''}" data-race-tab="${v}">${label}</button>`).join('');
+  const error = timingErrors.get(race.id); const run = selectedRun ?? timing?.activeRun ?? 0;
+  document.querySelector('#race-tabs').innerHTML = [['startlist', 'Lista di partenza'], ['results', 'Classifica'], ['news', 'Avvisi FIS']].map(([v,label]) => `<button class="chip${tab === v ? ' active' : ''}" data-race-tab="${v}" aria-pressed="${tab === v}">${label}</button>`).join('');
   let html = '';
   const timingHeader = `<div class="timing-top"><span class="timing-status">${error ? icon('info') : timing ? '<span class="dot"></span>' : '<span class="small-loader"></span>'}${error ? esc(error) : timing ? (race.date < today() ? 'Timing FIS · archivio della gara' : 'Collegato a FIS · ' + clock(new Date(timing.receivedAt).toISOString())) : race.liveUrl ? 'Collegamento al timing FIS…' : 'Timing non ancora pubblicato'}</span>${timing ? `<div class="segmented">${Object.entries(timing.runs).map(([index, value]) => `<button data-run="${index}" class="${Number(index) === run ? 'active' : ''}">${value.number}ª manche</button>`).join('')}</div>` : ''}</div>`;
-  const message = timing?.message ? `<div class="notice fis">${icon('info')}<strong>Messaggio ufficiale FIS</strong><br>${esc(timing.message)}</div>` : '';
-  if (detailTab === 'overview') {
-    html = `${message}<div class="panel"><div class="panel-head"><h2>Programma di gara</h2>${badge(race.discipline, 'blue')}</div><div class="panel-body"><p class="explanation">${race.runs.length === 2 ? 'Due manche' : 'Manche unica'}</p><div class="dialog-actions"><button class="button primary" data-race-tab="startlist">${icon('live')}Lista di partenza</button><button class="button" data-action="subscribe">${icon('calendar')}Calendario in abbonamento</button></div></div></div>${timing?.runs[run]?.info ? `<p class="explanation">Pista: ${esc(race.venue)} · Quota partenza: ${esc(timing.runs[run].info[7])} m · Arrivo: ${esc(timing.runs[run].info[8])} m</p>` : ''}${documents(race)}${state.route === 'race' ? trackSection(race) : ''}`;
-  } else if (detailTab === 'news') {
+  if (tab === 'news') {
     html = `${timingHeader}${(news.get(race.id) || []).map(n => `<div class="news-item"><small>FIS · rilevato alle ${clock(n.at)}</small>${esc(n.message)}</div>`).join('') || empty('Nessun avviso FIS', '', 'info')}`;
   } else {
-    html = timingHeader + message;
+    html = timingHeader;
     if (timing) {
       let rows = rowsForRun(timing, run);
-      const ranking = detailTab === 'results';
+      const ranking = tab === 'results';
       if (ranking) rows = rows.filter(r => r.rank).sort((a, b) => a.rank - b.rank);
       html += !ranking ? `<div class="timing-controls"><button class="button" data-action="toggle-swiss">${flag('SUI')}${state.alerts.swiss ? 'Svizzeri selezionati' : 'Segui gli svizzeri'}</button><button class="button${state.alerts.enabled ? ' primary' : ''}" data-action="toggle-alerts">${icon('bell')}${state.alerts.enabled ? 'Avvisi attivi' : 'Attiva avvisi'}</button><span class="tiny">★ per seguire un atleta</span></div><p class="tiny">Gli atleti già partiti sono attenuati. Avvisi sulla manche in corso.</p>` : '';
       html += rows.length ? `<div class="scroll-table"><table class="data-table"><thead><tr><th>${ranking ? '#' : 'Ord.'}</th><th>Pett.</th><th>Atleta</th><th>Naz.</th>${ranking ? `<th>${run ? '1ª manche' : 'Tempo'}</th>${run ? '<th>2ª manche</th><th>Totale</th>' : ''}<th>Distacco</th>` : '<th>Stato</th><th>Segui</th>'}</tr></thead><tbody>${rows.map((r, i) => `<tr style="--favourite:${NATIONS[r.country]?.color || '#6c8051'}" class="${favouriteAthlete(r) ? 'athlete-favourite ' : ''}${!ranking && r.status === 'start' ? 'on-course' : !ranking && STARTED.has(r.status) ? 'gone' : ''}"><td>${ranking ? r.rank : r.index + 1}</td><td>${r.bib}</td><td class="athlete-name">${esc(r.name || r.id)}</td><td>${flag(r.country)}${esc(r.country)}</td>${ranking ? `<td>${duration(run ? r.first : r.total)}</td>${run ? `<td>${duration(r.second)}</td><td><b>${duration(r.total)}</b></td>` : ''}<td>${r.diff ? '+' + (r.diff / 1000).toFixed(2) : '—'}</td>` : `<td>${esc(STATUS[r.status] || (r.status ? r.status.toUpperCase() : 'Da partire'))}</td><td><button class="star-button${state.alerts.athletes.includes(r.id) ? ' on' : ''}" data-athlete="${r.id}" aria-label="${state.alerts.athletes.includes(r.id) ? 'Non seguire più' : 'Segui'} ${esc(r.name)}" aria-pressed="${state.alerts.athletes.includes(r.id)}">${state.alerts.athletes.includes(r.id) ? '★' : '☆'}</button></td>`}</tr>`).join('')}</tbody></table></div>` : empty(ranking ? 'In attesa dei primi arrivi' : 'Lista non ancora disponibile', '');
-    } else if (detailTab === 'results' && race.results.length) {
+    } else if (tab === 'results' && race.results.length) {
       html += `<div class="scroll-table"><table class="data-table"><thead><tr><th>#</th><th>Pett.</th><th>Atleta</th><th>Naz.</th><th>1ª</th>${race.runs.length > 1 ? '<th>2ª</th>' : ''}<th>Totale</th></tr></thead><tbody>${race.results.map(r => `<tr ${athleteStyle(r)}><td>${r.rank}</td><td>${r.bib}</td><td>${esc(r.name)}</td><td>${esc(r.country)}</td><td>${esc(r.values[0])}</td>${race.runs.length > 1 ? `<td>${esc(r.values[1])}</td>` : ''}<td>${esc(r.values[race.runs.length] || r.values[0])}</td></tr>`).join('')}</tbody></table></div><p class="tiny">Risultato dall’ultimo aggiornamento FIS: ${since(data.alpine.updatedAt)}.</p>`;
-    } else html += empty(detailTab === 'startlist' ? 'Lista di partenza non disponibile' : 'Risultati non disponibili', '', 'live');
-    html += documents(race, detailTab === 'startlist');
+    } else html += empty(tab === 'startlist' ? 'Lista di partenza non disponibile' : 'Risultati non disponibili', '', 'live');
   }
-  html += `<div class="dialog-actions detail-links">${state.route !== 'race' ? `<a class="text-button" href="#race/${race.id}" data-full-detail>Dettagli ↗</a>` : ''}<a class="text-button" href="${safeUrl(race.sourceUrl)}" target="_blank" rel="noopener noreferrer">Pagina ufficiale FIS ↗</a>${race.liveUrl ? `<a class="text-button" href="${safeUrl(race.liveUrl)}" target="_blank" rel="noopener noreferrer">Timing ufficiale ↗</a>` : ''}</div>`;
   target.innerHTML = html;
   const newScroller = target.querySelector('.scroll-table'); if (newScroller) { newScroller.scrollTop = scrollTop || 0; newScroller.scrollLeft = scrollLeft || 0; }
-  const nextMap=target.querySelector('[data-course-map]');
-  if(priorMap&&nextMap&&priorMap.dataset.courseMap===nextMap.dataset.courseMap) nextMap.replaceWith(priorMap); else mountCourseMaps(data.tracks.courses||[]);
   if (focusedAthlete) target.querySelector(`[data-athlete="${CSS.escape(focusedAthlete)}"]`)?.focus({ preventScroll: true });
 }
 
@@ -772,8 +838,8 @@ document.addEventListener('click', async event => {
     history.replaceState({ ...history.state, mapOrigin: origin }, '');
     return;
   }
-  if (el.hasAttribute('data-full-detail')) { dialog.close(); activeDetail=null; } 
-  if (el.dataset.race) { if (['race','game'].includes(state.route)) { location.hash='race/'+el.dataset.race; return; } return openRace(el.dataset.race); }
+  if (el.hasAttribute('data-full-detail') && !event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) { dialog.close(); content.replaceChildren(); activeDetail=null; } 
+  if (el.dataset.race) { if (['race','game','live'].includes(state.route) || data.alpine.races.find(r=>r.id===el.dataset.race)?.status==='live') { location.hash='race/'+el.dataset.race; return; } return openRace(el.dataset.race); }
   if (el.dataset.game) { if (['race','game'].includes(state.route)) { location.hash='game/'+el.dataset.game; return; } return openGame(el.dataset.game); }
   if (el.dataset.filter) {
     const key=el.dataset.filter,value=el.dataset.value;
