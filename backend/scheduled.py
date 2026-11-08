@@ -6,6 +6,34 @@ from .common import SITE, CACHE, read_json, write_json, stamp
 from . import hockey_live, hockey, hockey_statistics, hockey_calendar, predictions, alpine, alpine_standings
 
 
+def finished_ids(games):
+    return sorted(g['id'] for g in games if g['status'] == 'finished')
+
+
+def refresh_hockey(season, state, finished):
+    snapshot = hockey.update(season, detail_limit=8)
+    hockey_statistics.update(season)
+    hockey_calendar.update(snapshot)
+    predictions.update(snapshot)
+    state.update(finished=finished, statistics=stamp())
+    return snapshot
+
+
+def refresh_alpine(season, state):
+    try:
+        alpine.update(season)
+        alpine_standings.update(season)
+    except Exception as exc:
+        record('fallback', outcome='error', errorType=type(exc).__name__, error=str(exc))
+        source = getattr(exc, 'url', '')
+        print(f'::warning::Alpine update unavailable: {exc}' + (f' ({source})' if source else ''), flush=True)
+        # Keep the last verified calendar and record the failed source check.
+        previous = read_json(SITE/'data/alpine.json', {})
+        previous.update(status='stale', lastAttemptAt=stamp())
+        write_json(SITE/'data/alpine.json', previous)
+    state['alpine'] = stamp()
+
+
 @logged_update("scheduled")
 def main():
     archive = CACHE / 'published'
@@ -24,15 +52,11 @@ def main():
         hockey_live.collect(season, scheduled=True)
         live = read_json(SITE/'data/hockey-live.json', {})
         games = live.get('games', [])
-        finished = sorted(g['id'] for g in games if g['status']=='finished')
+        finished = finished_ids(games)
         active = any(g['status']=='live' for g in games)
         # Once after a newly completed game; hourly while playing; otherwise unchanged.
         if state.get('finished') != finished or (active and due('statistics', 3600)):
-            snapshot = hockey.update(season, detail_limit=8)
-            hockey_statistics.update(season)
-            hockey_calendar.update(snapshot)
-            predictions.update(snapshot)
-            state.update(finished=finished, statistics=stamp())
+            snapshot = refresh_hockey(season, state, finished)
             # Align the overlay's standings baseline with the newly published snapshot.
             live.update(baseUpdatedAt=snapshot['updatedAt'], standings=snapshot['standings'],
                         liveStandings=snapshot['liveStandings'])
@@ -53,19 +77,7 @@ def main():
         live.update(status='stale', checkedAt=stamp())
         write_json(SITE/'data/hockey-live.json', live)
     if due('alpine', 1200):
-        try:
-            alpine.update(season)
-            alpine_standings.update(season)
-            state['alpine'] = stamp()
-        except Exception as exc:
-            record('fallback', outcome='error', errorType=type(exc).__name__, error=str(exc))
-            source = getattr(exc, 'url', '')
-            print(f'::warning::Alpine update unavailable: {exc}' + (f' ({source})' if source else ''), flush=True)
-            # Keep the last verified calendar and record the failed source check.
-            previous = read_json(SITE/'data/alpine.json', {})
-            previous.update(status='stale', lastAttemptAt=stamp())
-            write_json(SITE/'data/alpine.json', previous)
-            state['alpine'] = stamp()
+        refresh_alpine(season, state)
     else:
         record('update', operation='alpine', outcome='skipped', reason='not-due')
     write_json(CACHE/'schedule-state.json', state)

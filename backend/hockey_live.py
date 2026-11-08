@@ -76,10 +76,8 @@ def collect(season, scheduled=False):
     return delay
 
 
-def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--season', type=int)
-    args = parser.parse_args()
+def run(fixed_season=None, after_cycle=None):
+    """Poll until stopped; after_cycle(season) also runs when the SIHF read failed."""
     CACHE.mkdir(parents=True, exist_ok=True)
     with (CACHE / 'hockey-live.lock').open('w') as lock:
         try:
@@ -91,7 +89,7 @@ def main():
         failures = 0
         while not STOP.is_set():
             now = datetime.now(ZoneInfo('Europe/Zurich'))
-            season = args.season or int(read_json(SITE / 'data/hockey.json', {}).get('season') or now.year + (now.month >= 7))
+            season = fixed_season or int(read_json(SITE / 'data/hockey.json', {}).get('season') or now.year + (now.month >= 7))
             try:
                 delay = collect(season)
                 failures = 0
@@ -105,10 +103,18 @@ def main():
                            error='Aggiornamento punteggi non disponibile; conservati gli ultimi dati.')
                 write_json(PATH, old)
                 print(f'SIHF: {exc}. Nuovo tentativo tra {delay}s', flush=True)
+            if after_cycle:
+                after_cycle(season)
             STOP.wait(delay)
         old = read_json(PATH, {})
         old.update(status='stopped', checkedAt=stamp())
         write_json(PATH, old)
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--season', type=int)
+    run(parser.parse_args().season)
 
 
 if __name__ == '__main__':

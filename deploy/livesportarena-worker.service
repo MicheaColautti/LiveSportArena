@@ -1,0 +1,25 @@
+[Unit]
+Description=Live Sport Arena data worker
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=webapps
+Group=webapps
+UMask=0002
+WorkingDirectory=/srv/livesportarena
+Environment=HOME=/tmp PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+ExecStart=/srv/livesportarena/.venv/bin/python -m backend.worker
+Restart=always
+RestartSec=30
+# On stop the worker lets a running refresh finish.
+TimeoutStopSec=180
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/srv/livesportarena/site/data /srv/livesportarena/site/calendars /srv/livesportarena/.cache
+
+[Install]
+WantedBy=multi-user.target
