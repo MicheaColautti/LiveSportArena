@@ -501,7 +501,7 @@ function mapsPage() {
   }
   const cards = [...groups].sort(([a], [b]) => a.localeCompare(b, 'it')).map(([label, maps]) =>
     `<article class="map-card"><header><span class="map-flag">${mapFlags[maps[0].iso]}</span><div><h2>${esc(maps[0].location)}</h2><small>${esc(maps[0].course)} · ${esc(maps[0].country)}</small></div></header>
-      ${maps.map(m => `<a class="map-discipline" target="_self" href="maps-3d/${m.id}.html"><b data-disc="${m.discipline}">${m.discipline}</b><strong>${esc(m.disciplineLabel)}</strong><small>${esc(m.terrain)}</small></a>`).join('')}</article>`
+      ${maps.map(m => `<a class="map-discipline" target="_self" href="maps-3d/${m.id}.html"><b data-disc="${m.discipline}">${m.discipline}</b><strong>${esc(m.disciplineLabel)}${maps.some(other => other !== m && other.discipline === m.discipline) ? (m.gender === 'W' ? ' donne' : ' uomini') : ''}</strong><small>${esc(m.terrain)}</small></a>`).join('')}</article>`
   ).join('');
   return `${heading('SCI ALPINO', 'Mappe 3D', 'Diorami interattivi delle piste di Coppa del Mondo. Le geometrie sono illustrative.')}<nav class="filters-group" aria-label="Filtra le mappe per disciplina">${filters}</nav><div class="ski-map-grid">${cards}</div>`;
 }

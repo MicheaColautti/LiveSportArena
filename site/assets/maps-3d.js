@@ -7,7 +7,11 @@ export const mapFlags = {
   "US": "<svg viewBox='0 0 38 20' role='img' aria-label='Stati Uniti'><rect width='38' height='20' fill='#fff'/><g fill='#b22234'><rect width='38' height='1.54'/><rect y='3.08' width='38' height='1.54'/><rect y='6.15' width='38' height='1.54'/><rect y='9.23' width='38' height='1.54'/><rect y='12.31' width='38' height='1.54'/><rect y='15.38' width='38' height='1.54'/><rect y='18.46' width='38' height='1.54'/></g><rect width='15.2' height='10.77' fill='#3c3b6e'/><g fill='#fff'><circle cx='2.5' cy='2' r='.6'/><circle cx='5.5' cy='2' r='.6'/><circle cx='8.5' cy='2' r='.6'/><circle cx='11.5' cy='2' r='.6'/><circle cx='4' cy='4.2' r='.6'/><circle cx='7' cy='4.2' r='.6'/><circle cx='10' cy='4.2' r='.6'/><circle cx='13' cy='4.2' r='.6'/><circle cx='2.5' cy='6.4' r='.6'/><circle cx='5.5' cy='6.4' r='.6'/><circle cx='8.5' cy='6.4' r='.6'/><circle cx='11.5' cy='6.4' r='.6'/><circle cx='4' cy='8.6' r='.6'/><circle cx='7' cy='8.6' r='.6'/><circle cx='10' cy='8.6' r='.6'/><circle cx='13' cy='8.6' r='.6'/></g></svg>",
   "FI": "<svg viewBox='0 0 36 22' role='img' aria-label='Finlandia'><rect width='36' height='22' fill='#fff'/><rect x='10' width='6' height='22' fill='#003580'/><rect y='8' width='36' height='6' fill='#003580'/></svg>",
   "SI": "<svg viewBox='0 0 30 15' role='img' aria-label='Slovenia'><rect width='30' height='5' fill='#fff'/><rect y='5' width='30' height='5' fill='#005da4'/><rect y='10' width='30' height='5' fill='#ed1c24'/><path d='M6 2.4h5.4v3.8c0 2-1.3 3.2-2.7 3.8C7.3 9.4 6 8.2 6 6.2z' fill='#005da4' stroke='#ed1c24' stroke-width='.45'/><path d='M6.4 7.2l1.3-1.6.6.7.4-1.4.4 1.4.6-.7 1.3 1.6z' fill='#fff'/><path d='M6.9 8.1q.45-.3.9 0t.9 0 .9 0 .9 0' stroke='#fff' stroke-width='.35' fill='none'/></svg>",
-  "SK": "<svg viewBox='0 0 30 20' role='img' aria-label='Slovacchia'><rect width='30' height='6.67' fill='#fff'/><rect y='6.67' width='30' height='6.67' fill='#0b4ea2'/><rect y='13.33' width='30' height='6.67' fill='#ee1c25'/><path d='M5.6 4.2h7.2v5.4c0 3-1.9 4.6-3.6 5.4-1.7-.8-3.6-2.4-3.6-5.4z' fill='#ee1c25' stroke='#fff' stroke-width='.5'/><path d='M8.8 5.4h.8v1.5h1.6v.7H9.6v.9h2v.7h-2v2.4h-.8V9.2h-2v-.7h2v-.9H7.2v-.7h1.6z' fill='#fff'/><path d='M6.2 12.3q1.1-1.5 2.1-.4 1.1-1.5 2.2 0 1-1.1 2.1.4-1.2 1.6-3.2 2.4-2-.8-3.2-2.4z' fill='#0b4ea2'/></svg>"
+  "SK": "<svg viewBox='0 0 30 20' role='img' aria-label='Slovacchia'><rect width='30' height='6.67' fill='#fff'/><rect y='6.67' width='30' height='6.67' fill='#0b4ea2'/><rect y='13.33' width='30' height='6.67' fill='#ee1c25'/><path d='M5.6 4.2h7.2v5.4c0 3-1.9 4.6-3.6 5.4-1.7-.8-3.6-2.4-3.6-5.4z' fill='#ee1c25' stroke='#fff' stroke-width='.5'/><path d='M8.8 5.4h.8v1.5h1.6v.7H9.6v.9h2v.7h-2v2.4h-.8V9.2h-2v-.7h2v-.9H7.2v-.7h1.6z' fill='#fff'/><path d='M6.2 12.3q1.1-1.5 2.1-.4 1.1-1.5 2.2 0 1-1.1 2.1.4-1.2 1.6-3.2 2.4-2-.8-3.2-2.4z' fill='#0b4ea2'/></svg>",
+  "NO": "<svg viewBox='0 0 22 16' role='img' aria-label='Norvegia'><rect width='22' height='16' fill='#ba0c2f'/><rect x='6' width='4' height='16' fill='#fff'/><rect y='6' width='22' height='4' fill='#fff'/><rect x='7' width='2' height='16' fill='#00205b'/><rect y='7' width='22' height='2' fill='#00205b'/></svg>",
+  "SE": "<svg viewBox='0 0 16 10' role='img' aria-label='Svezia'><rect width='16' height='10' fill='#006aa7'/><rect x='5' width='2' height='10' fill='#fecc00'/><rect y='4' width='16' height='2' fill='#fecc00'/></svg>",
+  "AD": "<svg viewBox='0 0 30 20' role='img' aria-label='Andorra'><rect width='10' height='20' fill='#10069f'/><rect x='10' width='10' height='20' fill='#fedd00'/><rect x='20' width='10' height='20' fill='#d50032'/><path d='M12.6 7h4.8v4.6c0 1.6-1.1 2.5-2.4 3-1.3-.5-2.4-1.4-2.4-3z' fill='#c7a136' stroke='#8a6d1c' stroke-width='.35'/><rect x='13.2' y='7.6' width='1.6' height='2.6' fill='#d50032'/><rect x='15.2' y='7.6' width='1.6' height='2.6' fill='#fedd00'/></svg>",
+  "CA": "<svg viewBox='0 0 40 20' role='img' aria-label='Canada'><rect width='40' height='20' fill='#fff'/><rect width='10' height='20' fill='#d52b1e'/><rect x='30' width='10' height='20' fill='#d52b1e'/><path d='M20 3.2l1.3 2.5 1.4-.7-.5 3.7 2-2.2.5 1.2 2.2-.4-.8 2.6 1 .5-3.6 2.9.4 1.4-3.3-.5.1 3.3h-1.4l.1-3.3-3.3.5.4-1.4-3.6-2.9 1-.5-.8-2.6 2.2.4.5-1.2 2 2.2-.5-3.7 1.4.7z' fill='#d52b1e'/></svg>"
 };
 export const skiMaps = [
   {
@@ -383,6 +387,380 @@ export const skiMaps = [
     "gender": "W",
     "iso": "US",
     "terrain": "Stadium / Night-Race Finish"
+  },
+  {
+    "id": "kvitfjell-olympiabakken-dh-m",
+    "location": "Kvitfjell",
+    "country": "Norvegia",
+    "course": "Olympiabakken",
+    "discipline": "DH",
+    "disciplineLabel": "Discesa libera",
+    "gender": "M",
+    "iso": "NO",
+    "terrain": "Long / Wide Speed"
+  },
+  {
+    "id": "kvitfjell-olympiabakken-sg-m",
+    "location": "Kvitfjell",
+    "country": "Norvegia",
+    "course": "Olympiabakken",
+    "discipline": "SG",
+    "disciplineLabel": "Super-G",
+    "gender": "M",
+    "iso": "NO",
+    "terrain": "Curvy / Technical Speed"
+  },
+  {
+    "id": "kvitfjell-olympiabakken-dh-w",
+    "location": "Kvitfjell",
+    "country": "Norvegia",
+    "course": "Olympiabakken",
+    "discipline": "DH",
+    "disciplineLabel": "Discesa libera",
+    "gender": "W",
+    "iso": "NO",
+    "terrain": "Long / Wide Speed"
+  },
+  {
+    "id": "kvitfjell-olympiabakken-sg-w",
+    "location": "Kvitfjell",
+    "country": "Norvegia",
+    "course": "Olympiabakken",
+    "discipline": "SG",
+    "disciplineLabel": "Super-G",
+    "gender": "W",
+    "iso": "NO",
+    "terrain": "Curvy / Technical Speed"
+  },
+  {
+    "id": "garmisch-partenkirchen-kandahar-sg",
+    "location": "Garmisch-Partenkirchen",
+    "country": "Germania",
+    "course": "Kandahar",
+    "discipline": "SG",
+    "disciplineLabel": "Super-G",
+    "gender": "M",
+    "iso": "DE",
+    "terrain": "Curvy / Technical Speed"
+  },
+  {
+    "id": "garmisch-partenkirchen-kandahar-1-dh-w",
+    "location": "Garmisch-Partenkirchen",
+    "country": "Germania",
+    "course": "Kandahar 1",
+    "discipline": "DH",
+    "disciplineLabel": "Discesa libera",
+    "gender": "W",
+    "iso": "DE",
+    "terrain": "Extreme / Steep Classic"
+  },
+  {
+    "id": "adelboden-chuenisbargli-sl",
+    "location": "Adelboden",
+    "country": "Svizzera",
+    "course": "Chuenisbärgli",
+    "discipline": "SL",
+    "disciplineLabel": "Slalom",
+    "gender": "M",
+    "iso": "CH",
+    "terrain": "Stadium / Night-Race Finish"
+  },
+  {
+    "id": "st-moritz-engiadina-sg",
+    "location": "St. Moritz",
+    "country": "Svizzera",
+    "course": "Engiadina",
+    "discipline": "SG",
+    "disciplineLabel": "Super-G",
+    "gender": "W",
+    "iso": "CH",
+    "terrain": "Curvy / Technical Speed"
+  },
+  {
+    "id": "st-moritz-engiadina-gs",
+    "location": "St. Moritz",
+    "country": "Svizzera",
+    "course": "Engiadina",
+    "discipline": "GS",
+    "disciplineLabel": "Slalom gigante",
+    "gender": "W",
+    "iso": "CH",
+    "terrain": "Compact / Technical GS"
+  },
+  {
+    "id": "lenzerheide-silvano-beltrametti-sg",
+    "location": "Lenzerheide",
+    "country": "Svizzera",
+    "course": "Silvano Beltrametti",
+    "discipline": "SG",
+    "disciplineLabel": "Super-G",
+    "gender": "W",
+    "iso": "CH",
+    "terrain": "Curvy / Technical Speed"
+  },
+  {
+    "id": "wengen-lauberhorn-sg",
+    "location": "Wengen",
+    "country": "Svizzera",
+    "course": "Lauberhorn",
+    "discipline": "SG",
+    "disciplineLabel": "Super-G",
+    "gender": "M",
+    "iso": "CH",
+    "terrain": "Long / Wide Speed"
+  },
+  {
+    "id": "wengen-lauberhorn-sl",
+    "location": "Wengen",
+    "country": "Svizzera",
+    "course": "Lauberhorn",
+    "discipline": "SL",
+    "disciplineLabel": "Slalom",
+    "gender": "M",
+    "iso": "CH",
+    "terrain": "Narrow / Rhythmic SL"
+  },
+  {
+    "id": "kitzbuhel-streifalm-sg",
+    "location": "Kitzbühel",
+    "country": "Austria",
+    "course": "Streifalm",
+    "discipline": "SG",
+    "disciplineLabel": "Super-G",
+    "gender": "M",
+    "iso": "AT",
+    "terrain": "Curvy / Technical Speed"
+  },
+  {
+    "id": "kitzbuhel-ganslern-sl",
+    "location": "Kitzbühel",
+    "country": "Austria",
+    "course": "Ganslern",
+    "discipline": "SL",
+    "disciplineLabel": "Slalom",
+    "gender": "M",
+    "iso": "AT",
+    "terrain": "Stadium / Night-Race Finish"
+  },
+  {
+    "id": "flachau-hermann-maier-weltcupstrecke-gs",
+    "location": "Flachau",
+    "country": "Austria",
+    "course": "Hermann Maier Weltcupstrecke",
+    "discipline": "GS",
+    "disciplineLabel": "Slalom gigante",
+    "gender": "W",
+    "iso": "AT",
+    "terrain": "Stadium / Night-Race Finish"
+  },
+  {
+    "id": "saalbach-schneekristall-dh",
+    "location": "Saalbach",
+    "country": "Austria",
+    "course": "Schneekristall",
+    "discipline": "DH",
+    "disciplineLabel": "Discesa libera",
+    "gender": "M",
+    "iso": "AT",
+    "terrain": "Long / Wide Speed"
+  },
+  {
+    "id": "saalbach-schneekristall-sg",
+    "location": "Saalbach",
+    "country": "Austria",
+    "course": "Schneekristall",
+    "discipline": "SG",
+    "disciplineLabel": "Super-G",
+    "gender": "M",
+    "iso": "AT",
+    "terrain": "Curvy / Technical Speed"
+  },
+  {
+    "id": "dachstein-west-hornspitz-gs",
+    "location": "Dachstein West",
+    "country": "Austria",
+    "course": "Hornspitz",
+    "discipline": "GS",
+    "disciplineLabel": "Slalom gigante",
+    "gender": "W",
+    "iso": "AT",
+    "terrain": "Compact / Technical GS"
+  },
+  {
+    "id": "dachstein-west-hornspitz-sl",
+    "location": "Dachstein West",
+    "country": "Austria",
+    "course": "Hornspitz",
+    "discipline": "SL",
+    "disciplineLabel": "Slalom",
+    "gender": "W",
+    "iso": "AT",
+    "terrain": "Narrow / Rhythmic SL"
+  },
+  {
+    "id": "alta-badia-gran-risa-sl",
+    "location": "Alta Badia",
+    "country": "Italia",
+    "course": "Gran Risa",
+    "discipline": "SL",
+    "disciplineLabel": "Slalom",
+    "gender": "M",
+    "iso": "IT",
+    "terrain": "Narrow / Rhythmic SL"
+  },
+  {
+    "id": "bormio-stelvio-sg",
+    "location": "Bormio",
+    "country": "Italia",
+    "course": "Stelvio",
+    "discipline": "SG",
+    "disciplineLabel": "Super-G",
+    "gender": "M",
+    "iso": "IT",
+    "terrain": "Curvy / Technical Speed"
+  },
+  {
+    "id": "val-gardena-saslong-sg",
+    "location": "Val Gardena",
+    "country": "Italia",
+    "course": "Saslong",
+    "discipline": "SG",
+    "disciplineLabel": "Super-G",
+    "gender": "M",
+    "iso": "IT",
+    "terrain": "Long / Wide Speed"
+  },
+  {
+    "id": "val-di-fassa-la-volata-dh",
+    "location": "Val di Fassa",
+    "country": "Italia",
+    "course": "La VolatA",
+    "discipline": "DH",
+    "disciplineLabel": "Discesa libera",
+    "gender": "W",
+    "iso": "IT",
+    "terrain": "Long / Wide Speed"
+  },
+  {
+    "id": "val-di-fassa-la-volata-sg",
+    "location": "Val di Fassa",
+    "country": "Italia",
+    "course": "La VolatA",
+    "discipline": "SG",
+    "disciplineLabel": "Super-G",
+    "gender": "W",
+    "iso": "IT",
+    "terrain": "Curvy / Technical Speed"
+  },
+  {
+    "id": "chamonix-verte-des-houches-sl",
+    "location": "Chamonix",
+    "country": "Francia",
+    "course": "La Verte des Houches",
+    "discipline": "SL",
+    "disciplineLabel": "Slalom",
+    "gender": "M",
+    "iso": "FR",
+    "terrain": "Narrow / Rhythmic SL"
+  },
+  {
+    "id": "courchevel-emile-allais-sl",
+    "location": "Courchevel",
+    "country": "Francia",
+    "course": "Stade Émile-Allais",
+    "discipline": "SL",
+    "disciplineLabel": "Slalom",
+    "gender": "W",
+    "iso": "FR",
+    "terrain": "Stadium / Night-Race Finish"
+  },
+  {
+    "id": "soldeu-avet-gs",
+    "location": "Soldeu",
+    "country": "Andorra",
+    "course": "Avet",
+    "discipline": "GS",
+    "disciplineLabel": "Slalom gigante",
+    "gender": "W",
+    "iso": "AD",
+    "terrain": "Compact / Technical GS"
+  },
+  {
+    "id": "soldeu-avet-sl",
+    "location": "Soldeu",
+    "country": "Andorra",
+    "course": "Avet",
+    "discipline": "SL",
+    "disciplineLabel": "Slalom",
+    "gender": "W",
+    "iso": "AD",
+    "terrain": "Narrow / Rhythmic SL"
+  },
+  {
+    "id": "jasna-lukova-sl",
+    "location": "Jasná",
+    "country": "Slovacchia",
+    "course": "Luková – Koliesko",
+    "discipline": "SL",
+    "disciplineLabel": "Slalom",
+    "gender": "W",
+    "iso": "SK",
+    "terrain": "Narrow / Rhythmic SL"
+  },
+  {
+    "id": "are-national-arena-gs",
+    "location": "Åre",
+    "country": "Svezia",
+    "course": "National Arena",
+    "discipline": "GS",
+    "disciplineLabel": "Slalom gigante",
+    "gender": "M",
+    "iso": "SE",
+    "terrain": "Compact / Technical GS"
+  },
+  {
+    "id": "are-national-arena-sl",
+    "location": "Åre",
+    "country": "Svezia",
+    "course": "National Arena",
+    "discipline": "SL",
+    "disciplineLabel": "Slalom",
+    "gender": "M",
+    "iso": "SE",
+    "terrain": "Narrow / Rhythmic SL"
+  },
+  {
+    "id": "copper-mountain-copper-cup-sg",
+    "location": "Copper Mountain",
+    "country": "USA",
+    "course": "Copper Cup",
+    "discipline": "SG",
+    "disciplineLabel": "Super-G",
+    "gender": "M",
+    "iso": "US",
+    "terrain": "Curvy / Technical Speed"
+  },
+  {
+    "id": "copper-mountain-copper-cup-gs",
+    "location": "Copper Mountain",
+    "country": "USA",
+    "course": "Copper Cup",
+    "discipline": "GS",
+    "disciplineLabel": "Slalom gigante",
+    "gender": "M",
+    "iso": "US",
+    "terrain": "Compact / Technical GS"
+  },
+  {
+    "id": "tremblant-flying-mile-gs",
+    "location": "Tremblant",
+    "country": "Canada",
+    "course": "Flying Mile",
+    "discipline": "GS",
+    "disciplineLabel": "Slalom gigante",
+    "gender": "W",
+    "iso": "CA",
+    "terrain": "Compact / Technical GS"
   }
 ];
 
@@ -390,11 +768,13 @@ const venueAliases = {
   'Kitzbuehel': 'Kitzbühel',
   'Soelden': 'Sölden',
   'Val Gardena-Groeden Südtirol': 'Val Gardena',
-  'Chamonix': 'Les Houches',
+  'Copper Mountain, CO': 'Copper Mountain',
+  'Dachstein West / Gosau': 'Dachstein West',
 };
 const normalize = value => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 export function mapForRace(race) {
-  const venue = normalize(venueAliases[race.venue] || race.venue || '');
+  const location = race.venue === 'Chamonix' && race.discipline === 'DH' ? 'Les Houches' : race.venue;
+  const venue = normalize(venueAliases[location] || location || '');
   return skiMaps.find(map => normalize(map.location) === venue &&
     map.discipline === race.discipline && (map.gender === 'ALL' || map.gender === race.gender));
 }

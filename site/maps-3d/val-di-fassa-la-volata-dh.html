@@ -1,0 +1,1425 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Val di Fassa / La VolatA — Discesa libera · LiveSportArena</title>
+<style>/* LiveSportArena 3D · design system unico (tutte le 34 mappe) */
+:root{
+  --ink:#17314d;--muted:#5d758c;--accent:#0a75b9;--red:#e2475a;--line:rgba(23,49,77,.10);
+  --glass:rgba(255,255,255,.84);--shadow:0 10px 28px rgba(28,62,92,.13),0 1px 2px rgba(28,62,92,.08);
+  --r:16px;--gap:16px;--ctl:44px;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Inter,Roboto,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;background:#dbe8f2}
+.app{position:fixed;inset:0;font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
+canvas{position:absolute;inset:0;display:block;touch-action:none;cursor:grab}
+canvas.grabbing{cursor:grabbing}
+button{font:inherit;color:inherit}
+.hidden{display:none!important}
+.panel{background:var(--glass);-webkit-backdrop-filter:blur(16px) saturate(1.35);backdrop-filter:blur(16px) saturate(1.35);border:1px solid rgba(255,255,255,.75);box-shadow:var(--shadow);border-radius:var(--r)}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.fine{font-size:12px;color:var(--muted);line-height:1.45;margin:8px 0 0}
+.fine a{color:var(--accent);text-decoration:none;font-weight:600}
+
+/* intestazione */
+.header{position:absolute;left:var(--gap);top:14px;display:flex;align-items:center;gap:12px;padding:8px 18px 8px 8px;max-width:calc(100vw - 600px);min-width:260px;z-index:6}
+.back{flex:none;width:32px;height:32px;border-radius:10px;display:grid;place-items:center;color:var(--ink);background:rgba(23,49,77,.06)}
+.back svg{width:18px;height:18px}.back:hover{background:rgba(23,49,77,.12)}
+.flag{flex:none;width:34px;height:23px;border-radius:5px;overflow:hidden;box-shadow:0 0 0 1px rgba(23,49,77,.14)}
+.flag.sq{width:26px;height:26px;border-radius:6px}
+.flag svg{display:block;width:100%;height:100%}
+.titles{min-width:0}
+.titles h1{margin:0;font-size:19px;line-height:1.2;letter-spacing:-.35px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.titles p{margin:2px 0 0;font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* barra strumenti */
+.toolbar{position:absolute;right:var(--gap);top:14px;display:flex;gap:8px;align-items:center;justify-content:flex-end;flex-wrap:wrap;max-width:560px;z-index:6}
+.segmented{display:flex;padding:3px;border-radius:13px}
+.segmented button{border:0;background:none;padding:0 13px;height:32px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;color:var(--muted)}
+.segmented button.active{background:#fff;color:var(--ink);box-shadow:0 1px 4px rgba(23,49,77,.14)}
+.chip{display:inline-flex;align-items:center;gap:7px;height:38px;padding:0 14px;border-radius:13px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid rgba(255,255,255,.75)}
+.lighting{display:inline-flex;align-items:center;height:38px;padding:3px;border-radius:13px;cursor:pointer}
+.lighting span{padding:5px 8px;border-radius:9px;font-size:13px;font-weight:600;color:var(--muted)}
+.lighting[aria-checked=false] span:first-child,.lighting[aria-checked=true] span:last-child{background:var(--ink);color:#fff}
+@media(max-width:480px){.toolbar:has(.lighting:not(.hidden)){gap:3px}.toolbar:has(.lighting:not(.hidden)) .segmented button,.toolbar:has(.lighting:not(.hidden)) .chip,.toolbar:has(.lighting:not(.hidden)) .switch{padding-inline:5px}.lighting span{padding-inline:4px}}
+.chip svg{width:16px;height:16px}
+.chip[aria-pressed=true],.chip[aria-expanded=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.switch{display:inline-flex;align-items:center;gap:9px;height:38px;padding:0 10px 0 14px;border-radius:13px;font-size:13px;font-weight:600;cursor:pointer}
+.switch svg{display:none;width:16px;height:16px}
+.switch i{position:relative;width:34px;height:20px;border-radius:20px;background:#c6d4e0;transition:background .2s}
+.switch b{position:absolute;left:2px;top:2px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:transform .2s}
+.switch[aria-checked=true] i{background:var(--accent)}
+.switch[aria-checked=true] b{transform:translateX(14px)}
+
+/* percorso e profilo */
+.listBtn{position:absolute;left:var(--gap);top:84px;z-index:5}
+.app.list-open .stats{display:none}
+.pathPanel{position:absolute;left:var(--gap);top:132px;width:290px;max-height:calc(100% - 160px);min-height:140px;overflow:auto;padding:12px 8px 8px;z-index:5}
+.panelHead{display:flex;justify-content:space-between;align-items:baseline;padding:0 8px 8px}
+.panelHead span{font-size:12px;color:var(--muted)}
+.pathPanel ol{list-style:none;margin:0;padding:0}
+.pathPanel li button{width:100%;display:grid;grid-template-columns:26px 1fr;gap:8px;align-items:center;text-align:left;border:0;background:none;padding:7px 8px;border-radius:10px;cursor:pointer}
+.pathPanel li button:hover{background:rgba(23,49,77,.06)}
+.pathPanel li button.sel{background:#fff;box-shadow:0 1px 5px rgba(23,49,77,.12)}
+.pathPanel .n{font-size:11px;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums}
+.pathPanel strong{display:block;font-size:13.5px}
+.pathPanel em{display:block;font-style:normal;font-size:11.5px;color:var(--muted)}
+.profilePanel{position:absolute;right:var(--gap);top:66px;width:340px;padding:14px 16px 12px;z-index:5}
+.profilePanel h3{margin:0 0 6px;font-size:14px}
+.profilePanel svg{display:block;width:100%;height:auto}
+
+/* scheda pista */
+.stats{position:absolute;left:var(--gap);bottom:var(--gap);width:310px;padding:14px 16px;z-index:4}
+.stats h2{margin:3px 0 8px;font-size:18px;letter-spacing:-.3px;line-height:1.2}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.tag{font-size:11.5px;font-weight:650;padding:3px 8px;border-radius:8px;background:rgba(23,49,77,.07)}
+.tag.disc{color:#fff;background:var(--accent)}.tag.d-SG{background:#2f8f9d}.tag.d-GS{background:#d9534f}.tag.d-SL{background:#7a4fc0}
+.metrics{display:grid;grid-template-columns:1fr 1fr;gap:6px}.metric.wide{grid-column:1/-1}
+.metric{background:rgba(255,255,255,.7);border-radius:11px;padding:7px 9px}
+.metric strong{display:block;font-size:14px;letter-spacing:-.2px}
+.metric span{font-size:11px;color:var(--muted)}
+
+/* controlli mappa */
+.controls{position:absolute;right:var(--gap);bottom:var(--gap);display:flex;flex-direction:column;gap:8px;z-index:7;transition:bottom .2s}
+.controls .grp{display:flex;flex-direction:column;overflow:hidden;border-radius:14px}
+.controls button{width:var(--ctl);height:var(--ctl);border:0;background:none;display:grid;place-items:center;cursor:pointer}
+.controls button+button{border-top:1px solid var(--line)}
+.controls button:hover{background:rgba(23,49,77,.06)}
+.controls svg{width:19px;height:19px}
+
+/* box informativo in basso a destra: largo, mai sovrapposto ai controlli */
+.detail{position:absolute;right:calc(var(--gap) + var(--ctl) + 14px);bottom:var(--gap);width:min(430px,max(330px,30vw),calc(100vw - var(--ctl) - 380px));padding:16px 18px 12px;z-index:8;transition:opacity .2s,transform .2s}
+.detail.closed{opacity:0;transform:translateY(10px);pointer-events:none}
+.detailTop{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.detail h3{margin:4px 0 6px;font-size:20px;letter-spacing:-.35px;line-height:1.2;overflow-wrap:anywhere}
+.detail p#detailDesc{margin:0;font-size:14.5px;line-height:1.5;overflow-wrap:anywhere}
+.detailFoot{display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding-top:10px;border-top:1px solid var(--line)}
+.detailFoot span{font-size:12px;font-weight:650;color:var(--muted);font-variant-numeric:tabular-nums}
+.iconBtn{flex:none;width:34px;height:34px;border-radius:10px;border:0;background:rgba(23,49,77,.07);font-size:20px;line-height:1;cursor:pointer;display:grid;place-items:center}
+.iconBtn:hover{background:rgba(23,49,77,.13)}
+
+/* pin POI ancorati al mondo 3D */
+.pins{position:absolute;inset:0;pointer-events:none;z-index:3;overflow:hidden}
+.pin{position:absolute;left:0;top:0;width:0;height:0;padding:0;border:0;background:none;pointer-events:auto;cursor:pointer;will-change:transform}
+.pin::before{content:"";position:absolute;left:-14px;top:-14px;width:28px;height:28px}
+.pinDot{position:absolute;left:-7px;top:-7px;width:14px;height:14px;border-radius:50%;background:var(--red);border:2.5px solid #fff;box-shadow:0 2px 6px rgba(20,40,60,.3);transition:transform .15s}
+.pin:hover .pinDot{transform:scale(1.2)}
+.pin.active .pinDot{background:#c81e3a;transform:scale(1.35);box-shadow:0 0 0 6px rgba(226,71,90,.24),0 2px 6px rgba(20,40,60,.3)}
+.pins.dim .pin:not(.active) .pinDot{opacity:.55}
+.pin.out{visibility:hidden}
+.pinText{position:absolute;left:0;top:0;white-space:nowrap;font-size:12px;font-weight:650;padding:5px 9px;border-radius:9px;background:rgba(255,255,255,.95);box-shadow:0 2px 8px rgba(20,40,60,.16);visibility:hidden;color:var(--ink)}
+.pin.active .pinText{background:var(--ink);color:#fff}
+.pinLeader{position:absolute;left:0;top:0;height:1.5px;background:rgba(23,49,77,.5);transform-origin:0 50%;visibility:hidden}
+.pin.labeled .pinText,.pin.labeled .pinLeader{visibility:visible}
+
+.hint{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);font-size:12px;color:var(--muted);background:rgba(255,255,255,.7);padding:6px 12px;border-radius:20px;pointer-events:none;transition:opacity .6s;z-index:2;white-space:nowrap}
+.hint.gone{opacity:0}
+.notice{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);max-width:420px;background:#fff;border-radius:16px;padding:18px 20px;box-shadow:var(--shadow);z-index:20;font-size:14px;line-height:1.5}
+.app.night .hint{color:#dbe8f5;background:rgba(15,30,50,.55)}
+
+/* schermi intermedi */
+@media (max-width:1100px){.header{max-width:calc(100vw - 32px)}.toolbar{top:76px}.listBtn{top:130px}.pathPanel{top:176px;max-height:calc(100% - 200px)}.profilePanel{top:124px}.hint{display:none}}
+/* mobile: bottom sheet compatto, nessuno scroll orizzontale */
+@media (max-width:760px){
+  :root{--gap:8px;--ctl:40px}
+  .header{left:8px;right:8px;top:8px;max-width:none;min-width:0;padding:6px 12px 6px 6px;gap:9px}
+  .titles h1{font-size:16px}.titles p{font-size:11.5px}
+  .flag{width:28px;height:19px}.flag.sq{width:22px;height:22px}
+  .toolbar{left:8px;right:8px;top:62px;max-width:none;justify-content:flex-start;gap:6px}
+  .segmented button{padding:0 10px;height:30px;font-size:12.5px}
+  .chip,.switch{height:36px;padding:0 11px;font-size:12.5px}
+  .listBtn{top:auto;bottom:calc(var(--sheet-off,0px) + 8px);left:8px}
+  .pathPanel{left:8px;right:8px;top:108px;width:auto;max-height:calc(100% - 230px)}
+  .profilePanel{left:8px;right:8px;top:108px;width:auto}
+  .stats{left:8px;right:calc(var(--ctl) + 16px);top:108px;bottom:auto;width:auto;padding:10px 12px}
+  .stats h2,.stats .fine,.stats .metrics{display:none}
+  .stats .tags{margin:4px 0 0}
+  .app.panel-open .stats{display:none}
+  .detail{left:8px;right:8px;bottom:8px;width:auto;max-height:46%;overflow:auto}
+  .controls{bottom:calc(var(--sheet-off,0px) + 8px)}
+  .app.detail-open .controls,.app.detail-open .stats{display:none}
+  .app.detail-open .listBtn{bottom:calc(var(--sheet-off,0px) + 8px)}
+}
+@media (max-width:420px){.switch span{display:none}.switch{padding:0 10px}.switch svg{display:block}}
+</style>
+<link rel="stylesheet" href="../assets/maps-3d.css"><script defer src="../assets/map-return.js"></script></head>
+<body>
+<div id="app" class="app">
+  <canvas id="world" aria-label="Diorama 3D illustrativo: La VolatA, Discesa libera"></canvas>
+  <div id="pins" class="pins"></div>
+
+  <header class="header panel" id="header">
+    <a class="back" href="../index.html#maps-3d" aria-label="Tutte le mappe" title="Tutte le mappe"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12.5 4.5 7 10l5.5 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <span class="flag" id="flag"></span>
+    <div class="titles"><h1 id="title"></h1><p id="subtitle"></p></div>
+  </header>
+
+  <div class="toolbar" id="toolbar">
+    <div class="segmented panel" role="group" aria-label="Vista">
+      <button type="button" id="viewExplore" class="active">Esplora</button>
+      <button type="button" id="viewTop">Dall'alto</button>
+    </div>
+    <button type="button" id="profileBtn" class="chip panel" aria-pressed="false">Profilo</button>
+    <button type="button" id="nightBtn" class="lighting panel hidden" role="switch" aria-label="Modalità notte" aria-checked="false"><span>Giorno</span><span>Notte</span></button>
+    <button type="button" id="labelsToggle" class="switch panel" role="switch" aria-checked="false" aria-label="Etichette" title="Mostra o nascondi le etichette"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 4.5h7l6 6-6 6-7-7z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="7" cy="8" r="1.3" fill="currentColor"/></svg><span>Etichette</span><i aria-hidden="true"><b></b></i></button>
+  </div>
+
+  <button type="button" id="listBtn" class="chip panel listBtn" aria-expanded="false" aria-controls="pathPanel"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 6h12M4 10h12M4 14h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Percorso</button>
+  <aside id="pathPanel" class="panel pathPanel hidden" aria-label="Sezioni del percorso"><div class="panelHead"><b>Percorso</b><span id="count"></span></div><ol id="pathList"></ol></aside>
+  <aside id="profilePanel" class="panel profilePanel hidden" aria-label="Profilo"></aside>
+
+  <article id="stats" class="panel stats"></article>
+
+  <div id="controls" class="controls">
+    <div class="grp panel">
+      <button type="button" id="zoomIn" aria-label="Zoom avanti" title="Zoom +"><svg viewBox="0 0 20 20"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+      <button type="button" id="zoomOut" aria-label="Zoom indietro" title="Zoom −"><svg viewBox="0 0 20 20"><path d="M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+    </div>
+    <div class="grp panel">
+      <button type="button" id="rotL" aria-label="Ruota a sinistra" title="Ruota a sinistra"><svg viewBox="0 0 20 20"><path d="M6.5 7.5A5.5 5.5 0 1 1 5 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M3.5 4.5v4h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button type="button" id="rotR" aria-label="Ruota a destra" title="Ruota a destra"><svg viewBox="0 0 20 20"><path d="M13.5 7.5A5.5 5.5 0 1 0 15 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M16.5 4.5v4h-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+    <div class="grp panel">
+      <button type="button" id="reset" aria-label="Ripristina vista" title="Ripristina vista"><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="5.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="10" cy="10" r="1.6" fill="currentColor"/><path d="M10 1.8v3M10 15.2v3M1.8 10h3M15.2 10h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+    </div>
+  </div>
+
+  <aside id="detail" class="panel detail closed" aria-live="polite">
+    <div class="detailTop"><span class="eyebrow" id="detailType"></span><button type="button" class="iconBtn" id="closeDetail" aria-label="Chiudi scheda">×</button></div>
+    <h3 id="detailName"></h3>
+    <p id="detailDesc"></p>
+    <div class="detailFoot">
+      <button type="button" class="iconBtn" id="prevPoi" aria-label="Sezione precedente">‹</button>
+      <span id="detailIndex"></span>
+      <button type="button" class="iconBtn" id="nextPoi" aria-label="Sezione successiva">›</button>
+    </div>
+  </aside>
+
+  <div class="hint" id="hint">Trascina per ruotare · rotella o pizzico per lo zoom · tasto destro o Maiusc per spostare</div>
+  <div class="notice hidden" id="notice" role="alert"></div>
+</div>
+<script>window.LSA_FLAGS={
+"CH": "<svg viewBox='0 0 32 32' role='img' aria-label='Svizzera'><rect width='32' height='32' fill='#da291c'/><path d='M13 6h6v7h7v6h-7v7h-6v-7H6v-6h7z' fill='#fff'/><\/svg>",
+"AT": "<svg viewBox='0 0 30 20' role='img' aria-label='Austria'><rect width='30' height='20' fill='#c8102e'/><rect y='6.67' width='30' height='6.67' fill='#fff'/><\/svg>",
+"IT": "<svg viewBox='0 0 30 20' role='img' aria-label='Italia'><rect width='10' height='20' fill='#009246'/><rect x='10' width='10' height='20' fill='#fff'/><rect x='20' width='10' height='20' fill='#ce2b37'/><\/svg>",
+"FR": "<svg viewBox='0 0 30 20' role='img' aria-label='Francia'><rect width='10' height='20' fill='#0055a4'/><rect x='10' width='10' height='20' fill='#fff'/><rect x='20' width='10' height='20' fill='#ef4135'/><\/svg>",
+"DE": "<svg viewBox='0 0 30 20' role='img' aria-label='Germania'><rect width='30' height='6.67' fill='#000'/><rect y='6.67' width='30' height='6.67' fill='#dd0000'/><rect y='13.33' width='30' height='6.67' fill='#ffce00'/><\/svg>",
+"US": "<svg viewBox='0 0 38 20' role='img' aria-label='Stati Uniti'><rect width='38' height='20' fill='#fff'/><g fill='#b22234'><rect width='38' height='1.54'/><rect y='3.08' width='38' height='1.54'/><rect y='6.15' width='38' height='1.54'/><rect y='9.23' width='38' height='1.54'/><rect y='12.31' width='38' height='1.54'/><rect y='15.38' width='38' height='1.54'/><rect y='18.46' width='38' height='1.54'/><\/g><rect width='15.2' height='10.77' fill='#3c3b6e'/><g fill='#fff'><circle cx='2.5' cy='2' r='.6'/><circle cx='5.5' cy='2' r='.6'/><circle cx='8.5' cy='2' r='.6'/><circle cx='11.5' cy='2' r='.6'/><circle cx='4' cy='4.2' r='.6'/><circle cx='7' cy='4.2' r='.6'/><circle cx='10' cy='4.2' r='.6'/><circle cx='13' cy='4.2' r='.6'/><circle cx='2.5' cy='6.4' r='.6'/><circle cx='5.5' cy='6.4' r='.6'/><circle cx='8.5' cy='6.4' r='.6'/><circle cx='11.5' cy='6.4' r='.6'/><circle cx='4' cy='8.6' r='.6'/><circle cx='7' cy='8.6' r='.6'/><circle cx='10' cy='8.6' r='.6'/><circle cx='13' cy='8.6' r='.6'/><\/g><\/svg>",
+"FI": "<svg viewBox='0 0 36 22' role='img' aria-label='Finlandia'><rect width='36' height='22' fill='#fff'/><rect x='10' width='6' height='22' fill='#003580'/><rect y='8' width='36' height='6' fill='#003580'/><\/svg>",
+"SI": "<svg viewBox='0 0 30 15' role='img' aria-label='Slovenia'><rect width='30' height='5' fill='#fff'/><rect y='5' width='30' height='5' fill='#005da4'/><rect y='10' width='30' height='5' fill='#ed1c24'/><path d='M6 2.4h5.4v3.8c0 2-1.3 3.2-2.7 3.8C7.3 9.4 6 8.2 6 6.2z' fill='#005da4' stroke='#ed1c24' stroke-width='.45'/><path d='M6.4 7.2l1.3-1.6.6.7.4-1.4.4 1.4.6-.7 1.3 1.6z' fill='#fff'/><path d='M6.9 8.1q.45-.3.9 0t.9 0 .9 0 .9 0' stroke='#fff' stroke-width='.35' fill='none'/><\/svg>",
+"SK": "<svg viewBox='0 0 30 20' role='img' aria-label='Slovacchia'><rect width='30' height='6.67' fill='#fff'/><rect y='6.67' width='30' height='6.67' fill='#0b4ea2'/><rect y='13.33' width='30' height='6.67' fill='#ee1c25'/><path d='M5.6 4.2h7.2v5.4c0 3-1.9 4.6-3.6 5.4-1.7-.8-3.6-2.4-3.6-5.4z' fill='#ee1c25' stroke='#fff' stroke-width='.5'/><path d='M8.8 5.4h.8v1.5h1.6v.7H9.6v.9h2v.7h-2v2.4h-.8V9.2h-2v-.7h2v-.9H7.2v-.7h1.6z' fill='#fff'/><path d='M6.2 12.3q1.1-1.5 2.1-.4 1.1-1.5 2.2 0 1-1.1 2.1.4-1.2 1.6-3.2 2.4-2-.8-3.2-2.4z' fill='#0b4ea2'/><\/svg>",
+"NO": "<svg viewBox='0 0 22 16' role='img' aria-label='Norvegia'><rect width='22' height='16' fill='#ba0c2f'/><rect x='6' width='4' height='16' fill='#fff'/><rect y='6' width='22' height='4' fill='#fff'/><rect x='7' width='2' height='16' fill='#00205b'/><rect y='7' width='22' height='2' fill='#00205b'/><\/svg>",
+"SE": "<svg viewBox='0 0 16 10' role='img' aria-label='Svezia'><rect width='16' height='10' fill='#006aa7'/><rect x='5' width='2' height='10' fill='#fecc00'/><rect y='4' width='16' height='2' fill='#fecc00'/><\/svg>",
+"AD": "<svg viewBox='0 0 30 20' role='img' aria-label='Andorra'><rect width='10' height='20' fill='#10069f'/><rect x='10' width='10' height='20' fill='#fedd00'/><rect x='20' width='10' height='20' fill='#d50032'/><path d='M12.6 7h4.8v4.6c0 1.6-1.1 2.5-2.4 3-1.3-.5-2.4-1.4-2.4-3z' fill='#c7a136' stroke='#8a6d1c' stroke-width='.35'/><rect x='13.2' y='7.6' width='1.6' height='2.6' fill='#d50032'/><rect x='15.2' y='7.6' width='1.6' height='2.6' fill='#fedd00'/><\/svg>",
+"CA": "<svg viewBox='0 0 40 20' role='img' aria-label='Canada'><rect width='40' height='20' fill='#fff'/><rect width='10' height='20' fill='#d52b1e'/><rect x='30' width='10' height='20' fill='#d52b1e'/><path d='M20 3.2l1.3 2.5 1.4-.7-.5 3.7 2-2.2.5 1.2 2.2-.4-.8 2.6 1 .5-3.6 2.9.4 1.4-3.3-.5.1 3.3h-1.4l.1-3.3-3.3.5.4-1.4-3.6-2.9 1-.5-.8-2.6 2.2.4.5-1.2 2 2.2-.5-3.7 1.4.7z' fill='#d52b1e'/><\/svg>"
+};window.LSA_COURSE={"id":"val-di-fassa-la-volata-dh","course":"La VolatA","location":"Val di Fassa","country":"Italia","iso":"IT","gender":"Femminile","discipline":"DH","disciplineLabel":"Discesa libera","subtitle":"La VolatA · Discesa libera femminile","source":"https://skiworldcup.fassa.com/la-volata","nSources":2,"archetype":"long_speed","archetypeLabel":"Long / Wide Speed","metrics":{"length":"2’500 m","vertical":"630 m","alt":"2’510 → 1’880 m","maxgrad":"47%"},"poi":[{"name":"Col Margherita – partenza","type":"Partenza","desc":"Partenza presso la stazione a monte del Col Margherita, 2.510 m.","s":0.0,"conf":"official"},{"name":"Muro Alberto","type":"Muro a destra","desc":"Muro di 190 m con lieve curva a destra.","s":0.12,"conf":"official"},{"name":"Pian del Fabion","type":"Scorrimento","desc":"Circa 200 m di scorrimento subito dopo il Muro Alberto.","s":0.22,"conf":"official"},{"name":"Muro Manfroi","type":"Muro a sinistra","desc":"Cambio di pendenza di 280 m con svolta a sinistra.","s":0.32,"conf":"official"},{"name":"La Piana","type":"Scorrimento","desc":"Circa 410 m di scorrimento con lieve curva verso i Muri del Poeta.","s":0.45,"conf":"official"},{"name":"Muri del Poeta","type":"Muro","desc":"Il settore più tecnico, circa 1.000 m di muri e traversi.","s":0.62,"conf":"official"},{"name":"Dosso del Camoscio","type":"Dosso","desc":"Dossi e avvallamenti che introducono il finale.","s":0.8,"conf":"official"},{"name":"Schuss finale – Passo San Pellegrino","type":"Pendio d'arrivo","desc":"Arrivo a 1.880 m al Passo San Pellegrino.","s":1.0,"conf":"official"}],"model":{"L":2800,"W":1200,"H":952,"cell":34,"marginTop":140,"marginBottom":308,"pisteW":112,"gate":"speed","spacing":150,"lineAmp":12,"route":[-0.0143,-0.126,-0.0852,0.0932,0.1504,-0.0084,-0.0793,0.0],"slope":[[0,1.25],[0.14,1.05],[0.3,0.75],[0.46,1.05],[0.62,0.7],[0.8,1.1],[0.93,0.85],[1,0.3]],"shoulder":70,"crest":95,"noise":22,"valleyW":0.3,"bowl":0,"peak":1.0,"trees":380,"rocks":74,"huts":4,"treeline":0.7,"lake":null,"glacier":false,"seed":3301,"features":[{"type":"steep","mult":1.63,"len":182.0,"s":0.12,"poi":"Muro Alberto"},{"type":"flat","mult":0.55,"len":196.0,"s":0.22,"poi":"Pian del Fabion"},{"type":"straight","len":168.0,"s":0.22,"poi":"Pian del Fabion"},{"type":"steep","mult":1.63,"len":182.0,"s":0.32,"poi":"Muro Manfroi"},{"type":"flat","mult":0.55,"len":196.0,"s":0.45,"poi":"La Piana"},{"type":"straight","len":168.0,"s":0.45,"poi":"La Piana"},{"type":"steep","mult":1.5,"len":182.0,"s":0.62,"poi":"Muri del Poeta"},{"type":"rolling","amp":7,"wave":70,"len":60,"s":0.8,"poi":"Dosso del Camoscio"},{"len":220,"side":"both","type":"fences","s":0.62,"poi":"Muri del Poeta"}],"finishModel":{"model":"meadow","stands":"temporary","screen":true,"zielhaus":true},"night":false},"finishName":"Schuss finale – Passo San Pellegrino"};</script>
+<script>/* LiveSportArena 3D · engine.js
+ * Motore unico: terreno parametrico, mesh nel mondo, camera orbitale, renderer Canvas 2D.
+ * Canvas 2D è il percorso principale: funziona da file:// e in ogni browser, senza GPU/WebGL.
+ * Tutte le geometrie sono generate UNA volta; muovendo la camera si riproiettano solo i vertici. */
+(function (LSA) {
+  'use strict';
+
+  // ---------------------------------------------------------------- utilità
+  const clamp = (v, a, b) => (v < a ? a : v > b ? b : v);
+  const lerp = (a, b, t) => a + (b - a) * t;
+  const smooth = (t) => { t = clamp(t, 0, 1); return t * t * (3 - 2 * t); };
+  const bell = (v, w) => Math.exp(-(v * v) / (w * w));
+  function rng(seed) { // mulberry32: deterministico per pista
+    let s = (seed >>> 0) || 1;
+    return function () {
+      s = (s + 0x6D2B79F5) >>> 0; let t = s;
+      t = Math.imul(t ^ (t >>> 15), t | 1);
+      t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  function hex(c) { c = c.replace('#', ''); return [parseInt(c.slice(0, 2), 16), parseInt(c.slice(2, 4), 16), parseInt(c.slice(4, 6), 16)]; }
+  LSA.util = { clamp, lerp, smooth, bell, rng, hex };
+
+  // Modificatori che deformano il terreno (gli altri sono solo oggetti o curvatura della linea).
+  const TERRAIN = { jump: 1, humps: 1, compression: 1, rolling: 1, rocky_gate: 1, tight_passage: 1, underpass: 1, tunnel: 1 };
+
+  // ---------------------------------------------------------------- mondo
+  function World(m) {
+    const W = this;
+    W.m = m; W.L = m.L; W.W = m.W; W.H = m.H;
+    W.z0 = -m.L / 2; W.z1 = m.L / 2;
+    W.zMin = W.z0 - m.marginTop; W.zMax = W.z1 + m.marginBottom;
+    W.xMin = -m.W / 2; W.xMax = m.W / 2;
+    W.hw = m.pisteW / 2;
+    // area d'arrivo: corral recintato largo cHW, lungo cLen dopo la linea; piana spianata larga faHW
+    W.fm = m.finishModel || { model: 'meadow' };
+    W.cHW = Math.max(W.hw * 1.5 + 12, 58); W.cLen = Math.min(m.marginBottom * 0.45, 150); W.faHW = W.cHW + 125;
+    const R = rng(m.seed ^ 0x9e3779b9);
+    W.ph = [0, 1, 2, 3, 4, 5].map(() => R() * 6.283);
+    W.feats = m.features.map((f) => Object.assign({ z: W.z0 + f.s * m.L }, f));
+
+    // Linea della pista x = f(z): spline sui controlli + curve/S/rettilinei dei modificatori.
+    const C = m.route, n = C.length;
+    const base = (z) => {
+      const u = clamp((z - W.z0) / m.L, 0, 1) * (n - 1);
+      const i = Math.min(n - 2, Math.floor(u)), q = u - i;
+      const p0 = C[Math.max(0, i - 1)], p1 = C[i], p2 = C[i + 1], p3 = C[Math.min(n - 1, i + 2)];
+      return 0.5 * (2 * p1 + (-p0 + p2) * q + (2 * p0 - 5 * p1 + 4 * p2 - p3) * q * q + (-p0 + 3 * p1 - 3 * p2 + p3) * q * q * q) * m.W;
+    };
+    W.step = 4;
+    const N = Math.ceil((W.zMax - W.zMin) / W.step) + 2;
+    W.rt = new Float32Array(N);
+    const lim = m.W / 2 - m.pisteW - 90;
+    for (let k = 0; k < N; k++) {
+      const z = W.zMin + k * W.step;
+      let x = base(z), off = 0;
+      for (const f of W.feats) {
+        const a = z - f.z;
+        if (f.type === 'straight') x *= 1 - 0.75 * bell(a, f.len);
+      }
+      for (const f of W.feats) {
+        const a = z - f.z;
+        if (f.type === 'turn') off += f.amp * m.W * bell(a, f.len);
+        else if (f.type === 's_turn') off += f.amp * m.W * Math.sin(2 * Math.PI * a / f.wave) * bell(a, f.len);
+      }
+      // l'area d'arrivo resta centrata e diritta
+      const fin = smooth((z - (W.z1 - 160)) / 220);
+      W.rt[k] = clamp((x + off) * (1 - fin), -lim, lim);
+    }
+
+    // Profilo longitudinale: integrale della pendenza (archetipo × muri/piani).
+    const sl = m.slope, SN = 900;
+    W.slopeAt = (u) => {
+      let v = sl[sl.length - 1][1];
+      if (u <= sl[0][0]) v = sl[0][1];
+      else for (let i = 1; i < sl.length; i++) if (u <= sl[i][0]) { v = lerp(sl[i - 1][1], sl[i][1], smooth((u - sl[i - 1][0]) / (sl[i][0] - sl[i - 1][0]))); break; }
+      for (const f of W.feats) if (f.type === 'steep' || f.type === 'flat') v *= 1 + (f.mult - 1) * bell(u - f.s, f.len / m.L);
+      return Math.max(0.08, v);
+    };
+    W.prof = new Float32Array(SN + 1);
+    let acc = 0;
+    for (let i = 1; i <= SN; i++) { acc += W.slopeAt((i - 0.5) / SN) / SN; W.prof[i] = acc; }
+    W.profTot = acc; W.SN = SN;
+    W.lamps = [];
+  }
+  World.prototype.routeX = function (z) {
+    const k = (z - this.zMin) / this.step, i = clamp(Math.floor(k), 0, this.rt.length - 2), q = clamp(k - i, 0, 1);
+    return this.rt[i] + (this.rt[i + 1] - this.rt[i]) * q;
+  };
+  World.prototype.profile = function (u) {
+    const H = this.H;
+    if (u < 0) return H - u * H * 1.25 * (this.m.peak || 1);
+    if (u > 1) return -(u - 1) * H * 0.1;
+    const k = u * this.SN, i = Math.min(this.SN - 1, Math.floor(k)), q = k - i;
+    const c = this.prof[i] + (this.prof[i + 1] - this.prof[i]) * q;
+    return H * (1 - c / this.profTot);
+  };
+  World.prototype.halfWidth = function (z) {
+    let w = this.hw;
+    for (const f of this.feats) if (f.type === 'rocky_gate' || f.type === 'tight_passage') w *= 1 - f.narrow * bell(z - f.z, f.len * 0.9);
+    return w;
+  };
+  World.prototype.height = function (x, z) {
+    const m = this.m, P = this.ph;
+    const u = (z - this.z0) / m.L;
+    let y = this.profile(u);
+    const d = x - this.routeX(z), ad = Math.abs(d), hw = this.hw;
+    y += m.shoulder * (1 - bell(d, m.W * (m.valleyW || 0.26)));
+    if (m.bowl) y += m.bowl * (1 - bell(d, hw * 3.4)) * bell(z - (this.z1 + m.marginBottom * 0.2), 280);
+    y += m.crest * (bell(x - this.xMin, m.W * 0.11) + bell(x - this.xMax, m.W * 0.11)) * (0.65 + 0.35 * Math.sin(z * 0.0037 + P[0]));
+    const damp = 0.18 + 0.82 * smooth((ad - hw) / 170);
+    y += m.noise * damp * (Math.sin(x * 0.0105 + P[1]) * Math.sin(z * 0.0085 + P[2]) + 0.55 * Math.sin(x * 0.021 + z * 0.016 + P[3]) + 0.28 * Math.sin(x * 0.047 - z * 0.039 + P[4]));
+    for (const f of this.feats) {
+      if (!TERRAIN[f.type]) continue;
+      const a = z - f.z;
+      if (a < -500 || a > 500) continue;
+      switch (f.type) {
+        case 'jump': {
+          if (a < -f.len || a > f.len) break;
+          const k = a < 0 ? f.amp * smooth((a + f.len) / f.len) : f.amp * (1 - smooth(a / (f.len * 0.55)));
+          y += k * bell(d, hw * 1.9); break;
+        }
+        case 'humps': {
+          let k = 0;
+          for (let i = 0; i < f.count; i++) k += f.amp * bell(a - (i - (f.count - 1) / 2) * f.spacing, f.spacing * 0.3);
+          y += k * bell(d, hw * 1.9); break;
+        }
+        case 'compression': y -= f.depth * bell(a, f.len) * bell(d, hw * 3); break;
+        case 'rolling': y += f.amp * Math.sin(2 * Math.PI * a / f.wave) * bell(a, f.len) * bell(d, hw * 2.4); break;
+        case 'rocky_gate': case 'tight_passage': y += f.rise * (1 - bell(d, this.halfWidth(z) + f.gap)) * bell(a, f.len); break;
+        case 'underpass': y += f.rise * (1 - bell(d, hw * 1.35)) * bell(a, f.len); break;
+        case 'tunnel': y -= f.rise * smooth((ad - hw - 8) / 30) * bell(a, f.len); break;
+      }
+    }
+    // Piana d'arrivo: terreno spianato sotto corral, tribune ed edifici (nessun oggetto sospeso)
+    const fz = smooth((z - (this.z1 - 50)) / 80);
+    if (fz > 0) { const fm = fz * (1 - smooth((ad - this.faHW) / 90)); if (fm > 0) y += (this.profile(u) + 1 - y) * fm; }
+    return y;
+  };
+  // Fondo del diorama: lastra di spessore costante che segue la pendenza.
+  World.prototype.base = function (z) { return this.profile((z - this.z0) / this.L) - (0.1 * this.H + 120); };
+  World.prototype.zOf = function (s) { return this.z0 + s * this.L; };
+  World.prototype.point = function (s, up) { const z = this.zOf(s), x = this.routeX(z); return [x, this.height(x, z) + (up || 0), z]; };
+  LSA.World = World;
+
+  // ---------------------------------------------------------------- mesh
+  // Ogni faccia: vertici mondo, normale, colore giorno/notte precalcolato, bias di profondità.
+  const LIGHT = (function () { const v = [0.38, 0.86, 0.34], l = Math.hypot(...v); return v.map((x) => x / l); })();
+  function Mesh(world) { this.w = world; this.v = []; this.f = []; this.night = !!world.m.night; }
+  Mesh.prototype.face = function (pts, col, o) {
+    o = o || {};
+    // normale di Newell
+    let nx = 0, ny = 0, nz = 0, cx = 0, cy = 0, cz = 0;
+    for (let i = 0; i < pts.length; i++) {
+      const a = pts[i], b = pts[(i + 1) % pts.length];
+      nx += (a[1] - b[1]) * (a[2] + b[2]); ny += (a[2] - b[2]) * (a[0] + b[0]); nz += (a[0] - b[0]) * (a[1] + b[1]);
+      cx += a[0]; cy += a[1]; cz += a[2];
+    }
+    cx /= pts.length; cy /= pts.length; cz /= pts.length;
+    const l = Math.hypot(nx, ny, nz) || 1; nx /= l; ny /= l; nz /= l;
+    if (o.center) { if (nx * (cx - o.center[0]) + ny * (cy - o.center[1]) + nz * (cz - o.center[2]) < 0) { nx = -nx; ny = -ny; nz = -nz; } }
+    else if (ny < 0) { nx = -nx; ny = -ny; nz = -nz; }
+    const idx = [];
+    for (const p of pts) { this.v.push(p[0], p[1], p[2]); idx.push(this.v.length / 3 - 1); }
+    const rgb = typeof col === 'string' ? hex(col) : col;
+    const dl = Math.max(0, nx * LIGHT[0] + ny * LIGHT[1] + nz * LIGHT[2]);
+    const sh = (o.flat ? 0.93 : o.soft ? 0.8 + 0.22 * dl : 0.6 + 0.42 * dl) * (o.shade || 1);
+    const day = rgb.map((c) => clamp(Math.round(c * sh), 0, 255));
+    let night = null;
+    if (this.night) {
+      if (o.emissive) night = rgb;
+      else {
+        const lit = clamp(this.w.lit(cx, cz) * (o.kind === 'piste' ? 1 : 0.8), 0, 1);
+        const k = [lerp(0.25, 1.0, lit), lerp(0.31, 0.97, lit), lerp(0.48, 0.9, lit)];
+        night = rgb.map((c, i) => clamp(Math.round(c * sh * k[i]), 0, 255));
+      }
+    }
+    this.f.push({
+      i: idx, n: [nx, ny, nz], c: [cx, cy, cz], cull: !!o.cull, bias: o.bias || 0, stroke: !!o.stroke,
+      day: 'rgb(' + day + ')', nightC: night ? 'rgb(' + night + ')' : null,
+    });
+  };
+  // Prisma verticale a base poligonale (tronchi, pali, piloni).
+  Mesh.prototype.prism = function (x, y, z, r, h, sides, col, top, rot) {
+    const ring = [], up = [];
+    for (let i = 0; i < sides; i++) { const a = (rot || 0) + 2 * Math.PI * i / sides; ring.push([x + r * Math.cos(a), y, z + r * Math.sin(a)]); up.push([x + r * Math.cos(a), y + h, z + r * Math.sin(a)]); }
+    const c = [x, y + h / 2, z];
+    for (let i = 0; i < sides; i++) { const j = (i + 1) % sides; this.face([ring[i], ring[j], up[j], up[i]], col, { cull: true, center: c }); }
+    if (top) this.face(up, top, { cull: true, center: c });
+  };
+  // Box orientato (yaw) con base appoggiata a y.
+  Mesh.prototype.box = function (x, y, z, w, d, h, col, topCol, yaw, opt) {
+    const cs = Math.cos(yaw || 0), sn = Math.sin(yaw || 0);
+    const P = (lx, ly, lz) => [x + lx * cs - lz * sn, y + ly, z + lx * sn + lz * cs];
+    const b = [P(-w / 2, 0, -d / 2), P(w / 2, 0, -d / 2), P(w / 2, 0, d / 2), P(-w / 2, 0, d / 2)];
+    const t = b.map((p) => [p[0], p[1] + h, p[2]]);
+    const c = [x, y + h / 2, z], o = Object.assign({ cull: true, center: c }, opt || {});
+    for (let i = 0; i < 4; i++) { const j = (i + 1) % 4; this.face([b[i], b[j], t[j], t[i]], col, o); }
+    this.face(t, topCol || col, o);
+  };
+  // Asta tra due punti (sezione quadrata) per corde, ringhiere, travi.
+  Mesh.prototype.rod = function (a, b, r, col, opt) {
+    const dx = b[0] - a[0], dz = b[2] - a[2], l = Math.hypot(dx, dz) || 1;
+    let px = -dz / l * r, pz = dx / l * r;
+    if (Math.hypot(dx, dz) < 1e-3) { px = r; pz = 0; }
+    const o = Object.assign({ bias: 0 }, opt || {});
+    this.face([[a[0] + px, a[1], a[2] + pz], [b[0] + px, b[1], b[2] + pz], [b[0] - px, b[1], b[2] - pz], [a[0] - px, a[1], a[2] - pz]], col, o);
+    this.face([[a[0], a[1] + r, a[2]], [b[0], b[1] + r, b[2]], [b[0], b[1] - r, b[2]], [a[0], a[1] - r, a[2]]], col, o);
+  };
+  Mesh.prototype.freeze = function () {
+    this.V = new Float32Array(this.v); this.v = null;
+    const n = this.V.length / 3;
+    this.PX = new Float32Array(n); this.PY = new Float32Array(n); this.PD = new Float32Array(n);
+    this.K = new Float64Array(this.f.length); this.SH = Math.pow(2, Math.ceil(Math.log2(this.f.length + 1)));
+  };
+  LSA.Mesh = Mesh;
+
+  // ---------------------------------------------------------------- camera
+  function Camera(world) {
+    this.w = world;
+    this.az = 0; this.tilt = 0.5; this.dist = 3000; this.t = [0, 0, 0];
+    this.goal = { az: 0, tilt: 0.5, dist: 3000, t: [0, 0, 0] };
+    this.fov = 38 * Math.PI / 180; this.W = 1; this.Hh = 1;
+  }
+  Camera.prototype.basis = function (az, tilt, dist, t) {
+    const ct = Math.cos(tilt);
+    const e = [t[0] + dist * ct * Math.sin(az), t[1] + dist * Math.sin(tilt), t[2] + dist * ct * Math.cos(az)];
+    let f = [t[0] - e[0], t[1] - e[1], t[2] - e[2]]; let l = Math.hypot(...f); f = f.map((x) => x / l);
+    let r = [-f[2], 0, f[0]]; l = Math.hypot(...r) || 1; r = r.map((x) => x / l);
+    const u = [r[1] * f[2] - r[2] * f[1], r[2] * f[0] - r[0] * f[2], r[0] * f[1] - r[1] * f[0]];
+    const F = (this.Hh / 2) / Math.tan(this.fov / 2);
+    return { e, f, r, u, F };
+  };
+  Camera.prototype.update = function () { this.B = this.basis(this.az, this.tilt, this.dist, this.t); };
+  Camera.prototype.project = function (x, y, z, B) {
+    B = B || this.B;
+    const vx = x - B.e[0], vy = y - B.e[1], vz = z - B.e[2];
+    const d = vx * B.f[0] + vy * B.f[1] + vz * B.f[2];
+    return [this.W / 2 + B.F * (vx * B.r[0] + vy * B.r[1] + vz * B.r[2]) / d, this.Hh / 2 - B.F * (vx * B.u[0] + vy * B.u[1] + vz * B.u[2]) / d, d];
+  };
+  // Distanza che inquadra tutto il diorama dentro il riquadro libero (margini UI).
+  Camera.prototype.fit = function (az, tilt, target, box, margin) {
+    let lo = 200, hi = 40000;
+    for (let it = 0; it < 28; it++) {
+      const mid = (lo + hi) / 2, B = this.basis(az, tilt, mid, target);
+      let ok = true;
+      for (const p of box) {
+        const q = this.project(p[0], p[1], p[2], B);
+        if (q[2] < 10 || q[0] < margin.l || q[0] > this.W - margin.r || q[1] < margin.t || q[1] > this.Hh - margin.b) { ok = false; break; }
+      }
+      if (ok) hi = mid; else lo = mid;
+    }
+    return hi;
+  };
+  Camera.prototype.step = function () {
+    const g = this.goal, k = 0.17;
+    const d = Math.abs(this.az - g.az) + Math.abs(this.tilt - g.tilt) + Math.abs(this.dist - g.dist) / Math.max(200, g.dist) +
+      (Math.abs(this.t[0] - g.t[0]) + Math.abs(this.t[1] - g.t[1]) + Math.abs(this.t[2] - g.t[2])) / 300;
+    if (d < 0.0004) { this.az = g.az; this.tilt = g.tilt; this.dist = g.dist; this.t = g.t.slice(); return false; }
+    this.az = lerp(this.az, g.az, k); this.tilt = lerp(this.tilt, g.tilt, k); this.dist = lerp(this.dist, g.dist, k);
+    this.t = this.t.map((v, i) => lerp(v, g.t[i], k));
+    return true;
+  };
+  LSA.Camera = Camera;
+
+  // ---------------------------------------------------------------- renderer Canvas 2D
+  function Renderer(canvas, mesh, cam) {
+    this.cv = canvas; this.ctx = canvas.getContext('2d', { alpha: false });
+    if (!this.ctx) throw new Error('Canvas 2D non disponibile');
+    this.m = mesh; this.cam = cam; this.night = false; this.dpr = 1;
+    this.overlay = null; // linea di gara sempre leggibile
+  }
+  Renderer.prototype.resize = function (w, h) {
+    this.dpr = Math.min(1.75, window.devicePixelRatio || 1);
+    this.cv.width = Math.max(1, Math.round(w * this.dpr)); this.cv.height = Math.max(1, Math.round(h * this.dpr));
+    this.cv.style.width = w + 'px'; this.cv.style.height = h + 'px';
+    this.cam.W = w; this.cam.Hh = h;
+  };
+  Renderer.prototype.draw = function (fast) {
+    const ctx = this.ctx, m = this.m, cam = this.cam, W = cam.W, H = cam.Hh;
+    cam.update();
+    const B = cam.B, e = B.e, V = m.V, PX = m.PX, PY = m.PY, PD = m.PD, nv = V.length / 3;
+    const fx = B.f[0], fy = B.f[1], fz = B.f[2], rx = B.r[0], ry = B.r[1], rz = B.r[2], ux = B.u[0], uy = B.u[1], uz = B.u[2], F = B.F;
+    for (let i = 0, j = 0; i < nv; i++, j += 3) {
+      const vx = V[j] - e[0], vy = V[j + 1] - e[1], vz = V[j + 2] - e[2];
+      const d = vx * fx + vy * fy + vz * fz;
+      PD[i] = d;
+      if (d > 1) { PX[i] = W / 2 + F * (vx * rx + vy * ry + vz * rz) / d; PY[i] = H / 2 - F * (vx * ux + vy * uy + vz * uz) / d; }
+    }
+    // selezione facce visibili + ordinamento per profondità (algoritmo del pittore)
+    const faces = m.f, K = m.K, SH = m.SH; let cnt = 0;
+    const near = 12;
+    for (let k = 0; k < faces.length; k++) {
+      const f = faces[k], ix = f.i;
+      let ok = true, minx = 1e9, maxx = -1e9, miny = 1e9, maxy = -1e9;
+      for (let q = 0; q < ix.length; q++) {
+        const v = ix[q]; if (PD[v] < near) { ok = false; break; }
+        const x = PX[v], y = PY[v];
+        if (x < minx) minx = x; if (x > maxx) maxx = x; if (y < miny) miny = y; if (y > maxy) maxy = y;
+      }
+      if (!ok || maxx < -20 || minx > W + 20 || maxy < -20 || miny > H + 20) continue;
+      const c = f.c;
+      if (f.cull && f.n[0] * (e[0] - c[0]) + f.n[1] * (e[1] - c[1]) + f.n[2] * (e[2] - c[2]) <= 0) continue;
+      // chiave = profondità quantizzata + indice: ordinamento numerico nativo, molto più rapido del comparatore
+      const dep = (c[0] - e[0]) * fx + (c[1] - e[1]) * fy + (c[2] - e[2]) * fz + f.bias;
+      K[cnt++] = Math.floor(Math.max(0, dep) * 8) * SH + k;
+    }
+    const list = K.subarray(0, cnt);
+    list.sort();
+    ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
+    const g = ctx.createLinearGradient(0, 0, 0, H);
+    if (this.night) { g.addColorStop(0, '#0d1a2e'); g.addColorStop(0.6, '#1d3352'); g.addColorStop(1, '#2a4566'); }
+    else { g.addColorStop(0, '#a9c8ca'); g.addColorStop(0.55, '#d9e7e5'); g.addColorStop(1, '#edf2ef'); }
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+    if (this.night && this.stars) { ctx.fillStyle = 'rgba(255,255,255,.55)'; for (const s of this.stars) ctx.fillRect(s[0] * W, s[1] * H * 0.55, s[2], s[2]); }
+
+    ctx.lineJoin = 'round'; ctx.lineWidth = 0.9;
+    const night = this.night; let last = null;
+    for (let n = cnt - 1; n >= 0; n--) {
+      const f = faces[list[n] % SH], ix = f.i, col = night && f.nightC ? f.nightC : f.day;
+      ctx.beginPath();
+      ctx.moveTo(PX[ix[0]], PY[ix[0]]);
+      for (let q = 1; q < ix.length; q++) ctx.lineTo(PX[ix[q]], PY[ix[q]]);
+      ctx.closePath();
+      if (col !== last) { ctx.fillStyle = col; if (!fast) ctx.strokeStyle = col; last = col; }
+      ctx.fill();
+      if (f.stroke && !fast) ctx.stroke();
+    }
+    // Linea di gara in trasparenza: resta leggibile anche da angolazioni sfavorevoli.
+    if (this.overlay) {
+      ctx.beginPath(); let pen = false;
+      for (const p of this.overlay) {
+        const q = cam.project(p[0], p[1], p[2], B);
+        if (q[2] < near) { pen = false; continue; }
+        if (!pen) { ctx.moveTo(q[0], q[1]); pen = true; } else ctx.lineTo(q[0], q[1]);
+      }
+      ctx.strokeStyle = night ? 'rgba(120,200,255,.4)' : 'rgba(8,125,203,.38)'; ctx.lineWidth = 2.4; ctx.lineCap = 'round'; ctx.stroke();
+    }
+    if (night && m.w.lamps.length) {
+      ctx.globalCompositeOperation = 'lighter';
+      for (const L of m.w.lamps) {
+        const q = cam.project(L[0], L[1], L[2], B); if (q[2] < near) continue;
+        const r = clamp(2600 * F / 700 / q[2] * 18, 6, 70);
+        const gr = ctx.createRadialGradient(q[0], q[1], 0, q[0], q[1], r);
+        gr.addColorStop(0, 'rgba(255,244,210,.85)'); gr.addColorStop(0.25, 'rgba(255,230,170,.32)'); gr.addColorStop(1, 'rgba(255,220,150,0)');
+        ctx.fillStyle = gr; ctx.fillRect(q[0] - r, q[1] - r, 2 * r, 2 * r);
+      }
+      ctx.globalCompositeOperation = 'source-over';
+    }
+    return cnt;
+  };
+  LSA.Renderer = Renderer;
+})(window.LSA = window.LSA || {});
+
+/* LiveSportArena 3D · features.js
+ * Costruzione della scena: terreno, pista, porte, ambiente e modificatori.
+ * Ogni oggetto ha coordinate mondo fisse generate da un seed stabile per pista. */
+(function (LSA) {
+  'use strict';
+  const { clamp, lerp, smooth, bell, rng, hex } = LSA.util;
+  const mix = (a, b, t) => a.map((v, i) => Math.round(lerp(v, b[i], t)));
+
+  // Palette condivisa del design system
+  const C = {
+    snow: hex('#f3f8fc'), snowShade: hex('#d3e3ef'), rockExp: hex('#aebccb'),
+    wallA: hex('#d9e5ef'), wallB: hex('#c3d3e1'), lip: hex('#f9fcfe'),
+    piste: hex('#fdfeff'), piste2: hex('#f2f8fc'), pisteEdge: hex('#b8d8ea'),
+    line: hex('#1683cf'), corridor: hex('#d6ebf8'), dye: hex('#3e9ce0'),
+    red: hex('#e2475a'), blue: hex('#2c79c7'),
+    greens: ['#2f6f5e', '#367a63', '#2a6356', '#3d8268'].map(hex), trunk: hex('#7a6150'),
+    rocks: ['#8193a5', '#a2b1bf', '#8e9fae', '#b4c2ce', '#7a8c9e'].map(hex),
+    wood: hex('#c49c79'), wood2: hex('#a87e60'), roof: hex('#eef6fb'), window: hex('#f4cf78'),
+    concrete: hex('#9eacb9'), concreteTop: hex('#bcc8d2'), rail: hex('#5f6f7d'),
+    stand: hex('#d3dee8'), standTop: hex('#e6eef4'), mast: hex('#5f6f7e'), lamp: hex('#fff4c8'),
+    lake: hex('#bfe0ef'), lakeRim: hex('#e3f2f9'), glacier: hex('#e6f0f8'), ice: hex('#b9d5e8'),
+    road: hex('#6b7884'), glass: hex('#8fb9d6'), steel: hex('#b4c0cb'), seat: hex('#c7d4e0'), banner: hex('#1f5fa8'),
+    facades: ['#efe4d3', '#e2cfb2', '#f4ede2', '#d9dfe3', '#ecd9c6'].map(hex), roofDark: hex('#8a6a55'),
+    people: ['#d9434f', '#2b6cb0', '#f2b33d', '#2f855a', '#6b46c1', '#eef2f6', '#22303f', '#e86f3a'].map(hex),
+  };
+
+  LSA.World.prototype.lit = function (x, z) {
+    if (!this.m.night) return 0;
+    const u = (z - this.z0) / this.L, d = Math.abs(x - this.routeX(z));
+    let v = smooth((u - 0.3) / 0.1) * bell(d, this.hw * 2.6);
+    if (z > this.z1 - 170) v += bell(d, 300) * smooth((z - (this.z1 - 170)) / 90);
+    return clamp(v, 0, 1);
+  };
+
+  function buildScene(w, course) {
+    const m = w.m, M = new LSA.Mesh(w), R = rng(m.seed);
+    const keep = []; // aree escluse dalla vegetazione [x, z, r]
+    const free = (x, z, pad) => { for (const k of keep) if (Math.hypot(x - k[0], z - k[1]) < k[2] + (pad || 0)) return false; return true; };
+    const finishHW = (z) => lerp(w.halfWidth(z), w.cHW, smooth((z - (w.z1 - 30)) / 60));
+    const FM = w.fm;
+
+    // ------------------------------------------------ terreno
+    const cell = m.cell, nx = Math.ceil(m.W / cell), nz = Math.ceil((w.zMax - w.zMin) / cell);
+    const dx = m.W / nx, dz = (w.zMax - w.zMin) / nz, G = new Float32Array((nx + 1) * (nz + 1));
+        for (let j = 0; j <= nz; j++) for (let i = 0; i <= nx; i++) {
+      G[j * (nx + 1) + i] = w.height(w.xMin + i * dx, w.zMin + j * dz);
+    }
+    const gy = (i, j) => G[j * (nx + 1) + i];
+    for (let j = 0; j < nz; j++) for (let i = 0; i < nx; i++) {
+      const x = w.xMin + i * dx, z = w.zMin + j * dz, X = x + dx, Z = z + dz;
+      const a = gy(i, j), b = gy(i + 1, j), c = gy(i + 1, j + 1), d = gy(i, j + 1);
+      const sx = ((b - a) + (c - d)) / (2 * dx), sz = ((d - a) + (c - b)) / (2 * dz), st = Math.hypot(sx, sz);
+      let col = mix(m.glacier ? C.glacier : C.snow, C.snowShade, clamp((st - 0.35) * 0.6, 0, 0.4));
+      if (m.glacier && st > 0.7) col = mix(col, C.ice, clamp((st - 0.7) * 0.8, 0, 0.6));
+      if (st > 1.3) col = mix(col, C.rockExp, clamp((st - 1.3) * 0.7, 0, 0.45));
+      const nn = Math.sin(i * 12.9898 + j * 78.233) * 43758.5453; const jit = (nn - Math.floor(nn) - 0.5) * 5;
+      col = col.map((v) => clamp(v + jit, 0, 255));
+      M.face([[x, a, z], [X, b, z], [X, c, Z], [x, d, Z]], col, { stroke: true, kind: 'ground', soft: true });
+    }
+    // Pareti del diorama "tagliato": lastra di spessore costante che segue la pendenza
+    const ctr = [0, w.base((w.zMin + w.zMax) / 2) - 400, (w.zMin + w.zMax) / 2];
+    const edge = (pts) => {
+      for (let k = 0; k < pts.length - 1; k++) {
+        const p = pts[k], q = pts[k + 1], bp = w.base(p[2]), bq = w.base(q[2]);
+        const o = { cull: true, center: [ctr[0], Math.min(bp, bq) - 300, ctr[2]], stroke: true, soft: true };
+        M.face([[p[0], p[1], p[2]], [q[0], q[1], q[2]], [q[0], q[1] - 9, q[2]], [p[0], p[1] - 9, p[2]]], C.lip, Object.assign({}, o, { flat: true }));
+        M.face([[p[0], p[1] - 9, p[2]], [q[0], q[1] - 9, q[2]], [q[0], bq + 34, q[2]], [p[0], bp + 34, p[2]]], C.wallA, o);
+        M.face([[p[0], bp + 34, p[2]], [q[0], bq + 34, q[2]], [q[0], bq, q[2]], [p[0], bp, p[2]]], C.wallB, o);
+      }
+    };
+    const top = [], bot = [], lef = [], rig = [];
+    for (let i = 0; i <= nx; i++) { top.push([w.xMin + i * dx, gy(i, 0), w.zMin]); bot.push([w.xMin + i * dx, gy(i, nz), w.zMax]); }
+    for (let j = 0; j <= nz; j++) { lef.push([w.xMin, gy(0, j), w.zMin + j * dz]); rig.push([w.xMax, gy(nx, j), w.zMin + j * dz]); }
+    edge(top); edge(bot); edge(lef); edge(rig);
+
+    // ------------------------------------------------ pista
+    const step = m.pisteW < 70 ? 9 : 13, fr = [-1, -0.9, -0.38, 0.38, 0.9, 1];
+    let seg = 0;
+    for (let z = w.z0 - 24; z < w.z1 + w.cLen; z += step, seg++) {
+      const Z = z + step, hz = finishHW(z), hZ = finishHW(Z), rz = w.routeX(z), rZ = w.routeX(Z);
+      for (let k = 0; k < fr.length - 1; k++) {
+        const pts = [[rz + fr[k] * hz, 0, z], [rz + fr[k + 1] * hz, 0, z], [rZ + fr[k + 1] * hZ, 0, Z], [rZ + fr[k] * hZ, 0, Z]];
+        for (const p of pts) p[1] = w.height(p[0], p[2]) + 2.2;
+        const inCorral = z > w.z1 - 4;
+        const col = (k === 0 || k === fr.length - 2) ? (inCorral ? C.piste2 : C.pisteEdge) : (k === 2 && !inCorral) ? C.corridor : (seg % 2 ? C.piste : C.piste2);
+        M.face(pts, col, { bias: -28, stroke: true, kind: 'piste', flat: k > 0 && k < fr.length - 2 ? false : false });
+      }
+    }
+    // Linea ideale e porte (densità e tipo dipendono dalla specialità, non dall'archetipo)
+    const sp = m.spacing, A = m.lineAmp;
+    const win = (z) => smooth((z - w.z0 - 40) / 120) * smooth((w.z1 - 70 - z) / 140);
+    const lineX = (z) => w.routeX(z) + A * win(z) * Math.cos(Math.PI * (z - (w.z0 + sp * 0.5)) / sp);
+    const lw = m.pisteW < 70 ? 1.9 : 2.5, ls = Math.min(10, sp / 3);
+    const overlay = [];
+    for (let z = w.z0; z < w.z1; z += ls) {
+      const Z = Math.min(w.z1, z + ls), a = lineX(z), b = lineX(Z);
+      const ya = w.height(a, z) + 3.6, yb = w.height(b, Z) + 3.6;
+      M.face([[a - lw, ya, z], [a + lw, ya, z], [b + lw, yb, Z], [b - lw, yb, Z]], C.line, { bias: -40, kind: 'piste', flat: true });
+    }
+    for (let z = w.z0; z <= w.z1; z += 24) { const x = lineX(z); overlay.push([x, w.height(x, z) + 4, z]); }
+    for (let i = 1; ; i++) {
+      const z = w.z0 + sp * (i + 0.5); if (z > w.z1 - sp * 0.6) break;
+      const side = i % 2 ? -1 : 1, hw = w.halfWidth(z), rx = w.routeX(z);
+      const xin = rx + side * clamp(A * win(z) + 2.5, 2.5, hw - 6), col = i % 2 ? C.blue : C.red;
+      if (m.gate === 'sl') {
+        M.prism(xin, w.height(xin, z) - 1, z, 0.85, 17, 4, col, null);
+      } else {
+        const gw = m.gate === 'gs' ? 8 : 11, hgt = m.gate === 'gs' ? 16 : 18;
+        const xout = rx + side * clamp(Math.abs(xin - rx) + gw, 0, hw - 1);
+        const y1 = w.height(xin, z), y2 = w.height(xout, z);
+        M.prism(xin, y1 - 1, z, 0.8, hgt, 4, col, null); M.prism(xout, y2 - 1, z, 0.8, hgt, 4, col, null);
+        M.face([[xin, y1 + 6, z], [xout, y2 + 6, z], [xout, y2 + hgt - 2, z], [xin, y1 + hgt - 2, z]], col, { bias: -8, flat: true });
+      }
+    }
+
+    // ------------------------------------------------ elementi costruiti
+    function hut(x, z, s, yaw, start) {
+      const y = w.height(x, z) - 1, cs = Math.cos(yaw), sn = Math.sin(yaw);
+      const P = (lx, ly, lz) => [x + lx * cs - lz * sn, y + ly, z + lx * sn + lz * cs];
+      const wd = s, dp = s * 0.74, hh = s * 0.5, rh = s * 0.32, o = 0.14 * s;
+      M.box(x, y, z, wd, dp, hh, C.wood, C.wood2, yaw);
+      const c = [x, y + hh, z];
+      const a = P(-wd / 2 - o, hh, -dp / 2 - o), b = P(wd / 2 + o, hh, -dp / 2 - o), cc = P(wd / 2 + o, hh, dp / 2 + o), d = P(-wd / 2 - o, hh, dp / 2 + o);
+      const r1 = P(-wd / 2 - o, hh + rh, 0), r2 = P(wd / 2 + o, hh + rh, 0);
+      M.face([a, b, r2, r1], C.roof, { cull: true, center: c }); M.face([d, cc, r2, r1], C.roof, { cull: true, center: c });
+      M.face([a, d, r1], C.wood2, { cull: true, center: c }); M.face([b, cc, r2], C.wood2, { cull: true, center: c });
+      for (const lx of start ? [-0.22, 0.22] : [-0.25]) {
+        const q = [P(lx * wd - s * 0.08, hh * 0.35, dp / 2 + 0.6), P(lx * wd + s * 0.08, hh * 0.35, dp / 2 + 0.6), P(lx * wd + s * 0.08, hh * 0.7, dp / 2 + 0.6), P(lx * wd - s * 0.08, hh * 0.7, dp / 2 + 0.6)];
+        M.face(q, C.window, { cull: true, center: [x, y + hh / 2, z], emissive: true, flat: true });
+      }
+      keep.push([x, z, s * 1.1]);
+    }
+    function person(x, z, col, base) {
+      const y = base != null ? base : w.height(x, z) - 0.5;
+      M.box(x, y, z, 2.6, 2.6, 5.5, col, col); M.box(x, y + 5.5, z, 1.9, 1.9, 1.9, hex('#f0c9a4'), hex('#3a3a46'));
+    }
+    function crowd(x, z, n, spreadX, spreadZ) {
+      for (let k = 0; k < n; k++) person(x + (R() - 0.5) * spreadX, z + (R() - 0.5) * spreadZ, C.people[(R() * C.people.length) | 0]);
+    }
+    function boards(z0, z1, side, off) { // pannelli/reti lungo la pista
+      let k = 0;
+      for (let z = z0; z < z1; z += 12, k++) {
+        const Z = Math.min(z1, z + 12);
+        const xa = w.routeX(z) + side * (finishHW(z) + off), xb = w.routeX(Z) + side * (finishHW(Z) + off);
+        const ya = w.height(xa, z), yb = w.height(xb, Z);
+        M.face([[xa, ya, z], [xb, yb, Z], [xb, yb + 7, Z], [xa, ya + 7, z]], k % 2 ? C.red : hex('#f06a6f'), { bias: -12 });
+      }
+    }
+    function rock(x, z, s, stretch) {
+      const n = 7, y = w.height(x, z) - 3, ring = [], mid = [];
+      const st = stretch || 1, rot = R() * 6.28;
+      for (let i = 0; i < n; i++) {
+        const a = rot + 2 * Math.PI * i / n, r = s * (0.78 + 0.3 * R());
+        const px = x + Math.cos(a) * r, pz = z + Math.sin(a) * r * st;
+        ring.push([px, w.height(px, pz) - 3, pz]);
+        const r2 = r * (0.55 + 0.15 * R());
+        mid.push([x + Math.cos(a + 0.2) * r2, y + s * (0.55 + 0.2 * R()), z + Math.sin(a + 0.2) * r2 * st]);
+      }
+      const pk = [x + (R() - 0.5) * s * 0.3, y + s * (1.05 + 0.3 * R()), z + (R() - 0.5) * s * 0.3 * st], c = [x, y + s * 0.35, z];
+      for (let i = 0; i < n; i++) {
+        const j = (i + 1) % n;
+        M.face([ring[i], ring[j], mid[j], mid[i]], C.rocks[i % C.rocks.length], { cull: true, center: c });
+        M.face([mid[i], mid[j], pk], i % 3 === 0 ? C.rocks[3] : mix(C.rocks[(i + 2) % 5], C.snow, 0.55), { cull: true, center: c });
+      }
+      keep.push([x, z, s * 1.2 * st]);
+    }
+    function fir(x, z, s) {
+      const y = w.height(x, z) - 1.5, g = C.greens[(R() * C.greens.length) | 0];
+      M.prism(x, y, z, s * 0.08, s * 0.3, 3, C.trunk, null, R());
+      const tiers = [[0.47, 0.26, 0.78], [0.31, 0.72, 0.62]];
+      for (let t = 0; t < 2; t++) {
+        const [r, b, hgt] = tiers[t], by = y + s * b, apex = [x, by + s * hgt, z], rot = R() * 6.28, ring = [];
+        for (let i = 0; i < 5; i++) { const a = rot + 2 * Math.PI * i / 5; ring.push([x + s * r * Math.cos(a), by, z + s * r * Math.sin(a)]); }
+        const col = t === 1 ? mix(g, C.snow, 0.32) : g;
+        for (let i = 0; i < 5; i++) M.face([ring[i], ring[(i + 1) % 5], apex], i % 2 ? col : mix(col, C.snow, 0.18), { cull: true, center: [x, by + s * hgt * 0.3, z] });
+      }
+    }
+
+    // ------------------------------------------------ partenza
+    const p0 = w.point(0);
+    hut(p0[0] - 14, w.z0 - 40, 44, 0, true);
+    for (const sd of [-1, 1]) M.prism(p0[0] + sd * (w.hw + 4), w.height(p0[0] + sd * (w.hw + 4), w.z0 - 8) - 1, w.z0 - 8, 1.6, 20, 4, C.red, null);
+
+    // ------------------------------------------------ traguardo
+    // Modelli: stadium (tribune), village (arrivo in paese), meadow (prato/conca), glacier (stadio su ghiacciaio).
+    // Tutto poggia sulla piana d'arrivo spianata dal motore (World.height): niente elementi sospesi.
+    const Z1 = w.z1, cHW = w.cHW, cLen = w.cLen, fx = w.routeX(Z1), gy0 = (x, z) => w.height(x, z);
+    const sideA = 1, sideB = -1, fmodel = FM.model || 'meadow';
+    const pick = () => C.people[(R() * C.people.length) | 0];
+    function sample(pts, stepLen) {
+      const out = [];
+      for (let i = 0; i < pts.length - 1; i++) {
+        const a = pts[i], b = pts[i + 1], n = Math.max(1, Math.ceil(Math.hypot(b[0] - a[0], b[1] - a[1]) / (stepLen || 18)));
+        for (let k = 0; k < n; k++) out.push([lerp(a[0], b[0], k / n), lerp(a[1], b[1], k / n)]);
+      }
+      out.push(pts[pts.length - 1]);
+      return out;
+    }
+    function road(pts, wd) {
+      for (let i = 0; i < pts.length - 1; i++) {
+        const a = pts[i], b = pts[i + 1], l = Math.hypot(b[0] - a[0], b[1] - a[1]) || 1, nx = -(b[1] - a[1]) / l * wd / 2, nz = (b[0] - a[0]) / l * wd / 2;
+        const q = [[a[0] + nx, 0, a[1] + nz], [b[0] + nx, 0, b[1] + nz], [b[0] - nx, 0, b[1] - nz], [a[0] - nx, 0, a[1] - nz]];
+        for (const p of q) p[1] = gy0(p[0], p[2]) + 1.4;
+        M.face(q, C.road, { bias: -10, flat: true, stroke: true });
+        keep.push([a[0], a[1], wd]);
+      }
+    }
+    function crowdBand(za, zb, sd, off, depth, n) {
+      for (let k = 0; k < n; k++) { const z = lerp(za, zb, R()), x = w.routeX(z) + sd * (finishHW(z) + off + R() * depth); person(x, z, pick()); }
+    }
+    // Tribuna a gradoni piena: blocchi interrati sotto il piano, nessuna parte sospesa
+    function stand(sd, za, zb, off, tiers, o, cx) {
+      o = o || {}; cx = cx == null ? fx : cx;
+      const tw = o.tw || 9, th = o.th || 5.5, zm = (za + zb) / 2, len = zb - za, x0 = cx + sd * off;
+      let yG = 1e9;
+      for (const z of [za, zm, zb]) for (let t = 0; t <= tiers; t++) yG = Math.min(yG, gy0(x0 + sd * t * tw, z));
+      for (let t = 0; t < tiers; t++) {
+        const xc = x0 + sd * (t * tw + tw / 2), hgt = 4 + (t + 1) * th;
+        M.box(xc, yG - 14, zm, tw, len, hgt + 14, o.snow ? C.snowShade : C.stand, o.snow ? C.snow : C.seat);
+        const n = Math.round(len / 6);
+        for (let k = 0; k < n; k++) if (R() < 0.85) person(xc + (R() - 0.5) * (tw - 3), za + 3 + R() * (len - 6), pick(), yG + hgt);
+      }
+      const xb = x0 + sd * tiers * tw, topY = yG + 4 + tiers * th;
+      if (!o.snow) M.box(xb + sd * 1.5, yG - 14, zm, 3, len, topY - yG + 20, C.stand, C.standTop);
+      if (o.roof) {
+        for (const z of [za + 4, zm, zb - 4]) M.prism(xb + sd * 1.5, topY + 4, z, 1.2, 16, 4, C.steel, null);
+        const yIn = topY + 15, yOut = topY + 21, xi = x0 - sd * 2, xo = xb + sd * 4;
+        M.face([[xi, yIn, za], [xi, yIn, zb], [xo, yOut, zb], [xo, yOut, za]], C.roof, { flat: true });
+      }
+      keep.push([x0 + sd * tiers * tw / 2, zm, len / 2 + tiers * tw]);
+    }
+    // Tribuna temporanea a ponteggio (pedane su pali)
+    function tempStand(sd, za, zb, off, tiers, cx) {
+      cx = cx == null ? fx : cx;
+      const tw = 7, th = 4.5, zm = (za + zb) / 2, len = zb - za, x0 = cx + sd * off;
+      let yG = 1e9;
+      for (const z of [za, zm, zb]) for (let t = 0; t <= tiers; t++) yG = Math.min(yG, gy0(x0 + sd * t * tw, z));
+      for (let t = 0; t < tiers; t++) {
+        const xc = x0 + sd * (t * tw + tw / 2), yd = yG + 2 + (t + 1) * th;
+        M.box(xc, yd - 1.5, zm, tw, len, 1.5, C.steel, C.seat);
+        for (const z of [za + 2, zm, zb - 2]) M.prism(xc + sd * (tw / 2 - 1), yG - 3, z, 0.6, yd - yG + 2, 4, C.mast, null);
+        const n = Math.round(len / 7);
+        for (let k = 0; k < n; k++) if (R() < 0.8) person(xc + (R() - 0.5) * (tw - 2), za + 2 + R() * (len - 4), pick(), yd);
+      }
+      keep.push([x0 + sd * tiers * tw / 2, zm, len / 2 + tiers * tw]);
+    }
+    function zielhaus(sd, z, wdt) {
+      const x = fx + sd * (cHW + 10 + wdt / 2), y = gy0(x, z) - 1;
+      M.box(x, y, z, wdt, 22, 14, C.wood, C.roof);
+      M.box(x, y + 14, z, wdt + 3, 25, 2, C.roof, C.roof);
+      const gx = x - sd * (wdt / 2 + 0.4);
+      M.face([[gx, y + 5, z - 9], [gx, y + 5, z + 9], [gx, y + 12, z + 9], [gx, y + 12, z - 9]], C.glass, { cull: true, center: [x, y + 7, z], emissive: true, flat: true });
+      keep.push([x, z, wdt + 10]);
+    }
+    function screenAt(x, z) { // maxischermo rivolto verso monte
+      const y = gy0(x, z);
+      for (const dx of [-13, 13]) M.prism(x + dx, y - 1, z, 1, 30, 4, C.mast, null);
+      M.box(x, y + 17, z, 34, 3, 19, hex('#1d2a3a'), hex('#1d2a3a'));
+      M.face([[x - 15, y + 19, z - 1.6], [x + 15, y + 19, z - 1.6], [x + 15, y + 34, z - 1.6], [x - 15, y + 34, z - 1.6]], hex('#4f86c6'), { cull: true, center: [x, y + 26, z], emissive: true, flat: true });
+      keep.push([x, z, 24]);
+    }
+    function vip(z) { // edificio media/VIP dietro la rete di fondo
+      const wd = Math.min(cHW * 1.7, 150), y = gy0(fx, z) - 1;
+      M.box(fx, y, z, wd, 24, 18, C.concrete, C.roof);
+      M.face([[fx - wd / 2 + 4, y + 7, z - 12.4], [fx + wd / 2 - 4, y + 7, z - 12.4], [fx + wd / 2 - 4, y + 15, z - 12.4], [fx - wd / 2 + 4, y + 15, z - 12.4]], C.glass, { cull: true, center: [fx, y + 9, z], emissive: true, flat: true });
+      keep.push([fx, z, wd / 2 + 10]);
+    }
+    function house(x, z, s, yaw) { // casa di paese: facciata chiara, tetto innevato, finestre
+      const y = gy0(x, z) - 1, col = C.facades[(R() * C.facades.length) | 0], hgt = s * (0.7 + R() * 0.5);
+      M.box(x, y, z, s, s * 0.8, hgt, col, col, yaw);
+      const cs = Math.cos(yaw), sn = Math.sin(yaw), P = (lx, ly, lz) => [x + lx * cs - lz * sn, y + ly, z + lx * sn + lz * cs];
+      const o = s * 0.1, w2 = s / 2 + o, d2 = s * 0.4 + o, rh = s * 0.38, c = [x, y + hgt, z];
+      const a = P(-w2, hgt, -d2), b = P(w2, hgt, -d2), cc = P(w2, hgt, d2), d = P(-w2, hgt, d2), r1 = P(-w2, hgt + rh, 0), r2 = P(w2, hgt + rh, 0);
+      M.face([a, b, r2, r1], C.roof, { cull: true, center: c }); M.face([d, cc, r2, r1], C.roof, { cull: true, center: c });
+      M.face([a, d, r1], col, { cull: true, center: c }); M.face([b, cc, r2], col, { cull: true, center: c });
+      for (const lz of [-1, 1]) for (const lx of [-0.25, 0.25]) {
+        const zz = lz * (s * 0.4 + 0.4);
+        M.face([P(lx * s - 2, hgt * 0.4, zz), P(lx * s + 2, hgt * 0.4, zz), P(lx * s + 2, hgt * 0.68, zz), P(lx * s - 2, hgt * 0.68, zz)], C.window, { cull: true, center: [x, y + hgt / 2, z], emissive: true, flat: true });
+      }
+      keep.push([x, z, s * 0.8]);
+    }
+    function church(x, z) {
+      const y = gy0(x, z) - 1;
+      house(x, z, 34, 0);
+      M.box(x - 22, y, z, 10, 10, 46, hex('#f2ece3'), hex('#f2ece3'));
+      const t = [x - 22, y + 64, z], c = [x - 22, y + 50, z], b = [[x - 27, y + 46, z - 5], [x - 17, y + 46, z - 5], [x - 17, y + 46, z + 5], [x - 27, y + 46, z + 5]];
+      for (let i = 0; i < 4; i++) M.face([b[i], b[(i + 1) % 4], t], C.roofDark, { cull: true, center: c });
+    }
+    function village() {
+      const xl = Math.max(w.xMin + 30, fx - w.faHW + 25), xr = Math.min(w.xMax - 30, fx + w.faHW - 25);
+      let first = true;
+      for (let z = Z1 + cLen + 42; z < w.zMax - 22; z += 44) for (let x = xl; x <= xr; x += 50) {
+        const jx = x + (R() - 0.5) * 12, jz = z + (R() - 0.5) * 10;
+        if (!free(jx, jz, 8)) continue;
+        if (first && Math.abs(jx - fx) < 70) { church(jx, jz); first = false; } else house(jx, jz, 26 + R() * 12, (R() - 0.5) * 0.3);
+      }
+      for (let z = Z1 - 40; z < Z1 + cLen; z += 44) for (let off = cHW + 70; off < w.faHW - 15; off += 48) {
+        const x = clamp(fx + sideB * off, w.xMin + 30, w.xMax - 30);
+        if (free(x, z, 8)) house(x, z, 26 + R() * 10, Math.PI / 2 + (R() - 0.5) * 0.3);
+      }
+    }
+    function gondola(x0, z0, x1, z1g) { // stazione a valle, piloni, fune e cabine
+      const yb = gy0(x0, z0) - 1;
+      M.box(x0, yb, z0, 34, 26, 18, C.concrete, C.concreteTop); M.box(x0, yb + 18, z0, 38, 30, 3, C.roof, C.roof);
+      keep.push([x0, z0, 30]);
+      const n = 6; let prev = [x0, yb + 22, z0];
+      for (let i = 1; i <= n; i++) {
+        const x = lerp(x0, x1, i / n), z = lerp(z0, z1g, i / n), y = gy0(x, z), last = i === n;
+        const top = [x, y + (last ? 22 : 44), z];
+        if (last) M.box(x, y - 1, z, 26, 22, 16, C.concrete, C.concreteTop);
+        else { M.prism(x, y - 1, z, 2, 44, 4, C.mast, null); M.rod([x - 8, y + 44, z], [x + 8, y + 44, z], 1, C.mast); }
+        M.rod(prev, top, 0.45, C.rail);
+        const mx = lerp(prev[0], top[0], 0.5), my = lerp(prev[1], top[1], 0.5), mz = lerp(prev[2], top[2], 0.5);
+        M.box(mx, my - 9, mz, 5, 5, 6, C.red, C.red);
+        keep.push([x, z, 16]); prev = top;
+      }
+    }
+    function glacierStadium(sd) { // edificio unico con vetrata verso la pista, terrazza con pubblico
+      const x = fx + sd * (cHW + 34), za = Z1 - 30, zb = Z1 + cLen * 0.9, zm = (za + zb) / 2, len = zb - za;
+      let y = 1e9; for (const z of [za, zm, zb]) y = Math.min(y, gy0(x - 20, z), gy0(x + 20, z));
+      y -= 2;
+      M.box(x, y - 8, zm, 44, len, 34, C.concrete, C.roof);
+      const gx = x - sd * 22.3;
+      M.face([[gx, y + 10, za + 6], [gx, y + 10, zb - 6], [gx, y + 22, zb - 6], [gx, y + 22, za + 6]], C.glass, { cull: true, center: [x, y + 10, zm], emissive: true, flat: true });
+      for (let k = 0; k < 40; k++) person(x + (R() - 0.5) * 30, za + 6 + R() * (len - 12), pick(), y + 26);
+      keep.push([x, zm, len / 2 + 30]);
+      if (FM.road) {
+        const px = x + sd * 48, ex = sd > 0 ? w.xMax - 4 : w.xMin + 4;
+        road(sample([[px, zm - 50], [px, zm + 40], [lerp(px, ex, 0.5), zm + 80], [ex, Math.min(w.zMax - 10, zm + 120)]]), 16);
+      }
+    }
+
+    // 1. linea del traguardo a terra
+    {
+      const h1 = finishHW(Z1), q = [[fx - h1, 0, Z1 - 2.5], [fx + h1, 0, Z1 - 2.5], [fx + h1, 0, Z1 + 2.5], [fx - h1, 0, Z1 + 2.5]];
+      for (const p of q) p[1] = gy0(p[0], p[2]) + 3.2;
+      M.face(q, C.red, { bias: -44, flat: true });
+    }
+    // 2. arco esattamente sopra la linea, piedritti appoggiati alla piana
+    const archHW = finishHW(Z1) + 7, yA = gy0(fx, Z1);
+    if (FM.steel_arch) {
+      const R0 = archHW + 6, H0 = R0 * 0.85; let prev = null;
+      for (let i = 0; i <= 16; i++) { const t = Math.PI * i / 16, p = [fx - Math.cos(t) * R0, yA + Math.sin(t) * H0, Z1 + 3]; if (prev) M.rod(prev, p, 2.4, C.steel); prev = p; }
+      M.box(fx, yA + 30, Z1 + 3, archHW * 1.3, 3, 7, C.banner, C.banner);
+    } else {
+      for (const sd of [-1, 1]) M.box(fx + sd * archHW, gy0(fx + sd * archHW, Z1) - 1, Z1, 5, 5, 37, C.red, C.red);
+      M.box(fx, yA + 34, Z1, archHW * 2 + 5, 6, 9, C.red, hex('#f6f9fc'));
+    }
+    // 3. corral: pannelli paralleli ai lati, rete di fondo; pannelli lungo il pendio d'arrivo
+    for (const sd of [-1, 1]) boards(Z1 - 170, Z1 + cLen, sd, 3);
+    {
+      const zb = Z1 + cLen; let k = 0;
+      for (let x = fx - cHW - 3; x < fx + cHW + 3; x += 12, k++) {
+        const X = Math.min(fx + cHW + 3, x + 12), ya = gy0(x, zb), yb = gy0(X, zb);
+        M.face([[x, ya, zb], [X, yb, zb], [X, yb + 9, zb], [x, ya + 9, zb]], k % 2 ? C.banner : hex('#2f7dd0'), { bias: -12 });
+      }
+    }
+    keep.push([fx, Z1 + cLen / 2, cHW + cLen * 0.6]);
+    // 4. modello specifico
+    const zS0 = Z1 - 60, zS1 = Z1 + cLen * 0.85;
+    if (fmodel === 'stadium') {
+      const sides = FM.stands === 'single' ? [sideA] : [sideA, sideB];
+      for (const sd of sides) stand(sd, zS0, zS1, cHW + 10, FM.snow_stand ? 7 : 5, { roof: FM.roof && sd === sideA, snow: FM.snow_stand });
+      vip(Z1 + cLen + 26);
+      if (FM.stands === 'single') crowdBand(Z1 - 150, Z1 + cLen * 0.8, sideB, 6, 16, 70);
+      if (FM.screen) screenAt(fx + sideB * (cHW * 0.5), Z1 + cLen + 52);
+    } else if (fmodel === 'village') {
+      stand(sideA, Z1 - 30, Z1 + cLen * 0.7, cHW + 10, FM.stands === 'double' ? 4 : 3, {});
+      if (FM.stands === 'double') stand(sideB, Z1 - 30, Z1 + cLen * 0.45, cHW + 10, 3, {});
+      crowdBand(Z1 - 150, Z1 - 30, sideB, 6, 14, 50);
+      if (FM.screen) screenAt(fx + sideB * (cHW + 26), Z1 + cLen * 0.8);
+      village();
+    } else if (fmodel === 'glacier') {
+      glacierStadium(sideA);
+      crowdBand(Z1 - 120, Z1 + cLen * 0.6, sideB, 6, 14, 55);
+    } else {
+      if (FM.stands === 'temporary') tempStand(sideA, Z1 - 20, Z1 + cLen * 0.6, cHW + 10, 4);
+      crowdBand(Z1 - 160, Z1 + cLen * 0.6, sideB, 6, 16, 70);
+      crowdBand(Z1 - 160, Z1 - 25, sideA, 6, 14, 36);
+      if (FM.screen) screenAt(fx + sideA * (cHW + 30), Z1 + cLen * 0.85);
+    }
+    if (FM.zielhaus || fmodel === 'meadow') zielhaus(sideB, Z1 + cLen * 0.8, 26);
+    if (FM.crowd_slope) for (const sd of [-1, 1]) crowdBand(Z1 - 300, Z1 - 60, sd, 6, 18, 60);
+    if (FM.gondola) {
+      const gx0 = clamp(fx + sideB * (cHW + 90), w.xMin + 40, w.xMax - 40);
+      gondola(gx0, Z1 + 20, clamp(gx0 + sideB * 40, w.xMin + 30, w.xMax - 30), w.zOf(fmodel === 'glacier' ? 0.05 : 0.45));
+    }
+    if (m.night && fmodel !== 'meadow') {
+      for (const [ox, oz] of [[-1, Z1 - 90], [1, Z1 - 90], [-1, Z1 + cLen], [1, Z1 + cLen]]) {
+        const x = fx + ox * (w.faHW - 30), y = gy0(x, oz);
+        M.prism(x, y - 1, oz, 2.2, 92, 4, C.mast, null);
+        M.box(x - ox * 4, y + 90, oz, 14, 6, 6, C.lamp, C.lamp, 0, { emissive: true });
+        w.lamps.push([x - ox * 4, y + 93, oz]); keep.push([x, oz, 14]);
+      }
+    }
+
+    // ------------------------------------------------ modificatori puntuali
+    const jumpsForDye = [];
+    for (const f of w.feats) {
+      const z = f.z, rx = w.routeX(z), hw = w.halfWidth(z);
+      switch (f.type) {
+        case 'jump': jumpsForDye.push(z); if (f.skier) skier(rx + 6, z + f.len * 0.5, w.height(rx, z) + f.amp * 0.5 + 16); break;
+        case 'humps':
+          for (let i = 0; i < f.count; i++) jumpsForDye.push(z + (i - (f.count - 1) / 2) * f.spacing);
+          if (f.skier) skier(rx + 5, z + f.spacing * 0.5, w.height(rx, z) + f.amp + 10);
+          break;
+        case 'rocky_gate': // UNA formazione per lato, centro libero
+          for (const sd of [-1, 1]) rock(rx + sd * (hw + f.gap * 0.55 + f.rock * 0.55), z, f.rock, 1.7);
+          break;
+        case 'underpass': bridge(rx, z, hw, f.kind); break;
+        case 'fences': {
+          const sides = f.side === 'both' ? [-1, 1] : [f.side === 'left' ? -1 : 1];
+          for (const sd of sides) boards(z - f.len / 2, z + f.len / 2, sd, 7);
+          break;
+        }
+        case 'crowd': for (const sd of [-1, 1]) crowd(rx + sd * (hw + 30), z, Math.round(f.count / 2), 14, 80); break;
+        case 'tunnel': tunnelAt(rx, z, hw, f.kind); break;
+        case 'building': { const x = clamp(rx + f.side * (hw + f.dist), w.xMin + 50, w.xMax - 50); hut(x, z, f.size, 0, true); break; }
+        case 'grandstand': tempStand(f.side, z - 40, z + 40, hw + 22, 3, rx); break;
+        case 'skier': {
+          const j = w.feats.find((g) => g.poi === f.poi && (g.type === 'jump' || g.type === 'humps'));
+          const len = j ? (j.len || j.spacing) : 60, amp = j ? j.amp : 14;
+          skier(rx + 6, z + len * 0.5, w.height(rx, z) + amp * 0.5 + 18); break;
+        }
+      }
+    }
+    for (const z of jumpsForDye) { // linea blu di stacco sul dosso
+      const rx = w.routeX(z), hw = w.halfWidth(z), pts = [];
+      for (const [px, pz] of [[rx - hw, z - 1.6], [rx + hw, z - 1.6], [rx + hw, z + 1.6], [rx - hw, z + 1.6]]) pts.push([px, w.height(px, pz) + 2.8, pz]);
+      M.face(pts, C.dye, { bias: -38, flat: true });
+    }
+    function skier(x, z, y) {
+      M.box(x - 1.8, y, z, 1.2, 15, 0.7, hex('#22303f'), hex('#22303f'), 0.08);
+      M.box(x + 1.8, y, z, 1.2, 15, 0.7, hex('#22303f'), hex('#22303f'), 0.08);
+      M.box(x, y + 1.5, z + 1, 4, 3.2, 7.5, C.red, C.red, 0.1);
+      M.box(x, y + 9, z + 2, 3, 3, 3, hex('#f4f6f8'), hex('#f4f6f8'));
+    }
+    function tunnelAt(rx, z, hw, kind) { // la pista passa SOPRA una galleria (strada o sentiero)
+      for (const sd of [-1, 1]) {
+        const x = rx + sd * (hw + 10), y = w.height(x, z);
+        M.box(x, y - 2, z, 4, 30, 22, C.concrete, C.concreteTop);
+        const ox = x + sd * 2.2;
+        M.face([[ox, y, z - 9], [ox, y, z + 9], [ox, y + 14, z + 9], [ox, y + 14, z - 9]], hex('#2a333c'), { cull: true, center: [x, y + 8, z], flat: true });
+        const ex = kind === 'road' ? (sd > 0 ? w.xMax - 4 : w.xMin + 4) : x + sd * 110;
+        road(sample([[x + sd * 3, z], [ex, z + (kind === 'road' ? 30 : 8)]]), kind === 'road' ? 16 : 8);
+      }
+      keep.push([rx, z, hw + 50]);
+    }
+    function bridge(rx, z, hw, kind) { // sottopasso: la pista passa sotto un ponte (es. ferrovia)
+      const yc = w.height(rx, z), deck = yc + 42, span = hw + 90;
+      for (const sd of [-1, 1]) { const x = rx + sd * (hw + 16); const yb = w.height(x, z) - 4; M.box(x, yb, z, 12, 22, deck - yb, C.concrete, C.concreteTop); }
+      M.box(rx, deck, z, span * 2, 22, 10, C.concrete, C.concreteTop);
+      for (const dz of [-10, 10]) M.box(rx, deck + 10, z + dz, span * 2, 1.4, 4, C.rail, C.rail);
+      if (kind === 'rail') {
+        for (const dz of [-3, 3]) M.box(rx, deck + 10, z + dz, span * 2, 1, 1.2, hex('#46525e'), hex('#46525e'));
+        M.box(rx - span * 0.45, deck + 11.5, z, 46, 11, 12, hex('#5b7f9e'), hex('#d9e3ea')); // vagone generico stilizzato
+      }
+      keep.push([rx, z, span + 20]);
+    }
+    // Laghetto puramente ornamentale nella piana d'arrivo
+    if (m.lake) {
+      const lz = w.z1 + m.marginBottom * 0.45, lx = clamp(w.routeX(lz) + m.lake.side * m.lake.dist, w.xMin + m.lake.r + 30, w.xMax - m.lake.r - 30), r = m.lake.r;
+      const ring = (k) => { const pts = []; for (let i = 0; i < 18; i++) { const a = 2 * Math.PI * i / 18, px = lx + Math.cos(a) * r * k, pz = lz + Math.sin(a) * r * 0.62 * k; pts.push([px, w.height(px, pz) + 0.8 + (k < 1 ? 0.4 : 0), pz]); } return pts; };
+      const o = ring(1.12), inn = ring(1), lo = { bias: -6, flat: true, stroke: true };
+      for (let i = 0; i < 18; i++) { const j = (i + 1) % 18; M.face([o[i], o[j], inn[j], inn[i]], C.lakeRim, lo); M.face([[lx, inn[i][1], lz], inn[i], inn[j]], C.lake, Object.assign({}, lo, { bias: -8 })); }
+      keep.push([lx, lz, r * 1.25]);
+    }
+
+    // Illuminazione serale (solo piste con night)
+    if (m.night) {
+      let k = 0;
+      for (let z = w.zOf(0.33); z < w.z1 + 60; z += 105, k++) {
+        const sd = k % 2 ? -1 : 1, x = w.routeX(z) + sd * (finishHW(z) + 36), y = w.height(x, z);
+        M.prism(x, y - 1, z, 1.5, 68, 4, C.mast, null);
+        M.box(x - sd * 3, y + 66, z, 9, 5, 4, C.lamp, C.lamp, 0, { emissive: true });
+        w.lamps.push([x - sd * 3, y + 68, z]); keep.push([x, z, 12]);
+      }
+    }
+
+    // Chalet (posizioni deterministiche ai lati, fuori pista)
+    for (let k = 0; k < m.huts; k++) {
+      const s = (k + 0.5) / m.huts * 0.95, z = w.zOf(clamp(s + (R() - 0.5) * 0.08, 0.04, 0.94)), sd = k % 2 ? -1 : 1;
+      const x = clamp(w.routeX(z) + sd * (w.halfWidth(z) + 110 + R() * 150), w.xMin + 60, w.xMax - 60);
+      if (free(x, z, 30)) hut(x, z, 30 + R() * 10, (R() - 0.5) * 0.7, false);
+    }
+    // Rocce: preferiscono i tratti ripidi e le creste
+    let placed = 0;
+    for (let tries = 0; placed < m.rocks && tries < m.rocks * 30; tries++) {
+      const x = lerp(w.xMin + 40, w.xMax - 40, R()), z = lerp(w.zMin + 40, w.zMax - 60, R());
+      const d = Math.abs(x - w.routeX(z)); if (d < w.halfWidth(z) + 45 || !free(x, z, 10)) continue;
+      if (z > w.z1 - 70 && d < w.faHW + 15) continue;
+      const st = Math.hypot(w.height(x + 8, z) - w.height(x - 8, z), w.height(x, z + 8) - w.height(x, z - 8)) / 16;
+      if (R() > 0.15 + st * 0.7) continue;
+      rock(x, z, 7 + R() * 14); placed++;
+    }
+    // Abeti: boschi a macchie, radi sopra il limite del bosco, mai sulla pista
+    placed = 0;
+    for (let tries = 0; placed < m.trees && tries < m.trees * 12; tries++) {
+      const x = lerp(w.xMin + 26, w.xMax - 26, R()), z = lerp(w.zMin + 22, w.zMax - 22, R());
+      const u = (z - w.z0) / w.L;
+      if (u < m.treeline && R() > 0.12) continue;
+      const d = Math.abs(x - w.routeX(z)), s = 17 + R() * 14;
+      if (d < finishHW(z) + 22 + s * 0.4 || !free(x, z, 4)) continue;
+      if (z > w.z1 - 70 && d < w.faHW + 15) continue; // piana d'arrivo libera
+      const field = 0.5 + 0.5 * Math.sin(x * 0.0062 + w.ph[2]) * Math.sin(z * 0.0051 + w.ph[3]);
+      if (R() > 0.3 + 0.7 * field) continue;
+      fir(x, z, s); placed++;
+    }
+
+    M.freeze();
+    // Profilo illustrativo dal diorama stesso
+    const prof = [];
+    for (let i = 0; i <= 120; i++) { const p = w.point(i / 120); prof.push(p[1]); }
+    return { mesh: M, overlay, profile: prof, poiPts: course.poi.map((p) => w.point(p.s, 12)) };
+  }
+  LSA.buildScene = buildScene;
+})(window.LSA);
+
+/* LiveSportArena 3D · ui.js
+ * Interfaccia condivisa: intestazione con bandiera, schede, pin, etichette, camera e input. */
+(function (LSA) {
+  'use strict';
+  const { clamp } = LSA.util;
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+  LSA.start = function (course) {
+    const app = $('app'), canvas = $('world'), pinsBox = $('pins');
+    const notice = (msg) => { const n = $('notice'); n.innerHTML = msg; n.classList.remove('hidden'); };
+
+    // ---------------- intestazione, scheda pista
+    const flag = $('flag');
+    flag.innerHTML = (window.LSA_FLAGS || {})[course.iso] || '';
+    flag.classList.toggle('sq', course.iso === 'CH');
+    flag.title = course.country;
+    $('title').textContent = course.location + ' / ' + course.course;
+    $('subtitle').textContent = course.disciplineLabel + ' · ' + course.country + ' · ' + course.gender;
+    const mt = course.metrics || {}, rows = [];
+    if (mt.length) rows.push(['Lunghezza', mt.length]);
+    if (mt.vertical) rows.push(['Dislivello', mt.vertical]);
+    if (mt.alt) rows.push(['Quote partenza → arrivo', mt.alt]);
+    if (mt.maxgrad) rows.push(['Pendenza massima', mt.maxgrad]);
+    $('stats').innerHTML =
+      '<div class="eyebrow">' + esc(course.location) + ' · ' + esc(course.country) + '</div>' +
+      '<h2>' + esc(course.subtitle || course.course) + '</h2>' +
+      '<div class="tags"><span class="tag disc d-' + course.discipline + '">' + course.discipline + ' · ' + esc(course.disciplineLabel) + '</span>' +
+      '<span class="tag">Modello ' + esc(course.archetypeLabel) + '</span></div>' +
+      (rows.length ? '<div class="metrics">' + rows.map((r) => '<div class="metric' + (r[1].length > 9 ? ' wide' : '') + '"><strong>' + esc(r[1]) + '</strong><span>' + r[0] + '</span></div>').join('') + '</div>' : '');
+
+    // ---------------- mondo e renderer
+    let world, scene, cam, R;
+    try {
+      world = new LSA.World(course.model);
+      scene = LSA.buildScene(world, course);
+      cam = new LSA.Camera(world);
+      R = new LSA.Renderer(canvas, scene.mesh, cam);
+      R.overlay = scene.overlay;
+    } catch (err) {
+      console.error(err);
+      notice('<strong>Impossibile disegnare la mappa.</strong><br>Apri il file con una versione aggiornata di Safari, Chrome, Firefox o Edge.');
+      return;
+    }
+    const sr = LSA.util.rng(course.model.seed + 7);
+    R.stars = Array.from({ length: 90 }, () => [sr(), sr(), sr() < 0.85 ? 1 : 1.6]);
+    if (course.model.night) $('nightBtn').classList.remove('hidden');
+
+    // Bounding box del diorama per l'inquadratura
+    let yMax = -1e9, yMin = 1e9;
+    for (let i = 0; i <= 12; i++) for (let j = 0; j <= 24; j++) {
+      const y = world.height(world.xMin + (world.xMax - world.xMin) * i / 12, world.zMin + (world.zMax - world.zMin) * j / 24);
+      yMax = Math.max(yMax, y); yMin = Math.min(yMin, y);
+    }
+    // punti del perimetro (sopra e sotto la lastra) per inquadrare l'intero diorama
+    const box = [];
+    for (let k = 0; k <= 16; k++) {
+      const z = world.zMin + (world.zMax - world.zMin) * k / 16;
+      for (const x of [world.xMin, world.xMax]) box.push([x, world.height(x, z) + 30, z], [x, world.base(z), z]);
+    }
+    for (let k = 0; k <= 8; k++) for (const z of [world.zMin, world.zMax]) { const x = world.xMin + (world.xMax - world.xMin) * k / 8; box.push([x, world.height(x, z) + 30, z]); }
+    const center = [0, (world.base((world.zMin + world.zMax) / 2) + yMax) / 2, (world.zMin + world.zMax) / 2];
+    const isMobile = () => cam.W < 760;
+    const landscape = () => cam.W >= cam.Hh * 0.95;
+    function margins() {
+      if (isMobile()) return { l: 10, r: 56, t: 160, b: 60 };
+      return { l: 24, r: 84, t: cam.W < 1100 ? 150 : 80, b: 30 };
+    }
+    let fitDist = 3000, userMoved = false, view = 'explore';
+    function homeGoal() {
+      const az = landscape() ? -0.62 : -0.3, tilt = landscape() ? 0.6 : 0.66;
+      fitDist = cam.fit(az, tilt, center, box, margins());
+      return { az, tilt, dist: fitDist, t: center.slice() };
+    }
+    function topGoal() {
+      const az = landscape() ? -Math.PI / 2 : 0, tilt = 1.48;
+      return { az, tilt, dist: cam.fit(az, tilt, center, box, margins()), t: center.slice() };
+    }
+    const setView = (v) => {
+      view = v;
+      $('viewExplore').classList.toggle('active', v === 'explore');
+      $('viewTop').classList.toggle('active', v === 'top');
+    };
+    function reset() { cam.goal = homeGoal(); setView('explore'); userMoved = false; dirty = true; }
+
+    // ---------------- pin e lista POI
+    const poi = course.poi;
+    let active = -1, labelsOn = false, dirty = true;
+    const hint = $('hint'); function hideHint() { hint.classList.add('gone'); }
+    const pins = poi.map((p, i) => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'pin';
+      b.innerHTML = '<span class="pinLeader"></span><span class="pinDot"></span><span class="pinText">' + esc(p.name) + '</span>';
+      b.title = p.name; b.setAttribute('aria-label', 'Sezione: ' + p.name);
+      b.addEventListener('click', (e) => { e.stopPropagation(); select(i); });
+      pinsBox.appendChild(b);
+      return b;
+    });
+    const list = $('pathList');
+    poi.forEach((p, i) => {
+      const li = document.createElement('li');
+      li.innerHTML = '<button type="button"><span class="n">' + String(i + 1).padStart(2, '0') + '</span><span><strong>' + esc(p.name) + '</strong><em>' + esc(p.type) + '</em></span></button>';
+      li.firstChild.addEventListener('click', () => select(i));
+      list.appendChild(li);
+    });
+    $('count').textContent = poi.length + ' sezioni';
+
+    let sizes = [];
+    const measure = () => { sizes = pins.map((el) => { const t = el.querySelector('.pinText'); return { w: Math.max(40, t.offsetWidth), h: Math.max(22, t.offsetHeight) }; }); };
+    let masks = [];
+    function refreshMasks() {
+      masks = [];
+      for (const id of ['header', 'toolbar', 'listBtn', 'stats', 'controls', 'detail', 'pathPanel', 'profilePanel']) {
+        const el = $(id);
+        if (!el || el.classList.contains('hidden') || el.classList.contains('closed') || el.offsetParent === null) continue;
+        const r = el.getBoundingClientRect();
+        if (r.width && r.height) masks.push({ x: r.left - 6, y: r.top - 6, w: r.width + 12, h: r.height + 12 });
+      }
+      const sheet = $('detail');
+      const off = isMobile() && !sheet.classList.contains('closed') ? sheet.getBoundingClientRect().height + 8 : 0;
+      app.style.setProperty('--sheet-off', off + 'px');
+      dirty = true;
+    }
+    const overlap = (a, b) => Math.max(0, Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x)) * Math.max(0, Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y));
+
+    function layoutPins() {
+      const W = cam.W, H = cam.Hh, live = [];
+      for (let i = 0; i < pins.length; i++) {
+        const p = scene.poiPts[i], q = cam.project(p[0], p[1], p[2]), el = pins[i];
+        const vis = q[2] > 12 && q[0] > -10 && q[0] < W + 10 && q[1] > -10 && q[1] < H + 10;
+        if (el.classList.contains('out') === vis) el.classList.toggle('out', !vis);
+        if (!vis) continue;
+        el.style.transform = 'translate3d(' + (Math.round(q[0] * 2) / 2) + 'px,' + (Math.round(q[1] * 2) / 2) + 'px,0)';
+        live.push({ i, el, px: q[0], py: q[1] });
+      }
+      const detailOpen = !$('detail').classList.contains('closed');
+      const want = labelsOn ? live : live.filter((m) => m.i === active && detailOpen);
+      const wantSet = new Set(want.map((m) => m.i));
+      pins.forEach((el, i) => { const on = wantSet.has(i); if (el.classList.contains('labeled') !== on) el.classList.toggle('labeled', on); });
+      if (!want.length) return;
+      if (!sizes.length) measure();
+      // L'etichetta selezionata per prima, poi le altre dall'alto verso il basso (corsie sfalsate).
+      want.sort((a, b) => (a.i === active ? -1 : b.i === active ? 1 : a.py - b.py));
+      const placed = [], mob = W < 760;
+      for (const m of want) {
+        const { w, h } = sizes[m.i];
+        if (mob && labelsOn && m.i !== active && m.i % 2) { m.el.classList.remove('labeled'); continue; }
+        const prefer = m.px > W * 0.55 ? -1 : 1;
+        let best = null, bestCost = 1e20;
+        for (const side of [prefer, -prefer]) for (const dx of [16, 48, 90, 140]) for (const dy of [-34, -70, -110, 0, 36, 74, 116]) {
+          const x = m.px + (side > 0 ? dx : -dx - w), y = m.py + dy - h / 2, r = { x, y, w, h };
+          let pen = 0;
+          if (x < 8 || x + w > W - 8) pen += 1e6;
+          if (y < 8 || y + h > H - 8) pen += 1e6;
+          for (const o of placed) pen += overlap(r, o) * 9000;
+          for (const o of masks) pen += overlap(r, o) * 2500;
+          for (const o of live) if (o !== m && Math.abs(o.px - (x + w / 2)) < w / 2 + 8 && Math.abs(o.py - (y + h / 2)) < h / 2 + 8) pen += 1500;
+          const prev = m.el._lp, inertia = prev ? Math.hypot(x - prev.x, y - prev.y) * 0.6 : 0;
+          const cost = pen + dx * 0.3 + Math.abs(dy) * 0.25 + (side !== prefer ? 12 : 0) + inertia;
+          if (cost < bestCost) { bestCost = cost; best = r; }
+        }
+        if (bestCost >= 1e6 && m.i !== active) { m.el.classList.remove('labeled'); continue; }
+        placed.push(best); m.el._lp = { x: best.x, y: best.y };
+        const lbl = m.el.querySelector('.pinText'), ld = m.el.querySelector('.pinLeader');
+        lbl.style.transform = 'translate3d(' + Math.round(best.x - m.px) + 'px,' + Math.round(best.y - m.py) + 'px,0)';
+        const ax = best.x + best.w / 2 - m.px, ay = best.y + best.h / 2 - m.py, len = Math.hypot(ax, ay);
+        ld.style.width = Math.max(0, len - best.w / 2 * 0.6).toFixed(1) + 'px';
+        ld.style.transform = 'rotate(' + Math.atan2(ay, ax).toFixed(4) + 'rad)';
+      }
+    }
+
+    // ---------------- selezione
+    function select(i) {
+      active = (i + poi.length) % poi.length;
+      const p = poi[active];
+      $('detailType').textContent = p.type + ' · Sezione ' + String(active + 1).padStart(2, '0');
+      $('detailName').textContent = p.name;
+      $('detailDesc').textContent = p.desc;
+      $('detailIndex').textContent = String(active + 1).padStart(2, '0') + ' / ' + poi.length;
+      $('detail').classList.remove('closed'); app.classList.add('detail-open'); hideHint();
+      pins.forEach((el, k) => el.classList.toggle('active', k === active));
+      pinsBox.classList.add('dim');
+      Array.from(list.children).forEach((li, k) => li.firstChild.classList.toggle('sel', k === active));
+      const sel = list.children[active]; if (sel && !$('pathPanel').classList.contains('hidden')) sel.scrollIntoView({ block: 'nearest' });
+      const t = scene.poiPts[active];
+      cam.goal = { az: cam.goal.az, tilt: clamp(cam.goal.tilt, 0.42, 1.2), dist: clamp(fitDist * 0.33, 280, 1600), t: [t[0], t[1], t[2]] };
+      setView('explore'); userMoved = true;
+      requestAnimationFrame(refreshMasks); profileMark();
+    }
+    function closeDetail() {
+      $('detail').classList.add('closed'); app.classList.remove('detail-open'); active = -1;
+      pins.forEach((el) => el.classList.remove('active')); pinsBox.classList.remove('dim');
+      Array.from(list.children).forEach((li) => li.firstChild.classList.remove('sel'));
+      requestAnimationFrame(refreshMasks); profileMark();
+    }
+
+    // ---------------- profilo (generato dal diorama, illustrativo)
+    const prof = scene.profile, pMin = Math.min(...prof), pMax = Math.max(...prof);
+    const PX = (s) => 6 + s * 308, PY = (y) => 8 + (1 - (y - pMin) / (pMax - pMin || 1)) * 84;
+    const pPath = prof.map((y, i) => (i ? 'L' : 'M') + PX(i / (prof.length - 1)).toFixed(1) + ' ' + PY(y).toFixed(1)).join(' ');
+    function profileMark() {
+      $('profilePanel').innerHTML = '<h3>Profilo del diorama</h3><svg viewBox="0 0 320 112" role="img" aria-label="Profilo illustrativo">' +
+        '<defs><linearGradient id="pg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7fb8e0" stop-opacity=".45"/><stop offset="1" stop-color="#b6dbf4" stop-opacity="0"/></linearGradient></defs>' +
+        '<path d="' + pPath + ' L314 100 L6 100Z" fill="url(#pg)"/><path d="' + pPath + '" fill="none" stroke="#168ccb" stroke-width="2.4" stroke-linejoin="round"/>' +
+        poi.map((p, i) => { const k = Math.round(p.s * (prof.length - 1)); return '<circle cx="' + PX(p.s).toFixed(1) + '" cy="' + PY(prof[k]).toFixed(1) + '" r="' + (i === active ? 5 : 3.2) + '" fill="' + (i === active ? '#c81e3a' : '#e2475a') + '" stroke="#fff" stroke-width="1.5"><title>' + esc(p.name) + '</title></circle>'; }).join('') +
+        '</svg>';
+    }
+    profileMark();
+
+    // ---------------- comandi
+    const minD = 180, maxD = () => fitDist * 2.4;
+    const zoom = (k) => { cam.goal.dist = clamp(cam.goal.dist * k, minD, maxD()); userMoved = true; };
+    $('zoomIn').onclick = () => zoom(0.78);
+    $('zoomOut').onclick = () => zoom(1.28);
+    $('rotL').onclick = () => { cam.goal.az += 0.35; userMoved = true; };
+    $('rotR').onclick = () => { cam.goal.az -= 0.35; userMoved = true; };
+    $('reset').onclick = () => { closeDetail(); reset(); };
+    $('viewExplore').onclick = () => { cam.goal = homeGoal(); setView('explore'); };
+    $('viewTop').onclick = () => { cam.goal = topGoal(); setView('top'); userMoved = true; };
+    $('closeDetail').onclick = closeDetail;
+    $('nextPoi').onclick = () => select(active + 1);
+    $('prevPoi').onclick = () => select(active < 0 ? poi.length - 1 : active - 1);
+    const togglePanel = (btn, panel, attr) => {
+      const open = $(panel).classList.toggle('hidden') === false;
+      $(btn).setAttribute(attr, String(open));
+      if (open) for (const [b, p, a] of [['listBtn', 'pathPanel', 'aria-expanded'], ['profileBtn', 'profilePanel', 'aria-pressed']]) if (p !== panel) { $(p).classList.add('hidden'); $(b).setAttribute(a, 'false'); }
+      app.classList.toggle('list-open', !$('pathPanel').classList.contains('hidden'));
+      app.classList.toggle('panel-open', !$('pathPanel').classList.contains('hidden') || !$('profilePanel').classList.contains('hidden'));
+      requestAnimationFrame(refreshMasks);
+    };
+    $('listBtn').onclick = () => togglePanel('listBtn', 'pathPanel', 'aria-expanded');
+    $('profileBtn').onclick = () => togglePanel('profileBtn', 'profilePanel', 'aria-pressed');
+    $('labelsToggle').onclick = () => {
+      labelsOn = !labelsOn;
+      $('labelsToggle').setAttribute('aria-checked', String(labelsOn));
+      app.classList.toggle('labels-on', labelsOn);
+      sizes = []; dirty = true;
+    };
+    $('nightBtn').onclick = () => {
+      R.night = !R.night; app.classList.toggle('night', R.night);
+      $('nightBtn').setAttribute('aria-checked', String(R.night)); dirty = true;
+    };
+
+    // ---------------- input: ruota, zoom (rotella/pizzico), sposta (tasto destro, Maiusc, due dita)
+    const ptrs = new Map(); let pinch = null;
+    setTimeout(hideHint, 9000);
+    canvas.addEventListener('contextmenu', (e) => e.preventDefault());
+    canvas.addEventListener('pointerdown', (e) => {
+      canvas.setPointerCapture(e.pointerId);
+      ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY, pan: e.button === 2 || e.shiftKey });
+      canvas.classList.add('grabbing'); hideHint();
+      if (ptrs.size === 2) { const [a, b] = [...ptrs.values()]; pinch = { d: Math.hypot(a.x - b.x, a.y - b.y), mx: (a.x + b.x) / 2, my: (a.y + b.y) / 2 }; }
+    });
+    function pan(dx, dy) {
+      const B = cam.B, k = cam.dist / B.F;
+      const fl = Math.hypot(B.f[0], B.f[2]) || 1, fx = B.f[0] / fl, fz = B.f[2] / fl;
+      const g = cam.goal.t;
+      const x = clamp(g[0] - B.r[0] * dx * k + fx * dy * k * 1.4, world.xMin, world.xMax);
+      const z = clamp(g[2] - B.r[2] * dx * k + fz * dy * k * 1.4, world.zMin, world.zMax);
+      cam.goal.t = [x, world.height(x, z), z]; userMoved = true;
+    }
+    canvas.addEventListener('pointermove', (e) => {
+      const p = ptrs.get(e.pointerId); if (!p) return;
+      const dx = e.clientX - p.x, dy = e.clientY - p.y; p.x = e.clientX; p.y = e.clientY;
+      if (ptrs.size >= 2 && pinch) {
+        const [a, b] = [...ptrs.values()], d = Math.hypot(a.x - b.x, a.y - b.y), mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
+        if (d > 0 && pinch.d > 0) cam.goal.dist = clamp(cam.goal.dist * pinch.d / d, minD, maxD());
+        pan(mx - pinch.mx, my - pinch.my); pinch = { d, mx, my }; return;
+      }
+      if (p.pan) { pan(dx, dy); return; }
+      cam.goal.az -= dx * 0.006;
+      cam.goal.tilt = clamp(cam.goal.tilt + dy * 0.004, 0.24, 1.5);
+      userMoved = true;
+    });
+    const up = (e) => { ptrs.delete(e.pointerId); if (ptrs.size < 2) pinch = null; if (!ptrs.size) canvas.classList.remove('grabbing'); };
+    canvas.addEventListener('pointerup', up); canvas.addEventListener('pointercancel', up);
+    canvas.addEventListener('wheel', (e) => {
+      e.preventDefault(); hideHint();
+      zoom(Math.exp(clamp(e.deltaY, -120, 120) * (e.ctrlKey ? 0.01 : 0.0016)));
+    }, { passive: false });
+    window.addEventListener('keydown', (e) => {
+      const tg = document.activeElement && document.activeElement.tagName;
+      if (tg === 'INPUT' || tg === 'TEXTAREA') return;
+      if (e.key === 'ArrowRight') select(active + 1);
+      else if (e.key === 'ArrowLeft') select(active < 0 ? poi.length - 1 : active - 1);
+      else if (e.key === 'Escape') closeDetail();
+      else if (e.key === '+' || e.key === '=') zoom(0.78);
+      else if (e.key === '-') zoom(1.28);
+    });
+
+    // ---------------- ridimensionamento e ciclo di disegno
+    function resize() {
+      R.resize(app.clientWidth, app.clientHeight);
+      cam.fov = (cam.W < 760 && !landscape() ? 50 : 38) * Math.PI / 180;
+      sizes = [];
+      refreshMasks();
+      const g = homeGoal();
+      if (!userMoved) cam.goal = g;
+      dirty = true;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+    Object.assign(cam, { az: cam.goal.az, tilt: cam.goal.tilt, dist: cam.goal.dist, t: cam.goal.t.slice() });
+    let failed = false, settled = false;
+    function frame() {
+      if (failed) return;
+      try {
+        const moving = cam.step();
+        // durante il movimento si salta il rifinito dei bordi; a camera ferma si ridisegna in qualità piena
+        if (moving) { R.draw(true); layoutPins(); settled = false; }
+        else if (dirty || !settled) { R.draw(false); layoutPins(); dirty = false; settled = true; }
+      } catch (err) {
+        failed = true; console.error(err);
+        notice('<strong>Errore di disegno.</strong><br>Ricarica la pagina; se persiste, aprila con un browser aggiornato.');
+        return;
+      }
+      requestAnimationFrame(frame);
+    }
+    // Collegamenti diretti (integrazione dashboard): #poi=3&labels=1&night=1&view=top
+    const hp = new URLSearchParams(location.hash.slice(1));
+    if (hp.get('view') === 'top') $('viewTop').click();
+    if (hp.get('labels') === '1') $('labelsToggle').click();
+    if (course.model.night && hp.get('night') !== '0') $('nightBtn').click();
+    if (hp.get('poi')) { select(clamp(parseInt(hp.get('poi'), 10) - 1 || 0, 0, poi.length - 1)); Object.assign(cam, { az: cam.goal.az, tilt: cam.goal.tilt, dist: cam.goal.dist, t: cam.goal.t.slice() }); }
+    if (hp.get('panel') === 'list') $('listBtn').click();
+    if (hp.get('panel') === 'profile') $('profileBtn').click();
+    frame();
+    window.__LSA = { world, scene, cam, R, faces: scene.mesh.f.length };
+  };
+})(window.LSA);
+
+LSA.start(window.LSA_COURSE);
+</script>
+</body>
+</html>
