@@ -187,7 +187,7 @@ function homePage() {
  const future=e=>!['finished','cancelled','live'].includes(e.status) && (eventStart(e)?eventTime(e)>=now:eventDay(e)>=day);
  const events=[...data.alpine.races.filter(future).map(r=>({...r,sport:'alpine'})),...data.hockey.games.filter(future).map(g=>({...g,sport:'hockey'}))].sort(chronological).slice(0,12);
  const nl=projectedStandings(data.hockey);
- return `<section class="home-intro"><div><div class="eyebrow">LIVE SPORT ARENA</div><h1>Sci alpino e hockey</h1></div><div class="home-season">Stagione <strong>${esc(data.alpine.seasonLabel || data.hockey.seasonLabel || '–')}</strong>${subscribeButton}</div></section>
+ return `<section class="home-intro"><div><div class="eyebrow">LIVE SPORT ARENA</div><h1>I tuoi sport.<br><em>Un’unica Arena.</em></h1></div><div class="home-season">Stagione <strong>${esc(data.alpine.seasonLabel || data.hockey.seasonLabel || '–')}</strong>${subscribeButton}</div></section>
  <div class="sport-entry-grid">${[['alpine','Sci alpino','Coppa del Mondo'],['hockey','Hockey','National League']].map(([id,title,sub])=>`<a class="sport-entry ${id}" href="#${id}"><div>${leagueLogo(id)}<h2>${title}</h2><span>${sub} ${icon('arrow')}</span></div></a>`).join('')}</div>
  <div class="home-dashboard"><section class="panel upcoming-events"><div class="panel-head"><h2>Prossimi eventi</h2><a class="text-button" href="#calendar">Calendario ↗</a></div>${Object.entries(groupBy(events,eventDay)).map(([day,items])=>`<div class="date-heading">${dateLabel(day,{weekday:'long'})}</div><div class="agenda-list">${items.map(agendaRow).join('')}</div>`).join('') || empty('Nessun evento in programma','')}</section>
  <aside class="home-rankings" aria-label="Classifiche"><section class="panel"><div class="panel-head"><h2>National League</h2><a class="text-button" href="#hockey/standings" aria-label="Classifica completa National League">Classifica ↗</a></div><div class="panel-body">${nl.live?liveBadge():''}${nl.rows.length?standingsTable(true):'<p class="tiny">Classifica non disponibile.</p>'}</div></section>
@@ -250,8 +250,7 @@ function calendarPage(alpineOnly = false) {
   if (alpineOnly || sportSelected('alpine')) events.push(...filteredRaces().map(r => ({ ...r, sport: 'alpine' })));
   if (!alpineOnly && sportSelected('hockey')) events.push(...filteredGames().map(g => ({ ...g, sport: 'hockey' })));
   events.sort(chronological);
-  const listing = alpineOnly ? seasonList(events) : dayGroups(events, 'agenda-list', agendaRow, 'evento', 'eventi') ||
-    empty('Nessun evento con questi filtri', 'Cambia data o azzera la ricerca.');
+  const listing = seasonList(events, false, !alpineOnly);
   return `${heading(alpineOnly ? 'COPPA DEL MONDO FIS' : 'SCI ALPINO E HOCKEY', alpineOnly ? 'Sci alpino' : 'Calendario', alpineOnly ? 'Discesa · Super-G · Gigante · Slalom' : timezoneLabel, subscribeButton)}${alpineOnly || sportSelected('alpine') ? sourceNotice('alpine') : ''}${alpineOnly ? `<div class="module-banner alpine">${leagueLogo('alpine')}<strong>Coppa del Mondo</strong></div>` : ''}
   ${alpineOnly ? `${skiSeasonStats()}${alpineTabs()}` : sportTabs()}
   <section class="panel"><div class="panel-head"><h2>${alpineOnly ? 'Il programma delle gare' : 'Programma della stagione'}</h2><div class="calendar-heading-tools"><span class="tiny">${events.length} eventi</span>${!alpineOnly?`<input class="input calendar-heading-date" type="date" aria-label="Filtra il calendario per data" data-select="date" value="${esc(state.date)}">${state.date || state.sports.length?'<button class="text-button" data-action="clear-calendar">Azzera</button>':''}`:''}</div></div>${filterBar()}${listing}<div class="panel-bottom">${alpineOnly || sportSelected('alpine')?sync('alpine'):''}${!alpineOnly && sportSelected('hockey')?sync('hockey'):' '}</div></section>`;
@@ -264,7 +263,7 @@ function dayGroups(items, layout, renderItem, singular, plural) {
   ).join('');
 }
 
-function seasonList(events, hockey = false) {
+function seasonList(events, hockey = false, agenda = false) {
   if (!events.length) return empty('Nessun evento con questi filtri', 'Cambia data o azzera i filtri.');
   const groups = { results: [], upcoming: [] };
   const day = today();
@@ -273,14 +272,16 @@ function seasonList(events, hockey = false) {
       (event.status === 'cancelled' && eventDay(event) === day);
     groups[past ? 'results' : 'upcoming'].push(event);
   }
-  const context = [state.route, state.date, state.gender, state.query, state.teamFilter, ...state.disciplines];
+  const context = [state.route, state.date, state.gender, state.query, state.teamFilter, ...state.disciplines, ...state.sports];
   const sections = Object.entries(groups).filter(([,items]) => items.length).map(([period, items]) => {
-    const content = hockey
+    const content = agenda
+      ? dayGroups(items, 'agenda-list', agendaRow, 'evento', 'eventi')
+      : hockey
       ? dayGroups(items, 'match-grid', g => matchCard(g, {showPrediction:true}), 'partita', 'partite')
       : dayGroups(items, 'mixed-events', r => raceRow(r, false, true), 'gara', 'gare');
     return `<section data-period="${period}" aria-label="${period === 'results' ? 'Risultati' : 'Prossime'}">${content}</section>`;
   });
-  return `<div class="match-list-scroll season-list" data-context="${esc(JSON.stringify(context))}" role="region" tabindex="0" aria-label="${hockey ? 'Partite' : 'Gare'} della stagione">${sections.join('')}</div>`;
+  return `<div class="match-list-scroll season-list" data-context="${esc(JSON.stringify(context))}" role="region" tabindex="0" aria-label="${agenda ? 'Eventi' : hockey ? 'Partite' : 'Gare'} della stagione">${sections.join('')}</div>`;
 }
 
 // Keep the visible day stable while a background score update repaints the page.
@@ -307,7 +308,6 @@ function jumpToPeriod(list, period) {
 function bindSeasonList(previous) {
   const list = document.querySelector('.season-list');
   const buttons = [...document.querySelectorAll('[data-filter="scope"]')];
-  if (!buttons.length) return;
   buttons.forEach(button => { button.disabled = !list?.querySelector(`[data-period="${button.dataset.value}"]`); });
   if (!list) return;
   const upcoming = list.querySelector('[data-period="upcoming"]');
@@ -908,7 +908,7 @@ function readRoute() {
  state.detailId=id; detailTab=state.route==='game'?'summary':'overview';
  if(state.route==='hockey') {state.hockeyTab=({standings:'standings','top-scorer':'stats'})[id] || 'calendar'; }
  if (state.route==='alpine' || state.route==='hockey') { state.scope='upcoming'; state.resetSeasonPosition=true; }
- if(state.route==='calendar') state.scope='all';
+ if(state.route==='calendar') { state.scope='upcoming'; state.resetSeasonPosition=true; }
  if(['calendar','live'].includes(state.route)) state.sports=[];
  if (state.route.startsWith('hockey') || state.route==='predictions') state.hockeyExpanded=true;
  if (state.route.startsWith('alpine') || state.route === 'maps-3d') state.alpineExpanded=true;
