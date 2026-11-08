@@ -19,8 +19,11 @@ def parse_standings(html, season, gender, identities):
     if body is None:
         raise ValueError("Standings table is missing")
     tables = {code: [] for code in DISCIPLINES}
-    for row in body.find_all(tag="a", cls="table-row"):
-        url = row.attrs.get("href", "")
+    # A row with a badge link (e.g. Rising Ski Stars leader) is a div, with the athlete link inside.
+    rows = body.find_all(cls="table-row")
+    for row in rows:
+        link = row if row.tag == "a" else row.one(tag="a")
+        url = link.attrs.get("href", "") if link else ""
         athlete = parse_qs(urlparse(url).query).get("competitorid", [None])[0]
         container = row.one(cls="g-row")
         if not athlete or container is None:
@@ -43,7 +46,7 @@ def parse_standings(html, season, gender, identities):
                 "fisCode": identity.get("fisCode"), "name": cells[0].text(), "country": nation.text(), "athleteUrl": url})
     for code in tables:
         tables[code].sort(key=lambda row: row["rank"])
-    if not tables["ALL"] and body.find_all(tag="a", cls="table-row"):
+    if not tables["ALL"] and rows:
         raise ValueError("Standings rows could not be decoded")
     return tables
 
