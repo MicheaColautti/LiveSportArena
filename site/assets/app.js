@@ -122,8 +122,18 @@ function disciplineIcon(code) {
   return `<span class="race-discipline-icon discipline-${code}" role="img" aria-label="${art.label}" title="${art.label}"><span class="race-icon-viewport"><img src="assets/RacesIcons/${art.file}" style="--icon-slot:${art.slot}" alt="" aria-hidden="true" loading="lazy"></span></span>`;
 }
 
-function raceRow(r, showDate = true) {
-  return `<button class="event-row ski-event gender-${r.gender} discipline-${r.discipline}" data-race="${r.id}">${showDate ? `<span class="event-date"><strong>${Number(r.date.slice(8))}</strong><small>${dateLabel(r.date, { month: 'short', day: undefined })}</small></span>` : ''}${disciplineIcon(r.discipline)}<span class="event-main"><span class="event-title">${flag(r.country)}${esc(r.venue)}<span class="discipline-pill">${r.discipline}</span></span><span class="event-meta">${esc(r.disciplineName)} · ${r.gender === 'W' ? 'Donne' : 'Uomini'} ${r.status === 'live' ? liveBadge() : ''}</span></span><span class="event-time">${clock(r.runs[0]?.start)}<small>${r.runs.length > 1 ? '2ª ' + clock(r.runs[1]?.start) : 'Manche unica'}</small></span>${icon('chevron')}</button>`;
+function calendarPodium(race) {
+  const places = raceResults(race).filter(row => Number(row.rank) <= 3)
+    .sort((a, b) => Number(a.rank) - Number(b.rank));
+  if (!places.length) return '';
+  return `<span class="calendar-podium">${places.map(row =>
+    `<span class="podium-place" data-place="${Number(row.rank)}"><b>${Number(row.rank)}°</b>${flag(row.country)}<span>${esc(row.name)}</span></span>`
+  ).join('')}</span>`;
+}
+
+function raceRow(r, showDate = true, showPodium = false) {
+  const podium = showPodium ? calendarPodium(r) : '';
+  return `<button class="event-row ski-event${podium ? ' with-podium' : ''} gender-${r.gender} discipline-${r.discipline}" data-race="${r.id}">${showDate ? `<span class="event-date"><strong>${Number(r.date.slice(8))}</strong><small>${dateLabel(r.date, { month: 'short', day: undefined })}</small></span>` : ''}${disciplineIcon(r.discipline)}<span class="event-main"><span class="event-title">${flag(r.country)}${esc(r.venue)}<span class="discipline-pill">${r.discipline}</span></span><span class="event-meta">${esc(r.disciplineName)} · ${r.gender === 'W' ? 'Donne' : 'Uomini'} ${r.status === 'live' ? liveBadge() : ''}</span></span>${podium}<span class="event-time">${clock(r.runs[0]?.start)}<small>${r.runs.length > 1 ? '2ª ' + clock(r.runs[1]?.start) : 'Manche unica'}</small></span>${icon('chevron')}</button>`;
 }
 
 function matchSections(g) {
@@ -265,7 +275,7 @@ function seasonList(events, hockey = false) {
   const sections = Object.entries(groups).filter(([,items]) => items.length).map(([period, items]) => {
     const content = hockey
       ? dayGroups(items, 'match-grid', g => matchCard(g, {showPrediction:true}), 'partita', 'partite')
-      : dayGroups(items, 'mixed-events', r => raceRow(r, false), 'gara', 'gare');
+      : dayGroups(items, 'mixed-events', r => raceRow(r, false, true), 'gara', 'gare');
     return `<section data-period="${period}" aria-label="${period === 'results' ? 'Risultati' : 'Prossime'}">${content}</section>`;
   });
   return `<div class="match-list-scroll season-list" data-context="${esc(JSON.stringify(context))}" role="region" tabindex="0" aria-label="${hockey ? 'Partite' : 'Gare'} della stagione">${sections.join('')}</div>`;

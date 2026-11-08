@@ -240,3 +240,14 @@ input.input[type=date]::-webkit-date-and-time-value{text-align:left}
 
 .race-map-header .map-launch { flex:0 0 auto; width:auto; min-height:44px; }
 .race-map-header .map-launch:is(:hover,:focus-visible,:active) { background:var(--green2); color:white; }
+
+.calendar-podium { display:grid; gap:3px; padding-inline:12px; border-inline-start:1px solid var(--line); }
+.podium-place { display:flex; align-items:center; gap:6px; font-size:11px; color:#52635d; }
+.podium-place b { display:inline-grid; place-items:center; width:22px; border-radius:5px; background:#e7eaeb; }
+.podium-place[data-place="1"] { color:var(--ink); font-weight:700; }
+.podium-place[data-place="1"] b { color:#704c12; background:#f6e5b7; }
+.podium-place[data-place="3"] b { color:#724930; background:#f0e1d4; }
+@media(max-width:650px) {
+  .ski-event.with-podium { flex-wrap:wrap; }
+  .calendar-podium { order:1; flex-basis:100%; border-inline-start:0; border-top:1px solid var(--line); padding:8px 0 0; }
+}
