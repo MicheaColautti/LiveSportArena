@@ -253,7 +253,7 @@ input.input[type=date]::-webkit-date-and-time-value{text-align:left}
 }
 
 /* Race preview and race detail */
-.ski-race-title,.course-profile-head,.profile-elevations{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.ski-race-title,.course-profile-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
 .ski-race-title .button,.course-profile-head .map-launch{flex:none}
 .ski-race #race-status:not(:empty),.ski-race #race-bulletin:not(:empty){margin-top:10px}
 .ski-race .run-cards{margin:12px 0 4px;display:flex;gap:20px;flex-wrap:wrap}
@@ -265,8 +265,8 @@ input.input[type=date]::-webkit-date-and-time-value{text-align:left}
 .race-dashboard{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(220px,1fr);gap:18px;margin-top:20px;align-items:start}
 .course-profile,.race-day{border:1px solid #d9e4db;border-radius:14px;padding:18px;min-width:0}
 .course-profile{background:#f3f7f1}
-.course-profile h3,.race-day h3{margin:0}.course-profile-head small,.profile-elevations,.profile-facts dt{font-size:.78rem;color:#53695d}
-.course-profile-head h3{font-size:1.35rem}.profile-elevations{margin-top:20px}.race-elevation{display:block;width:100%;max-height:190px}
+.course-profile h3,.race-day h3{margin:0}.course-profile-head small,.profile-facts dt{font-size:.78rem;color:#53695d}
+.course-profile-head h3{font-size:1.35rem}.race-endpoint-label{fill:#204c39;font-size:11px;font-weight:650}.race-elevation{margin-top:14px;display:block;width:100%;max-height:190px}
 .profile-marks{display:flex;gap:10px 16px;flex-wrap:wrap;margin:8px 0;font-size:.78rem}
 .profile-marks b{border-radius:50%;background:#204c39;color:white;display:inline-grid;place-items:center;width:18px;height:18px;margin-right:5px}
 .profile-facts{display:flex;flex-wrap:wrap;gap:12px 20px;margin:14px 0 0;border-top:1px solid #cdd9cf;padding-top:12px}.profile-facts dd{margin:3px 0 0;font-weight:700}

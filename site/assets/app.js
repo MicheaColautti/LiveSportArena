@@ -520,7 +520,7 @@ function mapsPage() {
 
 function trackSection(race, course) {
  if(!course) return `<section class="panel track-panel"><div class="panel-head"><h2>Tracciato</h2></div><div class="panel-body"><p>Dati pista non disponibili.</p><a class="text-button" href="${safeUrl(race.sourceUrl)}" target="_blank" rel="noopener">Documenti ufficiali FIS ↗</a></div></section>`;
- return `<section class="panel track-panel"><div class="panel-head"><h2>${esc(course.name)}</h2><span class="tiny">Verificato ${esc(course.verifiedAt)}</span></div><div class="panel-body"><p class="tiny">Tracciato di riferimento. Partenza e lunghezza variano secondo la gara.</p><div class="period-grid">${course.facts.map(f=>`<div><small>${esc(f.label)}</small><strong>${esc(f.value)}</strong><a class="text-button" href="${safeUrl(f.source)}" target="_blank" rel="noopener">Fonte ↗</a></div>`).join('')}</div><p>${esc(course.history.text)} <a class="text-button" href="${safeUrl(course.history.source)}" target="_blank" rel="noopener">Fonte ↗</a></p>${course.geometry?.source ? `<div data-course-map="${course.id}"></div>` : '<p class="notice">Mappa del tracciato non disponibile.</p>'}${course.pois.map(p=>`<details class="track-poi"><summary>${esc(p.name)} · ${esc(p.category)}</summary><p>${esc(p.description)} <a class="text-button" href="${safeUrl(p.source)}" target="_blank" rel="noopener">Fonte ↗</a></p></details>`).join('')}</div></section>`;
+ return `<section class="panel track-panel"><div class="panel-head"><h2>${esc(course.name)}</h2><span class="tiny">Verificato ${esc(course.verifiedAt)}</span></div><div class="panel-body"><p class="tiny">Tracciato di riferimento. Partenza e lunghezza variano secondo la gara.</p><div class="period-grid">${course.facts.map(f=>`<div><small>${esc(f.label)}</small><strong>${esc(f.value)}</strong><a class="text-button" href="${safeUrl(f.source)}" target="_blank" rel="noopener">Fonte ↗</a></div>`).join('')}</div><p>${esc(course.history.text)} <a class="text-button" href="${safeUrl(course.history.source)}" target="_blank" rel="noopener">Fonte ↗</a></p>${course.geometry?.source ? `<div data-course-map="${course.id}"></div>` : mapLink(race)}${course.pois.map(p=>`<details class="track-poi"><summary>${esc(p.name)} · ${esc(p.category)}</summary><p>${esc(p.description)} <a class="text-button" href="${safeUrl(p.source)}" target="_blank" rel="noopener">Fonte ↗</a></p></details>`).join('')}</div></section>`;
 }
 
 function renderNavigation() {
@@ -594,14 +594,20 @@ function courseProfile(race, map) {
   const x = i => 14 + i * 4.9, y = i => 16 + line[i];
   const path = line.map((_, i) => (i ? 'L' : 'M') + x(i).toFixed(1) + ' ' + y(i)).join(' ');
   const [start, finish] = (metrics.alt || '').split(' → ');
+  const endpoints = ['Partenza', 'Arrivo'].map((label, i) => {
+    const altitude = i === 0 ? start : finish;
+    return altitude ? label + ' ' + altitude.replace(/\s*m$/, '') + ' m' : label;
+  });
+  const last = line.length - 1;
+  const points = [[0, 'Partenza'], ...marks, [last, 'Arrivo']];
   const facts = [['Lunghezza', metrics.length], ['Dislivello', metrics.vertical], ['Pendenza massima', metrics.maxgrad]].filter(([,v]) => v);
   return `<section class="course-profile"><div class="course-profile-head"><div><small>Profilo schematico</small><h3>${esc(map.course)}</h3></div>${mapLink(race)}</div>
-    <div class="profile-elevations"><span>Partenza ${esc(start || '')}</span><span>Arrivo ${esc(finish || '')}</span></div>
-    <svg class="race-elevation" viewBox="0 0 420 138" role="img" aria-label="Profilo schematico di ${esc(map.course)}">
+    <svg class="race-elevation" viewBox="0 -9 420 155" role="img" aria-label="Profilo schematico di ${esc(map.course)}. ${esc(endpoints.join(', '))}.">
       <path d="M14 29H406 M14 67H406 M14 105H406" fill="none" stroke="#bfd1c7" stroke-dasharray="3 5"/>
       <path d="${path} V138 H14 Z" fill="#c4d9ca"/><path d="${path}" stroke="#285740" stroke-width="3" fill="none"/>
-      ${marks.map(([i],k)=>`<circle cx="${x(i)}" cy="${y(i)}" r="8" fill="#163f30"/><text x="${x(i)}" y="${y(i)+3.6}" text-anchor="middle" fill="white" font-size="10">${k+1}</text>`).join('')}
-    </svg><div class="profile-marks">${marks.map(([,name],k)=>`<span><b>${k+1}</b>${esc(name)}</span>`).join('')}</div>
+      ${points.map(([i],k)=>`<circle cx="${x(i)}" cy="${y(i)}" r="8" fill="#163f30"/><text x="${x(i)}" y="${y(i)+3.6}" text-anchor="middle" fill="white" font-size="10">${k+1}</text>`).join('')}
+      <g class="race-endpoint-label"><text x="${x(0)+10}" y="${y(0)-6}">${esc(endpoints[0])}</text><text x="${x(last)-10}" y="${y(last)+17}" text-anchor="end">${esc(endpoints[1])}</text></g>
+    </svg><div class="profile-marks">${points.map(([,name],k)=>`<span><b>${k+1}</b>${esc(name)}</span>`).join('')}</div>
     ${facts.length ? `<dl class="profile-facts">${facts.map(([k,v])=>`<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>` : ''}</section>`;
 }
 
