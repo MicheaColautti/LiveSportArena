@@ -16,3 +16,9 @@ if (previous && previous.origin === app.origin &&
     history.back();
   });
 }
+
+const note = document.createElement('p');
+note.className = 'map-note';
+note.setAttribute('role', 'note');
+note.innerHTML = '<svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7.5"/><path d="M10 9.2v4.3M10 6.4v.1"/></svg>Modello puramente rappresentativo, per vedere i punti cardine della pista';
+document.querySelector('#app').append(note);
