@@ -376,3 +376,24 @@ input.input[type=date]::-webkit-date-and-time-value{text-align:left}
  .cr-period-head{grid-template-columns:1fr auto;padding:9px 13px;gap:2px 12px}
  .cr-period-head span{grid-column:1/-1;justify-self:start;text-align:left}
 }
+
+/* Anteprima gara di sci */
+.preview-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:8px;margin-top:16px}
+.preview-tile{display:grid;align-content:space-between;gap:5px;padding:11px 13px;border-radius:11px;background:#f3f6f1}
+.preview-tile small{font-size:10px;line-height:1.3;color:var(--muted)}
+.preview-tile strong{font-size:15px;font-weight:650;letter-spacing:-.2px;font-variant-numeric:tabular-nums}
+.preview-section{margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+.preview-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:9px}
+.preview-head h3{margin:0;font-size:13px;font-weight:650}
+.preview-head span{font-size:10px;color:var(--muted);text-align:right}
+.preview-stats{display:flex;flex-wrap:wrap;gap:8px 26px;margin:0}
+.preview-stats dt{font-size:10px;color:var(--muted)}
+.preview-stats dd{margin:2px 0 0;font-size:14px;font-weight:650;font-variant-numeric:tabular-nums}
+.preview-text{margin:10px 0 0;font-size:12px;line-height:1.5;color:#5d6b6a}
+.preview-text .text-button{font-size:11px;white-space:nowrap}
+.ski-preview .mini-table td{padding:7px 0}
+.ski-preview .mini-table tr:first-child td{border-top:0}
+.ski-preview .mini-table td:first-child{width:24px;color:var(--muted);font-variant-numeric:tabular-nums}
+.ski-preview .mini-table .flag{margin-right:6px}
+.ski-preview #race-snapshot:empty{display:none}
+@media(max-width:480px){.preview-tiles{grid-template-columns:1fr 1fr}.preview-tile:last-child:nth-child(odd){grid-column:1/-1}}

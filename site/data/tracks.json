@@ -2,6 +2,136 @@
   "version": 1,
   "courses": [
     {
+      "name": "Birds of Prey",
+      "venues": [
+        "Beaver Creek"
+      ],
+      "disciplines": [
+        "DH"
+      ],
+      "gender": "M",
+      "verifiedAt": "2026-11-09",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [
+        {
+          "label": "Partenza",
+          "value": "3.483 m",
+          "source": "https://en.wikipedia.org/wiki/Birds_of_Prey_(ski_course)"
+        },
+        {
+          "label": "Arrivo",
+          "value": "2.730 m",
+          "source": "https://en.wikipedia.org/wiki/Birds_of_Prey_(ski_course)"
+        },
+        {
+          "label": "Dislivello",
+          "value": "753 m",
+          "source": "https://en.wikipedia.org/wiki/Birds_of_Prey_(ski_course)"
+        },
+        {
+          "label": "Pendenza massima",
+          "value": "63%",
+          "source": "https://bcworldcup.com/birds-of-prey/"
+        }
+      ],
+      "history": {
+        "text": "Il tratto superiore della discesa è il Flyway, una zona di scorrimento.",
+        "source": "https://bcworldcup.com/fis-alpine-ski-racing-101/"
+      },
+      "pois": [],
+      "id": "course-40",
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ],
+      "preview": {
+        "text": "Il tratto superiore della discesa è il Flyway, una zona di scorrimento.",
+        "source": "https://bcworldcup.com/fis-alpine-ski-racing-101/"
+      }
+    },
+    {
+      "name": "Superstar",
+      "venues": [
+        "Killington"
+      ],
+      "disciplines": [
+        "GS"
+      ],
+      "gender": "W",
+      "verifiedAt": "2026-11-09",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [
+        {
+          "label": "Dislivello",
+          "value": "348 m",
+          "source": "https://www.alpineskiworldcup.com/post/killington-s-cup-giant-slalom-preview"
+        }
+      ],
+      "history": {
+        "text": "La pista Superstar ospita gigante e slalom femminili della Killington Cup.",
+        "source": "https://killington.com/the-killington-cup?category=Experiences"
+      },
+      "pois": [],
+      "id": "course-41",
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ],
+      "preview": {
+        "text": "La pista Superstar ospita gigante e slalom femminili della Killington Cup.",
+        "source": "https://killington.com/the-killington-cup?category=Experiences"
+      }
+    },
+    {
+      "name": "Superstar",
+      "venues": [
+        "Killington"
+      ],
+      "disciplines": [
+        "SL"
+      ],
+      "gender": "W",
+      "verifiedAt": "2026-11-09",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [
+        {
+          "label": "Partenza",
+          "value": "980 m",
+          "source": "https://www.fis-ski.com/DB/pdf/2020/AL/5027/2020AL5027SLR2.pdf"
+        },
+        {
+          "label": "Arrivo",
+          "value": "780 m",
+          "source": "https://www.fis-ski.com/DB/pdf/2020/AL/5027/2020AL5027SLR2.pdf"
+        },
+        {
+          "label": "Dislivello",
+          "value": "200 m",
+          "source": "https://www.fis-ski.com/DB/pdf/2020/AL/5027/2020AL5027SLR2.pdf"
+        }
+      ],
+      "history": {
+        "text": "La pista Superstar ospita gigante e slalom femminili della Killington Cup.",
+        "source": "https://killington.com/the-killington-cup?category=Experiences"
+      },
+      "pois": [],
+      "id": "course-42",
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ],
+      "preview": {
+        "text": "La pista Superstar ospita gigante e slalom femminili della Killington Cup.",
+        "source": "https://killington.com/the-killington-cup?category=Experiences"
+      }
+    },
+    {
       "name": "Streif",
       "venues": [
         "Kitzbühel",
@@ -66,7 +196,11 @@
         "Geometria georeferenziata verificata",
         "Coordinate POI",
         "Verifica configurazione della singola gara"
-      ]
+      ],
+      "preview": {
+        "text": "La Streif attuale ospitò una gara nel 1937.",
+        "source": "https://hahnenkamm.com/rennstrecken/die-streif-abfahrt/"
+      }
     },
     {
       "name": "Lauberhorn",
@@ -127,7 +261,11 @@
         "Geometria georeferenziata verificata",
         "Coordinate POI",
         "Verifica configurazione della singola gara"
-      ]
+      ],
+      "preview": {
+        "text": "Il Russisprung nacque da riprese televisive con Bernhard Russi e fu poi inserito nella gara.",
+        "source": "https://www.lauberhorn.ch/rennen/abfahrt/"
+      }
     },
     {
       "name": "Stelvio",
@@ -188,7 +326,11 @@
         "Coordinate POI",
         "Verifica configurazione della singola gara"
       ],
-      "id": "course-03"
+      "id": "course-03",
+      "preview": {
+        "text": "Il percorso alterna salti, diagonali e un muro finale verso Bormio.",
+        "source": "https://www.bormioski.eu/pista-stelvio/"
+      }
     },
     {
       "name": "Saslong",
@@ -240,7 +382,11 @@
         "Coordinate POI",
         "Verifica configurazione della singola gara"
       ],
-      "id": "course-04"
+      "id": "course-04",
+      "preview": {
+        "text": "Il nome richiama il termine ladino del Sassolungo.",
+        "source": "https://www.saslong.org/en/news/detail/saslong-course-and-key-sections/"
+      }
     },
     {
       "name": "Gran Risa",
@@ -281,7 +427,11 @@
         "Coordinate POI",
         "Verifica configurazione della singola gara"
       ],
-      "id": "course-05"
+      "id": "course-05",
+      "preview": {
+        "text": "La pista attraversa il bosco sopra La Villa, sotto Piz La Ila.",
+        "source": "https://www.altabadia.org/en/poi/what-to-do-in-alta-badia/detail/poi/the-gran-risa-slope"
+      }
     },
     {
       "name": "Erta",
@@ -348,7 +498,11 @@
         "Coordinate POI",
         "Verifica configurazione della singola gara"
       ],
-      "id": "course-07"
+      "id": "course-07",
+      "preview": {
+        "text": "Pista utilizzata ai Giochi del 1956 e ai Mondiali di Cortina del 2021; ospita le gare femminili di Coppa del Mondo.",
+        "source": "https://www.cortinaskiworldcup.com/la-pista/"
+      }
     },
     {
       "name": "Rettenbach",
@@ -403,7 +557,11 @@
         "Coordinate POI",
         "Verifica configurazione della singola gara"
       ],
-      "id": "course-08"
+      "id": "course-08",
+      "preview": {
+        "text": "Il lungo muro ripido è il passaggio chiave del gigante di apertura.",
+        "source": "https://www.soelden.com/de/veranstaltungen-freizeittipps/events/audi-fis-skiweltcup-opening/weltcup-piste"
+      }
     },
     {
       "name": "Chuenisbärgli",
@@ -414,7 +572,7 @@
         "GS"
       ],
       "gender": "M",
-      "verifiedAt": "2026-11-06",
+      "verifiedAt": "2026-11-09",
       "geometry": null,
       "mapStatus": "missing-verified-geometry",
       "facts": [
@@ -444,7 +602,11 @@
         "Coordinate POI",
         "Verifica configurazione della singola gara"
       ],
-      "id": "course-09"
+      "id": "course-09",
+      "preview": {
+        "text": "Il Chuenisbärgli ospita la Coppa del Mondo dal 1967.",
+        "source": "https://en.wikipedia.org/wiki/Chuenisb%C3%A4rgli"
+      }
     },
     {
       "name": "Levi Black",
@@ -455,10 +617,36 @@
         "SL"
       ],
       "gender": "ALL",
-      "verifiedAt": "2026-11-06",
+      "verifiedAt": "2026-11-09",
       "geometry": null,
       "mapStatus": "missing-verified-geometry",
-      "facts": [],
+      "facts": [
+        {
+          "label": "Partenza",
+          "value": "438 m",
+          "source": "https://en.wikipedia.org/wiki/Levi_Black"
+        },
+        {
+          "label": "Arrivo",
+          "value": "258 m",
+          "source": "https://en.wikipedia.org/wiki/Levi_Black"
+        },
+        {
+          "label": "Dislivello",
+          "value": "180 m",
+          "source": "https://en.wikipedia.org/wiki/Levi_Black"
+        },
+        {
+          "label": "Pendenza massima",
+          "value": "52%",
+          "source": "https://en.wikipedia.org/wiki/Levi_Black"
+        },
+        {
+          "label": "Pendenza media",
+          "value": "31%",
+          "source": "https://en.wikipedia.org/wiki/Levi_Black"
+        }
+      ],
       "history": {
         "text": "Levi Black, indicata anche come G.2, si trova nel settore West Slopes e ospita il circuito di Coppa del Mondo.",
         "source": "https://www.levi.fi/en/ski/slopes-and-lifts/west-slopes/"
@@ -469,7 +657,11 @@
         "Coordinate POI",
         "Verifica configurazione della singola gara"
       ],
-      "id": "course-10"
+      "id": "course-10",
+      "preview": {
+        "text": "A circa 170 km a nord del Circolo polare artico, ha il traguardo più basso del circuito femminile. Ospita la Coppa del Mondo dal 2004.",
+        "source": "https://en.wikipedia.org/wiki/Levi_Black"
+      }
     },
     {
       "name": "Kirchenkar",
@@ -480,10 +672,41 @@
         "SL"
       ],
       "gender": "ALL",
-      "verifiedAt": "2026-11-06",
+      "verifiedAt": "2026-11-09",
       "geometry": null,
       "mapStatus": "missing-verified-geometry",
-      "facts": [],
+      "facts": [
+        {
+          "label": "Lunghezza",
+          "value": "548 m",
+          "source": "https://www.gurgl.com/en/events-leisure-tips/events/audi-fis-ski-world-cup/world-cup-slope"
+        },
+        {
+          "label": "Partenza",
+          "value": "2.475 m",
+          "source": "https://www.gurgl.com/en/events-leisure-tips/events/audi-fis-ski-world-cup/world-cup-slope"
+        },
+        {
+          "label": "Arrivo",
+          "value": "2.265 m",
+          "source": "https://www.gurgl.com/en/events-leisure-tips/events/audi-fis-ski-world-cup/world-cup-slope"
+        },
+        {
+          "label": "Dislivello",
+          "value": "210 m",
+          "source": "https://www.gurgl.com/en/events-leisure-tips/events/audi-fis-ski-world-cup/world-cup-slope"
+        },
+        {
+          "label": "Pendenza massima",
+          "value": "62%",
+          "source": "https://www.gurgl.com/en/events-leisure-tips/events/audi-fis-ski-world-cup/world-cup-slope"
+        },
+        {
+          "label": "Pendenza media",
+          "value": "38,3%",
+          "source": "https://www.gurgl.com/en/events-leisure-tips/events/audi-fis-ski-world-cup/world-cup-slope"
+        }
+      ],
       "history": {
         "text": "Il media kit ufficiale del 2024 documenta la Kirchenkar e gli slalom femminile e maschile di Gurgl.",
         "source": "https://www.gurgl.com/local/gurgl_skiweltcup_mediakit_24_EN.pdf"
@@ -494,7 +717,11 @@
         "Coordinate POI",
         "Verifica configurazione della singola gara"
       ],
-      "id": "course-11"
+      "id": "course-11",
+      "preview": {
+        "text": "Ha debuttato in Coppa del Mondo il 18 novembre 2023 con lo slalom maschile.",
+        "source": "https://en.wikipedia.org/wiki/Kirchenkar"
+      }
     },
     {
       "name": "Planai",
@@ -520,7 +747,11 @@
         "Coordinate POI",
         "Verifica configurazione della singola gara"
       ],
-      "id": "course-12"
+      "id": "course-12",
+      "preview": {
+        "text": "Il pendio finale della Planai ospita le gare notturne di slalom e gigante THE NIGHTRACE.",
+        "source": "https://www.schladming-dachstein.at/de/schladming-dachstein-entdecken/winterberge/planai"
+      }
     },
     {
       "name": "Mont Lachaux",
@@ -546,7 +777,11 @@
         "Coordinate POI",
         "Verifica configurazione della singola gara"
       ],
-      "id": "course-13"
+      "id": "course-13",
+      "preview": {
+        "text": "La pista, già utilizzata ai Mondiali del 1987, fu rimodellata nel 2010 e ospita regolarmente gare femminili di velocità.",
+        "source": "https://www.cransmontana2027.ch/competition/pistes/piste-mont-lachaux/"
+      }
     },
     {
       "name": "Birds of Prey",
@@ -581,7 +816,11 @@
         "Coordinate POI",
         "Verifica configurazione della singola gara"
       ],
-      "id": "course-14"
+      "id": "course-14",
+      "preview": {
+        "text": "Il tratto superiore della discesa è il Flyway, una zona di scorrimento.",
+        "source": "https://bcworldcup.com/fis-alpine-ski-racing-101/"
+      }
     },
     {
       "name": "Kandahar",
@@ -614,7 +853,11 @@
         "Coordinate POI",
         "Verifica configurazione della singola gara"
       ],
-      "id": "course-15"
+      "id": "course-15",
+      "preview": {
+        "text": "Garmisch-Partenkirchen ospita gare Kandahar dal 1954. Il comprensorio distingue due varianti di discesa.",
+        "source": "https://zugspitze.de/de/Unsere-Bergwelten/Highlights/Kandahar-Abfahrt"
+      }
     },
     {
       "name": "Canalone Miramonti",
@@ -639,7 +882,11 @@
         "Coordinate POI",
         "Verifica configurazione della singola gara"
       ],
-      "id": "course-16"
+      "id": "course-16",
+      "preview": {
+        "text": "Il Canalone Miramonti ospita lo slalom notturno della 3Tre.",
+        "source": "https://www.3trecampiglio.it/en/experience-3tre/buy-your-ticket"
+      }
     },
     {
       "name": "Face de Bellevarde",
@@ -667,7 +914,11 @@
         "Coordinate POI",
         "Verifica configurazione della singola gara"
       ],
-      "id": "course-17"
+      "id": "course-17",
+      "preview": {
+        "text": "La Face de Bellevarde ospitò gare ai Giochi di Albertville del 1992 e ai Mondiali del 2009.",
+        "source": "https://www.worldcup-valdisere.com/les-pistes/"
+      }
     },
     {
       "name": "Luková – Koliesko",
@@ -679,7 +930,7 @@
         "GS"
       ],
       "gender": "W",
-      "verifiedAt": "2026-11-06",
+      "verifiedAt": "2026-11-09",
       "geometry": null,
       "mapStatus": "missing-verified-geometry",
       "facts": [],
@@ -693,7 +944,11 @@
         "Coordinate POI",
         "Verifica configurazione della singola gara"
       ],
-      "id": "course-18"
+      "id": "course-18",
+      "preview": {
+        "text": "Petra Vlhová ha vinto qui il gigante del 2021 davanti al pubblico di casa.",
+        "source": "https://www.worldcupjasna.sk/en/press-media/press-releases/732021"
+      }
     },
     {
       "name": "Podkoren",
@@ -705,7 +960,7 @@
         "GS"
       ],
       "gender": "ALL",
-      "verifiedAt": "2026-11-06",
+      "verifiedAt": "2026-11-09",
       "geometry": null,
       "mapStatus": "missing-verified-geometry",
       "facts": [],
@@ -719,7 +974,11 @@
         "Coordinate POI",
         "Verifica configurazione della singola gara"
       ],
-      "id": "course-19"
+      "id": "course-19",
+      "preview": {
+        "text": "Il suo gigante è considerato tra i tre più duri al mondo, con Alta Badia e Adelboden.",
+        "source": "https://en.wikipedia.org/wiki/Vitranc_Cup"
+      }
     },
     {
       "name": "Hermann Maier Weltcupstrecke",
@@ -730,10 +989,16 @@
         "SL"
       ],
       "gender": "W",
-      "verifiedAt": "2026-11-06",
+      "verifiedAt": "2026-11-09",
       "geometry": null,
       "mapStatus": "missing-verified-geometry",
-      "facts": [],
+      "facts": [
+        {
+          "label": "Lunghezza",
+          "value": "637 m",
+          "source": "https://www.snow-space.com/en/winter/ski-resort-salzburg/highlights/piste-specials/hermann-maier-fis-race-course"
+        }
+      ],
       "history": {
         "text": "La mappa del comprensorio identifica la Hermann Maier Weltcupstrecke come pista 1, nella zona Starjet 1.",
         "source": "https://www.flachau.com/de/anlagen.html"
@@ -744,7 +1009,11 @@
         "Coordinate POI",
         "Verifica configurazione della singola gara"
       ],
-      "id": "course-20"
+      "id": "course-20",
+      "preview": {
+        "text": "Già Grießenkar, porta dal 2004 il nome di Hermann Maier e dal 2010 ospita lo slalom in notturna.",
+        "source": "https://www.alpineskiworldcup.com/post/flachau-night-slalom-race-preview"
+      }
     },
     {
       "name": "La Verte des Houches",
@@ -806,7 +1075,11 @@
         "Coordinate POI",
         "Verifica configurazione della singola gara"
       ],
-      "id": "course-21"
+      "id": "course-21",
+      "preview": {
+        "text": "La discesa è bordata da abeti. L’aspetto verdastro del fondo ghiacciato ha contribuito al suo nome.",
+        "source": "https://chamonixworldcup.com/en/the-course/the-piste"
+      }
     },
     {
       "name": "Bald Mountain – Greyhawk",
@@ -820,7 +1093,7 @@
         "SL"
       ],
       "gender": "ALL",
-      "verifiedAt": "2026-11-06",
+      "verifiedAt": "2026-11-09",
       "geometry": null,
       "mapStatus": "missing-verified-geometry",
       "facts": [],
@@ -834,7 +1107,11 @@
         "Coordinate POI",
         "Verifica configurazione della singola gara"
       ],
-      "id": "course-22"
+      "id": "course-22",
+      "preview": {
+        "text": "Dopo il 2025, Sun Valley ospita di nuovo le Finali di Coppa del Mondo.",
+        "source": "https://www.kmvt.com/2026/01/17/sun-valley-host-fis-ski-world-cup-finals-again-2027"
+      }
     },
     {
       "name": "Superstar",
@@ -860,8 +1137,644 @@
         "Coordinate POI",
         "Verifica configurazione della singola gara"
       ],
-      "id": "course-23"
+      "id": "course-23",
+      "preview": {
+        "text": "La pista Superstar ospita gigante e slalom femminili della Killington Cup.",
+        "source": "https://killington.com/the-killington-cup?category=Experiences"
+      }
+    },
+    {
+      "name": "Olympiabakken",
+      "venues": [
+        "Kvitfjell"
+      ],
+      "disciplines": [
+        "DH"
+      ],
+      "gender": "M",
+      "verifiedAt": "2026-11-09",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [
+        {
+          "label": "Lunghezza",
+          "value": "3.035 m",
+          "source": "https://www.fis-ski.com/DB/pdf/2018/AL/0034/2018AL0034SLR0.pdf"
+        },
+        {
+          "label": "Partenza",
+          "value": "1.020 m",
+          "source": "https://www.fis-ski.com/DB/pdf/2018/AL/0034/2018AL0034SLR0.pdf"
+        },
+        {
+          "label": "Arrivo",
+          "value": "182 m",
+          "source": "https://www.fis-ski.com/DB/pdf/2018/AL/0034/2018AL0034SLR0.pdf"
+        },
+        {
+          "label": "Dislivello",
+          "value": "838 m",
+          "source": "https://www.fis-ski.com/DB/pdf/2018/AL/0034/2018AL0034SLR0.pdf"
+        }
+      ],
+      "history": {
+        "text": "Disegnata da Bernhard Russi, ha ospitato le gare veloci dei Giochi del 1994.",
+        "source": "https://en.wikipedia.org/wiki/Olympiabakken"
+      },
+      "pois": [],
+      "id": "course-24",
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ],
+      "preview": {
+        "text": "Disegnata da Bernhard Russi, ha ospitato le gare veloci dei Giochi del 1994.",
+        "source": "https://en.wikipedia.org/wiki/Olympiabakken"
+      }
+    },
+    {
+      "name": "Olympiabakken",
+      "venues": [
+        "Kvitfjell"
+      ],
+      "disciplines": [
+        "SG"
+      ],
+      "gender": "M",
+      "verifiedAt": "2026-11-09",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [
+        {
+          "label": "Lunghezza",
+          "value": "2.451 m",
+          "source": "https://en.wikipedia.org/wiki/Olympiabakken"
+        },
+        {
+          "label": "Partenza",
+          "value": "832 m",
+          "source": "https://en.wikipedia.org/wiki/Olympiabakken"
+        },
+        {
+          "label": "Arrivo",
+          "value": "182 m",
+          "source": "https://en.wikipedia.org/wiki/Olympiabakken"
+        },
+        {
+          "label": "Dislivello",
+          "value": "650 m",
+          "source": "https://en.wikipedia.org/wiki/Olympiabakken"
+        }
+      ],
+      "history": {
+        "text": "Disegnata da Bernhard Russi, ha ospitato le gare veloci dei Giochi del 1994.",
+        "source": "https://en.wikipedia.org/wiki/Olympiabakken"
+      },
+      "pois": [],
+      "id": "course-25",
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ],
+      "preview": {
+        "text": "Disegnata da Bernhard Russi, ha ospitato le gare veloci dei Giochi del 1994.",
+        "source": "https://en.wikipedia.org/wiki/Olympiabakken"
+      }
+    },
+    {
+      "name": "Olympiabakken",
+      "venues": [
+        "Kvitfjell"
+      ],
+      "disciplines": [
+        "DH",
+        "SG"
+      ],
+      "gender": "W",
+      "verifiedAt": "2026-11-09",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [],
+      "history": {
+        "text": "Disegnata da Bernhard Russi, ha ospitato le gare veloci dei Giochi del 1994.",
+        "source": "https://en.wikipedia.org/wiki/Olympiabakken"
+      },
+      "pois": [],
+      "id": "course-26",
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ],
+      "preview": {
+        "text": "Disegnata da Bernhard Russi, ha ospitato le gare veloci dei Giochi del 1994.",
+        "source": "https://en.wikipedia.org/wiki/Olympiabakken"
+      }
+    },
+    {
+      "name": "Corviglia",
+      "venues": [
+        "St. Moritz"
+      ],
+      "disciplines": [
+        "SG"
+      ],
+      "gender": "W",
+      "verifiedAt": "2026-11-09",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [
+        {
+          "label": "Partenza",
+          "value": "2.590 m",
+          "source": "https://medias1.fis-ski.com/pdf/2024/AL/5017/2024AL5017SLR0.pdf"
+        },
+        {
+          "label": "Arrivo",
+          "value": "2.040 m",
+          "source": "https://medias1.fis-ski.com/pdf/2024/AL/5017/2024AL5017SLR0.pdf"
+        },
+        {
+          "label": "Dislivello",
+          "value": "550 m",
+          "source": "https://medias1.fis-ski.com/pdf/2024/AL/5017/2024AL5017SLR0.pdf"
+        }
+      ],
+      "history": {
+        "text": "Dati di riferimento: la configurazione può cambiare a ogni gara.",
+        "source": "https://medias1.fis-ski.com/pdf/2024/AL/5017/2024AL5017SLR0.pdf"
+      },
+      "pois": [],
+      "id": "course-27",
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ]
+    },
+    {
+      "name": "Schneekristall",
+      "venues": [
+        "Saalbach"
+      ],
+      "disciplines": [
+        "SG"
+      ],
+      "gender": "M",
+      "verifiedAt": "2026-11-09",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [
+        {
+          "label": "Partenza",
+          "value": "1.780 m",
+          "source": "https://skiracing.com/saalbach-2025-mens-super-g-preview-contenders-watch/"
+        },
+        {
+          "label": "Arrivo",
+          "value": "1.070 m",
+          "source": "https://skiracing.com/saalbach-2025-mens-super-g-preview-contenders-watch/"
+        },
+        {
+          "label": "Dislivello",
+          "value": "710 m",
+          "source": "https://skiracing.com/saalbach-2025-mens-super-g-preview-contenders-watch/"
+        }
+      ],
+      "history": {
+        "text": "Il salto Ulli Maier ricorda il titolo mondiale di super-G vinto qui dalla campionessa austriaca nel 1991.",
+        "source": "https://skiracing.com/saalbach-womens-super-g-athletes-course-how-to-watch/"
+      },
+      "pois": [],
+      "id": "course-28",
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ],
+      "preview": {
+        "text": "Il salto Ulli Maier ricorda il titolo mondiale di super-G vinto qui dalla campionessa austriaca nel 1991.",
+        "source": "https://skiracing.com/saalbach-womens-super-g-athletes-course-how-to-watch/"
+      }
+    },
+    {
+      "name": "Schneekristall",
+      "venues": [
+        "Saalbach"
+      ],
+      "disciplines": [
+        "DH"
+      ],
+      "gender": "M",
+      "verifiedAt": "2026-11-09",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [],
+      "history": {
+        "text": "Il salto Ulli Maier ricorda il titolo mondiale di super-G vinto qui dalla campionessa austriaca nel 1991.",
+        "source": "https://skiracing.com/saalbach-womens-super-g-athletes-course-how-to-watch/"
+      },
+      "pois": [],
+      "id": "course-29",
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ],
+      "preview": {
+        "text": "Il salto Ulli Maier ricorda il titolo mondiale di super-G vinto qui dalla campionessa austriaca nel 1991.",
+        "source": "https://skiracing.com/saalbach-womens-super-g-athletes-course-how-to-watch/"
+      }
+    },
+    {
+      "name": "Flying Mile",
+      "venues": [
+        "Tremblant"
+      ],
+      "disciplines": [
+        "GS"
+      ],
+      "gender": "W",
+      "verifiedAt": "2026-11-09",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [
+        {
+          "label": "Partenza",
+          "value": "590 m",
+          "source": "https://www.fis-ski.com/DB/pdf/2024/AL/5009/2024AL5009SLR2.pdf"
+        },
+        {
+          "label": "Arrivo",
+          "value": "270 m",
+          "source": "https://www.fis-ski.com/DB/pdf/2024/AL/5009/2024AL5009SLR2.pdf"
+        },
+        {
+          "label": "Dislivello",
+          "value": "320 m",
+          "source": "https://www.fis-ski.com/DB/pdf/2024/AL/5009/2024AL5009SLR2.pdf"
+        }
+      ],
+      "history": {
+        "text": "Dati di riferimento: la configurazione può cambiare a ogni gara.",
+        "source": "https://www.fis-ski.com/DB/pdf/2024/AL/5009/2024AL5009SLR2.pdf"
+      },
+      "pois": [],
+      "id": "course-30",
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ]
+    },
+    {
+      "name": "Olympia",
+      "venues": [
+        "Are"
+      ],
+      "disciplines": [
+        "GS"
+      ],
+      "gender": "M",
+      "verifiedAt": "2026-11-09",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [
+        {
+          "label": "Dislivello",
+          "value": "416 m",
+          "source": "https://www.fis-ski.com/DB/pdf/2018/AL/0052/2018AL0052SLR2.pdf"
+        }
+      ],
+      "history": {
+        "text": "Dati di riferimento: la configurazione può cambiare a ogni gara.",
+        "source": "https://www.fis-ski.com/DB/pdf/2018/AL/0052/2018AL0052SLR2.pdf"
+      },
+      "pois": [],
+      "id": "course-31",
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ]
+    },
+    {
+      "name": "Silvano Beltrametti",
+      "venues": [
+        "Lenzerheide"
+      ],
+      "disciplines": [
+        "SG"
+      ],
+      "gender": "W",
+      "verifiedAt": "2026-11-09",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [
+        {
+          "label": "Lunghezza",
+          "value": "1.485 m",
+          "source": "https://www.fis-ski.com/DB/pdf/2014/AL/5164/2014AL5164SLR0.pdf"
+        },
+        {
+          "label": "Partenza",
+          "value": "2.120 m",
+          "source": "https://www.fis-ski.com/DB/pdf/2014/AL/5164/2014AL5164SLR0.pdf"
+        },
+        {
+          "label": "Arrivo",
+          "value": "1.560 m",
+          "source": "https://www.fis-ski.com/DB/pdf/2014/AL/5164/2014AL5164SLR0.pdf"
+        },
+        {
+          "label": "Dislivello",
+          "value": "560 m",
+          "source": "https://www.fis-ski.com/DB/pdf/2014/AL/5164/2014AL5164SLR0.pdf"
+        }
+      ],
+      "history": {
+        "text": "Dati di riferimento: la configurazione può cambiare a ogni gara.",
+        "source": "https://www.fis-ski.com/DB/pdf/2014/AL/5164/2014AL5164SLR0.pdf"
+      },
+      "pois": [],
+      "id": "course-32",
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ]
+    },
+    {
+      "name": "Lauberhorn",
+      "venues": [
+        "Wengen"
+      ],
+      "disciplines": [
+        "SG"
+      ],
+      "gender": "M",
+      "verifiedAt": "2026-11-09",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [
+        {
+          "label": "Lunghezza",
+          "value": "2.950 m",
+          "source": "https://en.wikipedia.org/wiki/Lauberhorn_ski_races"
+        },
+        {
+          "label": "Partenza",
+          "value": "2.025 m",
+          "source": "https://en.wikipedia.org/wiki/Lauberhorn_ski_races"
+        },
+        {
+          "label": "Arrivo",
+          "value": "1.287 m",
+          "source": "https://en.wikipedia.org/wiki/Lauberhorn_ski_races"
+        },
+        {
+          "label": "Dislivello",
+          "value": "738 m",
+          "source": "https://en.wikipedia.org/wiki/Lauberhorn_ski_races"
+        }
+      ],
+      "history": {
+        "text": "Dati di riferimento: la configurazione può cambiare a ogni gara.",
+        "source": "https://en.wikipedia.org/wiki/Lauberhorn_ski_races"
+      },
+      "pois": [],
+      "id": "course-33",
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ]
+    },
+    {
+      "name": "Männlichen",
+      "venues": [
+        "Wengen"
+      ],
+      "disciplines": [
+        "SL"
+      ],
+      "gender": "M",
+      "verifiedAt": "2026-11-09",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [
+        {
+          "label": "Partenza",
+          "value": "1.475 m",
+          "source": "https://www.wikiwand.com/en/articles/Männlichen_(ski_course)"
+        },
+        {
+          "label": "Arrivo",
+          "value": "1.285 m",
+          "source": "https://www.wikiwand.com/en/articles/Männlichen_(ski_course)"
+        },
+        {
+          "label": "Dislivello",
+          "value": "190 m",
+          "source": "https://www.wikiwand.com/en/articles/Männlichen_(ski_course)"
+        }
+      ],
+      "history": {
+        "text": "Corre su terreno naturale, d’estate a pascolo, e viene usata solo per la Coppa del Mondo.",
+        "source": "https://www.wikiwand.com/en/articles/Männlichen_(ski_course)"
+      },
+      "pois": [],
+      "id": "course-34",
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ],
+      "preview": {
+        "text": "Corre su terreno naturale, d’estate a pascolo, e viene usata solo per la Coppa del Mondo.",
+        "source": "https://www.wikiwand.com/en/articles/Männlichen_(ski_course)"
+      }
+    },
+    {
+      "name": "Stelvio",
+      "venues": [
+        "Bormio"
+      ],
+      "disciplines": [
+        "SG"
+      ],
+      "gender": "M",
+      "verifiedAt": "2026-11-09",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [
+        {
+          "label": "Lunghezza",
+          "value": "2.129 m",
+          "source": "https://www.fis-ski.com/DB/pdf/2020/AL/0086/2020AL0086SLR1.pdf"
+        },
+        {
+          "label": "Partenza",
+          "value": "1.886 m",
+          "source": "https://www.fis-ski.com/DB/pdf/2020/AL/0086/2020AL0086SLR1.pdf"
+        },
+        {
+          "label": "Arrivo",
+          "value": "1.245 m",
+          "source": "https://www.fis-ski.com/DB/pdf/2020/AL/0086/2020AL0086SLR1.pdf"
+        },
+        {
+          "label": "Dislivello",
+          "value": "641 m",
+          "source": "https://www.fis-ski.com/DB/pdf/2020/AL/0086/2020AL0086SLR1.pdf"
+        }
+      ],
+      "history": {
+        "text": "Dati di riferimento: la configurazione può cambiare a ogni gara.",
+        "source": "https://www.fis-ski.com/DB/pdf/2020/AL/0086/2020AL0086SLR1.pdf"
+      },
+      "pois": [],
+      "id": "course-35",
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ]
+    },
+    {
+      "name": "Kandahar 1",
+      "venues": [
+        "Garmisch-Partenkirchen"
+      ],
+      "disciplines": [
+        "DH"
+      ],
+      "gender": "W",
+      "verifiedAt": "2026-11-09",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [
+        {
+          "label": "Partenza",
+          "value": "1.490 m",
+          "source": "https://www.fis-ski.com/DB/pdf/2020/AL/5093/2020AL5093SLR0.pdf"
+        },
+        {
+          "label": "Arrivo",
+          "value": "770 m",
+          "source": "https://www.fis-ski.com/DB/pdf/2020/AL/5093/2020AL5093SLR0.pdf"
+        },
+        {
+          "label": "Dislivello",
+          "value": "720 m",
+          "source": "https://www.fis-ski.com/DB/pdf/2020/AL/5093/2020AL5093SLR0.pdf"
+        }
+      ],
+      "history": {
+        "text": "È la Kandahar originale, costruita per il debutto dello sci alpino ai Giochi del 1936.",
+        "source": "https://en.wikipedia.org/wiki/Kandahar_(ski_course)"
+      },
+      "pois": [],
+      "id": "course-36",
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ],
+      "preview": {
+        "text": "È la Kandahar originale, costruita per il debutto dello sci alpino ai Giochi del 1936.",
+        "source": "https://en.wikipedia.org/wiki/Kandahar_(ski_course)"
+      }
+    },
+    {
+      "name": "Chuenisbärgli",
+      "venues": [
+        "Adelboden"
+      ],
+      "disciplines": [
+        "SL"
+      ],
+      "gender": "M",
+      "verifiedAt": "2026-11-09",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [],
+      "history": {
+        "text": "Il Chuenisbärgli ospita la Coppa del Mondo dal 1967.",
+        "source": "https://en.wikipedia.org/wiki/Chuenisb%C3%A4rgli"
+      },
+      "pois": [],
+      "id": "course-37",
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ],
+      "preview": {
+        "text": "Il Chuenisbärgli ospita la Coppa del Mondo dal 1967.",
+        "source": "https://en.wikipedia.org/wiki/Chuenisb%C3%A4rgli"
+      }
+    },
+    {
+      "name": "Hermann Maier Weltcupstrecke",
+      "venues": [
+        "Flachau"
+      ],
+      "disciplines": [
+        "GS"
+      ],
+      "gender": "W",
+      "verifiedAt": "2026-11-09",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [],
+      "history": {
+        "text": "La pista, già Grießenkar, porta dal 2004 il nome di Hermann Maier.",
+        "source": "https://derstandard.at/1514148/Weltcup-Piste-nach-Hermann-Maier-benannt"
+      },
+      "pois": [],
+      "id": "course-38",
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ],
+      "preview": {
+        "text": "La pista, già Grießenkar, porta dal 2004 il nome di Hermann Maier.",
+        "source": "https://derstandard.at/1514148/Weltcup-Piste-nach-Hermann-Maier-benannt"
+      }
+    },
+    {
+      "name": "Luková",
+      "venues": [
+        "Jasna"
+      ],
+      "disciplines": [
+        "SL"
+      ],
+      "gender": "W",
+      "verifiedAt": "2026-11-09",
+      "geometry": null,
+      "mapStatus": "missing-verified-geometry",
+      "facts": [],
+      "history": {
+        "text": "La Coppa del Mondo femminile è arrivata a Jasná già nel 1984.",
+        "source": "https://spectator.sme.sk/travel/c/jasna-is-prepared-for-world-cup"
+      },
+      "pois": [],
+      "id": "course-39",
+      "missing": [
+        "Geometria georeferenziata verificata",
+        "Coordinate POI",
+        "Verifica configurazione della singola gara"
+      ],
+      "preview": {
+        "text": "La Coppa del Mondo femminile è arrivata a Jasná già nel 1984.",
+        "source": "https://spectator.sme.sk/travel/c/jasna-is-prepared-for-world-cup"
+      }
     }
   ],
-  "updatedAt": "2026-11-06"
+  "updatedAt": "2026-11-09"
 }

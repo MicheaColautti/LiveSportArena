@@ -8,6 +8,7 @@ import { mountCourseMaps } from './course-map.js';
 import { raceTime, raceResults, timeSeconds, seasonMetrics } from './alpine-insights.js';
 import { TEAM_LOGOS, NATIONS, projectedStandings } from './preferences.js';
 import { MODULES } from './modules.js';
+import { racePreview } from './race-preview.js?v=20261109-piste';
 import { gameTimeline } from './game-timeline.js?v=20261109-cronaca';
 import { FisConnection, rowsForRun, alertCandidates, venueInstant, STATUS, STARTED, FINISHED } from './fis-live.js';
 
@@ -658,7 +659,7 @@ function openRace(id, tab = 'overview') {
     <div class="dialog-body ski-race ${full ? 'ski-page' : 'ski-preview'}">${title}
     <div class="dialog-description">${esc(race.disciplineName)} · ${dateLabel(race.date, { weekday:'long', year:'numeric' })}</div>
     <div id="race-status">${raceStatus(race)}</div><div id="race-bulletin"></div>
-    ${full ? `<div class="race-dashboard">${courseProfile(race,map)}<aside class="race-day"><h3>Orari di gara</h3>${schedule}<div id="race-snapshot"></div></aside></div>` : schedule}</div>
+    ${full ? `<div class="race-dashboard">${courseProfile(race,map)}<aside class="race-day"><h3>Orari di gara</h3>${schedule}<div id="race-snapshot"></div></aside></div>` : schedule + racePreview(race, { races: data.alpine.races, cups: data.cups.groups }, { esc, flag, safeUrl, athleteStyle, course: track, profile: skiProfiles[map?.id], mapCourse: map?.course, todayKey: today() })}</div>
     ${full ? `<div id="race-tabs" class="dialog-tabs"></div><div class="detail-content" id="detail-content"></div>
     ${track ? `<details class="race-archive"><summary>Scheda tecnica · ${esc(track.name)}</summary>${trackSection(race, track)}</details>` : ''}
     <div class="race-documents">${documents(race)}<a class="text-button" href="${safeUrl(race.sourceUrl)}" target="_blank" rel="noopener">Pagina ufficiale FIS ↗</a>
@@ -710,9 +711,10 @@ function renderRaceTab() {
   const bulletin = document.querySelector('#race-bulletin');
   const latest = timing?.message || news.get(race.id)?.[0]?.message;
   if (bulletin) bulletin.innerHTML = latest ? `<div class="notice fis">${icon('info')}${esc(latest)}</div>` : '';
+  const snapshot = document.querySelector('#race-snapshot');
+  if (snapshot) snapshot.innerHTML = raceSnapshot(race, timing);
   if (state.route !== 'race') return;
   const target = document.querySelector('#detail-content'); if (!target) return;
-  document.querySelector('#race-snapshot').innerHTML = raceSnapshot(race, timing);
   const underway = timing && (timing.activeRun > 0 || rowsForRun(timing).some(r=>STARTED.has(r.status)));
   const tab = detailTab === 'overview' ? (underway || ['finished','live'].includes(race.status) ? 'results' : 'startlist') : detailTab;
   const scroller = target.querySelector('.scroll-table'); const scrollTop = scroller?.scrollTop; const scrollLeft = scroller?.scrollLeft;
