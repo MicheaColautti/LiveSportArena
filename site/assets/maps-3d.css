@@ -11,17 +11,22 @@ html, body { background: #f4f6f5; }
 .back:hover { background: #e5efda; }
 :focus-visible { outline: 3px solid #80a631; outline-offset: 2px; }
 
-/* Avviso discreto: resta leggibile sul paesaggio, di giorno e di notte, senza bloccare la mappa. */
+/* Avviso discreto, sulla riga dei pulsanti: leggibile di giorno e di notte, non blocca la mappa. */
 .map-note {
-  position: absolute; top: 76px; left: 50%; transform: translateX(-50%); z-index: 4;
-  display: flex; align-items: center; gap: 5px; width: max-content; max-width: min(34vw, 460px); margin: 0;
-  font-size: 11px; line-height: 1.3; color: #3f514f; pointer-events: none;
+  position: absolute; top: 34px; left: 50%; transform: translate(-50%, -50%); z-index: 4;
+  display: flex; align-items: center; justify-content: center; gap: 5px; width: max-content; max-width: calc(100vw - 1032px); margin: 0; text-wrap: balance;
+  font-size: 11px; line-height: 1.25; color: #3f514f; pointer-events: none;
   text-shadow: 0 0 4px rgba(255, 255, 255, .9), 0 0 1px rgba(255, 255, 255, .9);
 }
 .map-note svg { flex: none; width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; }
 .app.night .map-note { color: #dbe8f5; text-shadow: 0 0 4px rgba(15, 30, 50, .9); }
-@media (max-width: 1100px) { .map-note { top: 122px; max-width: calc(100vw - 280px); } }
+/* Sotto i 1280 px tra titolo e pulsanti non c'è più spazio: scende appena sotto la riga. */
+@media (max-width: 1279px) { .map-note { top: 76px; transform: translateX(-50%); max-width: 34vw; } }
+/* Qui i pulsanti vanno su una seconda riga: l'avviso resta accanto al titolo, a destra. */
+@media (max-width: 1100px) {
+  .map-note { top: 42px; left: auto; right: 16px; transform: translateY(-50%); max-width: calc(100vw - 556px); justify-content: flex-end; }
+}
 @media (max-width: 760px) {
-  .map-note { top: 103px; max-width: calc(100vw - 16px); font-size: min(9.5px, 2.5vw); white-space: nowrap; }
+  .map-note { top: 103px; left: 50%; right: auto; transform: translateX(-50%); max-width: calc(100vw - 16px); font-size: min(9.5px, 2.5vw); white-space: nowrap; }
   .stats, .pathPanel, .profilePanel { top: 122px; }
 }
