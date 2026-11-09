@@ -2,12 +2,13 @@ import { skiProfiles } from './ski-profiles.js';
 import { mapFlags, skiMaps, mapForRace } from './maps-3d.js';
 import { readSource } from './client-diagnostics.js';
 import { enhanceSelects as upgradeSelects } from './select-control.js';
-import { enableTableSorting } from './table-sort.js?v=20261107-compact';
-import { hockeyColumn } from './hockey-columns.js';
+import { enableTableSorting } from './table-sort.js?v=20261108-no-sort';
+import { hockeyColumn, statLabel, statValue, statAmount, visibleStats } from './hockey-columns.js?v=20261109-statistiche';
 import { mountCourseMaps } from './course-map.js';
 import { raceTime, raceResults, timeSeconds, seasonMetrics } from './alpine-insights.js';
 import { TEAM_LOGOS, NATIONS, projectedStandings } from './preferences.js';
 import { MODULES } from './modules.js';
+import { gameTimeline } from './game-timeline.js?v=20261109-cronaca';
 import { FisConnection, rowsForRun, alertCandidates, venueInstant, STATUS, STARTED, FINISHED } from './fis-live.js';
 
 const paths = {
@@ -59,7 +60,7 @@ const dialog = document.querySelector('#detail-dialog');
 const content = document.querySelector('#dialog-content');
 const connections = new Map(); const timings = new Map(); const timingErrors = new Map(); const news = new Map(); const notified = new Set();
 const timingSignatures = new Map();
-let activeDetail = null; let detailTab = 'overview'; let selectedRun = null; let toastTimer; let audioContext;
+let activeDetail = null; let cronacaFilter = 'all'; let detailTab = 'overview'; let selectedRun = null; let toastTimer; let audioContext;
 
 const swissDay = new Intl.DateTimeFormat('en-CA', { timeZone:'Europe/Zurich', year:'numeric', month:'2-digit', day:'2-digit' });
 const dayKey = value => swissDay.format(new Date(value));
@@ -358,7 +359,7 @@ function playerLeaders() {
  const rows=[...leaders,...data.hockey.teams.filter(t=>!perTeam.has(String(t.id))).map(t=>({team_id:t.id,player:'Non disponibile',rank:'–',points:null,chf:null}))];
  const money=value=>new Intl.NumberFormat('it-CH',{style:'currency',currency:'CHF',maximumFractionDigits:0}).format(value);
  const total=rows.reduce((sum,p)=>sum+p.chf,0);
- return `<div class="scorer-summary"><p class="tiny">Stagione ${esc(data.hockey.seasonLabel)} · Statistiche SIHF ${since(data.hockey.updatedAt)}${data.hockey.status==='stale'?' · Ultimi dati in cache':''}</p><p><strong>${leaders.length?money(total):'–'}</strong><br><span class="tiny">Totale · ${leaders.length} squadre con dati</span></p></div>${rows.length ? `<div class="scroll-table"><table class="data-table"><thead><tr><th>#</th><th>Giocatore</th><th>Squadra</th><th>Goal</th><th>Assist</th><th>Punti</th><th>CHF per i giovani</th></tr></thead><tbody>${rows.map(p=>`<tr><td>${p.rank}</td><td>${esc(p.player)}</td><td><span class="team-cell">${mark(p.team_id)}${esc(p.team_acronym || team(p.team_id).short)}</span></td><td>${esc(p.goals ?? '–')}</td><td>${esc(p.assists ?? '–')}</td><td><b>${p.points??'–'}</b></td><td data-sort-value="${p.chf??''}"><b>${p.chf==null?'–':money(p.chf)}</b></td></tr>`).join('')}</tbody></table></div>` : empty('Nessun dato per questa squadra','Prova il filtro «Tutte le squadre».')}`;
+ return `<div class="scorer-summary"><p class="tiny">Stagione ${esc(data.hockey.seasonLabel)} · Statistiche SIHF ${since(data.hockey.updatedAt)}${data.hockey.status==='stale'?' · Ultimi dati in cache':''}</p><p><strong>${leaders.length?money(total):'–'}</strong><br><span class="tiny">Totale · ${leaders.length} squadre con dati</span></p></div>${rows.length ? `<div class="scroll-table"><table class="data-table"><thead><tr><th>#</th><th data-no-sort>Giocatore</th><th data-no-sort>Squadra</th><th>Goal</th><th>Assist</th><th data-no-sort>Punti</th><th data-no-sort>CHF per i giovani</th></tr></thead><tbody>${rows.map(p=>`<tr><td>${p.rank}</td><td>${esc(p.player)}</td><td><span class="team-cell">${mark(p.team_id)}${esc(p.team_acronym || team(p.team_id).short)}</span></td><td>${esc(p.goals ?? '–')}</td><td>${esc(p.assists ?? '–')}</td><td><b>${p.points??'–'}</b></td><td data-sort-value="${p.chf??''}"><b>${p.chf==null?'–':money(p.chf)}</b></td></tr>`).join('')}</tbody></table></div>` : empty('Nessun dato per questa squadra','Prova il filtro «Tutte le squadre».')}`;
 }
 
 function generalPlayerLeaders() {
@@ -747,7 +748,7 @@ function documents(race, startsOnly = false) {
 
 function openGame(id) {
   const g = data.hockey.games.find(g => g.id === id); if (!g) return;
-  activeDetail = { type: 'game', id }; detailTab = 'stats';
+  activeDetail = { type: 'game', id }; detailTab = 'summary'; cronacaFilter = 'all';
   openDialog(`${modalHeader(state.route === 'game' ? 'NATIONAL LEAGUE · DETTAGLIO PARTITA' : 'NATIONAL LEAGUE · ANTEPRIMA')}<div class="dialog-body" id="game-summary">${gameSummary(g)}</div><div class="dialog-tabs" id="game-tabs"></div><div class="detail-content" id="detail-content"></div>`);
   renderGameTab();
 }
@@ -759,18 +760,17 @@ function gameSummary(g) {
 function renderGameTab() {
   const g = data.hockey.games.find(g => g.id === activeDetail?.id); if (!g) return;
   const d = data.hockey.details[g.id]; const info = d?.info?.[0];
-  document.querySelector('#game-tabs').innerHTML = [['summary','Riepilogo'],['stats','Squadre'],['events','Cronaca'],...(d?.lineups?.length ? [['lineups','Formazioni']] : []),...(d?.players?.length ? [['players','Giocatori']] : []),['form','Forma e classifica'],['prediction','Previsione']].map(([v, l]) => `<button class="chip${detailTab === v ? ' active' : ''}" data-game-tab="${v}">${l}</button>`).join('');
+  document.querySelector('#game-tabs').innerHTML = [['summary','Riepilogo'],['events','Cronaca'],...(d?.lineups?.length ? [['lineups','Formazioni']] : []),['stats','Statistiche'],...(d?.players?.length ? [['players','Giocatori']] : []),['form','Forma e classifica'],['prediction','Previsione']].map(([v, l]) => `<button class="chip${detailTab === v ? ' active' : ''}" data-game-tab="${v}">${l}</button>`).join('');
   if (['summary','prediction','form'].includes(detailTab)) { document.querySelector('#detail-content').innerHTML=gameExtra(g,d,detailTab); return; }
   const rows = d?.[detailTab] || [];
   let html = '';
   if (!rows.length) html = empty('Dati non ancora disponibili', g.status === 'scheduled' ? 'Formazioni e statistiche in attesa di pubblicazione.' : 'Dettagli partita non disponibili.', 'hockey');
   else if (detailTab === 'stats') {
-    const labels = { 'SOG Total': 'Tiri in porta', 'PIM': 'Minuti di penalità', 'Face-offs won': 'Ingaggi vinti', 'Shots blocked': 'Tiri bloccati', 'Powerplay': 'Power play' };
-    html = `<div class="stat-bars">${rows.map(r => { const a = parseFloat(r.home_value), b = parseFloat(r.away_value); const ratio = a + b > 0 ? a / (a + b) : .5; return `<div><div class="stat-bar-head"><strong>${esc(r.home_value ?? '–')}</strong><span>${esc(labels[r.statistic] || r.statistic)}</span><strong>${esc(r.away_value ?? '–')}</strong></div>${Number.isFinite(a) && Number.isFinite(b) ? `<div class="stat-bar-track"><i style="width:${ratio * 100}%"></i><i style="width:${(1 - ratio) * 100}%"></i></div>` : ''}</div>`; }).join('')}</div>`;
+    html = `<div class="stat-bars">${visibleStats(rows).map(r => { const a = statAmount(r.home_value), b = statAmount(r.away_value); const ratio = a + b > 0 ? a / (a + b) : .5; return `<div><div class="stat-bar-head"><strong>${esc(statValue(r.statistic, r.home_value))}</strong><span>${esc(statLabel(r.statistic))}</span><strong>${esc(statValue(r.statistic, r.away_value))}</strong></div>${Number.isFinite(a) && Number.isFinite(b) ? `<div class="stat-bar-track"><i style="width:${ratio * 100}%"></i><i style="width:${(1 - ratio) * 100}%"></i></div>` : ''}</div>`; }).join('')}</div>`;
   } else if (detailTab === 'lineups') {
     html = lineupGroups(g, rows, d.topScorers ?? data.rosters?.topScorersByGame?.[g.id] ?? []);
   } else if (detailTab === 'events') {
-    html = [...rows].sort((a,b)=>Number(a.period_number||0)-Number(b.period_number||0)||String(a.time||'').localeCompare(String(b.time||''),undefined,{numeric:true})).map(r => `<div class="timeline-event"><span class="timeline-time">${esc(r.time)}</span><div class="timeline-text"><strong>${({ goal: 'GOAL', penalty: 'Penalità', goalie: 'Cambio portiere', shootout: 'Rigore' })[r.event_type] || esc(r.event_type)} · ${r.team_id ? teamName(r.team_id) : ''}</strong>${esc(r.player_name || r.text || '')}${r.assist1_player_name ? ' · Assist: ' + esc([r.assist1_player_name, r.assist2_player_name].filter(Boolean).join(', ')) : ''}${r.penalty_minutes ? ` · ${r.penalty_minutes} min` : ''}<br>${r.period_number ? r.period_number + '° periodo' : ''}${r.score_home != null ? ` · ${r.score_home}–${r.score_away}` : ''}</div></div>`).join('');
+    html = gameTimeline(g, d, { esc, mark, team }, cronacaFilter);
   } else if (detailTab === 'players') {
     const players = rows.map(row => {
       const {player, ...stats} = row;
@@ -784,7 +784,7 @@ function renderGameTab() {
       html = allColumns(compact, true);
     }
   }
-  if (detailTab !== 'lineups' && detailTab !== 'players') html += tableLegend();
+  if (!['lineups','players','events','stats'].includes(detailTab)) html += tableLegend();
   if (info) html += `<p class="explanation">${esc(info.venue_name || '')}${info.spectators ? ` · ${Number(info.spectators).toLocaleString('it-CH')} spettatori` : ''}${info.broadcasts ? '<br>TV: ' + esc(info.broadcasts) : ''}</p>`;
   html += `<div class="dialog-actions"><a class="text-button" href="${safeUrl(g.sourceUrl)}" target="_blank" rel="noopener noreferrer">Dettaglio ufficiale SIHF ↗</a></div>`;
   document.querySelector('#detail-content').innerHTML = html;
@@ -863,6 +863,7 @@ document.addEventListener('click', async event => {
   if (el.dataset.hockeyTab) { location.hash=hockeyRoute(el.dataset.hockeyTab); return; }
   if (el.dataset.raceTab) { detailTab = el.dataset.raceTab; renderRaceTab(); return; }
   if (el.dataset.gameTab) { detailTab = el.dataset.gameTab; renderGameTab(); return; }
+  if (el.dataset.cronacaFilter) { cronacaFilter = el.dataset.cronacaFilter; renderGameTab(); return; }
   if (el.dataset.run != null) { selectedRun = Number(el.dataset.run); renderRaceTab(); return; }
   if (el.dataset.athlete) { const id = el.dataset.athlete; state.alerts.athletes = state.alerts.athletes.includes(id) ? state.alerts.athletes.filter(x => x !== id) : [...state.alerts.athletes, id]; preferences.athletes = [...state.alerts.athletes]; saveStore('preferences',preferences); saveStore('alerts', state.alerts); renderRaceTab(); return; }
   const action = el.dataset.action;

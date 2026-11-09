@@ -48,7 +48,7 @@ export function enableTableSorting() {
       });
       heads.forEach((th, index) => {
         const label = th.textContent.trim();
-        if (!label || label === 'Segui') return;
+        if (!label || label === 'Segui' || th.hasAttribute('data-no-sort')) return;
         th.setAttribute('aria-sort', 'none');
         const button = document.createElement('button');
         button.type = 'button'; button.className = 'table-sort';

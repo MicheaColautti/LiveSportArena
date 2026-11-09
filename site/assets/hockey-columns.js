@@ -61,3 +61,41 @@ export function hockeyColumn(key) {
   return [label,label];
 }
 
+// Statistiche di squadra di una partita: i codici arrivano dalla SIHF.
+const teamStats = {
+  SOG:'Tiri in porta', SHM:'Tiri fuori bersaglio', SHP:'Tiri sul palo', BkS:'Tiri bloccati',
+  FO:'Ingaggi', FOW:'Ingaggi vinti', FOL:'Ingaggi persi', 'FO%':'Ingaggi vinti',
+  'FO% oz':'Ingaggi vinti in zona offensiva', 'FO% nz':'Ingaggi vinti in zona neutra', 'FO% dz':'Ingaggi vinti in zona difensiva',
+  PIM:'Minuti di penalità', PPT:'Tempo in superiorità', PKT:'Tempo in inferiorità',
+  'PP OP':'Occasioni in superiorità', PPG:'Goal in superiorità', 'PP%':'Efficacia in superiorità',
+  'PK SI':'Situazioni di inferiorità', 'PK GA':'Goal subiti in inferiorità', 'PK%':'Efficacia in inferiorità', SHG:'Goal segnati in inferiorità'
+};
+
+export function statLabel(code) {
+  const [, base, period] = /^(.*?)(?: (Total|[123]P))?$/.exec(String(code));
+  const label = teamStats[base];
+  if (!label) return String(code);
+  return period && period !== 'Total' ? `${label} · ${period[0]}° periodo` : label;
+}
+
+// PP GA ripete sempre PK GA. I PIM per periodo della SIHF restano a zero anche quando il totale non lo è.
+export function visibleStats(rows) {
+  const total = rows.find(row => row.statistic === 'PIM Total');
+  const hasMinutes = total && (Number(total.home_value) || Number(total.away_value));
+  const periodMinutes = rows.filter(row => /^PIM [123]P$/.test(row.statistic));
+  const brokenMinutes = hasMinutes && periodMinutes.every(row => !Number(row.home_value) && !Number(row.away_value));
+  return rows.filter(row => row.statistic !== 'PP GA' && !(brokenMinutes && periodMinutes.includes(row)));
+}
+
+export function statValue(code, value) {
+  if (value == null || value === '') return '–';
+  if (!String(code).includes('%')) return String(value);
+  const number = Number(value);
+  return Number.isFinite(number) ? `${number.toLocaleString('it-CH', { maximumFractionDigits: 1 })}%` : String(value);
+}
+
+// Peso per le barre: i tempi mm:ss vanno confrontati in secondi.
+export function statAmount(value) {
+  const time = /^(\d+):(\d{2})$/.exec(String(value ?? ''));
+  return time ? Number(time[1]) * 60 + Number(time[2]) : parseFloat(value);
+}
