@@ -6,7 +6,10 @@ background thread, so they never delay scores; the next poll picks up their hock
 import argparse
 import threading
 from datetime import datetime, timedelta, timezone
+from zoneinfo import ZoneInfo
 from . import hockey_live
+from .hockey import records
+from .diagnostics import sihf_call
 from .common import SITE, CACHE, read_json, write_json, stamp
 from .diagnostics import logged_update, record
 from .scheduled import finished_ids, refresh_alpine, refresh_hockey
@@ -50,6 +53,39 @@ def plan(state, games, races, now):
     return hockey_due, seconds_since(state, 'alpine', now) >= alpine_interval(races, now)
 
 
+def refresh_lineups(games, season):
+    from sportsdataverse.hockey import sihf
+    from sportsdataverse.hockey.sihf import parse_sihf_game_lineups
+    path = SITE / 'data/hockey.json'
+    snapshot = read_json(path, {})
+    if snapshot.get('season') != season:
+        return
+    changed = False
+    for game in games:
+        gid = game['id']
+        try:
+            report = sihf_call(sihf.sihf_game_info, game_id=int(gid), language='en', return_parsed=False)
+            if str(report.get('gameId')) != gid:
+                continue
+            rows = records(parse_sihf_game_lineups(report, return_as_pandas=True))
+            if not rows:
+                continue
+            scorers = sorted({str(tag['id']) for side in ('homeTeam', 'awayTeam')
+                              for tag in ((report.get('lineUps') or {}).get(side) or {}).get('taggedPlayers', [])
+                              if tag.get('type') == 'pftopscorer' and tag.get('id')})
+            detail = snapshot.setdefault('details', {}).setdefault(gid, {})
+            if rows != detail.get('lineups') or scorers != detail.get('topScorers'):
+                detail.update(lineups=rows, topScorers=scorers, updatedAt=stamp())
+                changed = True
+                print(f'SIHF formazioni {gid}: {len(rows)} giocatori', flush=True)
+        except Exception as exc:
+            print(f'SIHF formazioni {gid}: {exc}', flush=True)
+    if changed:
+        snapshot['updatedAt'] = stamp()
+        write_json(CACHE / 'hockey.json', snapshot)
+        write_json(path, snapshot)
+
+
 class SlowUpdates:
     def __init__(self):
         self.season = None
@@ -77,6 +113,22 @@ class SlowUpdates:
         games = read_json(SITE / 'data/hockey-live.json', {}).get('games', [])
         races = read_json(SITE / 'data/alpine.json', {}).get('races', [])
         hockey_due, alpine_due = plan(state, games, races, datetime.now(timezone.utc))
+        now = datetime.now(timezone.utc)
+        attempts = state.setdefault('lineupAttempts', {})
+        pregame = []
+        for game in games:
+            if game['status'] != 'scheduled' or not game.get('start'):
+                continue
+            start = datetime.fromisoformat(game['start'].replace('Z', '+00:00'))
+            if start.tzinfo is None:
+                start = start.replace(tzinfo=ZoneInfo('Europe/Zurich'))
+            if timedelta(0) <= start - now <= timedelta(minutes=105):
+                if seconds_since(attempts, game['id'], now) >= 600:
+                    pregame.append(game)
+                    attempts[game['id']] = stamp()
+        if pregame:
+            write_json(STATE, state)
+            refresh_lineups(pregame, self.season)
         if hockey_due or alpine_due:
             self.refresh(self.season, state, finished_ids(games), hockey_due, alpine_due)
 
