@@ -2,6 +2,7 @@
 from .diagnostics import logged_update, sihf_call
 import argparse
 import fcntl
+from math import ceil
 import signal
 import threading
 from datetime import datetime
@@ -16,7 +17,8 @@ PATH = SITE / 'data/hockey-live.json'
 def interval(games):
     now = datetime.now(ZoneInfo('Europe/Zurich'))
     if any(g['status'] == 'live' for g in games):
-        return 20
+        return 60
+    delay = 300
     for game in games:
         if game['status'] != 'scheduled':
             continue
@@ -24,11 +26,12 @@ def interval(games):
             start = datetime.fromisoformat(game['start'].replace('Z', '+00:00'))
             if start.tzinfo is None:
                 start = start.replace(tzinfo=ZoneInfo('Europe/Zurich'))
-            if -14400 <= (start-now).total_seconds() <= 900:
-                return 20
-        elif game['date'] == now.date().isoformat():
-            return 60
-    return 300
+            remaining = (start - now).total_seconds()
+            if -14400 <= remaining <= 300:
+                return 60
+            if remaining > 300:
+                delay = min(delay, ceil(remaining - 300))
+    return delay
 
 
 @logged_update("hockey_live")

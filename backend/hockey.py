@@ -12,6 +12,16 @@ def records(frame):
     return json.loads(frame.to_json(orient="records", date_format="iso"))
 
 
+def merge_game_info(previous, rows):
+    if not rows:
+        return previous
+    row = dict(rows[0])
+    for key in ("referees", "linesmen", "venue_name", "venue_city", "broadcasts", "spectators"):
+        if row.get(key) in (None, "") and previous and previous[0].get(key) is not None:
+            row[key] = previous[0][key]
+    return [row]
+
+
 def publish_csv(raw, details):
     """Publish the notebook's five CSV outputs for the current season."""
     import pandas as pd
@@ -153,6 +163,8 @@ def update(season, detail_limit=8):
         for key, parse in routes.items():
             try:
                 detail[key] = records(parse(report, return_as_pandas=True))
+                if key == "info":
+                    detail[key] = merge_game_info((cached or {}).get(key, []), detail[key])
                 if key == "lineups":
                     lineups = report.get("lineUps") or {}
                     detail["topScorers"] = sorted({

@@ -8,7 +8,7 @@ import threading
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 from . import hockey_live
-from .hockey import records
+from .hockey import merge_game_info, records
 from .diagnostics import sihf_call
 from .common import SITE, CACHE, read_json, write_json, stamp
 from .diagnostics import logged_update, record
@@ -55,7 +55,6 @@ def plan(state, games, races, now):
 
 def refresh_lineups(games, season):
     from sportsdataverse.hockey import sihf
-    from sportsdataverse.hockey.sihf import parse_sihf_game_lineups
     path = SITE / 'data/hockey.json'
     snapshot = read_json(path, {})
     if snapshot.get('season') != season:
@@ -67,17 +66,22 @@ def refresh_lineups(games, season):
             report = sihf_call(sihf.sihf_game_info, game_id=int(gid), language='en', return_parsed=False)
             if str(report.get('gameId')) != gid:
                 continue
-            rows = records(parse_sihf_game_lineups(report, return_as_pandas=True))
-            if not rows:
-                continue
-            scorers = sorted({str(tag['id']) for side in ('homeTeam', 'awayTeam')
-                              for tag in ((report.get('lineUps') or {}).get(side) or {}).get('taggedPlayers', [])
-                              if tag.get('type') == 'pftopscorer' and tag.get('id')})
             detail = snapshot.setdefault('details', {}).setdefault(gid, {})
-            if rows != detail.get('lineups') or scorers != detail.get('topScorers'):
-                detail.update(lineups=rows, topScorers=scorers, updatedAt=stamp())
+            info = records(sihf.parse_sihf_game_info(report, return_as_pandas=True))
+            updates = {}
+            if info:
+                updates['info'] = merge_game_info(detail.get('info', []), info)
+            rows = records(sihf.parse_sihf_game_lineups(report, return_as_pandas=True))
+            if rows:
+                updates['lineups'] = rows
+                updates['topScorers'] = sorted({
+                    str(tag['id']) for side in ('homeTeam', 'awayTeam')
+                    for tag in ((report.get('lineUps') or {}).get(side) or {}).get('taggedPlayers', [])
+                    if tag.get('type') == 'pftopscorer' and tag.get('id')
+                })
+            if any(value != detail.get(key) for key, value in updates.items()):
+                detail.update(updates, updatedAt=stamp())
                 changed = True
-                print(f'SIHF formazioni {gid}: {len(rows)} giocatori', flush=True)
         except Exception as exc:
             print(f'SIHF formazioni {gid}: {exc}', flush=True)
     if changed:
@@ -115,8 +119,23 @@ class SlowUpdates:
         hockey_due, alpine_due = plan(state, games, races, datetime.now(timezone.utc))
         now = datetime.now(timezone.utc)
         attempts = state.setdefault('lineupAttempts', {})
-        pregame = []
+        phases = state.setdefault('reportPhases', {})
+        pending = []
         for game in games:
+            gid = game['id']
+            if game['status'] == 'live':
+                phase = [game.get('statusId'), game.get('statusText'), len(game.get('homePeriods') or [])]
+                if phases.get(gid) != phase or seconds_since(attempts, gid, now) >= 300:
+                    pending.append(game)
+                    phases[gid] = phase
+                    attempts[gid] = stamp()
+                continue
+            if game['status'] == 'finished' and (gid in phases or (
+                    game.get('date') == now.astimezone(ZoneInfo('Europe/Zurich')).date().isoformat()
+                    and gid not in state.get('finished', []))):
+                pending.append(game)
+                phases.pop(gid, None)
+                continue
             if game['status'] != 'scheduled' or not game.get('start'):
                 continue
             start = datetime.fromisoformat(game['start'].replace('Z', '+00:00'))
@@ -124,11 +143,11 @@ class SlowUpdates:
                 start = start.replace(tzinfo=ZoneInfo('Europe/Zurich'))
             if timedelta(0) <= start - now <= timedelta(minutes=105):
                 if seconds_since(attempts, game['id'], now) >= 600:
-                    pregame.append(game)
+                    pending.append(game)
                     attempts[game['id']] = stamp()
-        if pregame:
+        if pending:
             write_json(STATE, state)
-            refresh_lineups(pregame, self.season)
+            refresh_lineups(pending, self.season)
         if hockey_due or alpine_due:
             self.refresh(self.season, state, finished_ids(games), hockey_due, alpine_due)
 
