@@ -50,7 +50,7 @@ def live_projection(standings, games):
     if not live:
         return []
     rows = {str(r["team_id"]): dict(r) for r in standings}
-    totals = {tid: {"games": 0, "points": 0} for tid in rows}
+    totals = {tid: {"games": 0, "points": 0, "gf": 0, "ga": 0} for tid in rows}
     for game in games:
         if game["status"] != "finished":
             continue
@@ -62,9 +62,28 @@ def live_projection(standings, games):
         winner, loser = (home, away) if hs > aws else (away, home)
         totals[winner]["points"] += 2 if overtime else 3
         totals[loser]["points"] += 1 if overtime else 0
+        for tid, gf, ga in ((home, hs, aws), (away, aws, hs)):
+            totals[tid]["gf"] += gf
+            totals[tid]["ga"] += ga
         totals[home]["games"] += 1
         totals[away]["games"] += 1
-    if any(totals[tid]["games"] != r["games_played"] or totals[tid]["points"] != r["points"] for tid, r in rows.items()):
+    # SIHF sometimes includes today's starting 0–0 (+1 each) in its table.
+    # Reverse only an exact, paired footprint confirmed by completed fixtures.
+    dates = {g.get('date') for g in live}
+    for game in games:
+        if game['status'] not in ('live', 'cancelled') or game.get('date') not in dates:
+            continue
+        pair = [game['home'], game['away']]
+        if all(t in rows and rows[t]['games_played'] == totals[t]['games'] + 1
+               and rows[t]['points'] == totals[t]['points'] + 1
+               and rows[t]['goals_for'] == totals[t]['gf']
+               and rows[t]['goals_against'] == totals[t]['ga'] for t in pair):
+            for t in pair:
+                rows[t]['games_played'] -= 1
+                rows[t]['points'] -= 1
+    if any(totals[t]['games'] != r['games_played'] or totals[t]['points'] != r['points']
+           or totals[t]['gf'] != r['goals_for'] or totals[t]['ga'] != r['goals_against']
+           for t, r in rows.items()):
         return []
     for game in live:
         home, away = game["home"], game["away"]
@@ -73,7 +92,13 @@ def live_projection(standings, games):
             return []
         # At a draw each team has one provisional point, the winning extra
         # point is not awarded before an actual leader exists.
-        overtime = len(game.get("homePeriods") or []) > 3 or game.get("decision") in {"OT", "SO"}
+        phase = (game.get('statusText') or '').lower()
+        shootout = game.get('decision') == 'SO' or 'shootout' in phase or 'penaltyschiessen' in phase
+        overtime = shootout or game.get('decision') == 'OT' or any(x in phase for x in ('overtime', 'verlängerung'))
+        periods = game.get('homePeriods') or []
+        if not overtime and hs != aws and (not any(x is not None for x in periods[:3])
+                                           or any(x is not None for x in periods[3:])):
+            return []
         hp, ap = ((1, 1) if hs == aws else ((2, 1) if hs > aws else (1, 2))) if overtime or hs == aws else ((3, 0) if hs > aws else (0, 3))
         for tid, points in ((home, hp), (away, ap)):
             rows[tid]["points"] += points
@@ -86,7 +111,7 @@ def live_projection(standings, games):
             row['goals_difference'] = row['goals_for'] - row['goals_against']
             if scored != conceded:
                 outcome = 'won' if scored > conceded else 'lost'
-                phase = 'penalty' if game.get('decision') == 'SO' else 'extra_time' if overtime else 'in_time'
+                phase = 'penalty' if shootout else 'extra_time' if overtime else 'in_time'
                 key = 'games_' + outcome + '_' + phase
                 row[key] = (row.get(key) or 0) + 1
     ordered = sorted(rows.values(), key=lambda r: (-r["points"], r["rank"]))

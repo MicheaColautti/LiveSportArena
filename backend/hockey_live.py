@@ -4,6 +4,9 @@ import argparse
 import fcntl
 from math import ceil
 import signal
+import os
+from time import monotonic
+from .diagnostics import record
 import threading
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -17,7 +20,7 @@ PATH = SITE / 'data/hockey-live.json'
 def interval(games):
     now = datetime.now(ZoneInfo('Europe/Zurich'))
     if any(g['status'] == 'live' for g in games):
-        return 60
+        return max(30, int(os.environ.get('HOCKEY_LIVE_SECONDS', '60')))
     delay = 300
     for game in games:
         if game['status'] != 'scheduled':
@@ -32,6 +35,34 @@ def interval(games):
             if remaining > 300:
                 delay = min(delay, ceil(remaining - 300))
     return delay
+
+
+def event_snapshot(game, previous, fetch, parse):
+    gid = game['id']
+    item = dict(previous, checkedAt=stamp())
+    started = monotonic()
+    try:
+        report = sihf_call(fetch, game_id=int(gid), language='en', return_parsed=False)
+        if str(report.get('gameId')) != gid:
+            raise ValueError('Unexpected SIHF game ID')
+        periods = (report.get('summary') or {}).get('periods')
+        revision = report.get('updateDateTime')
+        if revision and previous.get('sourceUpdatedAt') and revision < previous['sourceUpdatedAt']:
+            raise ValueError('Older SIHF report')
+        if not periods:
+            item['status'] = 'stale' if previous.get('fetchedAt') else 'unpublished'
+        else:
+            if not isinstance(periods, list) or not all(isinstance(p, dict) and
+                    isinstance(p.get('goals'), list) and isinstance(p.get('fouls'), list) for p in periods):
+                raise ValueError('Incomplete SIHF periods')
+            events = records(parse(report, return_as_pandas=True))
+            item.update(events=events, status='ok', fetchedAt=stamp(), sourceUpdatedAt=revision)
+    except Exception as exc:
+        item['status'] = 'stale'
+        record('hockey_events_error', gameId=gid, error=str(exc))
+    record('hockey_events', gameId=gid, status=item['status'], count=len(item.get('events', [])),
+           durationMs=round((monotonic()-started)*1000))
+    return item
 
 
 @logged_update("hockey_live")
@@ -69,9 +100,20 @@ def collect(season, scheduled=False):
     if scheduled:
         standings = records(sihf_call(sihf.sihf_standings, season=season, league_id=1, language='en', return_as_pandas=True))
         baseline['standings'] = standings
+    previous = old.get('eventsByGame', {}) if old.get('season') == season else {}
+    events = {}
+    for g in games:
+        gid = g['id']
+        prior = previous.get(gid, {})
+        if g['status'] == 'live' or (g['status'] == 'finished' and prior and not prior.get('final')):
+            item = event_snapshot(g, prior, sihf.sihf_game_info, sihf.parse_sihf_pbp)
+            item['final'] = g['status'] == 'finished' and item['status'] == 'ok'
+            events[gid] = item
+        elif prior.get('final') and (baseline.get('details', {}).get(gid, {}).get('updatedAt') or '') < prior['fetchedAt']:
+            events[gid] = prior
     delay = 300 if scheduled else interval(games)
     result = dict(season=season, status='ok', mode='github-actions' if scheduled else 'local-worker', checkedAt=checked,
-                  updatedAt=checked, nextPollSeconds=delay, games=list(patches.values()),
+                  updatedAt=checked, eventsByGame=events, nextPollSeconds=delay, games=list(patches.values()),
                   baseUpdatedAt=baseline.get('updatedAt'), standings=baseline.get('standings', []),
                   liveStandings=live_projection(baseline.get('standings', []), games))
     write_json(PATH, result)
