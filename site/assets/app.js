@@ -582,7 +582,8 @@ function render() {
   document.querySelector('#user-icon').innerHTML = icon('user');
   document.title = `${eventTitle} · Live Sport Arena`;
   main.innerHTML = ({ 'maps-3d': mapsPage, home: homePage, calendar: () => calendarPage(), alpine: () => calendarPage(true), hockey: hockeyPage, live: livePage, predictions: predictionsPage, settings: settingsPage, 'hockey-stats': hockeyStatisticsPage, game: () => detailPage('game'), race: () => detailPage('race'), 'alpine-standings': alpineStandingsPage, 'alpine-stats': alpineStatsPage }[state.route] || homePage)();
-  if (['game','race'].includes(state.route)) { const tab=detailTab; const filter=cronacaFilter; const run=selectedRun; if (state.route==='game') { openGame(state.detailId); cronacaFilter=filter; detailTab=tab; renderGameTab(); } else { openRace(state.detailId); detailTab=tab; selectedRun=run; renderRaceTab(); } }
+  if (state.route === 'game') openGame(state.detailId, detailTab, cronacaFilter);
+  if (state.route === 'race') openRace(state.detailId, detailTab, selectedRun);
   bindSeasonList(previousDay);
   upgradeSelects(main, mark);
   if (focusId) { const replacement = document.getElementById(focusId); replacement?.focus({ preventScroll: true }); if (typeof selection === 'number' && replacement?.type === 'search') replacement.setSelectionRange(selection, selection); }
@@ -648,9 +649,9 @@ function raceSnapshot(race, timing) {
   return sections.join('');
 }
 
-function openRace(id, tab = 'overview') {
+function openRace(id, tab = 'overview', run = null) {
   const race = data.alpine.races.find(r => r.id === id); if (!race) return;
-  activeDetail = { type: 'race', id }; detailTab = tab; selectedRun = null;
+  activeDetail = { type: 'race', id }; detailTab = tab; selectedRun = run;
   const full = state.route === 'race';
   const map = mapForRace(race);
   const schedule = `<div id="run-summary">${runCards(race, true)}</div><div class="sync-note">${timezoneLabel}</div>`;
@@ -719,6 +720,7 @@ function renderRaceTab() {
   const target = document.querySelector('#detail-content'); if (!target) return;
   const underway = timing && (timing.activeRun > 0 || rowsForRun(timing).some(r=>STARTED.has(r.status)));
   const tab = detailTab === 'overview' ? (underway || ['finished','live'].includes(race.status) ? 'results' : 'startlist') : detailTab;
+  rememberDetailTab(tab);
   const scroller = target.querySelector('.scroll-table'); const scrollTop = scroller?.scrollTop; const scrollLeft = scroller?.scrollLeft;
   const focusedAthlete = document.activeElement?.dataset.athlete;
   const error = timingErrors.get(race.id); const run = selectedRun ?? timing?.activeRun ?? 0;
@@ -752,9 +754,9 @@ function documents(race, startsOnly = false) {
   return docs.length ? `<div class="document-links">${docs.map(d => `<a class="button" href="${safeUrl(d.url)}" target="_blank" rel="noopener noreferrer">${icon('download')}${esc(({ 'Start List 1st run': 'Partenza 1ª manche · PDF', 'Start List 2nd run': 'Partenza 2ª manche · PDF', 'Results 1st run': 'Risultati 1ª manche · PDF', 'Results 2nd run': 'Risultati finali · PDF', 'Event Program': 'Programma · PDF' })[d.name] || d.name)}</a>`).join('')}</div>` : '';
 }
 
-function openGame(id) {
+function openGame(id, tab = 'summary', filter = 'all') {
   const g = data.hockey.games.find(g => g.id === id); if (!g) return;
-  activeDetail = { type: 'game', id }; detailTab = 'summary'; cronacaFilter = 'all';
+  activeDetail = { type: 'game', id }; detailTab = tab; cronacaFilter = filter;
   openDialog(`${modalHeader(state.route === 'game' ? 'NATIONAL LEAGUE · DETTAGLIO PARTITA' : 'NATIONAL LEAGUE · ANTEPRIMA')}<div class="dialog-body" id="game-summary">${gameSummary(g)}</div><div class="dialog-tabs" id="game-tabs"></div><div class="detail-content" id="detail-content"></div>`);
   renderGameTab();
 }
@@ -766,6 +768,8 @@ function gameSummary(g) {
 function renderGameTab() {
   const g = data.hockey.games.find(g => g.id === activeDetail?.id); if (!g) return;
   const d = data.hockey.details[g.id]; const info = d?.info?.[0];
+  if (['lineups', 'players'].includes(detailTab) && !d?.[detailTab]?.length) detailTab = 'summary';
+  rememberDetailTab(detailTab);
   document.querySelector('#game-tabs').innerHTML = [['summary','Riepilogo'],['events','Cronaca'],...(d?.lineups?.length ? [['lineups','Formazioni']] : []),['stats','Statistiche'],...(d?.players?.length ? [['players','Giocatori']] : []),['form','Forma e classifica'],['prediction','Previsione']].map(([v, l]) => `<button class="chip${detailTab === v ? ' active' : ''}" data-game-tab="${v}">${l}</button>`).join('');
   if (['summary','prediction','form'].includes(detailTab)) { document.querySelector('#detail-content').innerHTML=gameExtra(g,d,detailTab); return; }
   const rows = d?.[detailTab] || [];
@@ -918,10 +922,21 @@ document.addEventListener('keydown', event => { if (event.key === 'Escape') clos
 dialog.addEventListener('click', event => { if (event.target === dialog) { const rect = dialog.getBoundingClientRect(); if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close(); } });
 dialog.addEventListener('close', () => { if (['race','game'].includes(state.route)) return; if (!state.alerts.enabled && state.route !== 'live') { for (const c of connections.values()) c.close(); connections.clear(); } activeDetail = null; });
 function hockeyRoute(tab) { return ({standings:'hockey/standings',stats:'hockey/top-scorer'})[tab] || 'hockey'; }
+function rememberDetailTab(tab) {
+  if (activeDetail?.type !== state.route || activeDetail.id !== state.detailId) return;
+  const saved = history.state?.detailView;
+  if (saved?.hash === location.hash && saved.tab === tab) return;
+  history.replaceState({ ...history.state, detailView: { hash: location.hash, tab } }, '');
+}
 function readRoute() {
  const [route,id]=location.hash.slice(1).split('/');
  state.route=['game','race'].includes(route) ? route : navigation.some(n=>n[0]===route) ? route : 'home';
- state.detailId=id; detailTab=state.route==='game'?'summary':'overview';
+ state.detailId = id;
+ const saved = history.state?.detailView;
+ detailTab = saved?.hash === location.hash && ['race', 'game'].includes(state.route)
+   ? saved.tab : state.route === 'game' ? 'summary' : 'overview';
+ selectedRun = null;
+ cronacaFilter = 'all';
  if(state.route==='hockey') {state.hockeyTab=({standings:'standings','top-scorer':'stats'})[id] || 'calendar'; }
  if (state.route==='alpine' || state.route==='hockey') { state.scope='upcoming'; state.resetSeasonPosition=true; }
  if(state.route==='calendar') { state.scope='upcoming'; state.resetSeasonPosition=true; }
