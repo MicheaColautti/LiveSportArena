@@ -31,7 +31,7 @@ Lo sci legge il timing ufficiale FIS direttamente dal browser. Calendari, ICS e 
 
 I modelli previsionali sono predisposti ma disattivati. Non sono pubblicate quote Sporttip o previsioni live inventate: servono una fonte quote collegata e un modello appropriato.
 
-[Aggiornamenti locali e log diagnostici](docs/AGGIORNAMENTI-E-LOG.md) · [Architettura e flussi](docs/ARCHITETTURA.md)
+[Aggiornamenti locali e log diagnostici](docs/AGGIORNAMENTI-E-LOG.md) · [Architettura e flussi](docs/ARCHITETTURA.md) · [Piano di sviluppo](docs/PIANO-SVILUPPO.md)
 
 Progetto indipendente, non affiliato a FIS, SIHF o National League. Loghi e immagini forniti dall’utente; i banner originali includono watermark, conservati senza modifiche.
 

@@ -397,3 +397,5 @@ input.input[type=date]::-webkit-date-and-time-value{text-align:left}
 .ski-preview .mini-table .flag{margin-right:6px}
 .ski-preview #race-snapshot:empty{display:none}
 @media(max-width:480px){.preview-tiles{grid-template-columns:1fr 1fr}.preview-tile:last-child:nth-child(odd){grid-column:1/-1}}
+
+.game-preview-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.game-preview-heading .map-launch{margin-left:auto;flex:none}

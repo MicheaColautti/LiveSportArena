@@ -497,9 +497,10 @@ function gameExtra(g,d,tab) {
  const stats=d?.stats||[];
  return `<div class="panel-body"><h3>Tiri e gol per periodo</h3><div class="period-grid">${(info?.home_shots_by_period||[]).map((v,i)=>`<div><small>${i+1}° periodo · tiri casa/ospiti</small><strong>${v??'–'} / ${info.away_shots_by_period?.[i]??'–'}</strong></div>`).join('')||'<p>Dati per periodo non disponibili</p>'}</div><div class="stat-bars">${stats.filter(r=>Number.isFinite(Number(r.home_value))&&Number.isFinite(Number(r.away_value))&&r.home_value!=null&&r.away_value!=null&&Number(r.home_value)>=0&&Number(r.away_value)>=0).map(r=>{const a=Number(r.home_value),b=Number(r.away_value),sum=a+b||1;return `<div><div class="stat-bar-head"><b>${a}</b><span>${esc(r.statistic)}</span><b>${b}</b></div><div class="stat-bar-track"><i style="width:${a/sum*100}%"></i><i style="width:${b/sum*100}%"></i></div></div>`;}).join('')}</div>${tableLegend()}</div>`;
 }
+const arenaCube = `<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 9 5v10l-9 5-9-5V7zM3 7l9 5 9-5m-9 5v10"/></svg>`;
 function mapLink(race) {
   const map = mapForRace(race);
-  return map ? `<a class="button map-launch" target="_self" href="maps-3d/${map.id}.html?race=${encodeURIComponent(race.id)}"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 9 5v10l-9 5-9-5V7zM3 7l9 5 9-5m-9 5v10"/></svg>Esplora in 3D</a>`
+  return map ? `<a class="button map-launch" target="_self" href="maps-3d/${map.id}.html?race=${encodeURIComponent(race.id)}">${arenaCube}Esplora in 3D</a>`
     : '<span class="tiny">Mappa 3D non disponibile</span>';
 }
 
@@ -761,8 +762,17 @@ function openGame(id, tab = 'summary', filter = 'all') {
   renderGameTab();
 }
 
+function matchPreviewLink(g) {
+  const rows = data.hockey.details[g.id]?.lineups || [];
+  const complete = ['home', 'away'].every(side =>
+    ['forward_left', 'forward_center', 'forward_right', 'defense_left', 'defense_right'].every(unit =>
+      [1, 2, 3].every(slot => rows.some(row => row.team_side === side && row.unit === unit && row.slot === slot))) &&
+    rows.some(row => row.team_side === side && row.unit === 'goalkeeper'));
+  return complete ? `<a class="button map-launch" href="match-preview/?game=${encodeURIComponent(g.id)}">${arenaCube}Match Preview</a>` : '';
+}
+
 function gameSummary(g) {
-  return `<h2 id="dialog-title" style="font-size:18px">${dateLabel(g.date, { weekday: 'long', year: 'numeric' })} · ${clock(g.start)}</h2><div class="dialog-description">${timezoneLabel}${state.route !== 'game' ? ` · <a class="text-button" href="#game/${g.id}" data-full-detail>Dettagli ↗</a>` : ''}</div><div class="scoreboard"><div>${mark(g.home, true)}<div class="score-team">${teamName(g.home)}</div></div><div><div class="score-number">${g.status === 'scheduled' ? 'VS' : `${g.homeScore ?? '–'} : ${g.awayScore ?? '–'}`}</div><div class="score-label">${g.status === 'scheduled' ? 'In programma' : g.status === 'finished' ? 'Finale' + (g.decision ? ' · ' + g.decision : '') : esc(g.statusText)}${g.homePeriods?.length ? '<br>' + g.homePeriods.map((s, i) => `${s ?? '–'}–${g.awayPeriods?.[i] ?? '–'}`).join(' / ') : ''}</div></div><div>${mark(g.away, true)}<div class="score-team">${teamName(g.away)}</div></div></div><span class="sync-note">${icon('refresh')}Punteggio SIHF ${since(g.scoreCheckedAt || data.hockey.updatedAt)} · Statistiche ${since(data.hockey.updatedAt)}</span>`;
+  return `<div class="game-preview-heading"><h2 id="dialog-title" style="font-size:18px">${dateLabel(g.date, { weekday: 'long', year: 'numeric' })} · ${clock(g.start)}</h2>${state.route === 'game' ? matchPreviewLink(g) : ''}</div><div class="dialog-description">${timezoneLabel}${state.route !== 'game' ? ` · <a class="text-button" href="#game/${g.id}" data-full-detail>Dettagli ↗</a>` : ''}</div><div class="scoreboard"><div>${mark(g.home, true)}<div class="score-team">${teamName(g.home)}</div></div><div><div class="score-number">${g.status === 'scheduled' ? 'VS' : `${g.homeScore ?? '–'} : ${g.awayScore ?? '–'}`}</div><div class="score-label">${g.status === 'scheduled' ? 'In programma' : g.status === 'finished' ? 'Finale' + (g.decision ? ' · ' + g.decision : '') : esc(g.statusText)}${g.homePeriods?.length ? '<br>' + g.homePeriods.map((s, i) => `${s ?? '–'}–${g.awayPeriods?.[i] ?? '–'}`).join(' / ') : ''}</div></div><div>${mark(g.away, true)}<div class="score-team">${teamName(g.away)}</div></div></div><span class="sync-note">${icon('refresh')}Punteggio SIHF ${since(g.scoreCheckedAt || data.hockey.updatedAt)} · Statistiche ${since(data.hockey.updatedAt)}</span>`;
 }
 
 function renderGameTab() {
@@ -857,7 +867,7 @@ function sources() {
 document.addEventListener('click', async event => {
   const el = event.target.closest('button, a, .sidebar-scrim'); if (!el) return;
   if (['#hockey','#alpine'].includes(el.getAttribute('href')) && location.hash===el.getAttribute('href')) { readRoute(); closeMenu(); render(); return; }
-  if (el.matches('.map-launch') && !event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) {
+  if (el.matches('.map-launch[href^="maps-3d/"]') && !event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) {
     const origin = { id: activeDetail.id, tab: detailTab, run: selectedRun, scroll: dialog.scrollTop,
       filters: Object.fromEntries(['date','scope','query','sports','disciplines','gender','teamFilter'].map(key => [key, state[key]])) };
     history.replaceState({ ...history.state, mapOrigin: origin }, '');

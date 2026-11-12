@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Arena 3D · Formazioni</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<style>
+:root{--ink:#182c2c;--muted:#5f716f;--lime:#d2f277;--green:#122b2b;--line:rgba(24,44,44,.12);--glass:rgba(255,255,255,.92);--shadow:0 10px 28px rgba(10,20,30,.28),0 1px 2px rgba(10,20,30,.15);--r:16px;--gap:14px;--font:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#15181d;color:var(--ink);font-family:var(--font);-webkit-font-smoothing:antialiased}
+button,select{font:inherit;color:inherit}
+.app{position:fixed;inset:0;overflow:hidden}
+.stage{position:absolute;inset:0}
+#stage{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none}
+.app[data-mode=explore] #stage{cursor:grab}
+#labels{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+#labels.off,#labels[data-mode=tour],#labels[data-mode=intro]{display:none}
+.label{position:absolute;left:0;top:0;pointer-events:auto;display:flex;align-items:center;gap:5px;padding:3px 8px 3px 3px;border:0;border-radius:999px;background:rgba(255,255,255,.94);box-shadow:0 2px 8px rgba(0,0,0,.25);font-size:11.5px;font-weight:650;white-space:nowrap;cursor:pointer;will-change:transform}
+.label b{display:grid;place-items:center;min-width:22px;height:22px;padding:0 4px;border-radius:999px;background:var(--team);color:var(--ink);font-size:11.5px;font-variant-numeric:tabular-nums;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.7)}
+#labels[data-mode=lineup] .label{padding:2px;background:transparent;box-shadow:none}
+#labels[data-mode=lineup] .label span{display:none}
+#labels[data-mode=lineup] .label b{min-width:26px;height:26px;font-size:13px;box-shadow:0 2px 8px rgba(0,0,0,.35),inset 0 0 0 2px rgba(255,255,255,.85)}
+.label.sel b{outline:3px solid var(--lime);outline-offset:1px}
+.label.sel{background:var(--green);color:var(--lime)}
+.panel{background:var(--glass);-webkit-backdrop-filter:blur(16px) saturate(1.3);backdrop-filter:blur(16px) saturate(1.3);border:1px solid rgba(255,255,255,.6);box-shadow:var(--shadow);border-radius:var(--r)}
+.eyebrow{font-size:10.5px;font-weight:750;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.top{position:absolute;left:var(--gap);right:var(--gap);top:var(--gap);display:flex;gap:10px;align-items:flex-start;pointer-events:none}
+.top>*{pointer-events:auto}
+.pick{display:flex;align-items:center;gap:10px;padding:8px 10px}
+.mark{width:32px;height:32px;border-radius:9px;background:var(--green);display:grid;place-items:center;color:var(--lime);font-weight:900;font-size:12px;flex:none}
+.select{display:flex;align-items:center;gap:7px;height:36px;padding:0 8px;border:1px solid var(--line);border-radius:10px;background:#fff}
+.select img{width:22px;height:22px;object-fit:contain;flex:none}
+.select select{border:0;background:transparent;font-size:13px;font-weight:650;height:100%;cursor:pointer;outline:none;max-width:210px}
+.vs{font-size:12px;font-weight:800;color:var(--muted)}
+.modes{margin-left:auto;display:flex;padding:4px;gap:2px}
+.modes button,.seg button{border:0;background:transparent;height:34px;padding:0 13px;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;color:var(--muted);white-space:nowrap}
+.modes button.on,.seg button.on{background:var(--green);color:var(--lime)}
+.seg{display:flex;gap:2px;background:rgba(24,44,44,.07);border-radius:12px;padding:3px}
+.seg button{height:30px;padding:0 12px;font-size:12.5px}
+.seg button.on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.14)}
+.loading{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;transition:opacity .3s}
+.loading span{padding:10px 16px;font-size:13px;font-weight:650}
+.loading.done{opacity:0;visibility:hidden}
+[hidden]{display:none!important}
+
+/* Intro */
+.intro{position:absolute;left:var(--gap);bottom:var(--gap);width:min(440px,calc(100% - var(--gap)*2));padding:20px 22px;animation:rise .6s ease both}
+.intro h2{margin:4px 0 2px;font-size:30px;letter-spacing:-.8px;line-height:1.05}
+.intro .former{font-size:12.5px;color:var(--muted)}
+.facts{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+.facts span{padding:4px 9px;border-radius:8px;background:rgba(24,44,44,.07);font-size:12px;font-weight:700}
+.intro ul{margin:0 0 14px;padding:0 0 0 18px;font-size:13px;line-height:1.55;color:#34474a}
+.club{display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:14px}
+.club img{width:46px;height:46px;object-fit:contain}
+.club b{display:block;font-size:15px}
+.club small{color:var(--muted);font-size:12px}
+.enter{display:flex;align-items:center;gap:12px}
+.cta{height:42px;padding:0 18px;border:0;border-radius:12px;background:var(--green);color:var(--lime);font-weight:800;font-size:14px;cursor:pointer}
+.bar{flex:1;height:4px;border-radius:4px;background:rgba(24,44,44,.1);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--green)}
+
+/* Formazioni */
+.board{position:absolute;left:50%;bottom:var(--gap);transform:translateX(-50%);width:min(1040px,calc(100% - var(--gap)*2));padding:12px 14px 14px}
+.board-head{display:flex;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap}
+.board-head h2{margin:0;font-size:16px;letter-spacing:-.2px}
+.board-head .seg{margin-left:auto}
+.teams{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.team h3{display:flex;align-items:center;gap:8px;margin:0 0 7px;font-size:13px}
+.team h3 img{width:22px;height:22px;object-fit:contain}
+.team h3 small{margin-left:auto;color:var(--muted);font-weight:650;font-size:11px}
+.chips{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+.chip{display:flex;flex-direction:column;align-items:center;gap:3px;padding:7px 4px 6px;border:1px solid var(--line);border-radius:11px;background:#fff;cursor:pointer;min-width:0}
+.chip b{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--team);color:var(--tink);font-size:13px;font-variant-numeric:tabular-nums}
+.chip span{font-size:11.5px;font-weight:650;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.chip small{font-size:10px;font-weight:750;color:var(--muted);letter-spacing:.05em}
+.chip.sel{border-color:var(--green);box-shadow:0 0 0 2px var(--lime)}
+.note{margin:10px 0 0;font-size:11.5px;color:#6a5a23}
+
+/* Tour */
+.cards{position:absolute;right:var(--gap);top:76px;width:min(380px,calc(100% - var(--gap)*2))}
+.card{padding:16px 18px;animation:slide .55s cubic-bezier(.2,.8,.2,1) both}
+.card.out{animation:slideout .4s ease both}
+.card h3{margin:3px 0 12px;font-size:18px;letter-spacing:-.3px}
+.sample{display:inline-block;margin-left:6px;padding:2px 6px;border-radius:6px;background:#fbf6e7;color:#6a5a23;font-size:10px;font-weight:750;letter-spacing:.04em;text-transform:uppercase;vertical-align:2px}
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px;font-variant-numeric:tabular-nums}
+.tbl td{padding:7px 2px;border-top:1px solid var(--line)}
+.tbl td:last-child{text-align:right;font-weight:800}
+.tbl img{width:18px;height:18px;object-fit:contain;vertical-align:-4px;margin:0 3px}
+.ot{font-size:10px;color:var(--muted);font-weight:700;margin-left:4px}
+.big3{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;text-align:center;gap:8px}
+.big3 img{width:44px;height:44px;object-fit:contain}
+.big3 strong{display:block;font-size:34px;letter-spacing:-1px;line-height:1}
+.big3 small{font-size:11px;color:var(--muted);font-weight:650}
+.cmp{display:grid;gap:9px}
+.cmp-row{display:grid;grid-template-columns:44px 1fr 44px;align-items:center;gap:8px;font-size:12.5px;font-variant-numeric:tabular-nums;font-weight:750}
+.cmp-row span:last-child{text-align:right}
+.cmp-mid{display:grid;gap:3px}
+.cmp-mid em{font-style:normal;font-size:10.5px;font-weight:700;color:var(--muted);text-align:center;text-transform:uppercase;letter-spacing:.06em}
+.duel{display:flex;height:7px;border-radius:5px;overflow:hidden;background:rgba(24,44,44,.08)}
+.duel i{display:block;height:100%}
+.form{display:flex;gap:3px;justify-content:center}
+.form i{width:17px;height:17px;border-radius:5px;display:grid;place-items:center;font-size:9.5px;font-style:normal;font-weight:800;color:#fff}
+.scorers{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.scorer{padding:12px;border-radius:12px;background:rgba(24,44,44,.05);text-align:center}
+.scorer .num{display:grid;place-items:center;width:44px;height:44px;margin:0 auto 6px;border-radius:50%;background:var(--team);color:var(--tink);font-weight:900;font-size:17px}
+.scorer b{display:block;font-size:13.5px}
+.scorer small{color:var(--muted);font-size:11px}
+.scorer dl{display:grid;grid-template-columns:repeat(4,1fr);margin:10px 0 0;font-variant-numeric:tabular-nums}
+.scorer dt{font-size:10px;color:var(--muted);font-weight:750}
+.scorer dd{margin:0;font-size:15px;font-weight:850}
+.toast{position:absolute;left:var(--gap);bottom:var(--gap);padding:12px 16px;display:flex;align-items:center;gap:14px;max-width:calc(100% - var(--gap)*2);animation:rise .5s ease both}
+.toast .ln{font-size:26px;font-weight:900;letter-spacing:-1px;color:var(--green)}
+.toast .who{font-size:12px;line-height:1.45;color:#34474a}
+.toast .who b{color:var(--ink)}
+.tourctl{position:absolute;right:var(--gap);bottom:var(--gap);display:flex;align-items:center;gap:8px;padding:6px}
+.tourctl button{height:32px;padding:0 12px;border:0;border-radius:9px;background:transparent;font-weight:700;font-size:12.5px;cursor:pointer}
+.dots{display:flex;gap:5px;padding:0 6px}
+.dots i{width:7px;height:7px;border-radius:50%;background:rgba(24,44,44,.18)}
+.dots i.on{background:var(--green)}
+
+/* Esplora */
+.explore{position:absolute;left:var(--gap);bottom:var(--gap);display:flex;align-items:center;gap:12px;padding:8px 10px;flex-wrap:wrap}
+.explore label{display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:650;cursor:pointer}
+.explore input{accent-color:var(--green)}
+.explore p{margin:0;font-size:11.5px;color:var(--muted)}
+
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes slide{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:none}}
+@keyframes slideout{to{opacity:0;transform:translateX(30px)}}
+
+@media(max-width:900px){
+  html,body{height:auto}
+  .app{position:static;min-height:100vh;display:flex;flex-direction:column;overflow:visible}
+  .top{position:static;flex-direction:column;align-items:stretch;padding:10px 10px 0;gap:8px}
+  .pick{flex-wrap:wrap}.select{flex:1}.select select{max-width:none;width:100%}
+  .modes{margin:0;overflow-x:auto}.modes button{flex:1;padding:0 6px}
+  .top{order:0}.stage{order:1}.intro,.board,.cards,.toast,.tourctl,.explore{order:2}
+  .stage{position:relative;height:58vh;margin-top:10px}
+  .board-head .seg{margin-left:0;width:100%}.board-head .seg button{flex:1;padding:0 4px}
+  .pick .mark,.pick .vs{display:none}
+  .intro,.board,.cards,.toast,.tourctl,.explore{position:static;transform:none;width:auto;margin:10px}
+  .chips{grid-template-columns:repeat(3,1fr)}
+  .teams{grid-template-columns:1fr}
+}
+</style>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+</head>
+<body>
+<div class="app" id="app">
+  <div class="stage">
+    <canvas id="stage" aria-label="Arena 3D"></canvas>
+    <div id="labels"></div>
+    <div class="loading" id="loading"><span class="panel">Costruisco l'arena…</span></div>
+  </div>
+
+  <header class="top">
+    <div class="pick panel">
+      <div class="mark">3D</div>
+      <div class="select"><img id="homeLogo" alt=""><select id="arena" aria-label="Arena e squadra di casa"></select></div>
+      <span class="vs">vs</span>
+      <div class="select"><img id="awayLogo" alt=""><select id="away" aria-label="Squadra ospite"></select></div>
+    </div>
+    <nav class="modes panel" id="modes" aria-label="Regia">
+      <button data-mode="intro">Intro</button>
+      <button data-mode="lineup">Formazioni</button>
+      <button data-mode="tour">Tour</button>
+      <button data-mode="explore">Esplora</button>
+    </nav>
+  </header>
+
+  <section class="intro panel" id="intro" hidden></section>
+
+  <section class="board panel" id="board" hidden>
+    <div class="board-head">
+      <div><div class="eyebrow">Formazioni</div><h2 id="boardTitle"></h2></div>
+      <div class="seg" id="lines" role="group" aria-label="Linea in pista"></div>
+    </div>
+    <div class="teams" id="teams"></div>
+  </section>
+
+  <div class="cards" id="cards" hidden></div>
+  <section class="toast panel" id="toast" hidden></section>
+  <div class="tourctl panel" id="tourctl" hidden>
+    <div class="dots" id="dots"></div>
+    <button id="pause">❚❚ Pausa</button>
+  </div>
+
+  <section class="explore panel" id="explore" hidden>
+    <div class="seg" id="views"><button data-view="tribuna">Tribuna</button><button data-view="alto">Dall'alto</button><button data-view="diorama">Diorama</button></div>
+    <label><input type="checkbox" id="names" checked> Nomi</label>
+    <label><input type="checkbox" id="rotate"> Rotazione</label>
+    <p>Trascina per ruotare · rotella o pizzico per lo zoom</p>
+  </section>
+</div>
+
+<script type="module">
+import { ArenaView } from './engine.js?v=23';
+import { ARENAS, ARENA_IDS } from './arenas.js?v=23';
+import { TEAMS, LOGO_DIR } from './teams.js?v=23';
+import { POSITIONS, POSITION_SHORT } from './lineups.js?v=23';
+import { makeStats } from './stats.js?v=23';
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+const logo = t => LOGO_DIR + TEAMS[t].logo + '.png';
+const ink = c => { const v = parseInt(c.slice(1), 16), r = v >> 16, g = v >> 8 & 255, b = v & 255; return (0.299 * r + 0.587 * g + 0.114 * b) / 255 > 0.6 ? '#111' : '#fff'; };
+const params = new URLSearchParams(location.search);
+const MODES = ['intro', 'lineup', 'tour', 'explore'];
+
+let arena = ARENAS[params.get('arena')] ? params.get('arena') : 'HCAP';
+let away = TEAMS[params.get('away')] && params.get('away') !== arena ? params.get('away') : (arena === 'HCL' ? 'HCAP' : 'HCL');
+let line = Math.min(4, Math.max(1, Number(params.get('line')) || 1));
+let mode = MODES.includes(params.get('mode')) ? params.get('mode') : 'intro';
+let selected = null;
+
+$('arena').innerHTML = ARENA_IDS.map(id => `<option value="${id}">${esc(ARENAS[id].name)} · ${esc(TEAMS[ARENAS[id].team].short)}</option>`).join('');
+$('lines').innerHTML = [1, 2, 3, 4].map(n => `<button data-line="${n}">${n}ª linea</button>`).join('');
+
+// Se la grafica 3D non parte, lo diciamo a schermo invece di restare su "Costruisco l'arena…".
+function fail(err) {
+  const msg = String(err?.message || err || 'errore sconosciuto');
+  const webgl = /webgl|context/i.test(msg);
+  $('loading').classList.remove('done');
+  $('loading').innerHTML = `<span class="panel" style="max-width:520px;line-height:1.45">${webgl ? 'Il browser non riesce ad avviare la grafica 3D (WebGL). In Chrome: Impostazioni → Sistema → attiva "Usa l\'accelerazione grafica", poi riavvia.' : 'La scena 3D non è partita.'}<br><small style="color:var(--muted)">${esc(msg)}</small></span>`;
+  console.error(err);
+}
+addEventListener('error', e => fail(e.error || e.message));
+addEventListener('unhandledrejection', e => fail(e.reason));
+let view;
+try { view = new ArenaView($('stage'), $('labels'), { quality: innerWidth < 700 ? 'low' : 'high' }); }
+catch (err) { fail(err); throw err; }
+window.arenaView = view; // utile per provare in console
+const setOffset = () => { view.lineupOffset = innerWidth > 900 ? 0.16 : 0; }; setOffset(); addEventListener('resize', setOffset);
+
+/* ---------- controlli comuni ---------- */
+
+function syncTop() {
+  $('arena').value = arena; $('homeLogo').src = logo(ARENAS[arena].team); $('awayLogo').src = logo(away);
+  $('away').innerHTML = Object.keys(TEAMS).filter(t => t !== ARENAS[arena].team).map(t => `<option value="${t}">${esc(TEAMS[t].name)}</option>`).join('');
+  $('away').value = away;
+  [...$('modes').children].forEach(b => b.classList.toggle('on', b.dataset.mode === mode));
+  [...$('lines').children].forEach(b => b.classList.toggle('on', Number(b.dataset.line) === line));
+  $('app').dataset.mode = mode;
+  const url = new URL(location.href); url.searchParams.set('arena', arena); url.searchParams.set('away', away); url.searchParams.set('line', line); url.searchParams.set('mode', mode); history.replaceState(null, '', url);
+}
+
+function showPanels() {
+  $('intro').hidden = mode !== 'intro';
+  $('board').hidden = mode !== 'lineup';
+  $('cards').hidden = $('toast').hidden = $('tourctl').hidden = mode !== 'tour';
+  $('explore').hidden = mode !== 'explore';
+  if (mode === 'intro') renderIntro();
+  if (mode === 'lineup') renderBoard();
+  if (mode === 'tour') startTour(); else stopTour();
+}
+
+/* ---------- intro ---------- */
+
+let introTimer = 0, introStart = 0, introRaf = 0;
+function renderIntro() {
+  const A = ARENAS[arena], T = TEAMS[A.team];
+  $('intro').innerHTML = `
+    <div class="eyebrow">${esc(A.city)} · casa ${esc(T.short)}</div>
+    <h2>${esc(A.name)}</h2>${A.formerName ? `<div class="former">Ex ${esc(A.formerName)}</div>` : ''}
+    <div class="facts"><span>${A.capacity.toLocaleString('it-CH')} posti</span><span>Dal ${A.opened}</span><span>Ospiti: ${esc(TEAMS[away].short)}</span></div>
+    <ul>${(A.facts || []).map(f => `<li>${esc(f)}</li>`).join('')}</ul>
+    <div class="club"><img src="${logo(A.team)}" alt=""><div><b>${esc(T.name)}</b><small>Fondato nel ${T.founded} · ${esc(T.curve)} · ${esc(T.chant)}</small></div></div>
+    <div class="enter"><button class="cta" id="enterBtn">Entra nell'arena ›</button><div class="bar"><i id="introBar"></i></div></div>`;
+  $('enterBtn').onclick = enter;
+  clearTimeout(introTimer); cancelAnimationFrame(introRaf);
+  introStart = performance.now();
+  const step = () => { const u = Math.min(1, (performance.now() - introStart) / 14000); const bar = $('introBar'); if (bar) bar.style.width = u * 100 + '%'; if (mode === 'intro' && u < 1) introRaf = requestAnimationFrame(step); };
+  step();
+  introTimer = setTimeout(enter, 14000);
+}
+function enter() { clearTimeout(introTimer); if (mode !== 'intro') return; $('intro').hidden = true; view.enterArena(); }
+
+/* ---------- formazioni ---------- */
+
+function renderBoard() {
+  const info = view.info();
+  $('boardTitle').textContent = `${line}ª linea in pista`;
+  const block = (side, label) => {
+    const T = TEAMS[side.team], rows = [['G', side.goalie], ...POSITIONS.map(p => [p, side.line[p]])];
+    return `<div class="team"><h3><img src="${logo(side.team)}" alt="">${esc(T.name)}<small>${label}</small></h3><div class="chips">${rows.map(([p, pl]) => {
+      const on = selected && selected.team === side.team && selected.number === pl.number;
+      return `<button class="chip${on ? ' sel' : ''}" data-team="${side.team}" data-number="${pl.number}" style="--team:${T.primary};--tink:${ink(T.primary)}"><b>${pl.number}</b><span>${esc(pl.name)}</span><small>${POSITION_SHORT[p]}</small></button>`;
+    }).join('')}</div></div>`;
+  };
+  $('teams').innerHTML = block(info.home, 'Casa') + block(info.guest, 'Ospiti') + (info.home.placeholder ? '<p class="note" style="grid-column:1/-1">Formazioni segnaposto: nomi e numeri sono generici.</p>' : '');
+}
+$('teams').addEventListener('click', e => {
+  const c = e.target.closest('.chip'); if (!c) return;
+  const g = [...view.players.home, ...view.players.away].find(p => p.userData.team === c.dataset.team && String(p.userData.info.number) === c.dataset.number);
+  view.select(view.selected === g ? null : g);
+});
+$('lines').onclick = e => { const n = Number(e.target.dataset.line); if (!n) return; line = n; view.setLine(n); };
+
+/* ---------- tour: tabelle che compaiono ---------- */
+
+const CARD_MS = 7000;
+let tourTimer = 0, cardIndex = 0, paused = false;
+const CARDS = ['arena', 'meetings', 'h2h', 'compare', 'scorers'];
+
+function cardHtml(kind) {
+  const A = ARENAS[arena], home = A.team, s = makeStats(home, away, view.lineups), TH = TEAMS[home], TA = TEAMS[away];
+  const sample = '<span class="sample">Dati di esempio</span>';
+  const img = t => `<img src="${logo(t)}" alt="">`;
+  if (kind === 'arena') return `<div class="eyebrow">L'arena</div><h3>${esc(A.name)}</h3>
+    <table class="tbl"><tr><td>Città</td><td>${esc(A.city)}</td></tr><tr><td>Capienza</td><td>${A.capacity.toLocaleString('it-CH')}</td></tr><tr><td>Apertura</td><td>${A.opened}</td></tr><tr><td>${esc(TH.curve)}</td><td>${esc(TH.short)}</td></tr></table>
+    <p style="margin:10px 0 0;font-size:12.5px;line-height:1.45;color:#34474a">${esc(A.note)}</p>`;
+  if (kind === 'meetings') return `<div class="eyebrow">Situazione ultimi incontri ${sample}</div><h3>Ultime 5 sfide</h3>
+    <table class="tbl">${s.meetings.map(m => `<tr><td style="color:var(--muted)">${m.date}</td><td>${img(m.host)}${esc(TEAMS[m.host].short)} – ${esc(TEAMS[m.guest].short)}${img(m.guest)}</td><td>${m.score[0]}–${m.score[1]}${m.ot ? '<span class="ot">SUPPL.</span>' : ''}</td></tr>`).join('')}</table>`;
+  if (kind === 'h2h') return `<div class="eyebrow">Head to head ${sample}</div><h3>Ultimi ${s.h2h.games} confronti</h3>
+    <div class="big3"><div>${img(home)}<strong>${s.h2h.wins[home]}</strong><small>vittorie ${esc(TH.short)}</small></div><div><strong style="font-size:22px;color:var(--muted)">${s.h2h.ot}</strong><small>supplementari</small></div><div>${img(away)}<strong>${s.h2h.wins[away]}</strong><small>vittorie ${esc(TA.short)}</small></div></div>
+    <div class="cmp" style="margin-top:14px">${duel('Gol segnati', s.h2h.goals[home], s.h2h.goals[away], TH, TA)}</div>`;
+  if (kind === 'compare') {
+    const a = s.compare[home], b = s.compare[away];
+    const form = (f, T) => `<div class="form">${[...f].map(x => `<i style="background:${x === 'V' ? '#3d8b4f' : x === 'S' ? '#b8892c' : '#b2434b'}">${x}</i>`).join('')}</div>`;
+    return `<div class="eyebrow">Squadre a confronto ${sample}</div><h3>${esc(TH.short)} contro ${esc(TA.short)}</h3>
+      <div class="cmp">${duel('Classifica', `${a.rank}º`, `${b.rank}º`, TH, TA, 15 - a.rank, 15 - b.rank)}${duel('Punti', a.points, b.points, TH, TA)}${duel('Gol fatti', a.gf, b.gf, TH, TA)}${duel('Gol subiti', a.ga, b.ga, TH, TA, 100 - a.ga, 100 - b.ga)}${duel('Power play %', a.pp, b.pp, TH, TA)}${duel('Inferiorità %', a.pk, b.pk, TH, TA)}${duel('Tiri a partita', a.shots, b.shots, TH, TA)}
+      <div class="cmp-row"><span></span><div class="cmp-mid"><em>Forma</em><div style="display:flex;justify-content:space-between">${form(a.form)}${form(b.form)}</div></div><span></span></div></div>`;
+  }
+  if (kind === 'scorers') {
+    const p = t => { const x = s.scorers[t], T = TEAMS[t]; return `<div class="scorer" style="--team:${T.primary};--tink:${ink(T.primary)}"><div class="num">${x.number}</div><b>${esc(x.name)}</b><small>${img(t)}${esc(T.short)}</small><dl><div><dt>G</dt><dd>${x.g}</dd></div><div><dt>A</dt><dd>${x.a}</dd></div><div><dt>PT</dt><dd>${x.pts}</dd></div><div><dt>+/-</dt><dd>${x.pm > 0 ? '+' : ''}${x.pm}</dd></div></dl></div>`; };
+    return `<div class="eyebrow">Top scorer a confronto ${sample}</div><h3>I migliori marcatori</h3><div class="scorers">${p(home)}${p(away)}</div>`;
+  }
+}
+function duel(label, va, vb, TH, TA, wa = parseFloat(va), wb = parseFloat(vb)) {
+  const tot = Math.max(0.001, wa + wb), pa = Math.round(wa / tot * 100);
+  return `<div class="cmp-row"><span>${va}</span><div class="cmp-mid"><em>${label}</em><div class="duel"><i style="width:${pa}%;background:${TH.primary}"></i><i style="width:${100 - pa}%;background:${TA.primary === TH.primary ? '#9aa3ab' : TA.primary}"></i></div></div><span>${vb}</span></div>`;
+}
+
+function showCard() {
+  const box = $('cards'), kind = CARDS[cardIndex % CARDS.length];
+  const old = box.firstElementChild; if (old) { old.classList.add('out'); setTimeout(() => old.remove(), 380); }
+  setTimeout(() => { if (mode !== 'tour') return; const c = document.createElement('div'); c.className = 'card panel'; c.innerHTML = cardHtml(kind); box.append(c); }, old ? 420 : 0);
+  $('dots').innerHTML = CARDS.map((_, i) => `<i class="${i === cardIndex % CARDS.length ? 'on' : ''}"></i>`).join('');
+  cardIndex++;
+}
+function startTour() {
+  stopTour(); paused = false; $('pause').textContent = '❚❚ Pausa'; view.setTourPaused(false);
+  cardIndex = 0; $('cards').innerHTML = ''; showCard(); renderToast();
+  tourTimer = setInterval(() => { if (!paused) showCard(); }, CARD_MS);
+}
+function stopTour() { clearInterval(tourTimer); }
+function renderToast() {
+  const info = view.info(), names = side => POSITIONS.map(p => `${side.line[p].number}`).join(' · ');
+  $('toast').innerHTML = `<div class="ln">${line}ª</div><div class="who"><div class="eyebrow">Linea in pista</div><b>${esc(TEAMS[info.home.team].short)}</b> ${names(info.home)}<br><b>${esc(TEAMS[info.guest.team].short)}</b> ${names(info.guest)}</div>`;
+  $('toast').style.animation = 'none'; void $('toast').offsetWidth; $('toast').style.animation = '';
+}
+$('pause').onclick = () => { paused = !paused; view.setTourPaused(paused); $('pause').textContent = paused ? '▶ Riprendi' : '❚❚ Pausa'; };
+
+/* ---------- esplora ---------- */
+
+$('views').onclick = e => { const v = e.target.dataset.view; if (!v) return; const p = view.views()[v]; view.flyTo(p.pos, p.target, 1100); [...$('views').children].forEach(b => b.classList.toggle('on', b === e.target)); };
+$('names').onchange = e => view.setLabels(e.target.checked);
+$('rotate').onchange = e => view.setAutoRotate(e.target.checked);
+
+/* ---------- eventi ---------- */
+
+view.on('change', info => { line = info.line; syncTop(); if (mode === 'lineup') renderBoard(); if (mode === 'tour') renderToast(); });
+view.on('select', p => { selected = p; if (mode === 'lineup') renderBoard(); });
+view.on('mode', m => { mode = m; syncTop(); showPanels(); });
+
+async function load() {
+  $('loading').classList.remove('done');
+  await new Promise(r => setTimeout(r, 30));
+  try { await view.load({ arena, away, line, mode }); $('loading').classList.add('done'); }
+  catch (err) { fail(err); }
+}
+
+$('arena').onchange = e => { arena = e.target.value; if (away === ARENAS[arena].team) away = ARENAS[arena].team === 'HCL' ? 'HCAP' : 'HCL'; load(); };
+$('away').onchange = async e => { away = e.target.value; await view.setAway(away); if (mode === 'intro') renderIntro(); };
+$('modes').onclick = e => { const m = e.target.dataset.mode; if (!m) return; view.setMode(m); };
+addEventListener('keydown', e => {
+  if (e.target.tagName === 'SELECT') return;
+  if (['1', '2', '3', '4'].includes(e.key)) view.setLine(Number(e.key));
+});
+
+load();
+</script>
+</body>
+</html>
