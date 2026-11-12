@@ -22,7 +22,7 @@ export function loadImage(src) {
   if (!images.has(src)) images.set(src, new Promise(resolve => { const img = new Image(); img.onload = () => resolve(img); img.onerror = () => resolve(null); img.src = src; }));
   return images.get(src);
 }
-export const logoOf = team => loadImage(LOGO_DIR + TEAMS[team].logo + '.png');
+export const logoOf = team => loadImage(team === 'LSA' ? '../assets/favicon.svg' : LOGO_DIR + TEAMS[team].logo + '.png');
 
 export function canvas(w, h) { const c = document.createElement('canvas'); c.width = w; c.height = h; return [c, c.getContext('2d')]; }
 export function texture(c, repeat = false) {

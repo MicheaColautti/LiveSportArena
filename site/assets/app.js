@@ -1,3 +1,5 @@
+import { ARENAS as hockeyArenas } from '../match-preview/src/arenas.js';
+import { TEAMS as hockeyClubs } from '../match-preview/src/teams.js';
 import { skiProfiles } from './ski-profiles.js';
 import { mapFlags, skiMaps, mapForRace } from './maps-3d.js';
 import { readSource } from './client-diagnostics.js';
@@ -50,7 +52,7 @@ const preferences = { team: '', nations: state.alerts.swiss ? ['SUI'] : [], athl
 preferences.teams ||= preferences.team ? [preferences.team] : [];
 state.leagueTable = 'player_stats';
 const athleteNames = readStore('athleteNames', {});
-const navigation = [['home', 'Home', 'home'], ['calendar', 'Calendario', 'calendar'], ['live', 'In diretta', 'live'], ['alpine', 'Sci alpino', 'mountain'], ['maps-3d', 'Mappe 3D', 'mountain'], ['hockey', 'Hockey', 'hockey'], ['predictions', 'Previsioni', 'spark'], ['settings', 'Impostazioni', 'user'], ['alpine-standings', 'Classifiche', 'trophy'], ['alpine-stats', 'Statistiche', 'chart'], ['hockey-stats','Statistiche National League','chart']];
+const navigation = [['home', 'Home', 'home'], ['calendar', 'Calendario', 'calendar'], ['live', 'In diretta', 'live'], ['alpine', 'Sci alpino', 'mountain'], ['maps-3d', 'Mappe 3D', 'mountain'], ['hockey-arenas','Arene 3D','hockey'], ['hockey', 'Hockey', 'hockey'], ['predictions', 'Previsioni', 'spark'], ['settings', 'Impostazioni', 'user'], ['alpine-standings', 'Classifiche', 'trophy'], ['alpine-stats', 'Statistiche', 'chart'], ['hockey-stats','Statistiche National League','chart']];
 paths.user = '<circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/>';
 state.teamFilter = '';
 state.alpineExpanded = location.hash.startsWith('#alpine') || location.hash.startsWith('#maps-3d');
@@ -504,6 +506,13 @@ function mapLink(race) {
     : '<span class="tiny">Mappa 3D non disponibile</span>';
 }
 
+function arenasPage() {
+  const cards = Object.entries(hockeyArenas).sort(([,a],[,b]) => a.city.localeCompare(b.city,'it')).map(([key,a]) => {
+    const club = hockeyClubs[a.team];
+    return `<a class="arena-card" href="match-preview/explore.html?arena=${encodeURIComponent(key)}"><img class="arena-photo" loading="lazy" src="match-preview/thumbnails/${key}.jpg" alt=""><div><img class="arena-crest" src="assets/teams/${club.logo}.png" alt=""><span>${esc(club.name)}<strong>${esc(a.name)}</strong></span>${arenaCube}</div></a>`;
+  }).join('');
+  return heading('HOCKEY','Arene 3D','Esplora le piste della National League.') + '<div class="ski-map-grid">' + cards + '</div>';
+}
 function mapsPage() {
   const selected = state.detailId || 'all';
   const filters = ['all', 'DH', 'SG', 'GS', 'SL'].map(d =>
@@ -529,9 +538,9 @@ function trackSection(race, course) {
 }
 
 function renderNavigation() {
-  const childRoutes = ['maps-3d','predictions','settings','alpine-standings','alpine-stats','hockey-stats'];
+  const childRoutes = ['hockey-arenas','maps-3d','predictions','settings','alpine-standings','alpine-stats','hockey-stats'];
   document.querySelector('#navigation').innerHTML = navigation.filter(n => !childRoutes.includes(n[0])).map(([route,label,symbol],i) => {
-    const children=route==='alpine'?[['alpine','Stagione','calendar'],['alpine-standings','Classifiche','trophy'],['alpine-stats','Statistiche','chart'],['maps-3d','Mappe 3D','mountain']]:route==='hockey'?[['hockey','Stagione','calendar'],['hockey/standings','Classifica','trophy'],['hockey-stats','Statistiche','chart'],['predictions','Previsioni','spark']]:[];
+    const children=route==='alpine'?[['alpine','Stagione','calendar'],['alpine-standings','Classifiche','trophy'],['alpine-stats','Statistiche','chart'],['maps-3d','Mappe 3D','mountain']]:route==='hockey'?[['hockey','Stagione','calendar'],['hockey/standings','Classifica','trophy'],['hockey-stats','Statistiche','chart'],['predictions','Previsioni','spark'],['hockey-arenas','Arene 3D','hockey']]:[];
     const expanded=state[route+'Expanded'];
     const current=state.route==='hockey'?hockeyRoute(state.hockeyTab):state.route;
     const active=!children.length && route===current;
@@ -582,7 +591,7 @@ function render() {
   document.querySelector('#bell-icon').innerHTML = icon('bell');
   document.querySelector('#user-icon').innerHTML = icon('user');
   document.title = `${eventTitle} · Live Sport Arena`;
-  main.innerHTML = ({ 'maps-3d': mapsPage, home: homePage, calendar: () => calendarPage(), alpine: () => calendarPage(true), hockey: hockeyPage, live: livePage, predictions: predictionsPage, settings: settingsPage, 'hockey-stats': hockeyStatisticsPage, game: () => detailPage('game'), race: () => detailPage('race'), 'alpine-standings': alpineStandingsPage, 'alpine-stats': alpineStatsPage }[state.route] || homePage)();
+  main.innerHTML = ({ 'maps-3d': mapsPage, 'hockey-arenas': arenasPage, home: homePage, calendar: () => calendarPage(), alpine: () => calendarPage(true), hockey: hockeyPage, live: livePage, predictions: predictionsPage, settings: settingsPage, 'hockey-stats': hockeyStatisticsPage, game: () => detailPage('game'), race: () => detailPage('race'), 'alpine-standings': alpineStandingsPage, 'alpine-stats': alpineStatsPage }[state.route] || homePage)();
   if (state.route === 'game') openGame(state.detailId, detailTab, cronacaFilter);
   if (state.route === 'race') openRace(state.detailId, detailTab, selectedRun);
   bindSeasonList(previousDay);

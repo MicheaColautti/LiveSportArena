@@ -5,6 +5,7 @@
 // founded = anno di fondazione mostrato nell'intro (da verificare: HCL 1941, GSHC 1905 ed EHCK 1934 sono confermati dai siti dei club).
 
 export const TEAMS = {
+  LSA: { name: "Live Sport Arena", short: "LSA", primary: "#165446", secondary: "#d1f275", accent: "#268258", flags: ["logo"] },
   HCAP: { name: 'HC Ambrì-Piotta', founded: 1937, short: 'HCAP', city: 'Ambrì', logo: 'HCAP', primary: '#0b56ad', secondary: '#ffffff', accent: '#0a2f6b', curve: 'Curva Sud', chant: 'Forza Ambrì', flags: ['h2', 'v2', 'diag', 'logo', 'stripes', 'name', 'name2'] },
   HCL:  { name: 'HC Lugano', founded: 1941, short: 'HCL', city: 'Lugano', logo: 'HCL', primary: '#15202b', secondary: '#ffffff', accent: '#f2c500', curve: 'Curva Nord', chant: 'Forza Lugano', flags: ['name2', 'stripes', 'logo', 'diag', 'name', 'check', 'h2'] },
   HCA:  { name: 'HC Ajoie', founded: 1973, short: 'HCA', city: 'Porrentruy', logo: 'Ajoie', primary: '#f0a800', secondary: '#111111', accent: '#ffffff', curve: 'Kop Jurassien', chant: 'Allez Ajoie', flags: ['h2', 'check', 'logo', 'v2', 'diag', 'name', 'name2', 'stripes'] },

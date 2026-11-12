@@ -399,3 +399,7 @@ input.input[type=date]::-webkit-date-and-time-value{text-align:left}
 @media(max-width:480px){.preview-tiles{grid-template-columns:1fr 1fr}.preview-tile:last-child:nth-child(odd){grid-column:1/-1}}
 
 .game-preview-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.game-preview-heading .map-launch{margin-left:auto;flex:none}
+
+.arena-card{overflow:hidden;display:block;background:white;border:1px solid var(--line);border-radius:14px;color:inherit;text-decoration:none}.arena-card:hover,.arena-card:focus-visible{border-color:var(--green)}.arena-photo{width:100%;aspect-ratio:2.15;object-fit:cover;display:block}.arena-card>div{display:flex;align-items:center;gap:10px;padding:12px}.arena-crest{width:36px;height:36px;object-fit:contain}.arena-card span{font-size:12px}.arena-card strong{display:block;font-size:17px}.arena-card .icon{margin-left:auto;color:var(--green)}
+
+.sidebar{padding-bottom:max(3px,env(safe-area-inset-bottom))}.sidebar .sidebar-connection{margin-top:auto;padding-block:8px}

@@ -80,6 +80,8 @@ export class ArenaView {
 
   async load({ arena, away, line = 1, lineups = {}, mode } = {}) {
     const A = ARENAS[arena]; if (!A) throw new Error(`Arena sconosciuta: ${arena}`);
+    this.gallery = mode === 'gallery';
+    if (this.gallery) away = 'LSA';
     if (!away || away === A.team) away = Object.keys(TEAMS).find(t => t !== A.team);
     this.state = { ...this.state, arena, away, line };
     Object.assign(this.lineups, lineups);
@@ -91,9 +93,9 @@ export class ArenaView {
     this.awayLayer = new THREE.Group(); this.scene.add(this.awayLayer);
     this.buildLights(); this.buildRink(); this.buildStands(); this.buildRoof(); this.buildDecor(); this.buildOutside();
     this.buildAwayLayer();
-    this.spawnAll();
+    if (!this.gallery) this.spawnAll();
     this.setMode(mode || this.mode, { instant: true });
-    this.emit('change', this.info());
+    if (!this.gallery) this.emit('change', this.info());
   }
 
   async setAway(away) {
@@ -130,7 +132,7 @@ export class ArenaView {
   setMode(mode, { instant = false } = {}) {
     const prev = this.mode; this.mode = mode;
     if (mode !== 'intro') this.intro.entering = false;
-    this.controls.enabled = mode === 'explore' || mode === 'lineup';
+    this.controls.enabled = mode === 'gallery' || mode === 'explore' || mode === 'lineup';
     if (mode === 'lineup') {
       Object.assign(this.controls, { enablePan: false, minDistance: 8, maxDistance: this.extent.EX, minPolarAngle: 0.2, maxPolarAngle: Math.PI * 0.47 });
     }
@@ -140,12 +142,19 @@ export class ArenaView {
     if (this.outside) this.outside.visible = mode === 'intro';
     this.scene.background = mode === 'intro' ? color(SKY) : color(this.A.style.wall).multiplyScalar(0.55);
     // Nebbia stretta: il paesaggio sfuma piano nel cielo (e di notte nel buio) invece di finire con uno stacco.
-    this.scene.fog = mode === 'intro' ? new THREE.Fog(SKY, 200, 760) : null;
+    this.scene.fog = (mode === 'intro' || mode === 'gallery') ? new THREE.Fog(SKY, 200, 760) : null;
     if (mode === 'intro') this.setNight(0); else { this.night.value = 0; this.setLightLevel(1); }
     // In volo sopra l'esterno serve più precisione di profondità: piano vicino più lontano, niente sfarfallio.
     this.camera.near = mode === 'intro' ? 6 : 0.3;
     this.arrange(mode === 'lineup' ? 'lineup' : 'game', instant || prev === 'intro');
     this.camera.fov = 48; this.camera.clearViewOffset();
+    if (mode === 'gallery') {
+      const span = Math.max(this.extent.EX, this.extent.EZ);
+      Object.assign(this.controls, {minDistance: 4, maxDistance: span * 5, enablePan: true});
+      this.exteriorPose = {pos:[span * 1.35, span, span * 1.55],target:[0,this.roofY * 0.35,0]};
+      this.flyTo(this.exteriorPose.pos,this.exteriorPose.target,0);
+      this.setNight(1);
+    }
     if (mode === 'lineup') { const c = this.lineupCamera(); this.flyTo(c.pos, c.target, instant ? 0 : 1300, () => this.applyLineupFov()); if (instant) this.applyLineupFov(); }
     else if (mode === 'tour') { this.tour.nextLine = performance.now() + this.tour.lineEvery; if (!instant && prev !== 'intro') { const p = this.tourPose(this.tour.angle); this.flyTo(p.pos, p.target, 1300); } }
     else if (mode === 'intro') { this.intro.start = performance.now(); this.intro.entering = false; this.tween = null; }
@@ -252,7 +261,7 @@ export class ArenaView {
     const hz = mix3(SKY_HORIZON, n), top = mix3(SKY_TOP, n), g = THREE.MathUtils.smoothstep(n, 0.3, 0.8);
     this.glow.value = g;
     if (this.sky) { this.sky.uniforms.uTop.value.copy(top); this.sky.uniforms.uHorizon.value.copy(hz); this.sky.uniforms.uStars.value = THREE.MathUtils.smoothstep(n, 0.6, 1); }
-    if (this.mode === 'intro') { this.scene.background = hz; if (this.scene.fog) this.scene.fog.color.copy(hz); }
+    if (this.mode === 'intro' || this.gallery) { this.scene.background = hz; if (this.scene.fog) this.scene.fog.color.copy(hz); }
     this.nightLevel = 1 - 0.8 * n;
     this.setLightLevel(this.nightLevel, n);
     for (const it of this.nightList || []) it.mat[it.prop] = (it.min || 0) + it.max * g;
@@ -451,7 +460,31 @@ export class ArenaView {
     sections.forEach(S => { if (S.hang || nicheEnd && (S.key === nicheEnd || (S.kind === 'arc' && S.wrap && S.end === nicheEnd))) return; const P = S.profile, l = sectionLine(S, P.depth); for (let i = 0; i < l.length - 1; i++) wallTo(l[i], l[i + 1], P.top, wallC); });
     const endCap = A.extras?.glassGables ? Y : Infinity, sideCap = A.extras?.glassGables === 'ends' ? Infinity : endCap;
     wallTo([-EX, -EZn], [EX, -EZn], 0, wc, sideCap); wallTo([-EX, EZs], [EX, EZs], 0, wc, sideCap); wallTo([-EX, -EZn], [-EX, EZs], 0, wc, endCap); wallTo([EX, -EZn], [EX, EZs], 0, wc, endCap);
-    this.root.add(W.mesh());
+    if (this.gallery) {
+      const shell = new Mesher(), finish = color(st.wall).lerp(color('#657175'), 0.38);
+      const at = (point, y) => [point[0], y, point[1]];
+      const base = -0.38;
+      for (const section of sections) {
+        const profile = section.profile;
+        const rim = sectionLine(section, profile.depth);
+        for (let i = 1; i < rim.length; i++) {
+          const a = rim[i - 1], b = rim[i];
+          shell.quad(at(a, base), at(b, base), at(b, profile.top), at(a, profile.top), finish);
+          shell.tri([0, base, 0], at(a, base), at(b, base), finish);
+        }
+        // Chiude anche i fianchi esposti tra settori di profondità diversa.
+        for (const t of [0, 1]) {
+          for (const row of profile.rows) {
+            const a = sectionPoint(section, t, row.d), b = sectionPoint(section, t, row.d + row.depth);
+            shell.quad([a.x,base,a.z], [b.x,base,b.z], [b.x,row.h,b.z], [a.x,row.h,a.z], finish);
+          }
+        }
+      }
+      this.sectionShell = shell.mesh();
+      this.root.add(this.sectionShell);
+    }
+    this.perimeterWalls = W.mesh();
+    this.root.add(this.perimeterWalls);
     const rim = new Mesher(), rimColor = wallC.clone().multiplyScalar(1.2);
     const corners = [[-EX, -EZn], [EX, -EZn], [EX, EZs], [-EX, EZs]];
     corners.forEach((a, i) => {
@@ -1018,8 +1051,8 @@ export class ArenaView {
     g.fillStyle = TH.primary; g.fillRect(0, 0, W / 2, H * 0.07); g.fillStyle = TA.primary; g.fillRect(W / 2, 0, W / 2, H * 0.07);
     const ls = Math.min(W * 0.3, H * 0.5);
     for (const [img, x] of [[this.logos[home], W * 0.22], [this.logos[away], W * 0.78]]) { g.beginPath(); g.arc(x, H * 0.44, ls * 0.62, 0, Math.PI * 2); g.fillStyle = 'rgba(255,255,255,.95)'; g.fill(); drawLogo(g, img, x, H * 0.44, ls * 0.9); }
-    g.fillStyle = '#d2f277'; g.textAlign = 'center'; g.textBaseline = 'middle'; fitText(g, 'VS', W * 0.2, H * 0.16, 900); g.fillText('VS', W / 2, H * 0.44);
-    g.fillStyle = '#ffffff'; fitText(g, `${this.state.line}ª LINEA IN PISTA`, W * 0.9, H * 0.1, 800); g.fillText(`${this.state.line}ª LINEA IN PISTA`, W / 2, H * 0.82);
+    g.fillStyle = '#d2f277'; g.textAlign = 'center'; g.textBaseline = 'middle'; fitText(g, this.gallery ? home : 'VS', W * 0.2, H * 0.16, 900); g.fillText(this.gallery ? home : 'VS', W / 2, H * 0.44);
+    g.fillStyle = '#ffffff'; fitText(g, this.gallery ? TH.name : `${this.state.line}ª LINEA IN PISTA`, W * 0.9, H * 0.1, 800); g.fillText(this.gallery ? TH.name : `${this.state.line}ª LINEA IN PISTA`, W / 2, H * 0.82);
     g.fillStyle = 'rgba(255,255,255,.55)'; fitText(g, this.A.name.toUpperCase(), W * 0.8, H * 0.06, 700); g.fillText(this.A.name.toUpperCase(), W / 2, H * 0.93);
     this.cubeTex.needsUpdate = true;
   }
@@ -1063,6 +1096,7 @@ export class ArenaView {
       });
     }
     this.buildFans(fans);
+    if (this.gallery) this.buildFlags(flags.away.filter((_, i) => i % Math.max(1, Math.ceil(flags.away.length / 6)) === 0), away);
     // Bandiere disattivate: coprivano la vista in sezione sulle curve.
     // Settore ospiti: striscione e reti di separazione.
     const G = A.guest, S = sectionByKey(this.layout, G.side);
@@ -1252,12 +1286,18 @@ export class ArenaView {
     // Nell'intro si vede solo l'esterno: l'interno (più alto dell'involucro in alcune arene) ricompare quando si entra.
     // Durante il volo d'ingresso l'interno compare solo quando la telecamera è scesa sotto il tetto esterno (quando il tetto
     // sparisce): prima le file più alte del pubblico sbucherebbero attraverso le coperture.
-    const outsideOnly = this.mode === 'intro' && (!this.intro.entering || c.y > (this.outsideTop ?? 0) + 4);
+    const galleryExterior = this.gallery && !this.cutaway && !(inside && c.y < (this.outsideTop || this.roofY) * 1.05);
+    if (this.gallery && this.outside.visible !== galleryExterior) {
+      this.setLightLevel(galleryExterior ? this.nightLevel : 1, galleryExterior ? 1 : 0);
+    }
+    const outsideOnly = galleryExterior || this.mode === 'intro' && (!this.intro.entering || c.y > (this.outsideTop ?? 0) + 4);
     if (this.root) for (const ch of this.root.children) if (ch !== this.outside && !ch.isLight) ch.visible = !outsideOnly;
-    if (this.outside) this.outside.visible = this.mode === 'intro';
+    if (this.outside) this.outside.visible = galleryExterior || this.mode === 'intro';
     if (this.awayLayer) this.awayLayer.visible = !outsideOnly;
-    if (this.outsideRoof) this.outsideRoof.visible = this.mode === 'intro' && !(this.intro.entering && c.y < (this.outsideTop ?? 0) + 4);
-    if (this.ceiling) this.ceiling.visible = this.mode !== 'explore' || (inside && c.y < this.roofY - 0.3);
+    if (this.outsideRoof) this.outsideRoof.visible = galleryExterior || this.mode === 'intro' && !(this.intro.entering && c.y < (this.outsideTop ?? 0) + 4);
+    if (this.sectionShell) this.sectionShell.visible = this.gallery && this.cutaway;
+    if (this.gallery && this.perimeterWalls) this.perimeterWalls.visible = !outsideOnly && !this.cutaway;
+    if (this.ceiling) this.ceiling.visible = this.gallery ? !this.cutaway && inside && c.y < this.roofY * 0.85 : this.mode !== 'explore' || (inside && c.y < this.roofY - 0.3);
     if (this.mode === 'intro' && this.intro.entering && this.tween && this.nightLevel < 1) {
       const u = ease(Math.min(1, (now - this.tween.start) / this.tween.ms));
       this.setLightLevel(this.nightLevel + (1 - this.nightLevel) * u, this.night.value * (1 - u));
@@ -1305,6 +1345,7 @@ export class ArenaView {
       const p = this.tourPose(this.tour.angle); this.camera.position.copy(p.pos); this.target.copy(p.target); this.camera.lookAt(this.target);
     } else if (this.controls.enabled) {
       this.controls.update();
+      if (this.gallery) { this.camera.position.y = Math.max(1.5, this.camera.position.y); return; }
       const c = this.camera.position;
       this.keepInside(c);
       // Inset ellipse follows the rounded bowl, including the corners under the roof.

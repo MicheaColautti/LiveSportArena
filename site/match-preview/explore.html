@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="it"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Arene 3D</title>
+<style>*{box-sizing:border-box}body{margin:0;background:#d5e6e2;color:#153530;font:15px system-ui}canvas,#labels{position:fixed;inset:0;width:100%;height:100%;touch-action:none}#labels{pointer-events:none}header,nav,#status{position:fixed;background:#fffffff2;border-radius:14px;box-shadow:0 3px 18px #1232;padding:10px 14px}header{top:12px;left:12px}header b{display:block;margin-top:4px}a{color:#28574c}nav{bottom:14px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:10px;white-space:nowrap}button,label{font:inherit;cursor:pointer}button{background:#153d35;color:white;border:0;border-radius:9px;padding:7px 10px}input{accent-color:#265e48}#status{top:40%;left:50%;transform:translateX(-50%)}</style>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+<canvas aria-label="Vista interattiva dell’arena"></canvas><div id="labels"></div><header><a href="../#hockey-arenas">← Arene 3D</a><b id="title"></b></header><nav hidden style="visibility:hidden"><label><input type="checkbox" role="switch" id="section"> Vista in sezione</label><button id="outside">Torna all’esterno</button></nav><p id="status" role="status">Caricamento arena…</p>
+<script type="module">
+const status = document.querySelector('#status');
+try {
+  const { ArenaView } = await import('./src/engine.js?v=gallery1');
+  const { ARENAS } = await import('./src/arenas.js');
+  const arena = new URLSearchParams(location.search).get('arena');
+  if (!Object.hasOwn(ARENAS, arena)) throw new Error('Arena non disponibile');
+  document.querySelector('#title').textContent = document.title = ARENAS[arena].name;
+  const view = new ArenaView(document.querySelector('canvas'), document.querySelector('#labels'), { quality: innerWidth < 720 ? 'low' : 'high' });
+  await view.load({ arena, mode:'gallery' });
+  const toggle = document.querySelector('#section');
+  toggle.onchange = () => { view.cutaway = toggle.checked; };
+  document.querySelector('#outside').onclick = () => { toggle.checked = view.cutaway = false; view.flyTo(view.exteriorPose.pos, view.exteriorPose.target, 750); };
+  status.hidden = true;
+  document.querySelector('nav').hidden = false;
+  document.querySelector('nav').style.visibility = 'visible';
+} catch (error) { status.textContent = 'Impossibile aprire l’arena. ' + error.message; }
+</script></html>
