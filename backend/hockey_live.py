@@ -11,7 +11,7 @@ import threading
 from datetime import datetime
 from zoneinfo import ZoneInfo
 from .common import SITE, CACHE, read_json, write_json, stamp
-from .hockey import records, live_projection
+from .hockey import records, live_projection, enrich_goal_strength
 
 STOP = threading.Event()
 PATH = SITE / 'data/hockey-live.json'
@@ -20,7 +20,7 @@ PATH = SITE / 'data/hockey-live.json'
 def interval(games):
     now = datetime.now(ZoneInfo('Europe/Zurich'))
     if any(g['status'] == 'live' for g in games):
-        return max(30, int(os.environ.get('HOCKEY_LIVE_SECONDS', '60')))
+        return max(20, int(os.environ.get('HOCKEY_LIVE_SECONDS', '20')))
     delay = 300
     for game in games:
         if game['status'] != 'scheduled':
@@ -56,6 +56,14 @@ def event_snapshot(game, previous, fetch, parse):
                     isinstance(p.get('goals'), list) and isinstance(p.get('fouls'), list) for p in periods):
                 raise ValueError('Incomplete SIHF periods')
             events = records(parse(report, return_as_pandas=True))
+            enrich_goal_strength(events, report)
+            result = report.get('result') or {}
+            score = [result.get('homeTeam'), result.get('awayTeam')]
+            item['score'] = [int(n) for n in score] if all(str(n).isdigit() for n in score) else None
+            latest = next((e for e in reversed(events) if e.get('event_type') == 'goal'
+                           and e.get('score_home') is not None and e.get('score_away') is not None), None)
+            if latest and item['score'] in (None, [0, 0]):
+                item['score'] = [int(latest['score_home']), int(latest['score_away'])]
             item.update(events=events, status='ok', fetchedAt=stamp(), sourceUpdatedAt=revision)
     except Exception as exc:
         item['status'] = 'stale'
@@ -94,6 +102,13 @@ def collect(season, scheduled=False):
         previous = patches.get(gid)
         if previous and previous.get('sourceUpdatedAt') and patch.get('sourceUpdatedAt') and patch['sourceUpdatedAt'] < previous['sourceUpdatedAt']:
             continue
+        if previous and previous.get('status') == 'live' and status == 'scheduled':
+            continue
+        if previous and status == previous.get('status') == 'live':
+            incomplete = None in (patch['homeScore'], patch['awayScore'])
+            reset = (patch['homeScore'], patch['awayScore']) == (0, 0)
+            if incomplete or reset:
+                patch.update(homeScore=previous.get('homeScore'), awayScore=previous.get('awayScore'))
         patches[gid] = patch
     baseline = read_json(SITE / 'data/hockey.json', {})
     games = [{**g, **patches.get(g['id'], {})} for g in baseline.get('games', [])]
@@ -108,6 +123,13 @@ def collect(season, scheduled=False):
         if g['status'] == 'live' or (g['status'] == 'finished' and prior and not prior.get('final')):
             item = event_snapshot(g, prior, sihf.sihf_game_info, sihf.parse_sihf_pbp)
             item['final'] = g['status'] == 'finished' and item['status'] == 'ok'
+            if item.get('status') == 'ok' and item.get('score') and g['status'] == 'live':
+                # A newer results feed can already include the next goal.
+                revision = item.get('sourceUpdatedAt')
+                if not revision or not g.get('sourceUpdatedAt') or revision >= g['sourceUpdatedAt']:
+                    g['homeScore'], g['awayScore'] = item['score']
+                    patches[gid] = dict(g, scoreCheckedAt=item['fetchedAt'],
+                                        sourceUpdatedAt=revision or g.get('sourceUpdatedAt'))
             events[gid] = item
         elif prior.get('final') and (baseline.get('details', {}).get(gid, {}).get('updatedAt') or '') < prior['fetchedAt']:
             events[gid] = prior

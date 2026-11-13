@@ -17093,7 +17093,11 @@
           "revoke_reason": null,
           "shootout_number": null,
           "shootout_scored": null,
-          "text": "**EQ** / **1:0** - **Fuchs Jason (5)**\nSimic Axel (7), Heldner Fabian (1)"
+          "text": "**EQ** / **1:0** - **Fuchs Jason (5)**\nSimic Axel (7), Heldner Fabian (1)",
+          "players_on_ice": [
+            5,
+            5
+          ]
         },
         {
           "game_id": 20271105000132,
@@ -17237,7 +17241,11 @@
           "revoke_reason": null,
           "shootout_number": null,
           "shootout_scored": null,
-          "text": "**PP1** / **1:1** - **Corvi Enzo (2)**\nZadina Filip (7), Frick Lukas (4)"
+          "text": "**PP1** / **1:1** - **Corvi Enzo (2)**\nZadina Filip (7), Frick Lukas (4)",
+          "players_on_ice": [
+            5,
+            4
+          ]
         },
         {
           "game_id": 20271105000132,
@@ -17321,7 +17329,11 @@
           "revoke_reason": null,
           "shootout_number": null,
           "shootout_scored": null,
-          "text": "**EQ** / **2:1** - **Kurashev Philipp (2)**\nCaggiula Drake (9)"
+          "text": "**EQ** / **2:1** - **Kurashev Philipp (2)**\nCaggiula Drake (9)",
+          "players_on_ice": [
+            5,
+            5
+          ]
         },
         {
           "game_id": 20271105000132,
@@ -17405,7 +17417,11 @@
           "revoke_reason": null,
           "shootout_number": null,
           "shootout_scored": null,
-          "text": "**EQ** / **2:2** - **Nussbaumer Valentin (5)**\nParrée Julian (5), Allard Frédéric (7)"
+          "text": "**EQ** / **2:2** - **Nussbaumer Valentin (5)**\nParrée Julian (5), Allard Frédéric (7)",
+          "players_on_ice": [
+            5,
+            5
+          ]
         },
         {
           "game_id": 20271105000132,
@@ -17449,7 +17465,11 @@
           "revoke_reason": null,
           "shootout_number": null,
           "shootout_scored": null,
-          "text": "**EQ,GWG** / **3:2** - **Riat Damien (6)**\nFuchs Jason (13), Carrick Connor (5)"
+          "text": "**EQ,GWG** / **3:2** - **Riat Damien (6)**\nFuchs Jason (13), Carrick Connor (5)",
+          "players_on_ice": [
+            3,
+            3
+          ]
         }
       ],
       "lineups": [
@@ -19665,7 +19685,11 @@
           "revoke_reason": null,
           "shootout_number": null,
           "shootout_scored": null,
-          "text": "**PP1** / **1:0** - **Dünner Nico (4)**\nLabanc Kevin (4), Pilut Lawrence (8)"
+          "text": "**PP1** / **1:0** - **Dünner Nico (4)**\nLabanc Kevin (4), Pilut Lawrence (8)",
+          "players_on_ice": [
+            5,
+            4
+          ]
         },
         {
           "game_id": 20271105000131,
@@ -19737,7 +19761,11 @@
           "revoke_reason": null,
           "shootout_number": null,
           "shootout_scored": null,
-          "text": "**PP1** / **1:1** - **Smirnovs Deniss (3)**\nTanus Kristian (18), Nättinen Julius (11)"
+          "text": "**PP1** / **1:1** - **Smirnovs Deniss (3)**\nTanus Kristian (18), Nättinen Julius (11)",
+          "players_on_ice": [
+            5,
+            4
+          ]
         },
         {
           "game_id": 20271105000131,
@@ -19845,7 +19873,11 @@
           "revoke_reason": null,
           "shootout_number": null,
           "shootout_scored": null,
-          "text": "**PP1** / **1:2** - **Nättinen Julius (9)**\nTanus Kristian (19), Devos Philip-Michael (9)"
+          "text": "**PP1** / **1:2** - **Nättinen Julius (9)**\nTanus Kristian (19), Devos Philip-Michael (9)",
+          "players_on_ice": [
+            5,
+            4
+          ]
         },
         {
           "game_id": 20271105000131,
@@ -19917,7 +19949,11 @@
           "revoke_reason": null,
           "shootout_number": null,
           "shootout_scored": null,
-          "text": "**PP1** / **2:2** - **Wetter Gian-Marco (8)**\nRask Victor (11), Larsson Jacob (16)"
+          "text": "**PP1** / **2:2** - **Wetter Gian-Marco (8)**\nRask Victor (11), Larsson Jacob (16)",
+          "players_on_ice": [
+            5,
+            4
+          ]
         },
         {
           "game_id": 20271105000131,
@@ -20097,7 +20133,11 @@
           "revoke_reason": null,
           "shootout_number": null,
           "shootout_scored": null,
-          "text": "**PP2,GWG** / **2:3** - **Honka Anttoni (10)**\nTanus Kristian (20), Turkulainen Jerry (15)"
+          "text": "**PP2,GWG** / **2:3** - **Honka Anttoni (10)**\nTanus Kristian (20), Turkulainen Jerry (15)",
+          "players_on_ice": [
+            5,
+            3
+          ]
         },
         {
           "game_id": 20271105000131,
@@ -20254,7 +20294,11 @@
           "revoke_reason": null,
           "shootout_number": null,
           "shootout_scored": null,
-          "text": "**EQ,EN** / **2:4** - **Tanus Kristian (6)**"
+          "text": "**EQ,EN** / **2:4** - **Tanus Kristian (6)**",
+          "players_on_ice": [
+            5,
+            5
+          ]
         },
         {
           "game_id": 20271105000131,
@@ -27724,7 +27768,11 @@
           "revoke_reason": null,
           "shootout_number": null,
           "shootout_scored": null,
-          "text": "**EQ** / **0:1** - **Antenen Robin Nico (1)**\nGredig Rico (4), Riva Elia (1)"
+          "text": "**EQ** / **0:1** - **Antenen Robin Nico (1)**\nGredig Rico (4), Riva Elia (1)",
+          "players_on_ice": [
+            5,
+            5
+          ]
         },
         {
           "game_id": 20271105000128,
@@ -27796,7 +27844,11 @@
           "revoke_reason": null,
           "shootout_number": null,
           "shootout_scored": null,
-          "text": "**PP1,GWG** / **0:2** - **Kovar Jan (4)**\nRohrer Vinzenz (8), Kubalik Dominik (5)"
+          "text": "**PP1,GWG** / **0:2** - **Kovar Jan (4)**\nRohrer Vinzenz (8), Kubalik Dominik (5)",
+          "players_on_ice": [
+            5,
+            4
+          ]
         },
         {
           "game_id": 20271105000128,
@@ -27844,7 +27896,11 @@
           "revoke_reason": null,
           "shootout_number": null,
           "shootout_scored": null,
-          "text": "**EQ** / **0:3** - **Hofmann Gregory (7)**\nSenteler Sven (6), Moverare Jacob (8)"
+          "text": "**EQ** / **0:3** - **Hofmann Gregory (7)**\nSenteler Sven (6), Moverare Jacob (8)",
+          "players_on_ice": [
+            5,
+            5
+          ]
         },
         {
           "game_id": 20271105000128,
@@ -27892,7 +27948,11 @@
           "revoke_reason": null,
           "shootout_number": null,
           "shootout_scored": null,
-          "text": "**EQ** / **0:4** - **Tatar Tomas (6)**\nWingerli Andreas (5), Kovar Jan (7)"
+          "text": "**EQ** / **0:4** - **Tatar Tomas (6)**\nWingerli Andreas (5), Kovar Jan (7)",
+          "players_on_ice": [
+            5,
+            5
+          ]
         },
         {
           "game_id": 20271105000128,
@@ -27940,7 +28000,11 @@
           "revoke_reason": null,
           "shootout_number": null,
           "shootout_scored": null,
-          "text": "**EQ** / **0:5** - **Sklenicka David (1)**\nKovar Jan (8), Diaz Raphael (3)"
+          "text": "**EQ** / **0:5** - **Sklenicka David (1)**\nKovar Jan (8), Diaz Raphael (3)",
+          "players_on_ice": [
+            5,
+            5
+          ]
         },
         {
           "game_id": 20271105000128,
@@ -28012,7 +28076,11 @@
           "revoke_reason": null,
           "shootout_number": null,
           "shootout_scored": null,
-          "text": "**PP1** / **0:6** - **Senteler Sven (8)**\nTatar Tomas (6), Hofmann Gregory (4)"
+          "text": "**PP1** / **0:6** - **Senteler Sven (8)**\nTatar Tomas (6), Hofmann Gregory (4)",
+          "players_on_ice": [
+            5,
+            4
+          ]
         },
         {
           "game_id": 20271105000128,
@@ -28084,7 +28152,11 @@
           "revoke_reason": null,
           "shootout_number": null,
           "shootout_scored": null,
-          "text": "**PP1** / **0:7** - **Hofmann Gregory (8)**\nTatar Tomas (7), Senteler Sven (7)"
+          "text": "**PP1** / **0:7** - **Hofmann Gregory (8)**\nTatar Tomas (7), Senteler Sven (7)",
+          "players_on_ice": [
+            5,
+            4
+          ]
         },
         {
           "game_id": 20271105000128,
@@ -28204,7 +28276,11 @@
           "revoke_reason": null,
           "shootout_number": null,
           "shootout_scored": null,
-          "text": "**EQ** / **1:7** - **Merelä Waltteri (6)**\nAaltonen Miro (5)"
+          "text": "**EQ** / **1:7** - **Merelä Waltteri (6)**\nAaltonen Miro (5)",
+          "players_on_ice": [
+            5,
+            5
+          ]
         },
         {
           "game_id": 20271105000128,
@@ -28252,7 +28328,11 @@
           "revoke_reason": null,
           "shootout_number": null,
           "shootout_scored": null,
-          "text": "**EQ** / **1:8** - **Rohrer Vinzenz (8)**\nWey Loris (1), Kubalik Dominik (6)"
+          "text": "**EQ** / **1:8** - **Rohrer Vinzenz (8)**\nWey Loris (1), Kubalik Dominik (6)",
+          "players_on_ice": [
+            5,
+            5
+          ]
         },
         {
           "game_id": 20271105000128,
@@ -30508,7 +30588,11 @@
           "revoke_reason": null,
           "shootout_number": null,
           "shootout_scored": null,
-          "text": "**EQ** / **0:1** - **Henry Cyrill (1)**\nMüller Mirco (10), Maurer Marco (1)"
+          "text": "**EQ** / **0:1** - **Henry Cyrill (1)**\nMüller Mirco (10), Maurer Marco (1)",
+          "players_on_ice": [
+            5,
+            5
+          ]
         },
         {
           "game_id": 20271105000127,
@@ -30592,7 +30676,11 @@
           "revoke_reason": null,
           "shootout_number": null,
           "shootout_scored": null,
-          "text": "**EQ** / **0:2** - **Alatalo Santeri (1)**\nTanner Ramon (2), Maurer Marco (2)"
+          "text": "**EQ** / **0:2** - **Alatalo Santeri (1)**\nTanner Ramon (2), Maurer Marco (2)",
+          "players_on_ice": [
+            5,
+            5
+          ]
         },
         {
           "game_id": 20271105000127,
@@ -30676,7 +30764,11 @@
           "revoke_reason": null,
           "shootout_number": null,
           "shootout_scored": null,
-          "text": "**EQ** / **1:2** - **Heim André (1)**\nMüller Miles (3), Joly Michael (7)"
+          "text": "**EQ** / **1:2** - **Heim André (1)**\nMüller Miles (3), Joly Michael (7)",
+          "players_on_ice": [
+            5,
+            5
+          ]
         },
         {
           "game_id": 20271105000127,
@@ -30795,7 +30887,11 @@
           "revoke_reason": null,
           "shootout_number": null,
           "shootout_scored": null,
-          "text": "**SH1** / **2:2** - **Kodytek Petr (4)**"
+          "text": "**SH1** / **2:2** - **Kodytek Petr (4)**",
+          "players_on_ice": [
+            4,
+            5
+          ]
         },
         {
           "game_id": 20271105000127,
@@ -30879,7 +30975,11 @@
           "revoke_reason": null,
           "shootout_number": null,
           "shootout_scored": null,
-          "text": "**EQ** / **2:3** - **Kupari Rasmus (3)**\nMüller Mirco (11), Tanner Ramon (3)"
+          "text": "**EQ** / **2:3** - **Kupari Rasmus (3)**\nMüller Mirco (11), Tanner Ramon (3)",
+          "players_on_ice": [
+            5,
+            5
+          ]
         },
         {
           "game_id": 20271105000127,
@@ -30927,7 +31027,11 @@
           "revoke_reason": null,
           "shootout_number": null,
           "shootout_scored": null,
-          "text": "**EQ** / **3:3** - **Järventie Roby (11)**\nDe Luca Tommaso (6), Heim André (3)"
+          "text": "**EQ** / **3:3** - **Järventie Roby (11)**\nDe Luca Tommaso (6), Heim André (3)",
+          "players_on_ice": [
+            5,
+            5
+          ]
         },
         {
           "game_id": 20271105000127,
@@ -30999,7 +31103,11 @@
           "revoke_reason": null,
           "shootout_number": null,
           "shootout_scored": null,
-          "text": "**PP1,GWG** / **4:3** - **Schnarr Nathan (7)**\nJoly Michael (8), De Luca Tommaso (7)"
+          "text": "**PP1,GWG** / **4:3** - **Schnarr Nathan (7)**\nJoly Michael (8), De Luca Tommaso (7)",
+          "players_on_ice": [
+            5,
+            4
+          ]
         },
         {
           "game_id": 20271105000127,

@@ -155,11 +155,14 @@ export function gameTimeline(game, detail, view, filter = 'all') {
     const tags = String(event.goal_tags ?? '').split(',').map(tag => tag.trim()).filter(Boolean);
     const assists = [event.assist1_player_name, event.assist2_player_name].filter(Boolean);
     const scoring = onIce(event.plus_player_ids), conceding = onIce(event.minus_player_ids);
+    const strength = event.players_on_ice;
+    const manpower = Array.isArray(strength) && tags.some(tag => /^PP/.test(tag))
+      ? `<span class="cr-tag">${esc(strength[0])} contro ${esc(strength[1])}</span>` : '';
     const other = event.side === 'home' ? 'away' : 'home';
     return `<div class="cr-card-top"><span class="cr-score">${Math.trunc(Number(event.score_home ?? 0))} : ${Math.trunc(Number(event.score_away ?? 0))}</span><span class="cr-kind">Goal ${short(event.side)}</span>${crest(event.side)}</div>
       <p class="cr-name">${event.player_name ? `${shirt(event)}${withCount(event.player_name)}` : 'Goal ai rigori'}</p>
       ${assists.length ? `<p class="cr-meta">Assist: ${assists.map(withCount).join(', ')}</p>` : event.player_name ? '<p class="cr-meta">Senza assist</p>' : ''}
-      ${tags.length ? `<div class="cr-tags">${tags.map(tag => `<span class="cr-tag">${esc(GOAL_TAGS[tag] || tag)}</span>`).join('')}</div>` : ''}
+      ${tags.length ? `<div class="cr-tags">${tags.map(tag => `<span class="cr-tag">${esc(GOAL_TAGS[tag] || tag)}</span>`).join('')}${manpower}</div>` : ''}
       ${scoring || conceding ? `<details class="cr-ice"><summary>Sul ghiaccio</summary>${scoring ? `<p><b>${short(event.side)}</b> ${scoring}</p>` : ''}${conceding ? `<p><b>${short(other)}</b> ${conceding}</p>` : ''}</details>` : ''}`;
   };
 
@@ -201,6 +204,7 @@ export function gameTimeline(game, detail, view, filter = 'all') {
   const pair = stat => stat ? `${esc(stat.home_value ?? '–')}–${esc(stat.away_value ?? '–')}` : null;
   const period = item => {
     const shown = item.rows.filter(event => matches(event, filter));
+    if (item.key === 'so') shown.reverse();
     const facts = [pair(item.shots) && `Tiri ${pair(item.shots)}`, item.pim && `Penalità ${item.pim[0]}–${item.pim[1]} min`].filter(Boolean).join(' · ');
     const none = item.rows.length ? 'Nessun evento con questo filtro' : 'Nessun evento';
     return `<section class="cr-period"><header class="cr-period-head"><h3>${item.label}</h3><strong>${Math.trunc(Number(item.score[0]))} : ${Math.trunc(Number(item.score[1]))}</strong><span>${facts}</span></header>
@@ -230,5 +234,5 @@ export function gameTimeline(game, detail, view, filter = 'all') {
   const counts = { all: events.length, goal: events.filter(event => matches(event, 'goal')).length, penalty: events.filter(event => matches(event, 'penalty')).length };
   const filters = [['all', 'Tutto'], ['goal', 'Goal'], ['penalty', 'Penalità']].map(([value, label]) => `<button class="chip${filter === value ? ' active' : ''}" data-cronaca-filter="${value}" aria-pressed="${filter === value}">${label} · ${counts[value]}</button>`).join('');
 
-  return `<div class="cronaca">${flow}<div class="cr-filters" role="group" aria-label="Filtra la cronaca">${filters}</div><div class="cr-sides"><span>${crest('home')}${esc(team(game.home).name)}</span><span>${esc(team(game.away).name)}${crest('away')}</span></div>${periods.map(period).join('')}</div>`;
+  return `<div class="cronaca">${flow}<div class="cr-filters" role="group" aria-label="Filtra la cronaca">${filters}</div><div class="cr-sides"><span>${crest('home')}${esc(team(game.home).name)}</span><span>${esc(team(game.away).name)}${crest('away')}</span></div>${periods.slice().reverse().map(period).join('')}</div>`;
 }

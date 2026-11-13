@@ -491,7 +491,7 @@ export class ArenaView {
       const b = corners[(i + 1) % corners.length];
       rim.beam([a[0], Y + 0.18, a[1]], [b[0], Y + 0.18, b[1]], 0.46, rimColor, 0.36);
     });
-    this.root.add(rim.mesh());
+    this.perimeterWalls.add(rim.mesh());
     if (A.extras?.timberWalls) {
       const T = new Mesher(), wood = color('#c99a62');
       const posts = (a, b) => { const len = Math.hypot(b[0] - a[0], b[1] - a[1]), n = Math.round(len / 5.5); for (let i = 0; i <= n; i++) { const x = a[0] + (b[0] - a[0]) * i / n, z = a[1] + (b[1] - a[1]) * i / n, ix = -Math.sign(x) * 0.25 * (Math.abs(b[0] - a[0]) < 0.1), iz = -Math.sign(z) * 0.25 * (Math.abs(b[1] - a[1]) < 0.1); T.box(x + ix, Y / 2, z + iz, 0.45, Y, 0.45, wood); } for (const f of [0.35, 0.62, 0.86]) T.beam([a[0] - Math.sign(a[0]) * 0.2 * (Math.abs(b[0] - a[0]) < 0.1), Y * f, a[1] - Math.sign(a[1]) * 0.2 * (Math.abs(b[1] - a[1]) < 0.1)], [b[0] - Math.sign(b[0]) * 0.2 * (Math.abs(b[0] - a[0]) < 0.1), Y * f, b[1] - Math.sign(b[1]) * 0.2 * (Math.abs(b[1] - a[1]) < 0.1)], 0.3, wood); };
@@ -499,7 +499,7 @@ export class ArenaView {
       this.root.add(T.mesh());
     }
     const floor = new THREE.Mesh(new THREE.PlaneGeometry(2 * EX, EZn + EZs), new THREE.MeshLambertMaterial({ color: st.floor }));
-    floor.rotation.x = -Math.PI / 2; floor.position.set(0, -0.02, (EZs - EZn) / 2); this.root.add(floor);
+    floor.rotation.x = -Math.PI / 2; floor.position.set(0, -0.02, (EZs - EZn) / 2); this.perimeterWalls.add(floor);
     // Panchine e box dei puniti.
     const k = color(TEAMS[A.team].primary);
     M.box(-7.5, 0.22, RINK.halfW + 1.4, 9, 0.44, 2.4, color('#30333a')); M.box(-7.5, 0.75, RINK.halfW + 2.5, 9, 1.5, 0.2, k); M.box(-7.5, 0.48, RINK.halfW + 2.05, 9, 0.1, 0.5, k.clone().multiplyScalar(0.7));

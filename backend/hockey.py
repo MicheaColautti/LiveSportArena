@@ -12,6 +12,24 @@ def records(frame):
     return json.loads(frame.to_json(orient="records", date_format="iso"))
 
 
+def enrich_goal_strength(events, report):
+    """Attach official skater counts independently of plus/minus credits."""
+    goals = {}
+    for period in (report.get("summary") or {}).get("periods", []):
+        for goal in period.get("goals", []):
+            score = goal.get("result") or {}
+            key = (str(goal.get("teamId")), goal.get("time"), score.get("home"), score.get("away"))
+            goals[key] = (goal.get("situation") or {}).get("playersOnIce") or {}
+    for event in events:
+        if event.get("event_type") != "goal":
+            continue
+        key = (str(event.get("team_id")), event.get("time"), event.get("score_home"), event.get("score_away"))
+        counts = goals.get(key, {})
+        if all(isinstance(counts.get(side), int) and 1 <= counts[side] <= 6 for side in ("scoring", "opponent")):
+            event["players_on_ice"] = [counts["scoring"], counts["opponent"]]
+    return events
+
+
 def merge_game_info(previous, rows):
     if not rows:
         return previous
@@ -160,7 +178,7 @@ def update(season, detail_limit=8):
     # Migrate one older saved lineup per update without fetching the entire archive.
     legacy = next((g for g in reversed(games) if g["status"] == "finished"
                    and details.get(g["id"], {}).get("lineups")
-                   and "topScorers" not in details[g["id"]]), None)
+                   and ("topScorers" not in details[g["id"]] or not details[g["id"]].get("goalStrengthChecked"))), None)
     if legacy:
         candidates.append(legacy)
     seen = set()
@@ -170,7 +188,7 @@ def update(season, detail_limit=8):
             continue
         seen.add(gid)
         cached = details.get(gid)
-        if cached and cached.get("sourceUpdatedAt") == game["sourceUpdatedAt"] and cached.get("complete") and "topScorers" in cached and game["status"] == "finished":
+        if cached and cached.get("sourceUpdatedAt") == game["sourceUpdatedAt"] and cached.get("complete") and "topScorers" in cached and cached.get("goalStrengthChecked") and game["status"] == "finished":
             continue
         print(f"SIHF details: {gid}", flush=True)
         # All five views come from the same SIHF game report.
@@ -188,6 +206,9 @@ def update(season, detail_limit=8):
         for key, parse in routes.items():
             try:
                 detail[key] = records(parse(report, return_as_pandas=True))
+                if key == "events":
+                    enrich_goal_strength(detail[key], report)
+                    detail["goalStrengthChecked"] = True
                 if key == "info":
                     detail[key] = merge_game_info((cached or {}).get(key, []), detail[key])
                 if key == "lineups":

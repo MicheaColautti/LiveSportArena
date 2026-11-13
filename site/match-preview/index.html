@@ -166,6 +166,8 @@ button,select{font:inherit;color:inherit}
 .duel-result strong{font-size:19px;color:#586961}.duel-result .victory{color:#153e35;background:#def0c3;border-radius:6px;padding:1px 9px;justify-self:center}.duel-result small{font-size:11px}.duel-empty{padding:0 14px;text-align:center}
 .duel-players section{min-width:0;padding:13px 8px;border-top:3px solid var(--club-color)}.duel-players section+section{border-left:1px solid #163c3926}.duel-players h4{margin:9px 0 0;font-size:15px;min-height:2.4em;line-height:1.2;text-wrap:balance}
 .duel-total{font-size:36px;font-weight:850;line-height:1;color:#163e35;font-variant-numeric:tabular-nums}.duel-total small{font-size:12px;font-weight:650}.duel-split{display:flex;justify-content:center;gap:12px;margin-top:10px;font-size:12px;color:#425951}
+.back-game,.live-explore{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;font-weight:700}.back-game{position:absolute;z-index:2;top:8px;left:8px;padding:8px 12px;color:var(--green);font-size:13px}.live-explore{min-height:28px;padding:0 9px;background:var(--green);color:white;font-size:12px}.back-game:hover,.live-explore:hover{text-decoration:underline}
+@media(max-width:900px){.back-game{position:static;align-self:flex-start;order:-1;margin:6px 8px}.explore{width:auto;max-width:calc(100% - 12px)}}
 </style>
     <script
       type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
@@ -179,6 +181,7 @@ button,select{font:inherit;color:inherit}
             l'arena…</span></div>
       </div>
 
+      <a id="back-game" class="panel back-game" href="../#hockey">← Indietro</a>
       <header class="top">
         <div class="pick panel" hidden>
           <div class="mark">3D</div>
@@ -239,6 +242,18 @@ const ink = c => { const v = parseInt(c.slice(1), 16), r = v >> 16, g = v >> 8 &
 const params = new URLSearchParams(location.search);
 const MODES = ['intro', 'lineup', 'tour', 'explore'];
 const gameId = params.get('game');
+if (gameId) {
+  const back = $('back-game');
+  back.href = '../#game/' + encodeURIComponent(gameId);
+  const origin = document.referrer && new URL(document.referrer);
+  if (origin && origin.origin === location.origin && origin.pathname === new URL('../', location.href).pathname && history.length > 1) {
+    back.onclick = event => {
+      if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      history.back();
+    };
+  }
+}
 let match, hockey, maxLine = 3, tourEndTimer;
 
 let arena = 'HCAP';
@@ -430,6 +445,8 @@ async function load() {
     if (!match || !teams[match.home] || !teams[match.away]) throw new Error('Partita non trovata');
     arena = teams[match.home] === 'SCL' ? 'SCLT' : teams[match.home] === 'FRI' ? 'HCFG' : teams[match.home];
     away = teams[match.away] === 'SCL' ? 'SCLT' : teams[match.away] === 'FRI' ? 'HCFG' : teams[match.away];
+    $('explore-home').href = 'explore.html?arena=' + encodeURIComponent(arena);
+    $('explore-home').textContent = 'Esplora ' + ARENAS[arena].name;
     const rows = hockey.details[gameId]?.lineups || [];
     const roster = await fetch('../assets/hockey-rosters.json').then(r => r.ok ? r.json() : {}).catch(() => ({}));
     const home = matchLineups(rows, 'home', arena, roster.players || {});
@@ -442,7 +459,7 @@ async function load() {
   } catch (error) { fail(error); }
 }
 
-$('views').insertAdjacentHTML('afterend', '<button id="replay" class="cta">Rivedi</button><button class="live-explore" disabled>Esplora l’arena live</button>');
+$('views').insertAdjacentHTML('afterend', '<button id="replay" class="cta">Rivedi</button><a id="explore-home" class="live-explore"></a>');
 $('replay').onclick = () => { line = 1; view.setLine(1); view.setMode('intro'); };
 load();
 </script>
