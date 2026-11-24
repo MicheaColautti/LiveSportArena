@@ -204,7 +204,8 @@ export function gameTimeline(game, detail, view, filter = 'all') {
   const pair = stat => stat ? `${esc(stat.home_value ?? '–')}–${esc(stat.away_value ?? '–')}` : null;
   const period = item => {
     const shown = item.rows.filter(event => matches(event, filter));
-    if (item.key === 'so') shown.reverse();
+    // Come i periodi, anche gli eventi vanno dal più recente al più vecchio.
+    shown.reverse();
     const facts = [pair(item.shots) && `Tiri ${pair(item.shots)}`, item.pim && `Penalità ${item.pim[0]}–${item.pim[1]} min`].filter(Boolean).join(' · ');
     const none = item.rows.length ? 'Nessun evento con questo filtro' : 'Nessun evento';
     return `<section class="cr-period"><header class="cr-period-head"><h3>${item.label}</h3><strong>${Math.trunc(Number(item.score[0]))} : ${Math.trunc(Number(item.score[1]))}</strong><span>${facts}</span></header>

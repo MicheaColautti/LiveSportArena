@@ -48,3 +48,11 @@ test('i minuti di penalità del periodo vengono dalla cronaca', () => {
   const timeline = buildTimeline(game, { events: [penalty(1, 5, '50:35'), penalty(2, 20, '60:00')], stats: [{ statistic: 'PIM 3P', home_value: '0', away_value: '0' }] });
   assert.deepEqual(timeline.periods.find(period => period.key === 3).pim, [25, 0]);
 });
+
+test('dentro ogni periodo gli eventi vanno dal più recente, come i periodi', () => {
+  const view = { esc: value => String(value ?? ''), mark: () => '', team: () => ({ name: 'T', short: 'T' }) };
+  const at = (event_index, time, game_seconds, period_number) => ({ ...base, event_index, event_type: 'goal', period: `${period_number}. Drittel`, period_number, time, game_seconds, score_home: event_index, score_away: 0 });
+  const html = gameTimeline({ home: 1, away: 2, homePeriods: [2, 1] , awayPeriods: [0, 0] }, { events: [at(1, '05:00', 300, 1), at(2, '12:00', 720, 1), at(3, '25:00', 1500, 2)] }, view);
+  const times = [...html.matchAll(/class="cr-time">([^<]*)</g)].map(match => match[1]);
+  assert.deepEqual(times, ['25:00', '12:00', '05:00']);
+});
